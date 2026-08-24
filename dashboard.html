@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -16,49 +17,59 @@
     font-family:Arial,Helvetica,sans-serif;
 }
 
+:root{
+    --bg:#f4f6f8;
+    --card:#ffffff;
+    --text:#222;
+    --muted:#777;
+    --border:#dddddd;
+    --green:#0b5d3b;
+}
+
+body.dark{
+    --bg:#000000;
+    --card:#111111;
+    --text:#ffffff;
+    --muted:#aaaaaa;
+    --border:#292929;
+    --green:#19a866;
+}
+
 body{
     min-height:100vh;
-    background:#f4f6f8;
-    color:#222;
+    background:var(--bg);
+    color:var(--text);
     transition:.25s;
 }
 
 
 /* =========================
-   DARK MODE
+   THEME BUTTON
 ========================= */
 
-body.dark{
-    background:#111;
-    color:#eee;
-}
+.theme-button{
+    position:fixed;
+    top:5px;
+    right:5px;
 
-body.dark .header,
-body.dark .box,
-body.dark .info,
-body.dark .photo,
-body.dark .name-box,
-body.dark .billing,
-body.dark .bill,
-body.dark .address,
-body.dark .connection,
-body.dark .speed-box{
-    background:#1b1b1b;
-    border-color:#333;
-}
+    width:25px;
+    height:25px;
 
-body.dark .value,
-body.dark .info-value,
-body.dark .name-value,
-body.dark .billing-value,
-body.dark .address-value{
-    color:#eee;
-}
+    border:1px solid var(--border);
+    border-radius:50%;
 
-body.dark .speed-value-box,
-body.dark .graph-container{
-    background:#151515;
-    border-color:#333;
+    background:var(--card);
+    color:var(--text);
+
+    font-size:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    z-index:9999;
 }
 
 
@@ -69,7 +80,7 @@ body.dark .graph-container{
 .header{
     height:65px;
 
-    background:#ffffff;
+    background:var(--card);
 
     display:flex;
     align-items:center;
@@ -77,61 +88,32 @@ body.dark .graph-container{
 
     padding:0 18px;
 
-    border-bottom:1px solid #e5e5e5;
+    border-bottom:1px solid var(--border);
 
     position:sticky;
     top:0;
-
     z-index:100;
 }
 
 .title{
     font-size:20px;
     font-weight:bold;
-    color:#0b5d3b;
-}
-
-.header-right{
-    display:flex;
-    align-items:center;
-    gap:7px;
-}
-
-.theme{
-    width:28px;
-    height:28px;
-
-    border:1px solid #ddd;
-
-    background:#fff;
-
-    border-radius:50%;
-
-    cursor:pointer;
-
-    font-size:14px;
+    color:var(--green);
 }
 
 .logout{
     border:0;
-
-    background:#0b5d3b;
-
-    color:#fff;
+    background:var(--green);
+    color:white;
 
     padding:10px 17px;
 
     border-radius:8px;
 
     font-size:14px;
-
     font-weight:bold;
 
     cursor:pointer;
-}
-
-.logout:hover{
-    background:#08492f;
 }
 
 
@@ -155,18 +137,17 @@ body.dark .graph-container{
 
 .top{
     display:grid;
-
     grid-template-columns:1fr 1fr;
 
     gap:12px;
 
-    margin-bottom:14px;
+    margin-bottom:12px;
 }
 
 .box{
-    background:#fff;
+    background:var(--card);
 
-    border:1px solid #ddd;
+    border:1px solid var(--border);
 
     border-radius:12px;
 
@@ -175,22 +156,16 @@ body.dark .graph-container{
 
 .label{
     font-size:12px;
-
     font-weight:bold;
-
-    color:#777;
+    color:var(--muted);
 
     margin-bottom:7px;
 }
 
 .value{
     font-size:16px;
-
     font-weight:bold;
-
-    color:#222;
-
-    word-break:break-word;
+    color:var(--text);
 }
 
 
@@ -198,34 +173,36 @@ body.dark .graph-container{
    MAC
 ========================= */
 
-.info{
-    background:#fff;
+.mac-box{
+    background:var(--card);
 
-    border:1px solid #ddd;
+    border:1px solid var(--border);
 
     border-radius:12px;
 
     padding:15px;
 
-    margin-bottom:12px;
+    margin-bottom:18px;
 }
 
-.info-title{
+.mac-title{
     font-size:12px;
 
-    color:#777;
+    color:var(--muted);
 
     font-weight:bold;
 
     margin-bottom:7px;
 }
 
-.info-value{
+.mac-value{
     font-size:17px;
 
     font-weight:bold;
 
-    line-height:1.4;
+    color:var(--text);
+
+    word-break:break-all;
 }
 
 
@@ -240,7 +217,7 @@ body.dark .graph-container{
 
     justify-content:center;
 
-    margin:18px 0 22px;
+    margin:5px 0 22px;
 }
 
 .photo{
@@ -251,211 +228,18 @@ body.dark .graph-container{
 
     overflow:hidden;
 
-    background:#ddd;
+    background:#dff0e8;
 
-    border:6px solid #fff;
+    border:6px solid var(--card);
 
     box-shadow:
-        0 5px 25px rgba(0,0,0,.15);
+        0 7px 28px rgba(0,0,0,.18);
 }
 
-.photo img{
+.photo svg{
     width:100%;
     height:100%;
-
-    object-fit:cover;
-}
-
-
-/* =========================
-   NAME
-========================= */
-
-.name-box{
-    background:#fff;
-
-    border:1px solid #ddd;
-
-    border-radius:12px;
-
-    padding:15px;
-
-    margin-bottom:12px;
-}
-
-.name-title{
-    font-size:12px;
-
-    color:#777;
-
-    font-weight:bold;
-
-    margin-bottom:7px;
-}
-
-.name-value{
-    font-size:17px;
-
-    font-weight:bold;
-}
-
-
-/* =========================
-   BILLING DATE
-========================= */
-
-.billing{
-    background:#fff;
-
-    border:1px solid #ddd;
-
-    border-radius:12px;
-
-    padding:15px;
-
-    margin-bottom:12px;
-}
-
-.billing-title{
-    font-size:12px;
-
-    color:#777;
-
-    font-weight:bold;
-
-    margin-bottom:7px;
-}
-
-.billing-value{
-    font-size:17px;
-
-    font-weight:bold;
-}
-
-
-/* =========================
-   BILL
-========================= */
-
-.bill{
-    background:#fff;
-
-    border:1px solid #ddd;
-
-    border-radius:12px;
-
-    padding:15px;
-
-    margin-bottom:12px;
-}
-
-.bill-title{
-    font-size:12px;
-
-    color:#777;
-
-    margin-bottom:6px;
-
-    font-weight:bold;
-}
-
-.bill-value{
-    font-size:22px;
-
-    font-weight:bold;
-
-    color:#0b5d3b;
-}
-
-
-/* =========================
-   ADDRESS
-========================= */
-
-.address{
-    background:#fff;
-
-    border:1px solid #ddd;
-
-    border-radius:12px;
-
-    padding:15px;
-
-    margin-bottom:12px;
-}
-
-.address-title{
-    font-size:12px;
-
-    color:#777;
-
-    font-weight:bold;
-
-    margin-bottom:7px;
-}
-
-.address-value{
-    font-size:17px;
-
-    font-weight:bold;
-
-    line-height:1.4;
-}
-
-
-/* =========================
-   CONNECTING STATUS
-========================= */
-
-.connection{
-    background:#fff;
-
-    border:1px solid #ddd;
-
-    border-radius:12px;
-
-    padding:15px;
-
-    margin-bottom:14px;
-}
-
-.connection-title{
-    font-size:12px;
-
-    color:#777;
-
-    font-weight:bold;
-
-    margin-bottom:7px;
-}
-
-.online{
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:6px;
-
-    padding:6px 10px;
-
-    border-radius:7px;
-
-    background:#e8f7ef;
-
-    color:#08783d;
-
-    font-size:12px;
-
-    font-weight:bold;
-}
-
-.online-dot{
-    width:7px;
-    height:7px;
-
-    background:#08a651;
-
-    border-radius:50%;
+    display:block;
 }
 
 
@@ -464,15 +248,15 @@ body.dark .graph-container{
 ========================= */
 
 .speed-box{
-    background:#fff;
+    background:var(--card);
 
-    border:1px solid #ddd;
+    border:1px solid var(--border);
 
     border-radius:14px;
 
     padding:18px;
 
-    margin-top:14px;
+    margin-bottom:14px;
 }
 
 .speed-header{
@@ -482,7 +266,7 @@ body.dark .graph-container{
 
     align-items:center;
 
-    margin-bottom:14px;
+    margin-bottom:15px;
 }
 
 .speed-title{
@@ -490,11 +274,11 @@ body.dark .graph-container{
 
     font-weight:bold;
 
-    color:#555;
+    color:var(--muted);
 }
 
 .speed-live{
-    font-size:10px;
+    font-size:11px;
 
     font-weight:bold;
 
@@ -509,7 +293,7 @@ body.dark .graph-container{
 
 
 /* =========================
-   DOWNLOAD / UPLOAD
+   SPEED VALUES
 ========================= */
 
 .speed-values{
@@ -517,23 +301,23 @@ body.dark .graph-container{
 
     grid-template-columns:1fr 1fr;
 
-    gap:10px;
+    gap:12px;
 
-    margin-bottom:14px;
+    margin-bottom:18px;
 }
 
 .speed-value-box{
-    background:#f8faf9;
-
-    border:1px solid #e3e8e5;
+    border:1px solid var(--border);
 
     border-radius:10px;
 
     padding:12px;
+
+    background:var(--bg);
 }
 
-.speed-small-title{
-    font-size:10px;
+.speed-value-title{
+    font-size:11px;
 
     font-weight:bold;
 
@@ -545,54 +329,40 @@ body.dark .graph-container{
 }
 
 .upload-title{
-    color:#07994f;
+    color:#0b9b54;
 }
 
-.speed-number{
+.speed-value{
     font-size:24px;
 
     font-weight:bold;
+
+    color:var(--text);
 }
 
 .speed-unit{
-    font-size:10px;
+    font-size:11px;
 
-    color:#777;
+    color:var(--muted);
 
     font-weight:bold;
 }
 
 
 /* =========================
-   GRAPH
+   GRAPH LEGEND
 ========================= */
-
-.graph-title{
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:8px;
-}
-
-.graph-label{
-    font-size:11px;
-
-    color:#777;
-
-    font-weight:bold;
-}
 
 .graph-legend{
     display:flex;
 
-    gap:10px;
+    justify-content:center;
 
-    font-size:9px;
+    align-items:center;
 
-    font-weight:bold;
+    gap:25px;
+
+    margin-bottom:10px;
 }
 
 .legend{
@@ -600,36 +370,48 @@ body.dark .graph-container{
 
     align-items:center;
 
-    gap:4px;
+    gap:6px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    color:var(--text);
 }
 
 .legend-line{
-    width:15px;
+    width:25px;
+
     height:3px;
 
-    border-radius:5px;
+    border-radius:10px;
 }
 
-.legend-download{
+.download-line{
     background:#e00000;
 }
 
-.legend-upload{
-    background:#07994f;
+.upload-line{
+    background:#0b9b54;
 }
+
+
+/* =========================
+   GRAPH
+========================= */
 
 .graph-container{
     width:100%;
 
     height:190px;
 
+    position:relative;
+
     border-radius:10px;
 
-    background:#f8faf9;
+    background:var(--bg);
 
     overflow:hidden;
-
-    border:1px solid #e5e9e6;
 }
 
 #speedCanvas{
@@ -642,11 +424,97 @@ body.dark .graph-container{
 .speed-note{
     text-align:center;
 
-    font-size:10px;
+    font-size:11px;
 
-    color:#999;
+    color:var(--muted);
 
-    margin-top:8px;
+    margin-top:9px;
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info,
+.billing,
+.bill,
+.address,
+.connection{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    padding:15px;
+
+    margin-bottom:12px;
+}
+
+.info-title{
+    font-size:12px;
+
+    color:var(--muted);
+
+    font-weight:bold;
+
+    margin-bottom:7px;
+}
+
+.info-value{
+    font-size:17px;
+
+    font-weight:bold;
+
+    line-height:1.4;
+
+    color:var(--text);
+}
+
+.bill-value{
+    font-size:22px;
+
+    font-weight:bold;
+
+    color:var(--green);
+}
+
+
+/* =========================
+   ONLINE
+========================= */
+
+.online{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    padding:7px 11px;
+
+    background:#e8f7ef;
+
+    color:#08783d;
+
+    border-radius:7px;
+
+    font-size:13px;
+
+    font-weight:bold;
+}
+
+.online-dot{
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#0aa854;
+
+    box-shadow:
+        0 0 6px #0aa854;
 }
 
 
@@ -658,6 +526,7 @@ body.dark .graph-container{
 
     .header{
         height:60px;
+
         padding:0 14px;
     }
 
@@ -667,11 +536,6 @@ body.dark .graph-container{
 
     .logout{
         padding:9px 13px;
-    }
-
-    .theme{
-        width:26px;
-        height:26px;
     }
 
     .container{
@@ -687,15 +551,16 @@ body.dark .graph-container{
         font-size:14px;
     }
 
-    .info-value,
-    .name-value,
-    .billing-value,
-    .address-value{
+    .mac-value{
         font-size:15px;
     }
 
-    .graph-container{
-        height:180px;
+    .info-value{
+        font-size:15px;
+    }
+
+    .speed-value{
+        font-size:20px;
     }
 
 }
@@ -709,6 +574,18 @@ body.dark .graph-container{
 
 
 <!-- =========================
+     THEME
+========================= -->
+
+<button
+    id="themeButton"
+    class="theme-button"
+    onclick="toggleTheme()">
+    ☾
+</button>
+
+
+<!-- =========================
      HEADER
 ========================= -->
 
@@ -718,21 +595,11 @@ body.dark .graph-container{
         Customer Portal
     </div>
 
-    <div class="header-right">
-
-        <button
-            class="theme"
-            onclick="toggleTheme()">
-            ◐
-        </button>
-
-        <button
-            class="logout"
-            onclick="logout()">
-            Logout
-        </button>
-
-    </div>
+    <button
+        class="logout"
+        onclick="logout()">
+        Logout
+    </button>
 
 </div>
 
@@ -744,279 +611,33 @@ body.dark .graph-container{
 <div class="container">
 
 
-    <!-- USERNAME + PASSWORD -->
+<!-- USERNAME + PASSWORD -->
 
-    <div class="top">
+<div class="top">
 
-        <div class="box">
+    <div class="box">
 
-            <div class="label">
-                USERNAME
-            </div>
-
-            <div
-                class="value"
-                id="username">
-                ADMIN
-            </div>
-
-        </div>
-
-
-        <div class="box">
-
-            <div class="label">
-                PASSWORD
-            </div>
-
-            <div
-                class="value"
-                id="password">
-                12345
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- MAC -->
-
-    <div class="info">
-
-        <div class="info-title">
-            MAC
+        <div class="label">
+            USERNAME
         </div>
 
         <div
-            class="info-value"
-            id="mac">
-            22:91:fb:b1:a5:41
+            id="username"
+            class="value">
+            ADMIN
         </div>
 
     </div>
 
 
-    <!-- PHOTO -->
+    <div class="box">
 
-    <div class="photo-box">
-
-        <div class="photo">
-
-            <img
-                id="profilePhoto"
-                src="https://i.pravatar.cc/500?img=12"
-                alt="Profile Photo">
-
+        <div class="label">
+            PASSWORD
         </div>
 
-    </div>
-
-
-    <!-- NAME -->
-
-    <div class="name-box">
-
-        <div class="name-title">
-            NAME
-        </div>
-
-        <div
-            class="name-value"
-            id="customerName">
-            Shemanto Islam
-        </div>
-
-    </div>
-
-
-    <!-- BILLING DATE -->
-
-    <div class="billing">
-
-        <div class="billing-title">
-            BILLING DATE
-        </div>
-
-        <div
-            class="billing-value"
-            id="billingDate">
-            01-01-2027
-        </div>
-
-    </div>
-
-
-    <!-- BILL -->
-
-    <div class="bill">
-
-        <div class="bill-title">
-            BILL
-        </div>
-
-        <div
-            class="bill-value"
-            id="customerBill">
-            500 tk
-        </div>
-
-    </div>
-
-
-    <!-- ADDRESS -->
-
-    <div class="address">
-
-        <div class="address-title">
-            ADDRESS
-        </div>
-
-        <div
-            class="address-value"
-            id="customerAddress">
-            sagorika road pahartali Chittagong
-        </div>
-
-    </div>
-
-
-    <!-- CONNECTING STATUS -->
-
-    <div class="connection">
-
-        <div class="connection-title">
-            CONNECTING STATUS
-        </div>
-
-        <div class="online">
-
-            <span class="online-dot"></span>
-
-            <span id="connectionStatus">
-                Online
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         INTERNET SPEED
-    ========================= -->
-
-    <div class="speed-box">
-
-        <div class="speed-header">
-
-            <div class="speed-title">
-                📶 INTERNET SPEED
-            </div>
-
-            <div
-                id="speedLive"
-                class="speed-live">
-                ● LIVE
-            </div>
-
-        </div>
-
-
-        <!-- DOWNLOAD / UPLOAD -->
-
-        <div class="speed-values">
-
-            <div class="speed-value-box">
-
-                <div class="speed-small-title download-title">
-                    🔴 DOWNLOAD
-                </div>
-
-                <span
-                    id="downloadSpeed"
-                    class="speed-number">
-                    0
-                </span>
-
-                <span
-                    id="downloadUnit"
-                    class="speed-unit">
-                    KBPS
-                </span>
-
-            </div>
-
-
-            <div class="speed-value-box">
-
-                <div class="speed-small-title upload-title">
-                    🟢 UPLOAD
-                </div>
-
-                <span
-                    id="uploadSpeed"
-                    class="speed-number">
-                    0
-                </span>
-
-                <span
-                    id="uploadUnit"
-                    class="speed-unit">
-                    KBPS
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- GRAPH -->
-
-        <div class="graph-title">
-
-            <div class="graph-label">
-                LIVE SPEED GRAPH
-            </div>
-
-            <div class="graph-legend">
-
-                <div class="legend">
-
-                    <span
-                        class="legend-line legend-download">
-                    </span>
-
-                    Download
-
-                </div>
-
-                <div class="legend">
-
-                    <span
-                        class="legend-line legend-upload">
-                    </span>
-
-                    Upload
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="graph-container">
-
-            <canvas
-                id="speedCanvas">
-            </canvas>
-
-        </div>
-
-
-        <div class="speed-note">
-            Live browser network activity
+        <div class="value">
+            12345
         </div>
 
     </div>
@@ -1024,96 +645,307 @@ body.dark .graph-container{
 </div>
 
 
+<!-- MAC -->
+
+<div class="mac-box">
+
+    <div class="mac-title">
+        MAC
+    </div>
+
+    <div class="mac-value">
+        22:91:fb:b1:a5:41
+    </div>
+
+</div>
+
+
+<!-- PHOTO -->
+
+<div class="photo-box">
+
+<div class="photo">
+
+<svg
+viewBox="0 0 500 500"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect
+width="500"
+height="500"
+fill="#e8f4ef"/>
+
+<circle
+cx="250"
+cy="250"
+r="210"
+fill="#d2eadf"/>
+
+<path
+d="M115 470
+C125 350 180 315 250 315
+C320 315 375 350 385 470Z"
+fill="#0b5d3b"/>
+
+<ellipse
+cx="250"
+cy="220"
+rx="105"
+ry="125"
+fill="#e5aa7d"/>
+
+<path
+d="M150 220
+C140 135 180 80 250 80
+C330 80 370 145 350 230
+C330 185 305 165 270 160
+C225 153 190 175 150 220Z"
+fill="#202020"/>
+
+<ellipse
+cx="215"
+cy="225"
+rx="8"
+ry="10"
+fill="#222"/>
+
+<ellipse
+cx="285"
+cy="225"
+rx="8"
+ry="10"
+fill="#222"/>
+
+<path
+d="M250 225L238 265L260 265"
+fill="none"
+stroke="#a66d4c"
+stroke-width="6"/>
+
+<path
+d="M220 285Q250 305 280 285"
+fill="none"
+stroke="#8c4938"
+stroke-width="6"/>
+
+</svg>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     INTERNET SPEED
+========================= -->
+
+<div class="speed-box">
+
+
+<div class="speed-header">
+
+    <div class="speed-title">
+        📶 INTERNET SPEED
+    </div>
+
+    <div
+        id="speedLive"
+        class="speed-live">
+        ● LIVE
+    </div>
+
+</div>
+
+
+<!-- VALUES -->
+
+<div class="speed-values">
+
+
+<div class="speed-value-box">
+
+    <div class="speed-value-title download-title">
+        DOWNLOAD
+    </div>
+
+    <span
+        id="downloadSpeed"
+        class="speed-value">
+        00
+    </span>
+
+    <span
+        id="downloadUnit"
+        class="speed-unit">
+        KBPS
+    </span>
+
+</div>
+
+
+<div class="speed-value-box">
+
+    <div class="speed-value-title upload-title">
+        UPLOAD
+    </div>
+
+    <span
+        id="uploadSpeed"
+        class="speed-value">
+        00
+    </span>
+
+    <span
+        id="uploadUnit"
+        class="speed-unit">
+        KBPS
+    </span>
+
+</div>
+
+
+</div>
+
+
+<!-- LEGEND -->
+
+<div class="graph-legend">
+
+<div class="legend">
+
+<span
+class="legend-line download-line">
+</span>
+
+Download
+
+</div>
+
+
+<div class="legend">
+
+<span
+class="legend-line upload-line">
+</span>
+
+Upload
+
+</div>
+
+</div>
+
+
+<!-- GRAPH -->
+
+<div class="graph-container">
+
+<canvas
+id="speedCanvas">
+</canvas>
+
+</div>
+
+
+<div class="speed-note">
+Automatic browser network activity
+</div>
+
+
+</div>
+
+
+<!-- NAME -->
+
+<div class="info">
+
+<div class="info-title">
+NAME
+</div>
+
+<div class="info-value">
+Shemanto Islam
+</div>
+
+</div>
+
+
+<!-- BILLING DATE -->
+
+<div class="billing">
+
+<div class="info-title">
+BILLING DATE
+</div>
+
+<div class="info-value">
+01-01-2027
+</div>
+
+</div>
+
+
+<!-- BILL -->
+
+<div class="bill">
+
+<div class="info-title">
+BILL
+</div>
+
+<div class="bill-value">
+500 tk
+</div>
+
+</div>
+
+
+<!-- ADDRESS -->
+
+<div class="address">
+
+<div class="info-title">
+ADDRESS
+</div>
+
+<div class="info-value">
+sagorika road pahartali Chittagong
+</div>
+
+</div>
+
+
+<!-- STATUS -->
+
+<div class="connection">
+
+<div class="info-title">
+CONNECTING STATUS
+</div>
+
+<div class="online">
+
+<span class="online-dot"></span>
+
+Online
+
+</div>
+
+</div>
+
+
+</div>
+
+
 <script>
 
-/* =====================================================
-   CUSTOMER DATA
-   =====================================================
-
-   শুধু এখানকার তথ্য পরিবর্তন করবেন।
-===================================================== */
-
-const CUSTOMER_DATA = {
-
-    username: "ADMIN",
-
-    password: "12345",
-
-    mac: "22:91:fb:b1:a5:41",
-
-    photo: "https://i.pravatar.cc/500?img=12",
-
-    name: "Shemanto Islam",
-
-    billingDate: "01-01-2027",
-
-    bill: "500 tk",
-
-    address: "sagorika road pahartali Chittagong",
-
-    status: "Online"
-
-};
-
 
 /* =====================================================
-   LOAD CUSTOMER DATA
-===================================================== */
-
-document.getElementById(
-    "username"
-).textContent =
-    CUSTOMER_DATA.username;
-
-document.getElementById(
-    "password"
-).textContent =
-    CUSTOMER_DATA.password;
-
-document.getElementById(
-    "mac"
-).textContent =
-    CUSTOMER_DATA.mac;
-
-document.getElementById(
-    "profilePhoto"
-).src =
-    CUSTOMER_DATA.photo;
-
-document.getElementById(
-    "customerName"
-).textContent =
-    CUSTOMER_DATA.name;
-
-document.getElementById(
-    "billingDate"
-).textContent =
-    CUSTOMER_DATA.billingDate;
-
-document.getElementById(
-    "customerBill"
-).textContent =
-    CUSTOMER_DATA.bill;
-
-document.getElementById(
-    "customerAddress"
-).textContent =
-    CUSTOMER_DATA.address;
-
-document.getElementById(
-    "connectionStatus"
-).textContent =
-    CUSTOMER_DATA.status;
-
-
-/* =====================================================
-   LOGIN CHECK
+   LOGIN
 ===================================================== */
 
 if(
     sessionStorage.getItem("loggedIn")
-    !==
-    "true"
+    !== "true"
 ){
 
     window.location.replace(
@@ -1124,13 +956,11 @@ if(
 
 
 /* =====================================================
-   LOGIN USERNAME
+   USERNAME
 ===================================================== */
 
 const savedUsername =
-    sessionStorage.getItem(
-        "username"
-    );
+sessionStorage.getItem("username");
 
 if(savedUsername){
 
@@ -1164,8 +994,36 @@ function logout(){
 
 
 /* =====================================================
-   DARK / WHITE
+   THEME
 ===================================================== */
+
+const themeButton =
+document.getElementById(
+    "themeButton"
+);
+
+
+function loadTheme(){
+
+    const theme =
+    localStorage.getItem(
+        "customerTheme"
+    );
+
+
+    if(theme === "dark"){
+
+        document.body.classList.add(
+            "dark"
+        );
+
+        themeButton.textContent =
+            "☀";
+
+    }
+
+}
+
 
 function toggleTheme(){
 
@@ -1173,76 +1031,96 @@ function toggleTheme(){
         "dark"
     );
 
+
+    const dark =
+    document.body.classList.contains(
+        "dark"
+    );
+
+
     localStorage.setItem(
         "customerTheme",
-
-        document.body.classList.contains(
-            "dark"
-        )
-        ?
-        "dark"
-        :
-        "light"
+        dark
+        ? "dark"
+        : "light"
     );
+
+
+    themeButton.textContent =
+        dark
+        ? "☀"
+        : "☾";
+
 
     drawGraph();
 
 }
 
 
-if(
-    localStorage.getItem(
-        "customerTheme"
-    )
-    ===
-    "dark"
-){
-
-    document.body.classList.add(
-        "dark"
-    );
-
-}
+loadTheme();
 
 
 /* =====================================================
-   SPEED GRAPH
+   GRAPH
 ===================================================== */
 
 const canvas =
-    document.getElementById(
-        "speedCanvas"
-    );
+document.getElementById(
+    "speedCanvas"
+);
 
 const ctx =
-    canvas.getContext(
-        "2d"
-    );
+canvas.getContext("2d");
+
+
+const downloadSpeed =
+document.getElementById(
+    "downloadSpeed"
+);
+
+const uploadSpeed =
+document.getElementById(
+    "uploadSpeed"
+);
+
+const downloadUnit =
+document.getElementById(
+    "downloadUnit"
+);
+
+const uploadUnit =
+document.getElementById(
+    "uploadUnit"
+);
+
 
 let downloadHistory = [];
 
 let uploadHistory = [];
 
-const MAX_POINTS = 50;
+const MAX_POINTS = 60;
 
 
 /* =====================================================
-   RESIZE
+   CANVAS
 ===================================================== */
 
 function resizeCanvas(){
 
     const rect =
-        canvas.getBoundingClientRect();
+    canvas.parentElement
+    .getBoundingClientRect();
 
     const ratio =
-        window.devicePixelRatio || 1;
+    window.devicePixelRatio || 1;
+
 
     canvas.width =
-        rect.width * ratio;
+    rect.width * ratio;
 
     canvas.height =
-        rect.height * ratio;
+    rect.height * ratio;
+
 
     ctx.setTransform(
         ratio,
@@ -1253,9 +1131,11 @@ function resizeCanvas(){
         0
     );
 
+
     drawGraph();
 
 }
+
 
 window.addEventListener(
     "resize",
@@ -1267,34 +1147,33 @@ window.addEventListener(
    FORMAT
 ===================================================== */
 
-function formatSpeed(
-    mbps
-){
+function formatSpeed(bytes){
 
     if(
-        !isFinite(mbps)
-        ||
-        mbps <= 0
+        !bytes ||
+        bytes <= 0
     ){
 
         return {
-            value:"0",
+            value:"00",
             unit:"KBPS"
         };
 
     }
 
 
-    if(
-        mbps < 1
-    ){
+    const kb =
+    bytes / 1024;
+
+
+    if(kb < 1024){
 
         return {
 
             value:
-                Math.round(
-                    mbps * 1024
-                ),
+                kb < 10
+                ? kb.toFixed(1)
+                : Math.round(kb),
 
             unit:"KBPS"
 
@@ -1306,7 +1185,7 @@ function formatSpeed(
     return {
 
         value:
-            mbps.toFixed(2),
+            (kb / 1024).toFixed(1),
 
         unit:"MBPS"
 
@@ -1316,53 +1195,126 @@ function formatSpeed(
 
 
 /* =====================================================
-   UPDATE SPEED
+   AUTOMATIC PAGE NETWORK MONITOR
 ===================================================== */
 
-function updateSpeed(
-    download,
-    upload
-){
+let previousBytes = 0;
 
-    const d =
-        formatSpeed(
-            download
+let previousTime =
+performance.now();
+
+
+function measureNetwork(){
+
+    const now =
+    performance.now();
+
+
+    const seconds =
+    (now - previousTime) /
+    1000;
+
+
+    let totalBytes = 0;
+
+
+    try{
+
+        const resources =
+        performance.getEntriesByType(
+            "resource"
         );
 
-    const u =
-        formatSpeed(
-            upload
+
+        resources.forEach(
+            resource=>{
+
+                if(
+                    resource.transferSize
+                ){
+
+                    totalBytes +=
+                    resource.transferSize;
+
+                }
+
+            }
         );
 
+    }
+    catch(error){
 
-    document.getElementById(
-        "downloadSpeed"
-    ).textContent =
-        d.value;
+        totalBytes = 0;
 
-    document.getElementById(
-        "downloadUnit"
-    ).textContent =
-        d.unit;
+    }
 
 
-    document.getElementById(
-        "uploadSpeed"
-    ).textContent =
-        u.value;
-
-    document.getElementById(
-        "uploadUnit"
-    ).textContent =
-        u.unit;
+    let bytesPerSecond = 0;
 
 
-    downloadHistory.push(
-        download
+    if(seconds > 0){
+
+        bytesPerSecond =
+            Math.max(
+                0,
+                (
+                    totalBytes -
+                    previousBytes
+                ) / seconds
+            );
+
+    }
+
+
+    previousBytes =
+    totalBytes;
+
+    previousTime =
+    now;
+
+
+    /*
+       Browser does not expose
+       total phone upload traffic.
+    */
+
+    const download =
+    formatSpeed(
+        bytesPerSecond
     );
 
+
+    const upload =
+    formatSpeed(0);
+
+
+    downloadSpeed.textContent =
+    download.value;
+
+    downloadUnit.textContent =
+    download.unit;
+
+
+    uploadSpeed.textContent =
+    upload.value;
+
+    uploadUnit.textContent =
+    upload.unit;
+
+
+    /*
+       Store Mbps for graph.
+    */
+
+    downloadHistory.push(
+        bytesPerSecond /
+        1024 /
+        1024
+    );
+
+
     uploadHistory.push(
-        upload
+        0
     );
 
 
@@ -1374,6 +1326,7 @@ function updateSpeed(
         downloadHistory.shift();
 
     }
+
 
     if(
         uploadHistory.length >
@@ -1397,10 +1350,10 @@ function updateSpeed(
 function drawGraph(){
 
     const width =
-        canvas.clientWidth;
+    canvas.parentElement.clientWidth;
 
     const height =
-        canvas.clientHeight;
+    canvas.parentElement.clientHeight;
 
 
     ctx.clearRect(
@@ -1411,30 +1364,30 @@ function drawGraph(){
     );
 
 
-    /* GRID */
+    const dark =
+    document.body.classList.contains(
+        "dark"
+    );
+
 
     ctx.strokeStyle =
-        document.body.classList.contains(
-            "dark"
-        )
-        ?
-        "#292929"
-        :
-        "#e2e8e4";
+    dark
+    ? "#292929"
+    : "#e5e9e6";
+
 
     ctx.lineWidth = 1;
 
 
     for(
-        let i = 1;
-        i < 5;
+        let i=1;
+        i<5;
         i++
     ){
 
         const y =
-            (
-                height / 5
-            ) * i;
+        (height/5)*i;
+
 
         ctx.beginPath();
 
@@ -1453,28 +1406,24 @@ function drawGraph(){
     }
 
 
-    if(
-        downloadHistory.length === 0
-        &&
-        uploadHistory.length === 0
-    ){
+    const all =
+    downloadHistory.concat(
+        uploadHistory
+    );
+
+
+    if(all.length === 0){
 
         return;
 
     }
 
 
-    const all =
-        downloadHistory.concat(
-            uploadHistory
-        );
-
-
     let max =
-        Math.max(
-            ...all,
-            0.01
-        );
+    Math.max(
+        ...all,
+        0.01
+    );
 
 
     max *= 1.2;
@@ -1491,7 +1440,7 @@ function drawGraph(){
 
     drawLine(
         uploadHistory,
-        "#07994f",
+        "#0b9b54",
         width,
         height,
         max
@@ -1501,7 +1450,7 @@ function drawGraph(){
 
 
 /* =====================================================
-   DRAW LINE
+   LINE
 ===================================================== */
 
 function drawLine(
@@ -1512,9 +1461,7 @@ function drawLine(
     max
 ){
 
-    if(
-        data.length === 0
-    ){
+    if(data.length === 0){
 
         return;
 
@@ -1525,54 +1472,32 @@ function drawLine(
 
 
     data.forEach(
-        (
-            value,
-            index
-        )=>{
+        (value,index)=>{
 
             const x =
-                data.length === 1
-                ?
-                width / 2
-                :
+            data.length === 1
+            ? width / 2
+            :
+            (
+                index /
                 (
-                    index /
-                    (
-                        data.length - 1
-                    )
+                    data.length - 1
                 )
-                *
-                width;
+            ) * width;
 
 
-            let y =
-                height
-                -
-                (
-                    value /
-                    max
-                )
-                *
-                (
-                    height - 14
-                )
-                -
-                7;
+            const y =
+            height -
+            (
+                value / max
+            ) *
+            (
+                height - 15
+            ) -
+            7;
 
 
-            y =
-                Math.max(
-                    5,
-                    Math.min(
-                        height - 5,
-                        y
-                    )
-                );
-
-
-            if(
-                index === 0
-            ){
+            if(index === 0){
 
                 ctx.moveTo(
                     x,
@@ -1594,127 +1519,18 @@ function drawLine(
 
 
     ctx.strokeStyle =
-        color;
+    color;
 
-    ctx.lineWidth =
-        2.8;
+    ctx.lineWidth = 3;
 
     ctx.lineJoin =
-        "round";
+    "round";
 
     ctx.lineCap =
-        "round";
+    "round";
+
 
     ctx.stroke();
-
-}
-
-
-/* =====================================================
-   REAL-TIME BROWSER NETWORK ESTIMATE
-===================================================== */
-
-function getNetworkSpeed(){
-
-    const connection =
-        navigator.connection ||
-        navigator.mozConnection ||
-        navigator.webkitConnection;
-
-
-    if(
-        connection
-        &&
-        typeof connection.downlink === "number"
-    ){
-
-        return connection.downlink;
-
-    }
-
-
-    return 0;
-
-}
-
-
-/* =====================================================
-   LIVE SPEED UPDATE
-===================================================== */
-
-function liveSpeed(){
-
-    const speed =
-        getNetworkSpeed();
-
-
-    if(
-        speed > 0
-    ){
-
-        updateSpeed(
-            speed,
-            0
-        );
-
-        document.getElementById(
-            "speedLive"
-        ).textContent =
-            "● LIVE";
-
-    }
-    else{
-
-        document.getElementById(
-            "downloadSpeed"
-        ).textContent =
-            "0";
-
-        document.getElementById(
-            "downloadUnit"
-        ).textContent =
-            "KBPS";
-
-
-        document.getElementById(
-            "uploadSpeed"
-        ).textContent =
-            "0";
-
-        document.getElementById(
-            "uploadUnit"
-        ).textContent =
-            "KBPS";
-
-
-        document.getElementById(
-            "speedLive"
-        ).textContent =
-            "● LIVE";
-
-    }
-
-}
-
-
-/* =====================================================
-   NETWORK CHANGE
-===================================================== */
-
-const connection =
-    navigator.connection ||
-    navigator.mozConnection ||
-    navigator.webkitConnection;
-
-
-if(
-    connection
-){
-
-    connection.addEventListener(
-        "change",
-        liveSpeed
-    );
 
 }
 
@@ -1725,19 +1541,19 @@ if(
 
 resizeCanvas();
 
-liveSpeed();
-
 
 /*
-   Update frequently.
+   0.1 second update
 */
 
 setInterval(
-    liveSpeed,
-    500
+    measureNetwork,
+    100
 );
 
 </script>
 
+
 </body>
+
 </html>
