@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -21,15 +22,15 @@
     --card:#ffffff;
     --text:#222;
     --muted:#777;
-    --border:#ddd;
+    --border:#dddddd;
     --green:#0b5d3b;
 }
 
 body.dark{
-    --bg:#000;
-    --card:#111;
-    --text:#fff;
-    --muted:#aaa;
+    --bg:#000000;
+    --card:#111111;
+    --text:#ffffff;
+    --muted:#aaaaaa;
     --border:#292929;
     --green:#19a866;
 }
@@ -42,7 +43,9 @@ body{
 }
 
 
-/* THEME BUTTON */
+/* =========================
+   THEME BUTTON
+========================= */
 
 .theme-button{
     position:fixed;
@@ -70,7 +73,9 @@ body{
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .header{
     height:65px;
@@ -112,7 +117,9 @@ body{
 }
 
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 .container{
     width:100%;
@@ -124,7 +131,9 @@ body{
 }
 
 
-/* USERNAME PASSWORD */
+/* =========================
+   USERNAME PASSWORD
+========================= */
 
 .top{
     display:grid;
@@ -160,7 +169,9 @@ body{
 }
 
 
-/* MAC */
+/* =========================
+   MAC
+========================= */
 
 .mac-box{
     background:var(--card);
@@ -176,6 +187,7 @@ body{
 
 .mac-title{
     font-size:12px;
+
     color:var(--muted);
 
     font-weight:bold;
@@ -185,16 +197,24 @@ body{
 
 .mac-value{
     font-size:17px;
+
     font-weight:bold;
 
     color:var(--text);
+
+    word-break:break-all;
 }
 
 
-/* PHOTO */
+/* =========================
+   PHOTO
+========================= */
 
 .photo-box{
+    width:100%;
+
     display:flex;
+
     justify-content:center;
 
     margin:5px 0 22px;
@@ -212,16 +232,20 @@ body{
 
     border:6px solid var(--card);
 
-    box-shadow:0 7px 28px rgba(0,0,0,.18);
+    box-shadow:
+        0 7px 28px rgba(0,0,0,.18);
 }
 
 .photo svg{
     width:100%;
     height:100%;
+    display:block;
 }
 
 
-/* SPEED */
+/* =========================
+   SPEED BOX
+========================= */
 
 .speed-box{
     background:var(--card);
@@ -247,7 +271,9 @@ body{
 
 .speed-title{
     font-size:14px;
+
     font-weight:bold;
+
     color:var(--muted);
 }
 
@@ -266,7 +292,9 @@ body{
 }
 
 
-/* SPEED VALUES */
+/* =========================
+   SPEED VALUES
+========================= */
 
 .speed-values{
     display:grid;
@@ -321,12 +349,16 @@ body{
 }
 
 
-/* LEGEND */
+/* =========================
+   GRAPH LEGEND
+========================= */
 
 .graph-legend{
     display:flex;
 
     justify-content:center;
+
+    align-items:center;
 
     gap:25px;
 
@@ -343,35 +375,43 @@ body{
     font-size:12px;
 
     font-weight:bold;
+
+    color:var(--text);
 }
 
-.line{
-    width:24px;
+.legend-line{
+    width:25px;
+
     height:3px;
 
     border-radius:10px;
 }
 
-.red{
+.download-line{
     background:#e00000;
 }
 
-.green{
+.upload-line{
     background:#0b9b54;
 }
 
 
-/* GRAPH */
+/* =========================
+   GRAPH
+========================= */
 
 .graph-container{
     width:100%;
+
     height:190px;
+
+    position:relative;
 
     border-radius:10px;
 
-    overflow:hidden;
-
     background:var(--bg);
+
+    overflow:hidden;
 }
 
 #speedCanvas{
@@ -381,7 +421,7 @@ body{
     display:block;
 }
 
-.note{
+.speed-note{
     text-align:center;
 
     font-size:11px;
@@ -392,7 +432,9 @@ body{
 }
 
 
-/* INFO */
+/* =========================
+   INFO
+========================= */
 
 .info,
 .billing,
@@ -425,6 +467,8 @@ body{
 
     font-weight:bold;
 
+    line-height:1.4;
+
     color:var(--text);
 }
 
@@ -437,7 +481,9 @@ body{
 }
 
 
-/* ONLINE */
+/* =========================
+   ONLINE
+========================= */
 
 .online{
     display:inline-flex;
@@ -459,29 +505,37 @@ body{
     font-weight:bold;
 }
 
-.dot{
+.online-dot{
     width:8px;
     height:8px;
 
-    background:#0aa854;
-
     border-radius:50%;
 
-    box-shadow:0 0 6px #0aa854;
+    background:#0aa854;
+
+    box-shadow:
+        0 0 6px #0aa854;
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:500px){
 
     .header{
         height:60px;
+
         padding:0 14px;
     }
 
     .title{
         font-size:18px;
+    }
+
+    .logout{
+        padding:9px 13px;
     }
 
     .container{
@@ -491,6 +545,18 @@ body{
     .photo{
         width:200px;
         height:200px;
+    }
+
+    .value{
+        font-size:14px;
+    }
+
+    .mac-value{
+        font-size:15px;
+    }
+
+    .info-value{
+        font-size:15px;
     }
 
     .speed-value{
@@ -503,10 +569,13 @@ body{
 
 </head>
 
+
 <body>
 
 
-<!-- THEME -->
+<!-- =========================
+     THEME
+========================= -->
 
 <button
     id="themeButton"
@@ -516,7 +585,9 @@ body{
 </button>
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <div class="header">
 
@@ -533,10 +604,14 @@ body{
 </div>
 
 
+<!-- =========================
+     MAIN
+========================= -->
+
 <div class="container">
 
 
-<!-- USERNAME PASSWORD -->
+<!-- USERNAME + PASSWORD -->
 
 <div class="top">
 
@@ -547,8 +622,8 @@ body{
         </div>
 
         <div
-            class="value"
-            id="username">
+            id="username"
+            class="value">
             ADMIN
         </div>
 
@@ -660,65 +735,74 @@ stroke-width="6"/>
 </div>
 
 
-<!-- SPEED -->
+<!-- =========================
+     INTERNET SPEED
+========================= -->
 
 <div class="speed-box">
 
+
 <div class="speed-header">
 
-<div class="speed-title">
-📶 INTERNET SPEED
+    <div class="speed-title">
+        📶 INTERNET SPEED
+    </div>
+
+    <div
+        id="speedLive"
+        class="speed-live">
+        ● LIVE
+    </div>
+
 </div>
 
-<div class="speed-live">
-● LIVE
-</div>
 
-</div>
-
+<!-- VALUES -->
 
 <div class="speed-values">
 
-<div class="speed-value-box">
-
-<div class="speed-value-title download-title">
-DOWNLOAD
-</div>
-
-<span
-id="downloadSpeed"
-class="speed-value">
-00
-</span>
-
-<span
-id="downloadUnit"
-class="speed-unit">
-KBPS
-</span>
-
-</div>
-
 
 <div class="speed-value-box">
 
-<div class="speed-value-title upload-title">
-UPLOAD
+    <div class="speed-value-title download-title">
+        DOWNLOAD
+    </div>
+
+    <span
+        id="downloadSpeed"
+        class="speed-value">
+        00
+    </span>
+
+    <span
+        id="downloadUnit"
+        class="speed-unit">
+        KBPS
+    </span>
+
 </div>
 
-<span
-id="uploadSpeed"
-class="speed-value">
-00
-</span>
 
-<span
-id="uploadUnit"
-class="speed-unit">
-KBPS
-</span>
+<div class="speed-value-box">
+
+    <div class="speed-value-title upload-title">
+        UPLOAD
+    </div>
+
+    <span
+        id="uploadSpeed"
+        class="speed-value">
+        00
+    </span>
+
+    <span
+        id="uploadUnit"
+        class="speed-unit">
+        KBPS
+    </span>
 
 </div>
+
 
 </div>
 
@@ -729,7 +813,9 @@ KBPS
 
 <div class="legend">
 
-<span class="line red"></span>
+<span
+class="legend-line download-line">
+</span>
 
 Download
 
@@ -738,7 +824,9 @@ Download
 
 <div class="legend">
 
-<span class="line green"></span>
+<span
+class="legend-line upload-line">
+</span>
 
 Upload
 
@@ -757,9 +845,11 @@ id="speedCanvas">
 
 </div>
 
-<div class="note">
-Live network activity
+
+<div class="speed-note">
+Automatic browser network activity
 </div>
+
 
 </div>
 
@@ -779,7 +869,7 @@ Shemanto Islam
 </div>
 
 
-<!-- BILLING -->
+<!-- BILLING DATE -->
 
 <div class="billing">
 
@@ -834,7 +924,7 @@ CONNECTING STATUS
 
 <div class="online">
 
-<span class="dot"></span>
+<span class="online-dot"></span>
 
 Online
 
@@ -848,9 +938,10 @@ Online
 
 <script>
 
-/* =========================
+
+/* =====================================================
    LOGIN
-========================= */
+===================================================== */
 
 if(
     sessionStorage.getItem("loggedIn")
@@ -864,9 +955,9 @@ if(
 }
 
 
-/* =========================
+/* =====================================================
    USERNAME
-========================= */
+===================================================== */
 
 const savedUsername =
 sessionStorage.getItem("username");
@@ -881,9 +972,9 @@ if(savedUsername){
 }
 
 
-/* =========================
+/* =====================================================
    LOGOUT
-========================= */
+===================================================== */
 
 function logout(){
 
@@ -902,9 +993,9 @@ function logout(){
 }
 
 
-/* =========================
+/* =====================================================
    THEME
-========================= */
+===================================================== */
 
 const themeButton =
 document.getElementById(
@@ -969,9 +1060,9 @@ function toggleTheme(){
 loadTheme();
 
 
-/* =========================
+/* =====================================================
    GRAPH
-========================= */
+===================================================== */
 
 const canvas =
 document.getElementById(
@@ -982,20 +1073,19 @@ const ctx =
 canvas.getContext("2d");
 
 
-const downloadElement =
+const downloadSpeed =
 document.getElementById(
     "downloadSpeed"
+);
+
+const uploadSpeed =
+document.getElementById(
+    "uploadSpeed"
 );
 
 const downloadUnit =
 document.getElementById(
     "downloadUnit"
-);
-
-
-const uploadElement =
-document.getElementById(
-    "uploadSpeed"
 );
 
 const uploadUnit =
@@ -1011,9 +1101,9 @@ let uploadHistory = [];
 const MAX_POINTS = 60;
 
 
-/* =========================
-   RESIZE
-========================= */
+/* =====================================================
+   CANVAS
+===================================================== */
 
 function resizeCanvas(){
 
@@ -1053,15 +1143,15 @@ window.addEventListener(
 );
 
 
-/* =========================
+/* =====================================================
    FORMAT
-========================= */
+===================================================== */
 
-function formatSpeed(bytesPerSecond){
+function formatSpeed(bytes){
 
     if(
-        !bytesPerSecond ||
-        bytesPerSecond <= 0
+        !bytes ||
+        bytes <= 0
     ){
 
         return {
@@ -1073,71 +1163,57 @@ function formatSpeed(bytesPerSecond){
 
 
     const kb =
-    bytesPerSecond / 1024;
+    bytes / 1024;
 
 
     if(kb < 1024){
 
         return {
+
             value:
                 kb < 10
                 ? kb.toFixed(1)
                 : Math.round(kb),
 
             unit:"KBPS"
+
         };
 
     }
 
 
     return {
+
         value:
             (kb / 1024).toFixed(1),
 
         unit:"MBPS"
+
     };
 
 }
 
 
-/* =========================
-   BROWSER ACTIVITY
-========================= */
+/* =====================================================
+   AUTOMATIC PAGE NETWORK MONITOR
+===================================================== */
 
-let lastDown =
+let previousBytes = 0;
+
+let previousTime =
 performance.now();
 
-let lastUp =
-performance.now();
 
-
-let downBytes = 0;
-
-let upBytes = 0;
-
-
-/*
-   Browser cannot read the complete
-   phone traffic.
-
-   This function observes page-level
-   activity where available.
-*/
-
-function updateSpeed(){
+function measureNetwork(){
 
     const now =
     performance.now();
 
 
-    const elapsed =
-    (now - lastDown) / 1000;
+    const seconds =
+    (now - previousTime) /
+    1000;
 
-
-    /*
-       Estimate current page network
-       activity from Performance entries.
-    */
 
     let totalBytes = 0;
 
@@ -1166,80 +1242,79 @@ function updateSpeed(){
         );
 
     }
-    catch(e){}
+    catch(error){
 
-
-    /*
-       We only use newly observed
-       browser resource traffic.
-    */
-
-    const current =
-    Math.max(
-        0,
-        totalBytes - downBytes
-    );
-
-
-    let downloadBps = 0;
-
-
-    if(elapsed > 0){
-
-        downloadBps =
-        current / elapsed;
+        totalBytes = 0;
 
     }
 
 
-    downBytes =
+    let bytesPerSecond = 0;
+
+
+    if(seconds > 0){
+
+        bytesPerSecond =
+            Math.max(
+                0,
+                (
+                    totalBytes -
+                    previousBytes
+                ) / seconds
+            );
+
+    }
+
+
+    previousBytes =
     totalBytes;
 
-    lastDown =
+    previousTime =
     now;
 
 
     /*
-       Upload cannot be read globally
-       by normal browser JavaScript.
-       Keep it zero unless your page
-       itself uploads data.
+       Browser does not expose
+       total phone upload traffic.
     */
 
-    let uploadBps = 0;
-
-
-    const d =
+    const download =
     formatSpeed(
-        downloadBps
-    );
-
-    const u =
-    formatSpeed(
-        uploadBps
+        bytesPerSecond
     );
 
 
-    downloadElement.textContent =
-    d.value;
+    const upload =
+    formatSpeed(0);
+
+
+    downloadSpeed.textContent =
+    download.value;
 
     downloadUnit.textContent =
-    d.unit;
+    download.unit;
 
 
-    uploadElement.textContent =
-    u.value;
+    uploadSpeed.textContent =
+    upload.value;
 
     uploadUnit.textContent =
-    u.unit;
+    upload.unit;
 
+
+    /*
+       Store Mbps for graph.
+    */
 
     downloadHistory.push(
-        downloadBps / 1024 / 1024
+        bytesPerSecond /
+        1024 /
+        1024
     );
 
+
     uploadHistory.push(
-        uploadBps / 1024 / 1024
+        0
     );
 
 
@@ -1268,9 +1343,9 @@ function updateSpeed(){
 }
 
 
-/* =========================
-   DRAW
-========================= */
+/* =====================================================
+   DRAW GRAPH
+===================================================== */
 
 function drawGraph(){
 
@@ -1298,7 +1373,7 @@ function drawGraph(){
     ctx.strokeStyle =
     dark
     ? "#292929"
-    : "#e4e9e6";
+    : "#e5e9e6";
 
 
     ctx.lineWidth = 1;
@@ -1331,13 +1406,13 @@ function drawGraph(){
     }
 
 
-    const values =
+    const all =
     downloadHistory.concat(
         uploadHistory
     );
 
 
-    if(values.length === 0){
+    if(all.length === 0){
 
         return;
 
@@ -1346,16 +1421,9 @@ function drawGraph(){
 
     let max =
     Math.max(
-        ...values,
-        0.001
+        ...all,
+        0.01
     );
-
-
-    if(max < 0.01){
-
-        max = 0.01;
-
-    }
 
 
     max *= 1.2;
@@ -1381,19 +1449,19 @@ function drawGraph(){
 }
 
 
-/* =========================
-   DRAW LINE
-========================= */
+/* =====================================================
+   LINE
+===================================================== */
 
 function drawLine(
-    history,
+    data,
     color,
     width,
     height,
     max
 ){
 
-    if(history.length === 0){
+    if(data.length === 0){
 
         return;
 
@@ -1403,17 +1471,17 @@ function drawLine(
     ctx.beginPath();
 
 
-    history.forEach(
+    data.forEach(
         (value,index)=>{
 
             const x =
-            history.length === 1
-            ? width/2
+            data.length === 1
+            ? width / 2
             :
             (
                 index /
                 (
-                    history.length-1
+                    data.length - 1
                 )
             ) * width;
 
@@ -1421,10 +1489,10 @@ function drawLine(
             const y =
             height -
             (
-                value/max
+                value / max
             ) *
             (
-                height-15
+                height - 15
             ) -
             7;
 
@@ -1467,23 +1535,25 @@ function drawLine(
 }
 
 
-/* =========================
+/* =====================================================
    START
-========================= */
+===================================================== */
 
 resizeCanvas();
 
 
 /*
-   Update every 0.1 second
+   0.1 second update
 */
 
 setInterval(
-    updateSpeed,
+    measureNetwork,
     100
 );
 
 </script>
 
+
 </body>
+
 </html>
