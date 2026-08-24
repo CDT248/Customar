@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>Internet Speed Test</title>
+<title>Live Internet Speed Test</title>
 
 <style>
 
@@ -21,275 +18,193 @@
 
 body{
     min-height:100vh;
-    background:#f4f6f8;
-    color:#222;
-
+    background:#f3f6f4;
     display:flex;
     justify-content:center;
     align-items:center;
-
-    padding:18px;
+    padding:15px;
+    color:#222;
 }
 
 .card{
     width:100%;
-    max-width:480px;
-
+    max-width:500px;
     background:#fff;
-
     border-radius:20px;
-
-    padding:22px;
-
-    box-shadow:
-        0 10px 40px rgba(0,0,0,.12);
+    padding:20px;
+    box-shadow:0 10px 35px rgba(0,0,0,.12);
 }
-
-
-/* =========================
-   TITLE
-========================= */
 
 .title{
     text-align:center;
-
-    font-size:24px;
-
-    font-weight:bold;
-
     color:#0b5d3b;
-
-    margin-bottom:5px;
+    font-size:23px;
+    font-weight:bold;
 }
 
 .subtitle{
     text-align:center;
-
-    color:#777;
-
+    color:#888;
     font-size:12px;
-
-    margin-bottom:22px;
+    margin-top:5px;
+    margin-bottom:20px;
 }
 
 
-/* =========================
-   SPEED
-========================= */
+/* MAIN SPEED */
 
-.speed-circle{
-    width:190px;
-    height:190px;
+.main-speed{
+    width:175px;
+    height:175px;
+    margin:auto;
 
     border-radius:50%;
 
-    margin:0 auto 20px;
-
-    border:8px solid #e6eee9;
+    border:8px solid #e4ece7;
 
     display:flex;
-
     flex-direction:column;
-
-    justify-content:center;
-
     align-items:center;
-
-    position:relative;
+    justify-content:center;
 }
 
-.speed-number{
-    font-size:40px;
-
+.main-number{
+    font-size:38px;
     font-weight:bold;
-
     color:#0b5d3b;
 }
 
-.speed-unit{
-    font-size:13px;
-
+.main-unit{
+    font-size:12px;
     color:#777;
-
     font-weight:bold;
 }
 
 .status{
     font-size:11px;
-
     color:#777;
-
-    margin-top:7px;
+    margin-top:6px;
 }
 
 
-/* =========================
-   DOWNLOAD UPLOAD
-========================= */
+/* VALUES */
 
-.results{
+.values{
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
-    gap:12px;
-
-    margin-bottom:18px;
+    gap:10px;
+    margin-top:20px;
 }
 
-.result{
-    background:#f8faf9;
-
+.value-box{
+    background:#f7f9f8;
     border:1px solid #e1e6e3;
-
     border-radius:12px;
-
     padding:14px;
 }
 
-.result-title{
+.value-title{
     font-size:11px;
-
     font-weight:bold;
-
     margin-bottom:6px;
 }
 
-.download-title{
+.download{
     color:#e00000;
 }
 
-.upload-title{
-    color:#0b9b54;
+.upload{
+    color:#07994f;
 }
 
-.result-number{
-    font-size:23px;
-
+.value-number{
+    font-size:22px;
     font-weight:bold;
 }
 
-.result-unit{
+.value-unit{
     font-size:10px;
-
     color:#777;
-
     font-weight:bold;
 }
 
 
-/* =========================
-   GRAPH HEADER
-========================= */
-
-.graph-header{
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:9px;
-}
+/* GRAPH */
 
 .graph-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:20px;
+    margin-bottom:8px;
+}
+
+.graph-title-text{
     font-size:13px;
-
     font-weight:bold;
-
     color:#555;
 }
 
 .legend{
     display:flex;
-
-    gap:13px;
-
+    gap:12px;
     font-size:10px;
-
     font-weight:bold;
 }
 
-.legend-item{
+.legend span{
     display:flex;
-
     align-items:center;
-
     gap:4px;
 }
 
-.legend-dot{
+.red-dot,
+.green-dot{
     width:18px;
-
     height:3px;
-
     border-radius:5px;
 }
 
-.red{
+.red-dot{
     background:#e00000;
 }
 
-.green{
-    background:#0b9b54;
+.green-dot{
+    background:#07994f;
 }
 
-
-/* =========================
-   GRAPH
-========================= */
-
-.graph-box{
+.graph{
     width:100%;
-
-    height:210px;
-
+    height:230px;
     background:#f8faf9;
-
+    border:1px solid #e3e8e5;
     border-radius:12px;
-
     overflow:hidden;
-
-    position:relative;
-
-    border:1px solid #e5e9e6;
 }
 
-#speedGraph{
+#canvas{
     width:100%;
     height:100%;
-
     display:block;
 }
 
 
-/* =========================
-   BUTTONS
-========================= */
+/* BUTTONS */
 
 .buttons{
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     gap:10px;
-
-    margin-top:18px;
+    margin-top:15px;
 }
 
 button{
     border:0;
-
     padding:14px;
-
     border-radius:10px;
-
     color:white;
-
     font-size:14px;
-
     font-weight:bold;
-
     cursor:pointer;
 }
 
@@ -303,53 +218,39 @@ button{
 
 button:disabled{
     opacity:.45;
-
-    cursor:not-allowed;
 }
 
 
-/* =========================
-   NOTE
-========================= */
+/* NOTE */
 
 .note{
     text-align:center;
-
     font-size:10px;
-
     color:#999;
-
     line-height:1.5;
-
-    margin-top:13px;
+    margin-top:12px;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:500px){
 
-    body{
-        padding:10px;
-    }
-
     .card{
-        padding:18px;
+        padding:17px;
     }
 
-    .speed-circle{
-        width:170px;
-        height:170px;
+    .main-speed{
+        width:160px;
+        height:160px;
     }
 
-    .speed-number{
-        font-size:35px;
+    .main-number{
+        font-size:34px;
     }
 
-    .graph-box{
-        height:190px;
+    .graph{
+        height:200px;
     }
 
 }
@@ -358,38 +259,35 @@ button:disabled{
 
 </head>
 
-
 <body>
 
 
 <div class="card">
 
 
-    <!-- TITLE -->
-
     <div class="title">
         Internet Speed Test
     </div>
 
     <div class="subtitle">
-        Live Download & Upload Monitor
+        Live Download & Upload Speed
     </div>
 
 
     <!-- MAIN SPEED -->
 
-    <div class="speed-circle">
+    <div class="main-speed">
 
         <div
-            id="mainSpeed"
-            class="speed-number">
+            id="mainNumber"
+            class="main-number">
             0
         </div>
 
         <div
             id="mainUnit"
-            class="speed-unit">
-            Mbps
+            class="main-unit">
+            KBPS
         </div>
 
         <div
@@ -403,83 +301,73 @@ button:disabled{
 
     <!-- DOWNLOAD / UPLOAD -->
 
-    <div class="results">
+    <div class="values">
 
 
-        <div class="result">
+        <div class="value-box">
 
-            <div class="result-title download-title">
+            <div class="value-title download">
                 🔴 DOWNLOAD
             </div>
 
             <span
-                id="download"
-                class="result-number">
+                id="downloadValue"
+                class="value-number">
                 0
             </span>
 
             <span
                 id="downloadUnit"
-                class="result-unit">
-                Mbps
+                class="value-unit">
+                KBPS
             </span>
 
         </div>
 
 
-        <div class="result">
+        <div class="value-box">
 
-            <div class="result-title upload-title">
+            <div class="value-title upload">
                 🟢 UPLOAD
             </div>
 
             <span
-                id="upload"
-                class="result-number">
+                id="uploadValue"
+                class="value-number">
                 0
             </span>
 
             <span
                 id="uploadUnit"
-                class="result-unit">
-                Mbps
+                class="value-unit">
+                KBPS
             </span>
 
         </div>
+
 
     </div>
 
 
     <!-- GRAPH HEADER -->
 
-    <div class="graph-header">
+    <div class="graph-title">
 
-        <div class="graph-title">
-            LIVE SPEED GRAPH
+        <div class="graph-title-text">
+            LIVE GRAPH
         </div>
 
         <div class="legend">
 
-            <div class="legend-item">
-
-                <span
-                    class="legend-dot red">
-                </span>
-
+            <span>
+                <i class="red-dot"></i>
                 Download
+            </span>
 
-            </div>
-
-
-            <div class="legend-item">
-
-                <span
-                    class="legend-dot green">
-                </span>
-
+            <span>
+                <i class="green-dot"></i>
                 Upload
-
-            </div>
+            </span>
 
         </div>
 
@@ -488,11 +376,9 @@ button:disabled{
 
     <!-- GRAPH -->
 
-    <div class="graph-box">
+    <div class="graph">
 
-        <canvas
-            id="speedGraph">
-        </canvas>
+        <canvas id="canvas"></canvas>
 
     </div>
 
@@ -502,101 +388,72 @@ button:disabled{
     <div class="buttons">
 
         <button
-            id="startButton"
-            class="start"
-            onclick="startTest()">
-
+            id="start"
+            class="start">
             ▶ START
-
         </button>
 
-
         <button
-            id="stopButton"
+            id="stop"
             class="stop"
-            onclick="stopTest()"
             disabled>
-
             ■ STOP
-
         </button>
 
     </div>
 
 
     <div class="note">
-
-        Press START to continuously monitor your
-        connection. Press STOP whenever you want
-        to stop the test.
-
+        START keeps the test running continuously.
+        Press STOP to stop the test.
     </div>
 
 
 </div>
 
 
-
 <script>
-
 
 /* =====================================================
    ELEMENTS
 ===================================================== */
 
 const canvas =
-document.getElementById(
-    "speedGraph"
-);
+document.getElementById("canvas");
 
 const ctx =
 canvas.getContext("2d");
 
 
-const mainSpeed =
-document.getElementById(
-    "mainSpeed"
-);
-
-const mainUnit =
-document.getElementById(
-    "mainUnit"
-);
-
-const statusText =
-document.getElementById(
-    "status"
-);
-
-const downloadElement =
-document.getElementById(
-    "download"
-);
-
-const downloadUnitElement =
-document.getElementById(
-    "downloadUnit"
-);
-
-const uploadElement =
-document.getElementById(
-    "upload"
-);
-
-const uploadUnitElement =
-document.getElementById(
-    "uploadUnit"
-);
-
 const startButton =
-document.getElementById(
-    "startButton"
-);
+document.getElementById("start");
 
 const stopButton =
-document.getElementById(
-    "stopButton"
-);
+document.getElementById("stop");
+
+
+const mainNumber =
+document.getElementById("mainNumber");
+
+const mainUnit =
+document.getElementById("mainUnit");
+
+const statusText =
+document.getElementById("status");
+
+
+const downloadValue =
+document.getElementById("downloadValue");
+
+const downloadUnit =
+document.getElementById("downloadUnit");
+
+
+const uploadValue =
+document.getElementById("uploadValue");
+
+const uploadUnit =
+document.getElementById("uploadUnit");
 
 
 /* =====================================================
@@ -605,13 +462,11 @@ document.getElementById(
 
 let running = false;
 
-let testTimer = null;
+let downloadData = [];
 
-let downloadHistory = [];
+let uploadData = [];
 
-let uploadHistory = [];
-
-const MAX_POINTS = 50;
+const MAX_POINTS = 60;
 
 
 /* =====================================================
@@ -621,17 +476,17 @@ const MAX_POINTS = 50;
 function resizeCanvas(){
 
     const rect =
-    canvas.getBoundingClientRect();
+        canvas.getBoundingClientRect();
 
     const ratio =
-    window.devicePixelRatio || 1;
+        window.devicePixelRatio || 1;
 
 
     canvas.width =
-    rect.width * ratio;
+        rect.width * ratio;
 
     canvas.height =
-    rect.height * ratio;
+        rect.height * ratio;
 
 
     ctx.setTransform(
@@ -648,7 +503,6 @@ function resizeCanvas(){
 
 }
 
-
 window.addEventListener(
     "resize",
     resizeCanvas
@@ -656,7 +510,7 @@ window.addEventListener(
 
 
 /* =====================================================
-   FORMAT SPEED
+   FORMAT
 ===================================================== */
 
 function formatSpeed(mbps){
@@ -677,112 +531,319 @@ function formatSpeed(mbps){
     if(mbps < 1){
 
         return {
-
             value:
-                (mbps * 1024)
-                .toFixed(0),
+                Math.round(
+                    mbps * 1024
+                ),
 
             unit:"KBPS"
-
         };
 
     }
 
 
     return {
-
         value:
             mbps.toFixed(2),
 
         unit:"MBPS"
-
     };
 
 }
 
 
 /* =====================================================
-   UPDATE UI
+   UPDATE VALUES
 ===================================================== */
 
-function updateUI(
-    downloadMbps,
-    uploadMbps
+function updateValues(
+    download,
+    upload
 ){
 
     const d =
-    formatSpeed(
-        downloadMbps
-    );
+        formatSpeed(download);
 
     const u =
-    formatSpeed(
-        uploadMbps
-    );
+        formatSpeed(upload);
 
 
-    downloadElement.textContent =
-    d.value;
+    downloadValue.textContent =
+        d.value;
 
-    downloadUnitElement.textContent =
-    d.unit;
-
-
-    uploadElement.textContent =
-    u.value;
-
-    uploadUnitElement.textContent =
-    u.unit;
+    downloadUnit.textContent =
+        d.unit;
 
 
-    /*
-       Main speed = Download
-    */
+    uploadValue.textContent =
+        u.value;
 
-    mainSpeed.textContent =
-    d.value;
+    uploadUnit.textContent =
+        u.unit;
+
+
+    mainNumber.textContent =
+        d.value;
 
     mainUnit.textContent =
-    d.unit;
+        d.unit;
 
 
-    downloadHistory.push(
-        Math.max(
-            0,
-            downloadMbps
-        )
+    downloadData.push(
+        download
     );
 
-
-    uploadHistory.push(
-        Math.max(
-            0,
-            uploadMbps
-        )
+    uploadData.push(
+        upload
     );
 
 
     if(
-        downloadHistory.length >
+        downloadData.length >
         MAX_POINTS
     ){
 
-        downloadHistory.shift();
+        downloadData.shift();
 
     }
 
 
     if(
-        uploadHistory.length >
+        uploadData.length >
         MAX_POINTS
     ){
 
-        uploadHistory.shift();
+        uploadData.shift();
 
     }
 
 
     drawGraph();
+
+}
+
+
+/* =====================================================
+   DRAW GRAPH
+===================================================== */
+
+function drawGraph(){
+
+    const width =
+        canvas.clientWidth;
+
+    const height =
+        canvas.clientHeight;
+
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    /*
+       GRID
+    */
+
+    ctx.strokeStyle =
+        "#e2e8e4";
+
+    ctx.lineWidth = 1;
+
+
+    for(
+        let i = 1;
+        i < 5;
+        i++
+    ){
+
+        const y =
+            height / 5 * i;
+
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            0,
+            y
+        );
+
+        ctx.lineTo(
+            width,
+            y
+        );
+
+        ctx.stroke();
+
+    }
+
+
+    /*
+       NO DATA
+    */
+
+    if(
+        downloadData.length === 0
+    ){
+
+        return;
+
+    }
+
+
+    /*
+       FIND MAX
+    */
+
+    const allData =
+        downloadData.concat(
+            uploadData
+        );
+
+
+    let max =
+        Math.max(
+            ...allData,
+            0.01
+        );
+
+
+    /*
+       Give graph some headroom
+    */
+
+    max *= 1.15;
+
+
+    drawLine(
+        downloadData,
+        "#e00000",
+        width,
+        height,
+        max
+    );
+
+
+    drawLine(
+        uploadData,
+        "#07994f",
+        width,
+        height,
+        max
+    );
+
+}
+
+
+/* =====================================================
+   DRAW LINE
+===================================================== */
+
+function drawLine(
+    data,
+    color,
+    width,
+    height,
+    max
+){
+
+    if(data.length === 0){
+
+        return;
+
+    }
+
+
+    ctx.beginPath();
+
+
+    data.forEach(
+        (value,index)=>{
+
+            let x;
+
+
+            if(data.length === 1){
+
+                x =
+                    width / 2;
+
+            }
+            else{
+
+                x =
+                    (
+                        index /
+                        (
+                            data.length - 1
+                        )
+                    ) * width;
+
+            }
+
+
+            let y =
+                height -
+                (
+                    value / max
+                ) *
+                (
+                    height - 15
+                ) -
+                7;
+
+
+            /*
+               Keep point inside graph
+            */
+
+            y =
+                Math.max(
+                    5,
+                    Math.min(
+                        height - 5,
+                        y
+                    )
+                );
+
+
+            if(index === 0){
+
+                ctx.moveTo(
+                    x,
+                    y
+                );
+
+            }
+            else{
+
+                ctx.lineTo(
+                    x,
+                    y
+                );
+
+            }
+
+        }
+    );
+
+
+    ctx.strokeStyle =
+        color;
+
+    ctx.lineWidth = 3;
+
+    ctx.lineJoin =
+        "round";
+
+    ctx.lineCap =
+        "round";
+
+
+    ctx.stroke();
 
 }
 
@@ -794,16 +855,16 @@ function updateUI(
 async function downloadTest(){
 
     /*
-       Random cache value prevents
-       browser cache.
+       Multiple small requests make the
+       graph update more frequently.
     */
 
     const url =
-        "https://speed.cloudflare.com/__down?bytes=3000000&x="
+        "https://speed.cloudflare.com/__down?bytes=1000000&x="
         + Date.now();
 
 
-    const start =
+    const startTime =
         performance.now();
 
 
@@ -816,7 +877,9 @@ async function downloadTest(){
         );
 
 
-    if(!response.ok){
+    if(
+        !response.ok
+    ){
 
         throw new Error(
             "Download failed"
@@ -840,7 +903,7 @@ async function downloadTest(){
     while(running){
 
         const result =
-        await reader.read();
+            await reader.read();
 
 
         if(result.done){
@@ -851,52 +914,60 @@ async function downloadTest(){
 
 
         totalBytes +=
-        result.value.byteLength;
+            result.value.byteLength;
 
 
         const now =
-        performance.now();
+            performance.now();
 
 
         const elapsed =
-        (now - lastTime) / 1000;
+            (
+                now -
+                lastTime
+            ) / 1000;
 
 
-        if(elapsed >= .1){
+        /*
+           Update graph approximately
+           every 0.1 second
+        */
+
+        if(
+            elapsed >= 0.1
+        ){
 
             const bytes =
-            totalBytes -
-            lastBytes;
+                totalBytes -
+                lastBytes;
 
 
             const mbps =
-            (
-                bytes * 8
-            )
-            /
-            elapsed
-            /
-            1000000;
+                (
+                    bytes * 8
+                )
+                /
+                elapsed
+                /
+                1000000;
 
 
-            updateUI(
+            updateValues(
                 mbps,
                 0
             );
 
 
             lastBytes =
-            totalBytes;
+                totalBytes;
 
             lastTime =
-            now;
+                now;
 
         }
 
     }
 
-
-    return totalBytes;
 
 }
 
@@ -907,53 +978,60 @@ async function downloadTest(){
 
 async function uploadTest(){
 
-    /*
-       Upload test data.
-    */
-
     const size =
         1024 * 1024;
 
 
     const data =
-        new Uint8Array(size);
+        new Uint8Array(
+            size
+        );
 
 
     /*
-       Fill test data.
+       Fill enough random data
+       to prevent simple compression.
     */
 
-    crypto.getRandomValues(
-        data.subarray(
-            0,
-            Math.min(
-                data.length,
-                65536
+    for(
+        let i = 0;
+        i < data.length;
+        i += 65536
+    ){
+
+        crypto.getRandomValues(
+            data.subarray(
+                i,
+                Math.min(
+                    i + 65536,
+                    data.length
+                )
             )
-        )
-    );
+        );
+
+    }
 
 
-    const start =
-    performance.now();
+    const startTime =
+        performance.now();
 
 
     try{
 
         const response =
-        await fetch(
-            "https://speed.cloudflare.com/__up",
-            {
-                method:"POST",
-
-                body:data,
-
-                cache:"no-store"
-            }
-        );
+            await fetch(
+                "https://speed.cloudflare.com/__up",
+                {
+                    method:"POST",
+                    body:data,
+                    cache:"no-store"
+                }
+            );
 
 
-        if(!response.ok){
+        if(
+            !response.ok
+        ){
 
             return 0;
 
@@ -969,11 +1047,15 @@ async function uploadTest(){
 
 
     const elapsed =
-    (performance.now() - start)
-    / 1000;
+        (
+            performance.now() -
+            startTime
+        ) / 1000;
 
 
-    if(elapsed <= 0){
+    if(
+        elapsed <= 0
+    ){
 
         return 0;
 
@@ -992,7 +1074,7 @@ async function uploadTest(){
 
 
 /* =====================================================
-   CONTINUOUS TEST
+   CONTINUOUS LOOP
 ===================================================== */
 
 async function runTest(){
@@ -1002,12 +1084,8 @@ async function runTest(){
         try{
 
             statusText.textContent =
-            "Testing Download...";
+                "Testing Download...";
 
-
-            /*
-               Download measurement
-            */
 
             await downloadTest();
 
@@ -1019,16 +1097,12 @@ async function runTest(){
             }
 
 
-            /*
-               Upload measurement
-            */
-
             statusText.textContent =
-            "Testing Upload...";
+                "Testing Upload...";
 
 
             const upload =
-            await uploadTest();
+                await uploadTest();
 
 
             if(!running){
@@ -1038,38 +1112,36 @@ async function runTest(){
             }
 
 
-            /*
-               Show upload result
-            */
-
             const lastDownload =
-            downloadHistory.length
-            ? downloadHistory[
-                downloadHistory.length - 1
-            ]
-            : 0;
+                downloadData.length
+                ? downloadData[
+                    downloadData.length - 1
+                ]
+                : 0;
 
 
-            updateUI(
+            updateValues(
                 lastDownload,
                 upload
             );
 
 
             statusText.textContent =
-            "● LIVE";
+                "● LIVE";
 
 
         }
         catch(error){
 
-            console.error(error);
+            console.log(
+                error
+            );
 
 
             if(running){
 
                 statusText.textContent =
-                "Connection Error";
+                    "Connection Error";
 
             }
 
@@ -1077,16 +1149,20 @@ async function runTest(){
 
 
         /*
-           Small pause before next test
+           Continue automatically
         */
 
-        await new Promise(
-            resolve =>
-            setTimeout(
-                resolve,
-                300
-            )
-        );
+        if(running){
+
+            await new Promise(
+                resolve =>
+                    setTimeout(
+                        resolve,
+                        200
+                    )
+            );
+
+        }
 
     }
 
@@ -1097,82 +1173,71 @@ async function runTest(){
    START
 ===================================================== */
 
-function startTest(){
+startButton.addEventListener(
+    "click",
+    function(){
 
-    if(running){
+        if(running){
 
-        return;
+            return;
+
+        }
+
+
+        running = true;
+
+
+        startButton.disabled =
+            true;
+
+        stopButton.disabled =
+            false;
+
+
+        statusText.textContent =
+            "● LIVE";
+
+
+        runTest();
 
     }
-
-
-    running = true;
-
-
-    startButton.disabled =
-    true;
-
-
-    stopButton.disabled =
-    false;
-
-
-    statusText.textContent =
-    "● LIVE";
-
-
-    /*
-       Start continuous testing
-    */
-
-    runTest();
-
-}
+);
 
 
 /* =====================================================
    STOP
 ===================================================== */
 
-function stopTest(){
+stopButton.addEventListener(
+    "click",
+    function(){
 
-    running = false;
-
-
-    startButton.disabled =
-    false;
+        running = false;
 
 
-    stopButton.disabled =
-    true;
+        startButton.disabled =
+            false;
+
+        stopButton.disabled =
+            true;
 
 
-    statusText.textContent =
-    "Stopped";
+        statusText.textContent =
+            "Stopped";
 
-
-}
+    }
+);
 
 
 /* =====================================================
-   INITIAL GRAPH
+   INITIAL
 ===================================================== */
 
 resizeCanvas();
 
-
-/* =====================================================
-   INITIAL VALUES
-===================================================== */
-
-updateUI(
-    0,
-    0
-);
+drawGraph();
 
 </script>
 
-
 </body>
-
 </html>
