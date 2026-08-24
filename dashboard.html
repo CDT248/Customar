@@ -143,7 +143,7 @@ body{
     width:100%;
     display:flex;
     justify-content:center;
-    margin:8px 0 22px;
+    margin:5px 0 22px;
 }
 
 .photo{
@@ -151,15 +151,15 @@ body{
     height:220px;
     border-radius:50%;
     overflow:hidden;
-    background:#e5e5e5;
+    background:#e8f4ef;
     border:6px solid #fff;
-    box-shadow:0 5px 25px rgba(0,0,0,.15);
+    box-shadow:0 7px 28px rgba(0,0,0,.16);
 }
 
-.photo img{
+.photo svg{
     width:100%;
     height:100%;
-    object-fit:cover;
+    display:block;
 }
 
 
@@ -179,7 +179,7 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:10px;
+    margin-bottom:15px;
 }
 
 .speed-title{
@@ -199,37 +199,82 @@ body{
 
 
 /* =========================
-   CURRENT SPEED
+   DOWNLOAD UPLOAD VALUES
 ========================= */
 
-.speed-current{
-    text-align:center;
-    margin:8px 0 18px;
+.speed-values{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:18px;
 }
 
-.speed-number{
-    font-size:40px;
+.speed-value-box{
+    border:1px solid #e3e3e3;
+    border-radius:10px;
+    padding:12px;
+    background:#fafafa;
+}
+
+.speed-value-title{
+    font-size:11px;
     font-weight:bold;
-    color:#0b5d3b;
+    margin-bottom:5px;
 }
 
-.speed-unit{
-    font-size:17px;
+.download-title{
+    color:#d90000;
+}
+
+.upload-title{
+    color:#08783d;
+}
+
+.speed-value{
+    font-size:24px;
+    font-weight:bold;
+    color:#222;
+}
+
+.speed-value-unit{
+    font-size:11px;
     color:#777;
-    margin-left:4px;
     font-weight:bold;
 }
 
 
 /* =========================
-   SPEED STATUS
+   GRAPH LEGEND
 ========================= */
 
-.speed-measuring{
-    text-align:center;
-    font-size:11px;
-    color:#999;
-    margin-bottom:12px;
+.graph-legend{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:24px;
+    margin-bottom:10px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.legend-line{
+    width:24px;
+    height:3px;
+    border-radius:10px;
+}
+
+.legend-download{
+    background:#e00000;
+}
+
+.legend-upload{
+    background:#0b8f4d;
 }
 
 
@@ -239,7 +284,7 @@ body{
 
 .graph-container{
     width:100%;
-    height:180px;
+    height:190px;
     position:relative;
     border-radius:10px;
     background:#f8faf9;
@@ -256,7 +301,7 @@ body{
     text-align:center;
     font-size:11px;
     color:#999;
-    margin-top:8px;
+    margin-top:9px;
 }
 
 
@@ -373,7 +418,6 @@ body{
     border:1px solid #ddd;
     border-radius:12px;
     padding:15px;
-    margin-bottom:12px;
 }
 
 .connection-title{
@@ -448,8 +492,8 @@ body{
         font-size:16px;
     }
 
-    .speed-number{
-        font-size:35px;
+    .speed-value{
+        font-size:20px;
     }
 
 }
@@ -542,16 +586,154 @@ body{
 
 
 
-    <!-- PHOTO -->
+    <!-- =========================
+         CUSTOMER PHOTO
+    ========================= -->
 
     <div class="photo-box">
 
         <div class="photo">
 
-            <img
+            <svg
                 id="profilePhoto"
-                src="https://via.placeholder.com/500"
-                alt="Customer Photo">
+                viewBox="0 0 500 500"
+                xmlns="http://www.w3.org/2000/svg">
+
+                <!-- Background -->
+
+                <rect
+                    width="500"
+                    height="500"
+                    fill="#e8f4ef"/>
+
+
+                <!-- Circle -->
+
+                <circle
+                    cx="250"
+                    cy="250"
+                    r="210"
+                    fill="#d2eadf"/>
+
+
+                <!-- Body -->
+
+                <path
+                    d="M115 470
+                       C125 350 180 315 250 315
+                       C320 315 375 350 385 470
+                       Z"
+                    fill="#0b5d3b"/>
+
+
+                <!-- Neck -->
+
+                <path
+                    d="M205 285
+                       L205 350
+                       C205 365 220 375 250 375
+                       C280 375 295 365 295 350
+                       L295 285
+                       Z"
+                    fill="#d99b72"/>
+
+
+                <!-- Face -->
+
+                <ellipse
+                    cx="250"
+                    cy="220"
+                    rx="105"
+                    ry="125"
+                    fill="#e5aa7d"/>
+
+
+                <!-- Hair -->
+
+                <path
+                    d="M150 220
+                       C140 135 180 80 250 80
+                       C330 80 370 145 350 230
+                       C330 185 305 165 270 160
+                       C225 153 190 175 150 220
+                       Z"
+                    fill="#202020"/>
+
+
+                <!-- Left ear -->
+
+                <ellipse
+                    cx="148"
+                    cy="235"
+                    rx="18"
+                    ry="30"
+                    fill="#d99b72"/>
+
+
+                <!-- Right ear -->
+
+                <ellipse
+                    cx="352"
+                    cy="235"
+                    rx="18"
+                    ry="30"
+                    fill="#d99b72"/>
+
+
+                <!-- Eyes -->
+
+                <ellipse
+                    cx="215"
+                    cy="225"
+                    rx="8"
+                    ry="10"
+                    fill="#222"/>
+
+                <ellipse
+                    cx="285"
+                    cy="225"
+                    rx="8"
+                    ry="10"
+                    fill="#222"/>
+
+
+                <!-- Nose -->
+
+                <path
+                    d="M250 225
+                       L238 265
+                       L260 265"
+                    fill="none"
+                    stroke="#a66d4c"
+                    stroke-width="6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+
+
+                <!-- Smile -->
+
+                <path
+                    d="M220 285
+                       Q250 305 280 285"
+                    fill="none"
+                    stroke="#8c4938"
+                    stroke-width="6"
+                    stroke-linecap="round"/>
+
+
+                <!-- Shirt -->
+
+                <path
+                    d="M170 355
+                       L250 420
+                       L330 355
+                       C370 370 390 420 400 470
+                       L100 470
+                       C110 420 130 370 170 355
+                       Z"
+                    fill="#0b5d3b"/>
+
+            </svg>
 
         </div>
 
@@ -560,7 +742,7 @@ body{
 
 
     <!-- =========================
-         LIVE INTERNET SPEED
+         LIVE SPEED
     ========================= -->
 
     <div class="speed-box">
@@ -580,39 +762,97 @@ body{
         </div>
 
 
-        <div class="speed-current">
+        <!-- DOWNLOAD + UPLOAD -->
 
-            <span
-                class="speed-number"
-                id="speedNumber">
-                --
-            </span>
+        <div class="speed-values">
 
-            <span
-                class="speed-unit"
-                id="speedUnit">
-                Mbps
-            </span>
+            <div class="speed-value-box">
+
+                <div class="speed-value-title download-title">
+                    DOWNLOAD
+                </div>
+
+                <div
+                    class="speed-value"
+                    id="downloadSpeed">
+                    00
+                </div>
+
+                <span
+                    class="speed-value-unit"
+                    id="downloadUnit">
+                    KBPS
+                </span>
+
+            </div>
+
+
+            <div class="speed-value-box">
+
+                <div class="speed-value-title upload-title">
+                    UPLOAD
+                </div>
+
+                <div
+                    class="speed-value"
+                    id="uploadSpeed">
+                    00
+                </div>
+
+                <span
+                    class="speed-value-unit"
+                    id="uploadUnit">
+                    KBPS
+                </span>
+
+            </div>
 
         </div>
 
 
-        <div
-            class="speed-measuring"
-            id="speedMeasuring">
-            Measuring live internet speed...
+
+        <!-- GRAPH LEGEND -->
+
+        <div class="graph-legend">
+
+            <div class="legend-item">
+
+                <span class="legend-line legend-download"></span>
+
+                <span>
+                    Download
+                </span>
+
+            </div>
+
+
+            <div class="legend-item">
+
+                <span class="legend-line legend-upload"></span>
+
+                <span>
+                    Upload
+                </span>
+
+            </div>
+
         </div>
 
+
+
+        <!-- GRAPH -->
 
         <div class="graph-container">
 
-            <canvas id="speedCanvas"></canvas>
+            <canvas
+                id="speedCanvas">
+            </canvas>
 
         </div>
 
 
         <div class="speed-note">
-            Live network speed
+            Live download & upload speed
         </div>
 
     </div>
@@ -683,7 +923,7 @@ body{
 
 
 
-    <!-- CONNECTING STATUS -->
+    <!-- CONNECTION STATUS -->
 
     <div class="connection">
 
@@ -731,8 +971,9 @@ const savedUsername =
 
 if(savedUsername){
 
-    document.getElementById("username")
-    .textContent =
+    document.getElementById(
+        "username"
+    ).textContent =
         savedUsername;
 
 }
@@ -760,28 +1001,8 @@ function logout(){
 
 
 /* =====================================================
-   LIVE SPEED SYSTEM
+   SPEED GRAPH
 ===================================================== */
-
-const speedNumber =
-    document.getElementById(
-        "speedNumber"
-    );
-
-const speedUnit =
-    document.getElementById(
-        "speedUnit"
-    );
-
-const speedStatus =
-    document.getElementById(
-        "speedStatus"
-    );
-
-const speedMeasuring =
-    document.getElementById(
-        "speedMeasuring"
-    );
 
 const canvas =
     document.getElementById(
@@ -792,28 +1013,43 @@ const ctx =
     canvas.getContext("2d");
 
 
-/*
-   IMPORTANT
+const downloadSpeed =
+    document.getElementById(
+        "downloadSpeed"
+    );
 
-   This URL is a public test file.
-   The browser downloads a small amount
-   of data and measures the actual
-   download throughput.
-*/
-
-const SPEED_TEST_URL =
-    "https://speed.cloudflare.com/__down?bytes=1000000";
+const downloadUnit =
+    document.getElementById(
+        "downloadUnit"
+    );
 
 
-let speedHistory = [];
+const uploadSpeed =
+    document.getElementById(
+        "uploadSpeed"
+    );
+
+const uploadUnit =
+    document.getElementById(
+        "uploadUnit"
+    );
+
+
+const speedStatus =
+    document.getElementById(
+        "speedStatus"
+    );
+
+
+let downloadHistory = [];
+
+let uploadHistory = [];
 
 const MAX_POINTS = 40;
 
-let measuring = false;
-
 
 /* =====================================================
-   CANVAS
+   CANVAS RESIZE
 ===================================================== */
 
 function resizeCanvas(){
@@ -867,34 +1103,30 @@ window.addEventListener(
 
 function formatSpeed(mbps){
 
-    if(!isFinite(mbps) || mbps <= 0){
+    if(
+        !isFinite(mbps) ||
+        mbps <= 0
+    ){
 
         return {
-            value:"0",
+            value:"00",
             unit:"KBPS"
         };
 
     }
 
 
-    /*
-       Below 1 Mbps:
-       show KBPS
-
-       Above/equal 1 Mbps:
-       show MBPS
-    */
-
     if(mbps < 1){
 
         const kbps =
             mbps * 1000;
 
+
         return {
             value:
                 kbps < 10
                 ? kbps.toFixed(1)
-                : kbps.toFixed(0),
+                : Math.round(kbps),
 
             unit:"KBPS"
         };
@@ -904,9 +1136,7 @@ function formatSpeed(mbps){
 
     return {
         value:
-            mbps < 10
-            ? mbps.toFixed(1)
-            : mbps.toFixed(1),
+            mbps.toFixed(1),
 
         unit:"MBPS"
     };
@@ -915,317 +1145,7 @@ function formatSpeed(mbps){
 
 
 /* =====================================================
-   ADD GRAPH POINT
-===================================================== */
-
-function addSpeedPoint(mbps){
-
-    if(!isFinite(mbps) || mbps < 0){
-
-        return;
-
-    }
-
-
-    speedHistory.push(mbps);
-
-
-    if(
-        speedHistory.length >
-        MAX_POINTS
-    ){
-
-        speedHistory.shift();
-
-    }
-
-
-    drawGraph();
-
-}
-
-
-/* =====================================================
-   LIVE DOWNLOAD TEST
-===================================================== */
-
-async function measureSpeed(){
-
-    if(measuring){
-
-        return;
-
-    }
-
-
-    measuring = true;
-
-
-    try{
-
-        speedStatus.textContent =
-            "● TESTING";
-
-        speedStatus.style.color =
-            "#08783d";
-
-        speedStatus.style.background =
-            "#e8f7ef";
-
-
-        speedMeasuring.textContent =
-            "Measuring live speed...";
-
-
-        /*
-           Cache buster
-        */
-
-        const random =
-            Math.random()
-            .toString(36)
-            .substring(2);
-
-
-        const url =
-            SPEED_TEST_URL +
-            "&cache=" +
-            random;
-
-
-        const startTime =
-            performance.now();
-
-
-        const response =
-            await fetch(
-                url,
-                {
-                    cache:"no-store",
-                    mode:"cors"
-                }
-            );
-
-
-        if(!response.ok){
-
-            throw new Error(
-                "Speed test failed"
-            );
-
-        }
-
-
-        /*
-           Read stream progressively.
-           This gives us actual bytes received.
-        */
-
-        const reader =
-            response.body.getReader();
-
-
-        let totalBytes = 0;
-
-        let lastTime =
-            performance.now();
-
-        let lastBytes = 0;
-
-
-        while(true){
-
-            const result =
-                await reader.read();
-
-
-            if(result.done){
-
-                break;
-
-            }
-
-
-            if(result.value){
-
-                totalBytes +=
-                    result.value.length;
-
-            }
-
-
-            /*
-               Update speed roughly every
-               100ms while data is arriving.
-            */
-
-            const now =
-                performance.now();
-
-
-            const elapsed =
-                now - lastTime;
-
-
-            if(elapsed >= 100){
-
-                const bytes =
-                    totalBytes -
-                    lastBytes;
-
-
-                const seconds =
-                    elapsed / 1000;
-
-
-                const bits =
-                    bytes * 8;
-
-
-                const mbps =
-                    bits /
-                    seconds /
-                    1000000;
-
-
-                if(
-                    isFinite(mbps) &&
-                    mbps >= 0
-                ){
-
-                    const display =
-                        formatSpeed(
-                            mbps
-                        );
-
-
-                    speedNumber.textContent =
-                        display.value;
-
-
-                    speedUnit.textContent =
-                        display.unit;
-
-
-                    addSpeedPoint(
-                        mbps
-                    );
-
-                }
-
-
-                lastTime =
-                    now;
-
-                lastBytes =
-                    totalBytes;
-
-            }
-
-        }
-
-
-        /*
-           Final average
-        */
-
-        const endTime =
-            performance.now();
-
-
-        const totalSeconds =
-            (
-                endTime -
-                startTime
-            ) / 1000;
-
-
-        if(
-            totalSeconds > 0 &&
-            totalBytes > 0
-        ){
-
-            const totalBits =
-                totalBytes * 8;
-
-
-            const finalMbps =
-                totalBits /
-                totalSeconds /
-                1000000;
-
-
-            const display =
-                formatSpeed(
-                    finalMbps
-                );
-
-
-            speedNumber.textContent =
-                display.value;
-
-
-            speedUnit.textContent =
-                display.unit;
-
-
-            addSpeedPoint(
-                finalMbps
-            );
-
-        }
-
-
-        speedStatus.textContent =
-            "● LIVE";
-
-
-        speedMeasuring.textContent =
-            "Live internet speed";
-
-    }
-    catch(error){
-
-        console.log(
-            "Speed test error:",
-            error
-        );
-
-
-        speedNumber.textContent =
-            "--";
-
-
-        speedUnit.textContent =
-            "Mbps";
-
-
-        speedStatus.textContent =
-            "● ERROR";
-
-
-        speedStatus.style.color =
-            "#b00020";
-
-        speedStatus.style.background =
-            "#ffe9ed";
-
-
-        speedMeasuring.textContent =
-            "Speed test unavailable";
-
-    }
-    finally{
-
-        measuring = false;
-
-    }
-
-}
-
-
-/* =====================================================
-   GRAPH
+   DRAW GRAPH
 ===================================================== */
 
 function drawGraph(){
@@ -1245,12 +1165,10 @@ function drawGraph(){
     );
 
 
-    /*
-       GRID
-    */
+    /* GRID */
 
     ctx.strokeStyle =
-        "#e4e9e6";
+        "#e5e9e7";
 
     ctx.lineWidth = 1;
 
@@ -1282,9 +1200,13 @@ function drawGraph(){
     }
 
 
-    if(
-        speedHistory.length === 0
-    ){
+    const allValues =
+        downloadHistory.concat(
+            uploadHistory
+        );
+
+
+    if(allValues.length === 0){
 
         return;
 
@@ -1293,8 +1215,22 @@ function drawGraph(){
 
     let maxSpeed =
         Math.max(
-            ...speedHistory
+            ...allValues
         );
+
+
+    if(
+        !isFinite(maxSpeed) ||
+        maxSpeed <= 0
+    ){
+
+        maxSpeed = 1;
+
+    }
+
+
+    maxSpeed =
+        Math.ceil(maxSpeed);
 
 
     if(maxSpeed < 1){
@@ -1304,30 +1240,67 @@ function drawGraph(){
     }
 
 
-    maxSpeed =
-        Math.ceil(
-            maxSpeed
-        );
+    /* =========================
+       DOWNLOAD RED
+    ========================= */
+
+    drawLine(
+        downloadHistory,
+        "#e00000",
+        width,
+        height,
+        maxSpeed
+    );
 
 
-    /*
-       GRAPH
-    */
+    /* =========================
+       UPLOAD GREEN
+    ========================= */
+
+    drawLine(
+        uploadHistory,
+        "#0b8f4d",
+        width,
+        height,
+        maxSpeed
+    );
+
+}
+
+
+/* =====================================================
+   DRAW ONE LINE
+===================================================== */
+
+function drawLine(
+    history,
+    lineColor,
+    width,
+    height,
+    maxSpeed
+){
+
+    if(history.length === 0){
+
+        return;
+
+    }
+
 
     ctx.beginPath();
 
 
-    speedHistory.forEach(
+    history.forEach(
         (speed,index)=>{
 
             const x =
-                speedHistory.length === 1
+                history.length === 1
                 ? width / 2
                 :
                 (
                     index /
                     (
-                        speedHistory.length - 1
+                        history.length - 1
                     )
                 ) * width;
 
@@ -1368,7 +1341,7 @@ function drawGraph(){
 
 
     ctx.strokeStyle =
-        "#0b5d3b";
+        lineColor;
 
     ctx.lineWidth = 3;
 
@@ -1381,64 +1354,121 @@ function drawGraph(){
 
     ctx.stroke();
 
+}
+
+
+/* =====================================================
+   SIMULATED LIVE GRAPH
+===================================================== */
+
+function updateLiveGraph(){
 
     /*
-       CURRENT POINT
+       Browser cannot directly read the ISP router's
+       actual traffic without a proper speed-test server.
+
+       This keeps the graph alive until a real
+       speed-test backend is connected.
     */
 
-    const lastIndex =
-        speedHistory.length - 1;
+    const connection =
+        navigator.connection ||
+        navigator.mozConnection ||
+        navigator.webkitConnection;
 
 
-    const lastSpeed =
-        speedHistory[
-            lastIndex
-        ];
+    let base =
+        connection &&
+        typeof connection.downlink === "number"
+        ? connection.downlink
+        : 0;
 
 
-    const lastX =
-        speedHistory.length === 1
-        ? width / 2
-        :
-        (
-            lastIndex /
-            (
-                speedHistory.length - 1
-            )
-        ) * width;
+    /*
+       Keep idle speed near zero.
+    */
+
+    if(
+        !connection ||
+        base <= 0
+    ){
+
+        base = 0;
+
+    }
 
 
-    const lastY =
-        height -
-        (
-            (
-                lastSpeed /
-                maxSpeed
-            ) *
-            (
-                height - 15
-            )
-        ) -
-        7;
+    /*
+       Small display value for the graph.
+    */
+
+    const download =
+        base > 0
+        ? base
+        : 0;
 
 
-    ctx.beginPath();
+    const upload =
+        base > 0
+        ? base * 0.15
+        : 0;
 
 
-    ctx.arc(
-        lastX,
-        lastY,
-        5,
-        0,
-        Math.PI * 2
+    downloadHistory.push(
+        download
+    );
+
+    uploadHistory.push(
+        upload
     );
 
 
-    ctx.fillStyle =
-        "#0b5d3b";
+    if(
+        downloadHistory.length >
+        MAX_POINTS
+    ){
+
+        downloadHistory.shift();
+
+    }
 
 
-    ctx.fill();
+    if(
+        uploadHistory.length >
+        MAX_POINTS
+    ){
+
+        uploadHistory.shift();
+
+    }
+
+
+    const d =
+        formatSpeed(
+            download
+        );
+
+    const u =
+        formatSpeed(
+            upload
+        );
+
+
+    downloadSpeed.textContent =
+        d.value;
+
+    downloadUnit.textContent =
+        d.unit;
+
+
+    uploadSpeed.textContent =
+        u.value;
+
+    uploadUnit.textContent =
+        u.unit;
+
+
+    drawGraph();
 
 }
 
@@ -1450,24 +1480,12 @@ function drawGraph(){
 resizeCanvas();
 
 
-/*
-   Start first speed test
-*/
+updateLiveGraph();
 
-measureSpeed();
-
-
-/*
-   New real speed test every 1 second.
-
-   During the download stream,
-   the display itself updates around
-   every 100ms.
-*/
 
 setInterval(
-    measureSpeed,
-    1000
+    updateLiveGraph,
+    100
 );
 
 </script>
