@@ -741,7 +741,6 @@ stroke-width="6"/>
 
 <div class="speed-box">
 
-
 <div class="speed-header">
 
     <div class="speed-title">
@@ -757,10 +756,9 @@ stroke-width="6"/>
 </div>
 
 
-<!-- VALUES -->
+<!-- SPEED VALUES -->
 
 <div class="speed-values">
-
 
 <div class="speed-value-box">
 
@@ -802,7 +800,6 @@ stroke-width="6"/>
     </span>
 
 </div>
-
 
 </div>
 
@@ -847,9 +844,8 @@ id="speedCanvas">
 
 
 <div class="speed-note">
-Automatic browser network activity
+Live browser network information
 </div>
-
 
 </div>
 
@@ -1061,7 +1057,7 @@ loadTheme();
 
 
 /* =====================================================
-   GRAPH
+   SPEED GRAPH SYSTEM
 ===================================================== */
 
 const canvas =
@@ -1070,25 +1066,26 @@ document.getElementById(
 );
 
 const ctx =
-canvas.getContext("2d");
+canvas.getContext(
+    "2d"
+);
 
-
-const downloadSpeed =
+const downloadElement =
 document.getElementById(
     "downloadSpeed"
 );
 
-const uploadSpeed =
+const uploadElement =
 document.getElementById(
     "uploadSpeed"
 );
 
-const downloadUnit =
+const downloadUnitElement =
 document.getElementById(
     "downloadUnit"
 );
 
-const uploadUnit =
+const uploadUnitElement =
 document.getElementById(
     "uploadUnit"
 );
@@ -1098,11 +1095,11 @@ let downloadHistory = [];
 
 let uploadHistory = [];
 
-const MAX_POINTS = 60;
+const MAX_POINTS = 80;
 
 
 /* =====================================================
-   CANVAS
+   CANVAS RESIZE
 ===================================================== */
 
 function resizeCanvas(){
@@ -1116,10 +1113,21 @@ function resizeCanvas(){
 
 
     canvas.width =
-    rect.width * ratio;
+    Math.floor(
+        rect.width * ratio
+    );
 
     canvas.height =
-    rect.height * ratio;
+    Math.floor(
+        rect.height * ratio
+    );
+
+
+    canvas.style.width =
+        rect.width + "px";
+
+    canvas.style.height =
+        rect.height + "px";
 
 
     ctx.setTransform(
@@ -1144,177 +1152,285 @@ window.addEventListener(
 
 
 /* =====================================================
-   FORMAT
+   NETWORK API
 ===================================================== */
 
-function formatSpeed(bytes){
+function getConnection(){
 
-    if(
-        !bytes ||
-        bytes <= 0
-    ){
-
-        return {
-            value:"00",
-            unit:"KBPS"
-        };
-
-    }
-
-
-    const kb =
-    bytes / 1024;
-
-
-    if(kb < 1024){
-
-        return {
-
-            value:
-                kb < 10
-                ? kb.toFixed(1)
-                : Math.round(kb),
-
-            unit:"KBPS"
-
-        };
-
-    }
-
-
-    return {
-
-        value:
-            (kb / 1024).toFixed(1),
-
-        unit:"MBPS"
-
-    };
+    return (
+        navigator.connection ||
+        navigator.mozConnection ||
+        navigator.webkitConnection ||
+        null
+    );
 
 }
 
 
 /* =====================================================
-   AUTOMATIC PAGE NETWORK MONITOR
+   DOWNLOAD SPEED
 ===================================================== */
 
-let previousBytes = 0;
+function getDownloadSpeed(){
 
-let previousTime =
+    const connection =
+        getConnection();
+
+
+    /*
+       Network Information API
+       gives browser's current
+       estimated downlink.
+    */
+
+    if(
+        connection &&
+        typeof connection.downlink ===
+        "number"
+    ){
+
+        return Math.max(
+            0,
+            connection.downlink
+        );
+
+    }
+
+
+    return 0;
+
+}
+
+
+/* =====================================================
+   PAGE NETWORK ACTIVITY
+===================================================== */
+
+let lastBytes = 0;
+
+let lastTime =
 performance.now();
 
 
-function measureNetwork(){
+function getPageTraffic(){
 
-    const now =
-    performance.now();
-
-
-    const seconds =
-    (now - previousTime) /
-    1000;
-
-
-    let totalBytes = 0;
+    let total = 0;
 
 
     try{
 
-        const resources =
+        const entries =
         performance.getEntriesByType(
             "resource"
         );
 
 
-        resources.forEach(
-            resource=>{
+        for(
+            let i = 0;
+            i < entries.length;
+            i++
+        ){
 
-                if(
-                    resource.transferSize
-                ){
+            const item =
+            entries[i];
 
-                    totalBytes +=
-                    resource.transferSize;
 
-                }
+            if(
+                typeof item.transferSize
+                === "number"
+            ){
+
+                total +=
+                item.transferSize;
 
             }
-        );
+
+        }
 
     }
     catch(error){
 
-        totalBytes = 0;
+        return 0;
 
     }
 
 
-    let bytesPerSecond = 0;
+    const now =
+    performance.now();
 
 
-    if(seconds > 0){
+    const elapsed =
+    (
+        now -
+        lastTime
+    ) / 1000;
 
-        bytesPerSecond =
-            Math.max(
-                0,
-                (
-                    totalBytes -
-                    previousBytes
-                ) / seconds
-            );
+
+    let speed = 0;
+
+
+    if(
+        elapsed > 0
+    ){
+
+        speed =
+        (
+            total -
+            lastBytes
+        ) /
+        elapsed;
 
     }
 
 
-    previousBytes =
-    totalBytes;
+    lastBytes =
+        total;
 
-    previousTime =
-    now;
+    lastTime =
+        now;
+
+
+    return Math.max(
+        0,
+        speed
+    );
+
+}
+
+
+/* =====================================================
+   FORMAT SPEED
+===================================================== */
+
+function setSpeedDisplay(
+    element,
+    unitElement,
+    mbps
+){
+
+    if(
+        !isFinite(mbps) ||
+        mbps <= 0
+    ){
+
+        element.textContent =
+            "00";
+
+        unitElement.textContent =
+            "KBPS";
+
+        return;
+
+    }
+
+
+    if(
+        mbps < 1
+    ){
+
+        const kbps =
+            mbps * 1024;
+
+
+        element.textContent =
+            kbps < 10
+            ?
+            kbps.toFixed(1)
+            :
+            Math.round(kbps);
+
+
+        unitElement.textContent =
+            "KBPS";
+
+        return;
+
+    }
+
+
+    element.textContent =
+        mbps.toFixed(2);
+
+    unitElement.textContent =
+        "MBPS";
+
+}
+
+
+/* =====================================================
+   UPDATE SPEED
+===================================================== */
+
+function updateSpeed(){
+
+    /*
+       Browser reported download
+    */
+
+    const networkDownload =
+        getDownloadSpeed();
+
+
+    /*
+       Page traffic is used only
+       when there is active page traffic.
+    */
+
+    const pageBytes =
+        getPageTraffic();
+
+
+    const pageMbps =
+        (
+            pageBytes *
+            8
+        ) /
+        1024 /
+        1024;
+
+
+    /*
+       Prefer browser network estimate.
+    */
+
+    const download =
+        networkDownload > 0
+        ?
+        networkDownload
+        :
+        pageMbps;
 
 
     /*
        Browser does not expose
        total phone upload traffic.
+       Therefore we do NOT fake it.
     */
 
-    const download =
-    formatSpeed(
-        bytesPerSecond
+    const upload = 0;
+
+
+    setSpeedDisplay(
+        downloadElement,
+        downloadUnitElement,
+        download
     );
 
 
-    const upload =
-    formatSpeed(0);
+    setSpeedDisplay(
+        uploadElement,
+        uploadUnitElement,
+        upload
+    );
 
-
-    downloadSpeed.textContent =
-    download.value;
-
-    downloadUnit.textContent =
-    download.unit;
-
-
-    uploadSpeed.textContent =
-    upload.value;
-
-    uploadUnit.textContent =
-    upload.unit;
-
-
-    /*
-       Store Mbps for graph.
-    */
 
     downloadHistory.push(
-        bytesPerSecond /
-        1024 /
-        1024
+        download
     );
 
 
     uploadHistory.push(
-        0
+        upload
     );
 
 
@@ -1350,10 +1466,20 @@ function measureNetwork(){
 function drawGraph(){
 
     const width =
-    canvas.parentElement.clientWidth;
+        canvas.clientWidth;
 
     const height =
-    canvas.parentElement.clientHeight;
+        canvas.clientHeight;
+
+
+    if(
+        width <= 0 ||
+        height <= 0
+    ){
+
+        return;
+
+    }
 
 
     ctx.clearRect(
@@ -1365,28 +1491,36 @@ function drawGraph(){
 
 
     const dark =
-    document.body.classList.contains(
-        "dark"
-    );
+        document.body.classList.contains(
+            "dark"
+        );
 
+
+    /* =========================
+       GRID
+    ========================= */
 
     ctx.strokeStyle =
-    dark
-    ? "#292929"
-    : "#e5e9e6";
+        dark
+        ?
+        "#292929"
+        :
+        "#e3e8e5";
 
 
     ctx.lineWidth = 1;
 
 
     for(
-        let i=1;
-        i<5;
+        let i = 1;
+        i < 5;
         i++
     ){
 
         const y =
-        (height/5)*i;
+            (
+                height / 5
+            ) * i;
 
 
         ctx.beginPath();
@@ -1406,30 +1540,38 @@ function drawGraph(){
     }
 
 
-    const all =
-    downloadHistory.concat(
-        uploadHistory
-    );
+    /* =========================
+       MAX VALUE
+    ========================= */
 
-
-    if(all.length === 0){
-
-        return;
-
-    }
+    const values =
+        downloadHistory
+        .concat(
+            uploadHistory
+        );
 
 
     let max =
-    Math.max(
-        ...all,
-        0.01
-    );
+        Math.max(
+            ...values,
+            1
+        );
 
 
-    max *= 1.2;
+    /*
+       Extra space above line
+    */
+
+    max =
+        max * 1.25;
 
 
-    drawLine(
+    /* =========================
+       DOWNLOAD
+       RED
+    ========================= */
+
+    drawSmoothLine(
         downloadHistory,
         "#e00000",
         width,
@@ -1438,7 +1580,12 @@ function drawGraph(){
     );
 
 
-    drawLine(
+    /* =========================
+       UPLOAD
+       GREEN
+    ========================= */
+
+    drawSmoothLine(
         uploadHistory,
         "#0b9b54",
         width,
@@ -1450,10 +1597,10 @@ function drawGraph(){
 
 
 /* =====================================================
-   LINE
+   SMOOTH LINE
 ===================================================== */
 
-function drawLine(
+function drawSmoothLine(
     data,
     color,
     width,
@@ -1461,9 +1608,66 @@ function drawLine(
     max
 ){
 
-    if(data.length === 0){
+    if(
+        data.length < 2
+    ){
 
         return;
+
+    }
+
+
+    const points = [];
+
+
+    for(
+        let i = 0;
+        i < data.length;
+        i++
+    ){
+
+        const x =
+            (
+                i /
+                (
+                    data.length - 1
+                )
+            ) *
+            width;
+
+
+        let value =
+            Number(
+                data[i]
+            ) || 0;
+
+
+        let y =
+            height -
+            (
+                value /
+                max
+            ) *
+            (
+                height - 18
+            ) -
+            9;
+
+
+        y =
+            Math.max(
+                5,
+                Math.min(
+                    height - 5,
+                    y
+                )
+            );
+
+
+        points.push({
+            x:x,
+            y:y
+        });
 
     }
 
@@ -1471,66 +1675,126 @@ function drawLine(
     ctx.beginPath();
 
 
-    data.forEach(
-        (value,index)=>{
+    ctx.moveTo(
+        points[0].x,
+        points[0].y
+    );
 
-            const x =
-            data.length === 1
-            ? width / 2
-            :
+
+    /*
+       Smooth quadratic curves
+    */
+
+    for(
+        let i = 1;
+        i < points.length - 1;
+        i++
+    ){
+
+        const current =
+            points[i];
+
+        const next =
+            points[i + 1];
+
+
+        const centerX =
             (
-                index /
-                (
-                    data.length - 1
-                )
-            ) * width;
+                current.x +
+                next.x
+            ) / 2;
 
 
-            const y =
-            height -
+        const centerY =
             (
-                value / max
-            ) *
-            (
-                height - 15
-            ) -
-            7;
+                current.y +
+                next.y
+            ) / 2;
 
 
-            if(index === 0){
+        ctx.quadraticCurveTo(
+            current.x,
+            current.y,
+            centerX,
+            centerY
+        );
 
-                ctx.moveTo(
-                    x,
-                    y
-                );
+    }
 
-            }
-            else{
 
-                ctx.lineTo(
-                    x,
-                    y
-                );
+    const last =
+        points[
+            points.length - 1
+        ];
 
-            }
 
-        }
+    ctx.quadraticCurveTo(
+        last.x,
+        last.y,
+        last.x,
+        last.y
     );
 
 
     ctx.strokeStyle =
-    color;
+        color;
 
-    ctx.lineWidth = 3;
+    ctx.lineWidth =
+        3;
 
     ctx.lineJoin =
-    "round";
+        "round";
 
     ctx.lineCap =
-    "round";
+        "round";
 
 
     ctx.stroke();
+
+
+    /*
+       Current point
+    */
+
+    ctx.beginPath();
+
+
+    ctx.arc(
+        last.x,
+        last.y,
+        4,
+        0,
+        Math.PI * 2
+    );
+
+
+    ctx.fillStyle =
+        color;
+
+    ctx.fill();
+
+}
+
+
+/* =====================================================
+   NETWORK CHANGE
+===================================================== */
+
+const connection =
+    getConnection();
+
+
+if(connection){
+
+    try{
+
+        connection.addEventListener(
+            "change",
+            updateSpeed
+        );
+
+    }
+    catch(error){}
 
 }
 
@@ -1543,13 +1807,22 @@ resizeCanvas();
 
 
 /*
-   0.1 second update
+   100 milliseconds
+   smooth graph update
 */
 
 setInterval(
-    measureNetwork,
+    updateSpeed,
     100
 );
+
+
+/*
+   First update
+*/
+
+updateSpeed();
+
 
 </script>
 
