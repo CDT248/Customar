@@ -39,7 +39,7 @@ body{
     min-height:100vh;
     background:var(--bg);
     color:var(--text);
-    transition:.25s;
+    transition:.3s;
 }
 
 
@@ -49,6 +49,7 @@ body{
 
 .theme-button{
     position:fixed;
+
     top:5px;
     right:5px;
 
@@ -56,9 +57,11 @@ body{
     height:25px;
 
     border:1px solid var(--border);
+
     border-radius:50%;
 
     background:var(--card);
+
     color:var(--text);
 
     font-size:12px;
@@ -91,19 +94,25 @@ body{
     border-bottom:1px solid var(--border);
 
     position:sticky;
+
     top:0;
+
     z-index:100;
 }
 
 .title{
     font-size:20px;
+
     font-weight:bold;
+
     color:var(--green);
 }
 
 .logout{
     border:0;
+
     background:var(--green);
+
     color:white;
 
     padding:10px 17px;
@@ -111,9 +120,16 @@ body{
     border-radius:8px;
 
     font-size:14px;
+
     font-weight:bold;
 
     cursor:pointer;
+
+    transition:.2s;
+}
+
+.logout:hover{
+    transform:translateY(-1px);
 }
 
 
@@ -123,6 +139,7 @@ body{
 
 .container{
     width:100%;
+
     max-width:650px;
 
     margin:auto;
@@ -137,6 +154,7 @@ body{
 
 .top{
     display:grid;
+
     grid-template-columns:1fr 1fr;
 
     gap:12px;
@@ -156,7 +174,9 @@ body{
 
 .label{
     font-size:12px;
+
     font-weight:bold;
+
     color:var(--muted);
 
     margin-bottom:7px;
@@ -164,7 +184,9 @@ body{
 
 .value{
     font-size:16px;
+
     font-weight:bold;
+
     color:var(--text);
 }
 
@@ -187,7 +209,9 @@ body{
 
 .mac-title{
     font-size:12px;
+
     color:var(--muted);
+
     font-weight:bold;
 
     margin-bottom:7px;
@@ -195,6 +219,7 @@ body{
 
 .mac-value{
     font-size:17px;
+
     font-weight:bold;
 
     color:var(--text);
@@ -211,6 +236,7 @@ body{
     width:100%;
 
     display:flex;
+
     justify-content:center;
 
     margin:5px 0 22px;
@@ -218,6 +244,7 @@ body{
 
 .photo{
     width:220px;
+
     height:220px;
 
     border-radius:50%;
@@ -229,30 +256,71 @@ body{
     border:6px solid var(--card);
 
     box-shadow:
-        0 7px 28px rgba(0,0,0,.18);
+        0 7px 30px rgba(0,0,0,.18);
 }
 
 .photo svg{
     width:100%;
+
     height:100%;
+
     display:block;
 }
 
 
 /* =====================================================
-   SPEED BOX
+   PREMIUM SPEED BOX
 ===================================================== */
 
 .speed-box{
-    background:var(--card);
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--card),
+            var(--bg)
+        );
 
     border:1px solid var(--border);
 
-    border-radius:14px;
+    border-radius:18px;
 
-    padding:14px;
+    padding:17px;
 
     margin-bottom:14px;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.06);
+
+}
+
+
+/* decorative glow */
+
+.speed-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    top:-90px;
+    right:-70px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(11,93,59,.12),
+            transparent 70%
+        );
+
+    pointer-events:none;
 }
 
 
@@ -261,42 +329,39 @@ body{
 ========================= */
 
 .speed-header{
+
     display:flex;
 
     justify-content:space-between;
+
     align-items:center;
 
-    gap:10px;
+    margin-bottom:15px;
+
+    position:relative;
+
+    z-index:2;
 }
 
-.speed-title-button{
-    flex:1;
+.speed-title{
 
-    border:0;
+    font-size:14px;
 
-    background:transparent;
+    font-weight:bold;
 
     color:var(--muted);
 
-    text-align:left;
-
-    font-size:14px;
-    font-weight:bold;
-
-    cursor:pointer;
-
-    padding:4px 0;
+    letter-spacing:.3px;
 }
 
-.speed-actions{
+.speed-live{
+
     display:flex;
 
     align-items:center;
 
-    gap:6px;
-}
+    gap:5px;
 
-.speed-live{
     font-size:10px;
 
     font-weight:bold;
@@ -305,93 +370,121 @@ body{
 
     background:#e8f7ef;
 
-    padding:5px 8px;
+    padding:6px 9px;
 
-    border-radius:6px;
+    border-radius:20px;
+
+    box-shadow:
+        0 3px 10px rgba(8,120,61,.08);
 }
 
-.manage-button{
-    width:28px;
-    height:28px;
+.live-dot{
 
-    border:1px solid var(--border);
+    width:6px;
 
-    border-radius:7px;
+    height:6px;
 
-    background:var(--bg);
+    background:#0aa854;
 
-    color:var(--text);
+    border-radius:50%;
 
-    cursor:pointer;
-
-    font-size:13px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
+    animation:livePulse 1s infinite;
 }
 
+@keyframes livePulse{
 
-/* =========================
-   SPEED CONTENT
-========================= */
+    0%{
+        opacity:.4;
+        transform:scale(.8);
+    }
 
-.speed-content{
-    margin-top:15px;
+    50%{
+        opacity:1;
+        transform:scale(1.2);
+    }
 
-    max-height:700px;
+    100%{
+        opacity:.4;
+        transform:scale(.8);
+    }
 
-    overflow:hidden;
-
-    opacity:1;
-
-    transition:
-        max-height .3s ease,
-        opacity .25s ease,
-        margin .3s ease;
-}
-
-.speed-box.minimized .speed-content{
-
-    max-height:0;
-
-    opacity:0;
-
-    margin-top:0;
 }
 
 
-/* =========================
-   SPEED VALUES
-========================= */
+/* =====================================================
+   SPEED VALUE CARDS
+===================================================== */
 
 .speed-values{
+
     display:grid;
 
     grid-template-columns:1fr 1fr;
 
-    gap:12px;
+    gap:10px;
 
-    margin-bottom:18px;
+    margin-bottom:15px;
+
+    position:relative;
+
+    z-index:2;
 }
 
 .speed-value-box{
+
+    position:relative;
+
+    overflow:hidden;
+
     border:1px solid var(--border);
 
-    border-radius:10px;
+    border-radius:13px;
 
-    padding:12px;
+    padding:13px;
 
-    background:var(--bg);
+    background:rgba(255,255,255,.04);
+
+    backdrop-filter:blur(8px);
+
+}
+
+.speed-value-box::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    right:-20px;
+
+    bottom:-20px;
+
+    opacity:.08;
+
+}
+
+.download-card::after{
+    background:#e00000;
+}
+
+.upload-card::after{
+    background:#0b9b54;
 }
 
 .speed-value-title{
-    font-size:11px;
+
+    font-size:10px;
 
     font-weight:bold;
 
     margin-bottom:5px;
+
+    letter-spacing:.5px;
 }
 
 .download-title{
@@ -402,16 +495,29 @@ body{
     color:#0b9b54;
 }
 
+.speed-number-row{
+
+    display:flex;
+
+    align-items:baseline;
+
+    gap:5px;
+}
+
 .speed-value{
-    font-size:24px;
+
+    font-size:25px;
 
     font-weight:bold;
 
     color:var(--text);
+
+    letter-spacing:-.5px;
 }
 
 .speed-unit{
-    font-size:11px;
+
+    font-size:10px;
 
     color:var(--muted);
 
@@ -419,29 +525,36 @@ body{
 }
 
 
-/* =========================
-   LEGEND
-========================= */
+/* =====================================================
+   GRAPH LEGEND
+===================================================== */
 
 .graph-legend{
+
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
-    gap:25px;
+    gap:28px;
 
-    margin-bottom:10px;
+    margin-bottom:9px;
+
+    position:relative;
+
+    z-index:2;
 }
 
 .legend{
+
     display:flex;
 
     align-items:center;
 
     gap:6px;
 
-    font-size:12px;
+    font-size:11px;
 
     font-weight:bold;
 
@@ -449,53 +562,103 @@ body{
 }
 
 .legend-line{
-    width:25px;
+
+    width:24px;
+
     height:3px;
 
-    border-radius:10px;
+    border-radius:20px;
 }
 
 .download-line{
     background:#e00000;
+
+    box-shadow:
+        0 0 7px rgba(224,0,0,.4);
 }
 
 .upload-line{
     background:#0b9b54;
+
+    box-shadow:
+        0 0 7px rgba(11,155,84,.4);
 }
 
 
-/* =========================
+/* =====================================================
    GRAPH
-========================= */
+===================================================== */
 
 .graph-container{
+
     width:100%;
-    height:190px;
+
+    height:200px;
 
     position:relative;
 
-    border-radius:10px;
-
-    background:var(--bg);
+    border-radius:13px;
 
     overflow:hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(128,128,128,.025),
+            rgba(128,128,128,.08)
+        );
+
+    border:1px solid var(--border);
+
 }
 
 #speedCanvas{
+
     width:100%;
+
     height:100%;
 
     display:block;
 }
 
+
+/* graph fade */
+
+.graph-container::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    height:25px;
+
+    background:
+        linear-gradient(
+            transparent,
+            var(--bg)
+        );
+
+    opacity:.18;
+
+    pointer-events:none;
+}
+
+
 .speed-note{
+
     text-align:center;
 
-    font-size:11px;
+    font-size:10px;
 
     color:var(--muted);
 
-    margin-top:9px;
+    margin-top:8px;
 }
 
 
@@ -521,6 +684,7 @@ body{
 }
 
 .info-title{
+
     font-size:12px;
 
     color:var(--muted);
@@ -531,6 +695,7 @@ body{
 }
 
 .info-value{
+
     font-size:17px;
 
     font-weight:bold;
@@ -541,6 +706,7 @@ body{
 }
 
 .bill-value{
+
     font-size:22px;
 
     font-weight:bold;
@@ -554,6 +720,7 @@ body{
 ========================= */
 
 .online{
+
     display:inline-flex;
 
     align-items:center;
@@ -574,7 +741,9 @@ body{
 }
 
 .online-dot{
+
     width:8px;
+
     height:8px;
 
     border-radius:50%;
@@ -582,7 +751,21 @@ body{
     background:#0aa854;
 
     box-shadow:
-        0 0 6px #0aa854;
+        0 0 7px #0aa854;
+
+    animation:onlinePulse 1.3s infinite;
+}
+
+@keyframes onlinePulse{
+
+    0%,100%{
+        opacity:.6;
+    }
+
+    50%{
+        opacity:1;
+    }
+
 }
 
 
@@ -593,42 +776,57 @@ body{
 @media(max-width:500px){
 
     .header{
+
         height:60px;
 
         padding:0 14px;
     }
 
     .title{
+
         font-size:18px;
     }
 
     .logout{
+
         padding:9px 13px;
     }
 
     .container{
+
         padding:18px 13px 30px;
     }
 
     .photo{
+
         width:200px;
+
         height:200px;
     }
 
     .value{
+
         font-size:14px;
     }
 
     .mac-value{
+
         font-size:15px;
     }
 
     .info-value{
+
         font-size:15px;
     }
 
     .speed-value{
-        font-size:20px;
+
+        font-size:21px;
+    }
+
+    .graph-container{
+
+        height:185px;
     }
 
 }
@@ -642,7 +840,7 @@ body{
 
 
 <!-- =========================
-     THEME BUTTON
+     THEME
 ========================= -->
 
 <button
@@ -683,9 +881,7 @@ body{
 <div class="container">
 
 
-<!-- =========================
-     USERNAME + PASSWORD
-========================= -->
+<!-- USERNAME + PASSWORD -->
 
 <div class="top">
 
@@ -723,30 +919,22 @@ body{
 </div>
 
 
-<!-- =========================
-     MAC
-========================= -->
+<!-- MAC -->
 
 <div class="mac-box">
 
     <div class="mac-title">
-
         MAC
-
     </div>
 
     <div class="mac-value">
-
         22:91:fb:b1:a5:41
-
     </div>
 
 </div>
 
 
-<!-- =========================
-     PHOTO
-========================= -->
+<!-- PHOTO -->
 
 <div class="photo-box">
 
@@ -825,163 +1013,144 @@ stroke-width="6"/>
      INTERNET SPEED
 ===================================================== -->
 
-<div
-id="speedBox"
-class="speed-box">
+<div class="speed-box">
 
 
 <div class="speed-header">
 
+    <div class="speed-title">
+        📶 INTERNET SPEED
+    </div>
 
-<button
-class="speed-title-button"
-onclick="toggleSpeed()">
+    <div
+        id="speedLive"
+        class="speed-live">
 
-📶 INTERNET SPEED
+        <span class="live-dot"></span>
 
-</button>
+        LIVE
 
-
-<div class="speed-actions">
-
-<div
-id="speedLive"
-class="speed-live">
-
-● LIVE
+    </div>
 
 </div>
 
 
-<button
-id="manageButton"
-class="manage-button"
-onclick="toggleSpeed()">
-
-−
-
-</button>
-
-</div>
-
-</div>
-
-
-<div
-id="speedContent"
-class="speed-content">
-
-
-<!-- SPEED VALUES -->
+<!-- =========================
+     SPEED VALUES
+========================= -->
 
 <div class="speed-values">
 
 
-<div class="speed-value-box">
+<div class="speed-value-box download-card">
 
-<div
-class="speed-value-title download-title">
+    <div class="speed-value-title download-title">
+        DOWNLOAD
+    </div>
 
-DOWNLOAD
+    <div class="speed-number-row">
 
-</div>
+        <span
+            id="downloadSpeed"
+            class="speed-value">
 
-<span
-id="downloadSpeed"
-class="speed-value">
+            7.2
 
-00
+        </span>
 
-</span>
+        <span
+            id="downloadUnit"
+            class="speed-unit">
 
-<span
-id="downloadUnit"
-class="speed-unit">
+            MBPS
 
-KBPS
+        </span>
 
-</span>
-
-</div>
-
-
-<div class="speed-value-box">
-
-<div
-class="speed-value-title upload-title">
-
-UPLOAD
-
-</div>
-
-<span
-id="uploadSpeed"
-class="speed-value">
-
-00
-
-</span>
-
-<span
-id="uploadUnit"
-class="speed-unit">
-
-KBPS
-
-</span>
-
-</div>
+    </div>
 
 </div>
 
 
-<!-- LEGEND -->
+<div class="speed-value-box upload-card">
+
+    <div class="speed-value-title upload-title">
+        UPLOAD
+    </div>
+
+    <div class="speed-number-row">
+
+        <span
+            id="uploadSpeed"
+            class="speed-value">
+
+            1.5
+
+        </span>
+
+        <span
+            id="uploadUnit"
+            class="speed-unit">
+
+            MBPS
+
+        </span>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     LEGEND
+========================= -->
 
 <div class="graph-legend">
 
-<div class="legend">
+    <div class="legend">
 
-<span
-class="legend-line download-line">
-</span>
+        <span
+            class="legend-line download-line">
+        </span>
 
-Download
+        Download
+
+    </div>
+
+
+    <div class="legend">
+
+        <span
+            class="legend-line upload-line">
+        </span>
+
+        Upload
+
+    </div>
 
 </div>
 
 
-<div class="legend">
-
-<span
-class="legend-line upload-line">
-</span>
-
-Upload
-
-</div>
-
-</div>
-
-
-<!-- GRAPH -->
+<!-- =========================
+     GRAPH
+========================= -->
 
 <div class="graph-container">
 
-<canvas
-id="speedCanvas">
-</canvas>
+    <canvas
+        id="speedCanvas">
+    </canvas>
 
 </div>
 
 
 <div class="speed-note">
 
-Live connection monitor
+    Live network activity monitor
 
 </div>
 
-
-</div>
 
 </div>
 
@@ -990,17 +1159,13 @@ Live connection monitor
 
 <div class="info">
 
-<div class="info-title">
+    <div class="info-title">
+        NAME
+    </div>
 
-NAME
-
-</div>
-
-<div class="info-value">
-
-Shemanto Islam
-
-</div>
+    <div class="info-value">
+        Shemanto Islam
+    </div>
 
 </div>
 
@@ -1009,17 +1174,13 @@ Shemanto Islam
 
 <div class="billing">
 
-<div class="info-title">
+    <div class="info-title">
+        BILLING DATE
+    </div>
 
-BILLING DATE
-
-</div>
-
-<div class="info-value">
-
-01-01-2027
-
-</div>
+    <div class="info-value">
+        01-01-2027
+    </div>
 
 </div>
 
@@ -1028,17 +1189,13 @@ BILLING DATE
 
 <div class="bill">
 
-<div class="info-title">
+    <div class="info-title">
+        BILL
+    </div>
 
-BILL
-
-</div>
-
-<div class="bill-value">
-
-500 tk
-
-</div>
+    <div class="bill-value">
+        500 tk
+    </div>
 
 </div>
 
@@ -1047,17 +1204,13 @@ BILL
 
 <div class="address">
 
-<div class="info-title">
+    <div class="info-title">
+        ADDRESS
+    </div>
 
-ADDRESS
-
-</div>
-
-<div class="info-value">
-
-sagorika road pahartali Chittagong
-
-</div>
+    <div class="info-value">
+        sagorika road pahartali Chittagong
+    </div>
 
 </div>
 
@@ -1066,19 +1219,17 @@ sagorika road pahartali Chittagong
 
 <div class="connection">
 
-<div class="info-title">
+    <div class="info-title">
+        CONNECTING STATUS
+    </div>
 
-CONNECTING STATUS
+    <div class="online">
 
-</div>
+        <span class="online-dot"></span>
 
-<div class="online">
+        Online
 
-<span class="online-dot"></span>
-
-Online
-
-</div>
+    </div>
 
 </div>
 
@@ -1090,7 +1241,7 @@ Online
 
 
 /* =====================================================
-   LOGIN CHECK
+   LOGIN
 ===================================================== */
 
 if(
@@ -1213,68 +1364,7 @@ loadTheme();
 
 
 /* =====================================================
-   SPEED MINIMIZE
-===================================================== */
-
-const speedBox =
-document.getElementById(
-    "speedBox"
-);
-
-const manageButton =
-document.getElementById(
-    "manageButton"
-);
-
-
-function toggleSpeed(){
-
-    speedBox.classList.toggle(
-        "minimized"
-    );
-
-
-    const minimized =
-    speedBox.classList.contains(
-        "minimized"
-    );
-
-
-    manageButton.textContent =
-    minimized
-    ? "+"
-    : "−";
-
-
-    localStorage.setItem(
-        "speedMinimized",
-        minimized
-        ? "true"
-        : "false"
-    );
-
-}
-
-
-if(
-    localStorage.getItem(
-        "speedMinimized"
-    )
-    === "true"
-){
-
-    speedBox.classList.add(
-        "minimized"
-    );
-
-    manageButton.textContent =
-    "+";
-
-}
-
-
-/* =====================================================
-   CANVAS
+   GRAPH
 ===================================================== */
 
 const canvas =
@@ -1286,66 +1376,49 @@ const ctx =
 canvas.getContext("2d");
 
 
-const downloadSpeed =
+const downloadElement =
 document.getElementById(
     "downloadSpeed"
 );
 
-const uploadSpeed =
+const uploadElement =
 document.getElementById(
     "uploadSpeed"
 );
 
-const downloadUnit =
-document.getElementById(
-    "downloadUnit"
-);
-
-const uploadUnit =
-document.getElementById(
-    "uploadUnit"
-);
-
-
-/* =====================================================
-   HISTORY
-===================================================== */
 
 let downloadHistory = [];
 
 let uploadHistory = [];
 
-const MAX_POINTS = 70;
+const MAX_POINTS = 80;
 
 
 /* =====================================================
    INITIAL SPEED
 ===================================================== */
 
-let download = 7.20;
+let download = 7.2;
 
-let upload = 1.45;
+let upload = 1.5;
 
 
 /* =====================================================
-   SMOOTH SPEED CHANGE
+   SMOOTH RANDOM SPEED
 ===================================================== */
 
-function smoothChange(
+function changeSpeed(
     current,
     min,
     max,
     step
 ){
 
-    let change =
+    let next =
+    current +
     (
         Math.random() * 2 - 1
     ) * step;
-
-
-    let next =
-    current + change;
 
 
     if(next < min){
@@ -1372,122 +1445,7 @@ function smoothChange(
 
 
 /* =====================================================
-   FORMAT SPEED
-===================================================== */
-
-function formatSpeed(
-    mbps
-){
-
-    if(mbps < 0.01){
-
-        return {
-            value:"00",
-            unit:"KBPS"
-        };
-
-    }
-
-
-    const kbps =
-    mbps * 1024;
-
-
-    if(mbps < 1){
-
-        return {
-
-            value:
-            kbps.toFixed(0),
-
-            unit:"KBPS"
-
-        };
-
-    }
-
-
-    return {
-
-        value:
-        mbps.toFixed(1),
-
-        unit:"MBPS"
-
-    };
-
-}
-
-
-/* =====================================================
-   UPDATE SPEED VALUES
-===================================================== */
-
-function updateSpeedValues(){
-
-    const down =
-    formatSpeed(download);
-
-
-    const up =
-    formatSpeed(upload);
-
-
-    downloadSpeed.textContent =
-    down.value;
-
-    downloadUnit.textContent =
-    down.unit;
-
-
-    uploadSpeed.textContent =
-    up.value;
-
-    uploadUnit.textContent =
-    up.unit;
-
-}
-
-
-/* =====================================================
-   HISTORY
-===================================================== */
-
-function updateHistory(){
-
-    downloadHistory.push(
-        download
-    );
-
-    uploadHistory.push(
-        upload
-    );
-
-
-    if(
-        downloadHistory.length >
-        MAX_POINTS
-    ){
-
-        downloadHistory.shift();
-
-    }
-
-
-    if(
-        uploadHistory.length >
-        MAX_POINTS
-    ){
-
-        uploadHistory.shift();
-
-    }
-
-}
-
-
-/* =====================================================
-   CANVAS RESIZE
+   RESIZE
 ===================================================== */
 
 function resizeCanvas(){
@@ -1502,15 +1460,11 @@ function resizeCanvas(){
 
 
     canvas.width =
-    Math.floor(
-        rect.width * ratio
-    );
+    rect.width * ratio;
 
 
     canvas.height =
-    Math.floor(
-        rect.height * ratio
-    );
+    rect.height * ratio;
 
 
     canvas.style.width =
@@ -1556,16 +1510,6 @@ function drawGraph(){
     canvas.clientHeight;
 
 
-    if(
-        width <= 0 ||
-        height <= 0
-    ){
-
-        return;
-
-    }
-
-
     ctx.clearRect(
         0,
         0,
@@ -1574,32 +1518,42 @@ function drawGraph(){
     );
 
 
+    if(
+        downloadHistory.length < 2
+    ){
+
+        return;
+
+    }
+
+
     const dark =
     document.body.classList.contains(
         "dark"
     );
 
 
-    /* GRID */
+    /* =========================
+       GRID
+    ========================= */
+
+    ctx.lineWidth = 1;
 
     ctx.strokeStyle =
     dark
-    ? "#292929"
-    : "#e4e9e6";
-
-
-    ctx.lineWidth = 1;
+    ? "rgba(255,255,255,.06)"
+    : "rgba(0,0,0,.06)";
 
 
     for(
         let i = 1;
-        i < 5;
+        i < 6;
         i++
     ){
 
         const y =
         (
-            height / 5
+            height / 6
         ) * i;
 
 
@@ -1620,37 +1574,15 @@ function drawGraph(){
     }
 
 
-    if(
-        downloadHistory.length < 2
-    ){
+    /* =========================
+       FIXED SCALE
+    ========================= */
 
-        return;
-
-    }
-
-
-    /*
-       Stable graph scale
-    */
-
-    let max =
-    Math.max(
-        ...downloadHistory,
-        ...uploadHistory,
-        10
-    );
+    const max =
+    12;
 
 
-    max =
-    Math.ceil(
-        max / 2
-    ) * 2;
-
-
-    max += 2;
-
-
-    drawLine(
+    drawSmoothLine(
         downloadHistory,
         "#e00000",
         width,
@@ -1659,7 +1591,7 @@ function drawGraph(){
     );
 
 
-    drawLine(
+    drawSmoothLine(
         uploadHistory,
         "#0b9b54",
         width,
@@ -1671,10 +1603,10 @@ function drawGraph(){
 
 
 /* =====================================================
-   DRAW LINE
+   SMOOTH LINE
 ===================================================== */
 
-function drawLine(
+function drawSmoothLine(
     data,
     color,
     width,
@@ -1691,7 +1623,7 @@ function drawLine(
     }
 
 
-    ctx.beginPath();
+    const points = [];
 
 
     data.forEach(
@@ -1713,29 +1645,194 @@ function drawLine(
                 value / max
             ) *
             (
-                height - 20
+                height - 22
             ) -
-            10;
+            11;
 
 
-            if(index === 0){
-
-                ctx.moveTo(
-                    x,
-                    y
-                );
-
-            }
-            else{
-
-                ctx.lineTo(
-                    x,
-                    y
-                );
-
-            }
+            points.push({
+                x:x,
+                y:y
+            });
 
         }
+    );
+
+
+    /* =========================
+       AREA
+    ========================= */
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        points[0].x,
+        height
+    );
+
+    ctx.lineTo(
+        points[0].x,
+        points[0].y
+    );
+
+
+    for(
+        let i = 1;
+        i < points.length;
+        i++
+    ){
+
+        const previous =
+        points[i - 1];
+
+        const current =
+        points[i];
+
+
+        const midX =
+        (
+            previous.x +
+            current.x
+        ) / 2;
+
+
+        ctx.quadraticCurveTo(
+            previous.x,
+            previous.y,
+            midX,
+            (
+                previous.y +
+                current.y
+            ) / 2
+        );
+
+    }
+
+
+    const last =
+    points[
+        points.length - 1
+    ];
+
+
+    ctx.lineTo(
+        last.x,
+        last.y
+    );
+
+    ctx.lineTo(
+        last.x,
+        height
+    );
+
+    ctx.closePath();
+
+
+    if(color === "#e00000"){
+
+        const gradient =
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            height
+        );
+
+
+        gradient.addColorStop(
+            0,
+            "rgba(224,0,0,.13)"
+        );
+
+        gradient.addColorStop(
+            1,
+            "rgba(224,0,0,0)"
+        );
+
+
+        ctx.fillStyle =
+        gradient;
+
+    }
+    else{
+
+        const gradient =
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            height
+        );
+
+
+        gradient.addColorStop(
+            0,
+            "rgba(11,155,84,.13)"
+        );
+
+        gradient.addColorStop(
+            1,
+            "rgba(11,155,84,0)"
+        );
+
+
+        ctx.fillStyle =
+        gradient;
+
+    }
+
+
+    ctx.fill();
+
+
+    /* =========================
+       LINE
+    ========================= */
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        points[0].x,
+        points[0].y
+    );
+
+
+    for(
+        let i = 1;
+        i < points.length;
+        i++
+    ){
+
+        const previous =
+        points[i - 1];
+
+        const current =
+        points[i];
+
+
+        const midX =
+        (
+            previous.x +
+            current.x
+        ) / 2;
+
+
+        ctx.quadraticCurveTo(
+            previous.x,
+            previous.y,
+            midX,
+            (
+                previous.y +
+                current.y
+            ) / 2
+        );
+
+    }
+
+
+    ctx.lineTo(
+        last.x,
+        last.y
     );
 
 
@@ -1750,74 +1847,88 @@ function drawLine(
     ctx.lineCap =
     "round";
 
+    ctx.shadowBlur = 8;
+
+    ctx.shadowColor =
+    color;
 
     ctx.stroke();
+
+    ctx.shadowBlur = 0;
 
 
     /* =================================================
        CURRENT POINT
 
-       Point এখন শেষ edge-এ নয়।
-       2 point আগে থাকবে।
+       Point ডান edge থেকে 2 point আগে
     ================================================= */
 
-    const last =
+    const lastIndex =
     data.length - 1;
 
 
     const pointIndex =
     Math.max(
         0,
-        last - 2
+        lastIndex - 2
     );
 
 
-    const pointX =
-    (
-        pointIndex /
-        (data.length - 1)
-    ) * width;
+    const point =
+    points[
+        pointIndex
+    ];
 
 
-    const pointY =
-    height -
-    (
-        data[pointIndex] / max
-    ) *
-    (
-        height - 20
-    ) -
-    10;
-
-
-    /* Outer glow */
+    /* glow */
 
     ctx.beginPath();
 
     ctx.arc(
-        pointX,
-        pointY,
-        7,
+        point.x,
+        point.y,
+        9,
         0,
         Math.PI * 2
     );
 
+
     ctx.fillStyle =
     color === "#e00000"
-    ? "rgba(224,0,0,.15)"
-    : "rgba(11,155,84,.15)";
+    ? "rgba(224,0,0,.14)"
+    : "rgba(11,155,84,.14)";
+
 
     ctx.fill();
 
 
-    /* Main point */
+    /* white ring */
 
     ctx.beginPath();
 
     ctx.arc(
-        pointX,
-        pointY,
-        4,
+        point.x,
+        point.y,
+        5,
+        0,
+        Math.PI * 2
+    );
+
+
+    ctx.fillStyle =
+    "#ffffff";
+
+    ctx.fill();
+
+
+    /* main point */
+
+    ctx.beginPath();
+
+    ctx.arc(
+        point.x,
+        point.y,
+        3.5,
         0,
         Math.PI * 2
     );
@@ -1832,32 +1943,66 @@ function drawLine(
 
 
 /* =====================================================
-   LIVE UPDATE
+   UPDATE SPEED
 ===================================================== */
 
-function updateLiveSpeed(){
+function updateSpeed(){
 
     download =
-    smoothChange(
+    changeSpeed(
         download,
-        5.20,
-        9.20,
+        4.5,
+        9.5,
         0.18
     );
 
 
     upload =
-    smoothChange(
+    changeSpeed(
         upload,
-        0.75,
-        2.20,
-        0.08
+        0.6,
+        2.2,
+        0.07
     );
 
 
-    updateSpeedValues();
+    downloadElement.textContent =
+    download.toFixed(1);
 
-    updateHistory();
+
+    uploadElement.textContent =
+    upload.toFixed(1);
+
+
+    downloadHistory.push(
+        download
+    );
+
+
+    uploadHistory.push(
+        upload
+    );
+
+
+    if(
+        downloadHistory.length >
+        MAX_POINTS
+    ){
+
+        downloadHistory.shift();
+
+    }
+
+
+    if(
+        uploadHistory.length >
+        MAX_POINTS
+    ){
+
+        uploadHistory.shift();
+
+    }
+
 
     drawGraph();
 
@@ -1870,13 +2015,17 @@ function updateLiveSpeed(){
 
 resizeCanvas();
 
-updateSpeedValues();
 
+/*
+   Smooth update
+   প্রতি 200ms
+*/
 
 setInterval(
-    updateLiveSpeed,
-    250
+    updateSpeed,
+    200
 );
+
 
 </script>
 
