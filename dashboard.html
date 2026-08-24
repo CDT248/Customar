@@ -187,21 +187,15 @@ body{
 
 .mac-title{
     font-size:12px;
-
     color:var(--muted);
-
     font-weight:bold;
-
     margin-bottom:7px;
 }
 
 .mac-value{
     font-size:17px;
-
     font-weight:bold;
-
     color:var(--text);
-
     word-break:break-all;
 }
 
@@ -259,26 +253,12 @@ body{
     margin-bottom:14px;
 }
 
-
-/* =========================
-   SPEED HEADER
-========================= */
-
 .speed-header{
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     gap:10px;
 }
-
-
-/*
-   Clicking this header will
-   manage / minimize the speed box.
-*/
 
 .speed-title-button{
     flex:1;
@@ -300,15 +280,11 @@ body{
     padding:4px 0;
 }
 
-
 .speed-actions{
     display:flex;
-
     align-items:center;
-
     gap:6px;
 }
-
 
 .speed-live{
     font-size:10px;
@@ -323,7 +299,6 @@ body{
 
     border-radius:6px;
 }
-
 
 .manage-button{
     width:28px;
@@ -342,9 +317,7 @@ body{
     font-size:13px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 }
 
@@ -368,18 +341,10 @@ body{
     opacity:1;
 }
 
-
-/* MINIMIZED */
-
-.speed-box.minimized
-.speed-content{
-
+.speed-box.minimized .speed-content{
     max-height:0;
-
     opacity:0;
-
     margin-top:0;
-
 }
 
 
@@ -617,7 +582,6 @@ body{
 
     .header{
         height:60px;
-
         padding:0 14px;
     }
 
@@ -664,9 +628,7 @@ body{
 <body>
 
 
-<!-- =========================
-     THEME
-========================= -->
+<!-- THEME -->
 
 <button
     id="themeButton"
@@ -676,9 +638,7 @@ body{
 </button>
 
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
 <div class="header">
 
@@ -694,10 +654,6 @@ body{
 
 </div>
 
-
-<!-- =========================
-     MAIN
-========================= -->
 
 <div class="container">
 
@@ -835,10 +791,7 @@ stroke-width="6"/>
     class="speed-box">
 
 
-<!-- SPEED HEADER -->
-
 <div class="speed-header">
-
 
 <button
     class="speed-title-button"
@@ -852,17 +805,15 @@ stroke-width="6"/>
 <div class="speed-actions">
 
     <div
-        id="speedLive"
-        class="speed-live">
+        class="speed-live"
+        id="speedLive">
         ● LIVE
     </div>
-
 
     <button
         id="manageButton"
         class="manage-button"
-        onclick="toggleSpeed()"
-        title="Manage">
+        onclick="toggleSpeed()">
 
         −
 
@@ -870,20 +821,18 @@ stroke-width="6"/>
 
 </div>
 
-
 </div>
 
-
-<!-- SPEED CONTENT -->
 
 <div
     id="speedContent"
     class="speed-content">
 
 
-<!-- SPEED VALUES -->
+<!-- VALUES -->
 
 <div class="speed-values">
+
 
 <div class="speed-value-box">
 
@@ -971,7 +920,7 @@ id="speedCanvas">
 
 
 <div class="speed-note">
-Live browser network information
+Browser page traffic • Live monitor
 </div>
 
 
@@ -1040,7 +989,7 @@ sagorika road pahartali Chittagong
 </div>
 
 
-<!-- STATUS -->
+<!-- CONNECTING STATUS -->
 
 <div class="connection">
 
@@ -1064,7 +1013,6 @@ Online
 
 <script>
 
-
 /* =====================================================
    LOGIN
 ===================================================== */
@@ -1074,9 +1022,7 @@ if(
     !== "true"
 ){
 
-    window.location.replace(
-        "index.html"
-    );
+    window.location.replace("index.html");
 
 }
 
@@ -1086,9 +1032,7 @@ if(
 ===================================================== */
 
 const savedUsername =
-sessionStorage.getItem(
-    "username"
-);
+sessionStorage.getItem("username");
 
 if(savedUsername){
 
@@ -1106,17 +1050,11 @@ if(savedUsername){
 
 function logout(){
 
-    sessionStorage.removeItem(
-        "loggedIn"
-    );
+    sessionStorage.removeItem("loggedIn");
 
-    sessionStorage.removeItem(
-        "username"
-    );
+    sessionStorage.removeItem("username");
 
-    window.location.replace(
-        "index.html"
-    );
+    window.location.replace("index.html");
 
 }
 
@@ -1126,27 +1064,20 @@ function logout(){
 ===================================================== */
 
 const themeButton =
-document.getElementById(
-    "themeButton"
-);
+document.getElementById("themeButton");
 
 
 function loadTheme(){
 
     const theme =
-        localStorage.getItem(
-            "customerTheme"
-        );
+    localStorage.getItem("customerTheme");
 
 
     if(theme === "dark"){
 
-        document.body.classList.add(
-            "dark"
-        );
+        document.body.classList.add("dark");
 
-        themeButton.textContent =
-            "☀";
+        themeButton.textContent = "☀";
 
     }
 
@@ -1155,29 +1086,21 @@ function loadTheme(){
 
 function toggleTheme(){
 
-    document.body.classList.toggle(
-        "dark"
-    );
+    document.body.classList.toggle("dark");
 
 
     const dark =
-        document.body.classList.contains(
-            "dark"
-        );
+    document.body.classList.contains("dark");
 
 
     localStorage.setItem(
         "customerTheme",
-        dark
-        ? "dark"
-        : "light"
+        dark ? "dark" : "light"
     );
 
 
     themeButton.textContent =
-        dark
-        ? "☀"
-        : "☾";
+        dark ? "☀" : "☾";
 
 
     drawGraph();
@@ -1189,319 +1112,209 @@ loadTheme();
 
 
 /* =====================================================
-   SPEED MANAGE / MINIMIZE
+   SPEED MANAGE
 ===================================================== */
 
 const speedBox =
-document.getElementById(
-    "speedBox"
-);
+document.getElementById("speedBox");
 
 const manageButton =
-document.getElementById(
-    "manageButton"
-);
+document.getElementById("manageButton");
 
 
 function toggleSpeed(){
 
-    speedBox.classList.toggle(
-        "minimized"
-    );
+    speedBox.classList.toggle("minimized");
 
 
     const minimized =
-        speedBox.classList.contains(
-            "minimized"
-        );
+    speedBox.classList.contains("minimized");
 
 
     manageButton.textContent =
-        minimized
-        ? "+"
-        : "−";
+        minimized ? "+" : "−";
 
 
     localStorage.setItem(
         "speedMinimized",
-        minimized
-        ? "true"
-        : "false"
+        minimized ? "true" : "false"
     );
+
 
 }
 
 
-/* Restore saved speed state */
-
 if(
-    localStorage.getItem(
-        "speedMinimized"
-    )
-    ===
-    "true"
+    localStorage.getItem("speedMinimized")
+    === "true"
 ){
 
-    speedBox.classList.add(
-        "minimized"
-    );
+    speedBox.classList.add("minimized");
 
-    manageButton.textContent =
-        "+";
+    manageButton.textContent = "+";
 
 }
 
 
 /* =====================================================
-   SPEED GRAPH
+   CANVAS
 ===================================================== */
 
 const canvas =
-document.getElementById(
-    "speedCanvas"
-);
+document.getElementById("speedCanvas");
 
 const ctx =
-canvas.getContext(
-    "2d"
-);
+canvas.getContext("2d");
 
 
-const downloadElement =
-document.getElementById(
-    "downloadSpeed"
-);
+const downloadSpeed =
+document.getElementById("downloadSpeed");
 
+const uploadSpeed =
+document.getElementById("uploadSpeed");
 
-const uploadElement =
-document.getElementById(
-    "uploadSpeed"
-);
+const downloadUnit =
+document.getElementById("downloadUnit");
 
-
-const downloadUnitElement =
-document.getElementById(
-    "downloadUnit"
-);
-
-
-const uploadUnitElement =
-document.getElementById(
-    "uploadUnit"
-);
+const uploadUnit =
+document.getElementById("uploadUnit");
 
 
 let downloadHistory = [];
 
 let uploadHistory = [];
 
-const MAX_POINTS = 80;
+const MAX_POINTS = 60;
 
 
 /* =====================================================
-   CANVAS SIZE
+   RESOURCE TRAFFIC MONITOR
 ===================================================== */
 
-function resizeCanvas(){
+let lastTotalBytes = 0;
 
-    const rect =
-        canvas.parentElement
-        .getBoundingClientRect();
-
-
-    const ratio =
-        window.devicePixelRatio || 1;
-
-
-    canvas.width =
-        Math.floor(
-            rect.width * ratio
-        );
-
-
-    canvas.height =
-        Math.floor(
-            rect.height * ratio
-        );
-
-
-    canvas.style.width =
-        rect.width + "px";
-
-
-    canvas.style.height =
-        rect.height + "px";
-
-
-    ctx.setTransform(
-        ratio,
-        0,
-        0,
-        ratio,
-        0,
-        0
-    );
-
-
-    drawGraph();
-
-}
-
-
-window.addEventListener(
-    "resize",
-    resizeCanvas
-);
-
-
-/* =====================================================
-   NETWORK INFORMATION
-===================================================== */
-
-function getConnection(){
-
-    return (
-        navigator.connection ||
-        navigator.mozConnection ||
-        navigator.webkitConnection ||
-        null
-    );
-
-}
-
-
-/* =====================================================
-   DOWNLOAD ESTIMATE
-===================================================== */
-
-function getDownloadSpeed(){
-
-    const connection =
-        getConnection();
-
-
-    if(
-        connection &&
-        typeof connection.downlink ===
-        "number"
-    ){
-
-        return Math.max(
-            0,
-            connection.downlink
-        );
-
-    }
-
-
-    return 0;
-
-}
-
-
-/* =====================================================
-   PAGE TRAFFIC
-===================================================== */
-
-let lastBytes = 0;
-
-let lastTime =
+let lastMeasureTime =
 performance.now();
 
 
-function getPageTraffic(){
+/*
+   Resource list-এর সর্বশেষ
+   transferSize যোগ করা হবে।
+*/
+
+function getTotalPageBytes(){
 
     let total = 0;
 
-
     try{
 
-        const entries =
-            performance.getEntriesByType(
-                "resource"
-            );
+        const resources =
+        performance.getEntriesByType(
+            "resource"
+        );
 
 
         for(
             let i = 0;
-            i < entries.length;
+            i < resources.length;
             i++
         ){
 
-            const item =
-                entries[i];
+            const r =
+            resources[i];
 
 
             if(
-                typeof item.transferSize
-                ===
-                "number"
+                typeof r.transferSize
+                === "number"
             ){
 
                 total +=
-                    item.transferSize;
+                r.transferSize;
 
             }
 
         }
 
     }
-    catch(error){
+    catch(e){
 
-        return 0;
+        total = 0;
 
     }
 
 
+    return total;
+
+}
+
+
+/* =====================================================
+   DOWNLOAD
+===================================================== */
+
+function measureDownload(){
+
     const now =
-        performance.now();
+    performance.now();
+
+
+    const totalBytes =
+    getTotalPageBytes();
 
 
     const elapsed =
-        (
-            now -
-            lastTime
-        ) / 1000;
+    (
+        now -
+        lastMeasureTime
+    ) / 1000;
 
 
-    let speed = 0;
+    let bytesPerSecond = 0;
 
 
     if(
         elapsed > 0
     ){
 
-        speed =
-            (
-                total -
-                lastBytes
-            ) /
+        const difference =
+        totalBytes -
+        lastTotalBytes;
+
+
+        if(difference > 0){
+
+            bytesPerSecond =
+            difference /
             elapsed;
+
+        }
 
     }
 
 
-    lastBytes =
-        total;
+    lastTotalBytes =
+    totalBytes;
+
+    lastMeasureTime =
+    now;
 
 
-    lastTime =
-        now;
-
-
-    return Math.max(
-        0,
-        speed
+    return (
+        bytesPerSecond *
+        8 /
+        1024 /
+        1024
     );
 
 }
 
 
 /* =====================================================
-   SPEED DISPLAY
+   DISPLAY
 ===================================================== */
 
-function setSpeedDisplay(
+function showSpeed(
     element,
     unitElement,
     mbps
@@ -1513,99 +1326,78 @@ function setSpeedDisplay(
     ){
 
         element.textContent =
-            "00";
+        "00";
 
         unitElement.textContent =
-            "KBPS";
+        "KBPS";
 
         return;
 
     }
+
+
+    const kbps =
+    mbps * 1024;
 
 
     if(
-        mbps < 1
+        kbps < 1024
     ){
 
-        const kbps =
-            mbps * 1024;
-
-
         element.textContent =
-            kbps < 10
-            ?
-            kbps.toFixed(1)
-            :
-            Math.round(kbps);
-
+        kbps < 10
+        ? kbps.toFixed(1)
+        : Math.round(kbps);
 
         unitElement.textContent =
-            "KBPS";
-
-        return;
+        "KBPS";
 
     }
+    else{
 
-
-    element.textContent =
+        element.textContent =
         mbps.toFixed(2);
 
-
-    unitElement.textContent =
+        unitElement.textContent =
         "MBPS";
+
+    }
 
 }
 
 
 /* =====================================================
-   UPDATE SPEED
+   UPDATE
 ===================================================== */
 
 function updateSpeed(){
 
-    const networkDownload =
-        getDownloadSpeed();
-
-
-    const pageBytes =
-        getPageTraffic();
-
-
-    const pageMbps =
-        (
-            pageBytes * 8
-        ) /
-        1024 /
-        1024;
-
-
     const download =
-        networkDownload > 0
-        ?
-        networkDownload
-        :
-        pageMbps;
+    measureDownload();
 
 
     /*
-       Browser cannot read the
-       complete phone upload traffic.
-       Therefore no fake upload value.
+       Browser security-এর কারণে
+       page-এর complete upload traffic
+       read করা যায় না।
+
+       তাই fake upload value ব্যবহার
+       করা হচ্ছে না।
     */
 
     const upload = 0;
 
 
-    setSpeedDisplay(
-        downloadElement,
-        downloadUnitElement,
+    showSpeed(
+        downloadSpeed,
+        downloadUnit,
         download
     );
 
 
-    setSpeedDisplay(
-        uploadElement,
-        uploadUnitElement,
+    showSpeed(
+        uploadSpeed,
+        uploadUnit,
         upload
     );
 
@@ -1646,17 +1438,73 @@ function updateSpeed(){
 
 
 /* =====================================================
-   DRAW GRAPH
+   RESIZE
+===================================================== */
+
+function resizeCanvas(){
+
+    const rect =
+    canvas.parentElement
+    .getBoundingClientRect();
+
+
+    const ratio =
+    window.devicePixelRatio || 1;
+
+
+    canvas.width =
+    Math.floor(
+        rect.width * ratio
+    );
+
+
+    canvas.height =
+    Math.floor(
+        rect.height * ratio
+    );
+
+
+    canvas.style.width =
+    rect.width + "px";
+
+
+    canvas.style.height =
+    rect.height + "px";
+
+
+    ctx.setTransform(
+        ratio,
+        0,
+        0,
+        ratio,
+        0,
+        0
+    );
+
+
+    drawGraph();
+
+}
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+/* =====================================================
+   GRAPH
 ===================================================== */
 
 function drawGraph(){
 
     const width =
-        canvas.clientWidth;
+    canvas.clientWidth;
 
 
     const height =
-        canvas.clientHeight;
+    canvas.clientHeight;
 
 
     if(
@@ -1678,19 +1526,17 @@ function drawGraph(){
 
 
     const dark =
-        document.body.classList.contains(
-            "dark"
-        );
+    document.body.classList.contains(
+        "dark"
+    );
 
 
     /* GRID */
 
     ctx.strokeStyle =
-        dark
-        ?
-        "#292929"
-        :
-        "#e3e8e5";
+    dark
+    ? "#292929"
+    : "#e4e9e6";
 
 
     ctx.lineWidth = 1;
@@ -1703,9 +1549,9 @@ function drawGraph(){
     ){
 
         const y =
-            (
-                height / 5
-            ) * i;
+        (
+            height / 5
+        ) * i;
 
 
         ctx.beginPath();
@@ -1725,14 +1571,14 @@ function drawGraph(){
     }
 
 
-    const values =
-        downloadHistory.concat(
-            uploadHistory
-        );
+    const combined =
+    downloadHistory.concat(
+        uploadHistory
+    );
 
 
     if(
-        values.length < 2
+        combined.length < 2
     ){
 
         return;
@@ -1741,18 +1587,16 @@ function drawGraph(){
 
 
     let max =
-        Math.max(
-            ...values,
-            1
-        );
+    Math.max(
+        ...combined,
+        0.001
+    );
 
 
     max *= 1.25;
 
 
-    /* RED DOWNLOAD */
-
-    drawSmoothLine(
+    drawLine(
         downloadHistory,
         "#e00000",
         width,
@@ -1761,9 +1605,7 @@ function drawGraph(){
     );
 
 
-    /* GREEN UPLOAD */
-
-    drawSmoothLine(
+    drawLine(
         uploadHistory,
         "#0b9b54",
         width,
@@ -1775,10 +1617,10 @@ function drawGraph(){
 
 
 /* =====================================================
-   SMOOTH GRAPH LINE
+   DRAW LINE
 ===================================================== */
 
-function drawSmoothLine(
+function drawLine(
     data,
     color,
     width,
@@ -1795,7 +1637,7 @@ function drawSmoothLine(
     }
 
 
-    const points = [];
+    ctx.beginPath();
 
 
     for(
@@ -1805,173 +1647,108 @@ function drawSmoothLine(
     ){
 
         const x =
-            (
-                i /
-                (
-                    data.length - 1
-                )
-            ) *
-            width;
+        (
+            i /
+            (data.length - 1)
+        ) * width;
 
 
         const value =
-            Number(
-                data[i]
-            ) || 0;
+        Number(data[i]) || 0;
 
 
-        let y =
-            height -
-            (
-                value /
-                max
-            ) *
-            (
-                height - 18
-            ) -
-            9;
+        const y =
+        height -
+        (
+            value /
+            max
+        ) *
+        (
+            height - 15
+        ) -
+        7;
 
 
-        y =
-            Math.max(
-                5,
-                Math.min(
-                    height - 5,
-                    y
-                )
+        if(i === 0){
+
+            ctx.moveTo(
+                x,
+                y
             );
 
+        }
+        else{
 
-        points.push({
-            x:x,
-            y:y
-        });
+            ctx.lineTo(
+                x,
+                y
+            );
 
-    }
-
-
-    ctx.beginPath();
-
-
-    ctx.moveTo(
-        points[0].x,
-        points[0].y
-    );
-
-
-    for(
-        let i = 1;
-        i < points.length - 1;
-        i++
-    ){
-
-        const current =
-            points[i];
-
-
-        const next =
-            points[i + 1];
-
-
-        const centerX =
-            (
-                current.x +
-                next.x
-            ) / 2;
-
-
-        const centerY =
-            (
-                current.y +
-                next.y
-            ) / 2;
-
-
-        ctx.quadraticCurveTo(
-            current.x,
-            current.y,
-            centerX,
-            centerY
-        );
+        }
 
     }
-
-
-    const last =
-        points[
-            points.length - 1
-        ];
-
-
-    ctx.quadraticCurveTo(
-        last.x,
-        last.y,
-        last.x,
-        last.y
-    );
 
 
     ctx.strokeStyle =
-        color;
+    color;
 
-
-    ctx.lineWidth =
-        3;
-
+    ctx.lineWidth = 3;
 
     ctx.lineJoin =
-        "round";
-
+    "round";
 
     ctx.lineCap =
-        "round";
+    "round";
 
 
     ctx.stroke();
 
 
-    /* CURRENT POINT */
+    /* LAST POINT */
+
+    const last =
+    data.length - 1;
+
+
+    const lastX =
+    (
+        last /
+        (data.length - 1)
+    ) * width;
+
+
+    const lastValue =
+    Number(
+        data[last]
+    ) || 0;
+
+
+    const lastY =
+    height -
+    (
+        lastValue /
+        max
+    ) *
+    (
+        height - 15
+    ) -
+    7;
+
 
     ctx.beginPath();
 
-
     ctx.arc(
-        last.x,
-        last.y,
+        lastX,
+        lastY,
         4,
         0,
         Math.PI * 2
     );
 
-
     ctx.fillStyle =
-        color;
-
+    color;
 
     ctx.fill();
-
-}
-
-
-/* =====================================================
-   NETWORK CHANGE
-===================================================== */
-
-const connection =
-    getConnection();
-
-
-if(connection){
-
-    try{
-
-        connection.addEventListener(
-            "change",
-            updateSpeed
-        );
-
-    }
-    catch(error){}
 
 }
 
@@ -1986,7 +1763,8 @@ updateSpeed();
 
 
 /*
-   Update every 100ms
+   100 milliseconds
+   = 0.1 second
 */
 
 setInterval(
