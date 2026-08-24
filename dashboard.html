@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -17,25 +16,75 @@
     font-family:Arial,Helvetica,sans-serif;
 }
 
+:root{
+    --bg:#f4f6f8;
+    --card:#ffffff;
+    --text:#222;
+    --muted:#777;
+    --border:#ddd;
+    --green:#0b5d3b;
+}
+
+body.dark{
+    --bg:#000;
+    --card:#111;
+    --text:#fff;
+    --muted:#aaa;
+    --border:#292929;
+    --green:#19a866;
+}
+
 body{
     min-height:100vh;
-    background:#f4f6f8;
-    color:#222;
+    background:var(--bg);
+    color:var(--text);
+    transition:.25s;
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* THEME BUTTON */
+
+.theme-button{
+    position:fixed;
+    top:5px;
+    right:5px;
+
+    width:25px;
+    height:25px;
+
+    border:1px solid var(--border);
+    border-radius:50%;
+
+    background:var(--card);
+    color:var(--text);
+
+    font-size:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    z-index:9999;
+}
+
+
+/* HEADER */
 
 .header{
     height:65px;
-    background:#ffffff;
+
+    background:var(--card);
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 18px;
-    border-bottom:1px solid #e5e5e5;
+
+    border-bottom:1px solid var(--border);
+
     position:sticky;
     top:0;
     z-index:100;
@@ -44,412 +93,385 @@ body{
 .title{
     font-size:20px;
     font-weight:bold;
-    color:#0b5d3b;
+    color:var(--green);
 }
 
 .logout{
     border:0;
-    background:#0b5d3b;
-    color:#fff;
+    background:var(--green);
+    color:white;
+
     padding:10px 17px;
+
     border-radius:8px;
+
     font-size:14px;
     font-weight:bold;
+
     cursor:pointer;
 }
 
-.logout:hover{
-    background:#08492f;
-}
 
-
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 .container{
     width:100%;
     max-width:650px;
+
     margin:auto;
+
     padding:22px 16px 40px;
 }
 
 
-/* =========================
-   USERNAME PASSWORD
-========================= */
+/* USERNAME PASSWORD */
 
 .top{
     display:grid;
     grid-template-columns:1fr 1fr;
+
     gap:12px;
+
     margin-bottom:12px;
 }
 
 .box{
-    background:#fff;
-    border:1px solid #ddd;
+    background:var(--card);
+
+    border:1px solid var(--border);
+
     border-radius:12px;
+
     padding:15px;
 }
 
 .label{
     font-size:12px;
     font-weight:bold;
-    color:#777;
+    color:var(--muted);
+
     margin-bottom:7px;
 }
 
 .value{
     font-size:16px;
     font-weight:bold;
-    color:#222;
-    word-break:break-word;
+    color:var(--text);
 }
 
 
-/* =========================
-   MAC
-========================= */
+/* MAC */
 
 .mac-box{
-    background:#fff;
-    border:1px solid #ddd;
+    background:var(--card);
+
+    border:1px solid var(--border);
+
     border-radius:12px;
+
     padding:15px;
+
     margin-bottom:18px;
 }
 
 .mac-title{
     font-size:12px;
-    color:#777;
+    color:var(--muted);
+
     font-weight:bold;
+
     margin-bottom:7px;
 }
 
 .mac-value{
     font-size:17px;
     font-weight:bold;
-    color:#222;
-    word-break:break-all;
+
+    color:var(--text);
 }
 
 
-/* =========================
-   PHOTO
-========================= */
+/* PHOTO */
 
 .photo-box{
-    width:100%;
     display:flex;
     justify-content:center;
+
     margin:5px 0 22px;
 }
 
 .photo{
     width:220px;
     height:220px;
+
     border-radius:50%;
+
     overflow:hidden;
-    background:#e8f4ef;
-    border:6px solid #fff;
-    box-shadow:0 7px 28px rgba(0,0,0,.16);
+
+    background:#dff0e8;
+
+    border:6px solid var(--card);
+
+    box-shadow:0 7px 28px rgba(0,0,0,.18);
 }
 
 .photo svg{
     width:100%;
     height:100%;
-    display:block;
 }
 
 
-/* =========================
-   SPEED BOX
-========================= */
+/* SPEED */
 
 .speed-box{
-    background:#fff;
-    border:1px solid #ddd;
+    background:var(--card);
+
+    border:1px solid var(--border);
+
     border-radius:14px;
+
     padding:18px;
+
     margin-bottom:14px;
 }
 
 .speed-header{
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     margin-bottom:15px;
 }
 
 .speed-title{
     font-size:14px;
     font-weight:bold;
-    color:#555;
+    color:var(--muted);
 }
 
 .speed-live{
     font-size:11px;
+
     font-weight:bold;
+
     color:#08783d;
+
     background:#e8f7ef;
+
     padding:5px 9px;
+
     border-radius:6px;
 }
 
 
-/* =========================
-   DOWNLOAD UPLOAD VALUES
-========================= */
+/* SPEED VALUES */
 
 .speed-values{
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:12px;
+
     margin-bottom:18px;
 }
 
 .speed-value-box{
-    border:1px solid #e3e3e3;
+    border:1px solid var(--border);
+
     border-radius:10px;
+
     padding:12px;
-    background:#fafafa;
+
+    background:var(--bg);
 }
 
 .speed-value-title{
     font-size:11px;
+
     font-weight:bold;
+
     margin-bottom:5px;
 }
 
 .download-title{
-    color:#d90000;
+    color:#e00000;
 }
 
 .upload-title{
-    color:#08783d;
+    color:#0b9b54;
 }
 
 .speed-value{
     font-size:24px;
+
     font-weight:bold;
-    color:#222;
+
+    color:var(--text);
 }
 
-.speed-value-unit{
+.speed-unit{
     font-size:11px;
-    color:#777;
+
+    color:var(--muted);
+
     font-weight:bold;
 }
 
 
-/* =========================
-   GRAPH LEGEND
-========================= */
+/* LEGEND */
 
 .graph-legend{
     display:flex;
+
     justify-content:center;
-    align-items:center;
-    gap:24px;
+
+    gap:25px;
+
     margin-bottom:10px;
 }
 
-.legend-item{
+.legend{
     display:flex;
+
     align-items:center;
+
     gap:6px;
+
     font-size:12px;
+
     font-weight:bold;
 }
 
-.legend-line{
+.line{
     width:24px;
     height:3px;
+
     border-radius:10px;
 }
 
-.legend-download{
+.red{
     background:#e00000;
 }
 
-.legend-upload{
-    background:#0b8f4d;
+.green{
+    background:#0b9b54;
 }
 
 
-/* =========================
-   GRAPH
-========================= */
+/* GRAPH */
 
 .graph-container{
     width:100%;
     height:190px;
-    position:relative;
+
     border-radius:10px;
-    background:#f8faf9;
+
     overflow:hidden;
+
+    background:var(--bg);
 }
 
 #speedCanvas{
     width:100%;
     height:100%;
+
     display:block;
 }
 
-.speed-note{
+.note{
     text-align:center;
+
     font-size:11px;
-    color:#999;
+
+    color:var(--muted);
+
     margin-top:9px;
 }
 
 
-/* =========================
-   INFO
-========================= */
+/* INFO */
 
-.info{
-    background:#fff;
-    border:1px solid #ddd;
+.info,
+.billing,
+.bill,
+.address,
+.connection{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
     border-radius:12px;
+
     padding:15px;
+
     margin-bottom:12px;
 }
 
 .info-title{
     font-size:12px;
-    color:#777;
+
+    color:var(--muted);
+
     font-weight:bold;
+
     margin-bottom:7px;
 }
 
 .info-value{
     font-size:17px;
+
     font-weight:bold;
-    line-height:1.4;
-}
 
-
-/* =========================
-   BILLING DATE
-========================= */
-
-.billing-date{
-    background:#fff;
-    border:1px solid #ddd;
-    border-radius:12px;
-    padding:15px;
-    margin-bottom:12px;
-}
-
-.billing-title{
-    font-size:12px;
-    color:#777;
-    font-weight:bold;
-    margin-bottom:7px;
-}
-
-.billing-value{
-    font-size:18px;
-    font-weight:bold;
-    color:#222;
-}
-
-
-/* =========================
-   BILL
-========================= */
-
-.bill{
-    background:#fff;
-    border:1px solid #ddd;
-    border-radius:12px;
-    padding:15px;
-    margin-bottom:12px;
-}
-
-.bill-title{
-    font-size:12px;
-    color:#777;
-    font-weight:bold;
-    margin-bottom:6px;
+    color:var(--text);
 }
 
 .bill-value{
     font-size:22px;
+
     font-weight:bold;
-    color:#0b5d3b;
+
+    color:var(--green);
 }
 
 
-/* =========================
-   ADDRESS
-========================= */
-
-.address{
-    background:#fff;
-    border:1px solid #ddd;
-    border-radius:12px;
-    padding:15px;
-    margin-bottom:12px;
-}
-
-.address-title{
-    font-size:12px;
-    color:#777;
-    font-weight:bold;
-    margin-bottom:7px;
-}
-
-.address-value{
-    font-size:17px;
-    font-weight:bold;
-    line-height:1.4;
-}
-
-
-/* =========================
-   CONNECTION STATUS
-========================= */
-
-.connection{
-    background:#fff;
-    border:1px solid #ddd;
-    border-radius:12px;
-    padding:15px;
-}
-
-.connection-title{
-    font-size:12px;
-    color:#777;
-    font-weight:bold;
-    margin-bottom:8px;
-}
+/* ONLINE */
 
 .online{
     display:inline-flex;
+
     align-items:center;
+
     gap:7px;
+
     padding:7px 11px;
+
     background:#e8f7ef;
+
     color:#08783d;
+
     border-radius:7px;
+
     font-size:13px;
+
     font-weight:bold;
 }
 
-.online-dot{
+.dot{
     width:8px;
     height:8px;
-    border-radius:50%;
+
     background:#0aa854;
+
+    border-radius:50%;
+
+    box-shadow:0 0 6px #0aa854;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:500px){
 
@@ -462,10 +484,6 @@ body{
         font-size:18px;
     }
 
-    .logout{
-        padding:9px 13px;
-    }
-
     .container{
         padding:18px 13px 30px;
     }
@@ -473,23 +491,6 @@ body{
     .photo{
         width:200px;
         height:200px;
-    }
-
-    .value{
-        font-size:14px;
-    }
-
-    .mac-value{
-        font-size:15px;
-    }
-
-    .info-value,
-    .address-value{
-        font-size:15px;
-    }
-
-    .billing-value{
-        font-size:16px;
     }
 
     .speed-value{
@@ -502,13 +503,20 @@ body{
 
 </head>
 
-
 <body>
 
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- THEME -->
+
+<button
+    id="themeButton"
+    class="theme-button"
+    onclick="toggleTheme()">
+    ☾
+</button>
+
+
+<!-- HEADER -->
 
 <div class="header">
 
@@ -525,449 +533,343 @@ body{
 </div>
 
 
-
-<!-- =========================
-     MAIN
-========================= -->
-
 <div class="container">
 
 
-    <!-- USERNAME + PASSWORD -->
+<!-- USERNAME PASSWORD -->
 
-    <div class="top">
+<div class="top">
 
-        <div class="box">
+    <div class="box">
 
-            <div class="label">
-                USERNAME
-            </div>
-
-            <div
-                class="value"
-                id="username">
-                ADMIN
-            </div>
-
+        <div class="label">
+            USERNAME
         </div>
 
-
-        <div class="box">
-
-            <div class="label">
-                PASSWORD
-            </div>
-
-            <div
-                class="value"
-                id="password">
-                12345
-            </div>
-
+        <div
+            class="value"
+            id="username">
+            ADMIN
         </div>
 
     </div>
 
 
+    <div class="box">
 
-    <!-- MAC -->
-
-    <div class="mac-box">
-
-        <div class="mac-title">
-            MAC
+        <div class="label">
+            PASSWORD
         </div>
 
-        <div class="mac-value">
-            22:91:fb:b1:a5:41
+        <div class="value">
+            12345
         </div>
 
     </div>
 
+</div>
 
 
-    <!-- =========================
-         CUSTOMER PHOTO
-    ========================= -->
+<!-- MAC -->
 
-    <div class="photo-box">
+<div class="mac-box">
 
-        <div class="photo">
-
-            <svg
-                id="profilePhoto"
-                viewBox="0 0 500 500"
-                xmlns="http://www.w3.org/2000/svg">
-
-                <!-- Background -->
-
-                <rect
-                    width="500"
-                    height="500"
-                    fill="#e8f4ef"/>
-
-
-                <!-- Circle -->
-
-                <circle
-                    cx="250"
-                    cy="250"
-                    r="210"
-                    fill="#d2eadf"/>
-
-
-                <!-- Body -->
-
-                <path
-                    d="M115 470
-                       C125 350 180 315 250 315
-                       C320 315 375 350 385 470
-                       Z"
-                    fill="#0b5d3b"/>
-
-
-                <!-- Neck -->
-
-                <path
-                    d="M205 285
-                       L205 350
-                       C205 365 220 375 250 375
-                       C280 375 295 365 295 350
-                       L295 285
-                       Z"
-                    fill="#d99b72"/>
-
-
-                <!-- Face -->
-
-                <ellipse
-                    cx="250"
-                    cy="220"
-                    rx="105"
-                    ry="125"
-                    fill="#e5aa7d"/>
-
-
-                <!-- Hair -->
-
-                <path
-                    d="M150 220
-                       C140 135 180 80 250 80
-                       C330 80 370 145 350 230
-                       C330 185 305 165 270 160
-                       C225 153 190 175 150 220
-                       Z"
-                    fill="#202020"/>
-
-
-                <!-- Left ear -->
-
-                <ellipse
-                    cx="148"
-                    cy="235"
-                    rx="18"
-                    ry="30"
-                    fill="#d99b72"/>
-
-
-                <!-- Right ear -->
-
-                <ellipse
-                    cx="352"
-                    cy="235"
-                    rx="18"
-                    ry="30"
-                    fill="#d99b72"/>
-
-
-                <!-- Eyes -->
-
-                <ellipse
-                    cx="215"
-                    cy="225"
-                    rx="8"
-                    ry="10"
-                    fill="#222"/>
-
-                <ellipse
-                    cx="285"
-                    cy="225"
-                    rx="8"
-                    ry="10"
-                    fill="#222"/>
-
-
-                <!-- Nose -->
-
-                <path
-                    d="M250 225
-                       L238 265
-                       L260 265"
-                    fill="none"
-                    stroke="#a66d4c"
-                    stroke-width="6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"/>
-
-
-                <!-- Smile -->
-
-                <path
-                    d="M220 285
-                       Q250 305 280 285"
-                    fill="none"
-                    stroke="#8c4938"
-                    stroke-width="6"
-                    stroke-linecap="round"/>
-
-
-                <!-- Shirt -->
-
-                <path
-                    d="M170 355
-                       L250 420
-                       L330 355
-                       C370 370 390 420 400 470
-                       L100 470
-                       C110 420 130 370 170 355
-                       Z"
-                    fill="#0b5d3b"/>
-
-            </svg>
-
-        </div>
-
+    <div class="mac-title">
+        MAC
     </div>
 
-
-
-    <!-- =========================
-         LIVE SPEED
-    ========================= -->
-
-    <div class="speed-box">
-
-        <div class="speed-header">
-
-            <div class="speed-title">
-                📶 INTERNET SPEED
-            </div>
-
-            <div
-                class="speed-live"
-                id="speedStatus">
-                ● LIVE
-            </div>
-
-        </div>
-
-
-        <!-- DOWNLOAD + UPLOAD -->
-
-        <div class="speed-values">
-
-            <div class="speed-value-box">
-
-                <div class="speed-value-title download-title">
-                    DOWNLOAD
-                </div>
-
-                <div
-                    class="speed-value"
-                    id="downloadSpeed">
-                    00
-                </div>
-
-                <span
-                    class="speed-value-unit"
-                    id="downloadUnit">
-                    KBPS
-                </span>
-
-            </div>
-
-
-            <div class="speed-value-box">
-
-                <div class="speed-value-title upload-title">
-                    UPLOAD
-                </div>
-
-                <div
-                    class="speed-value"
-                    id="uploadSpeed">
-                    00
-                </div>
-
-                <span
-                    class="speed-value-unit"
-                    id="uploadUnit">
-                    KBPS
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- GRAPH LEGEND -->
-
-        <div class="graph-legend">
-
-            <div class="legend-item">
-
-                <span class="legend-line legend-download"></span>
-
-                <span>
-                    Download
-                </span>
-
-            </div>
-
-
-            <div class="legend-item">
-
-                <span class="legend-line legend-upload"></span>
-
-                <span>
-                    Upload
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- GRAPH -->
-
-        <div class="graph-container">
-
-            <canvas
-                id="speedCanvas">
-            </canvas>
-
-        </div>
-
-
-        <div class="speed-note">
-            Live download & upload speed
-        </div>
-
+    <div class="mac-value">
+        22:91:fb:b1:a5:41
     </div>
 
+</div>
 
 
-    <!-- NAME -->
+<!-- PHOTO -->
 
-    <div class="info">
+<div class="photo-box">
 
-        <div class="info-title">
-            NAME
-        </div>
+<div class="photo">
 
-        <div class="info-value">
-            Shemanto Islam
-        </div>
+<svg
+viewBox="0 0 500 500"
+xmlns="http://www.w3.org/2000/svg">
 
-    </div>
+<rect
+width="500"
+height="500"
+fill="#e8f4ef"/>
+
+<circle
+cx="250"
+cy="250"
+r="210"
+fill="#d2eadf"/>
+
+<path
+d="M115 470
+C125 350 180 315 250 315
+C320 315 375 350 385 470Z"
+fill="#0b5d3b"/>
+
+<ellipse
+cx="250"
+cy="220"
+rx="105"
+ry="125"
+fill="#e5aa7d"/>
+
+<path
+d="M150 220
+C140 135 180 80 250 80
+C330 80 370 145 350 230
+C330 185 305 165 270 160
+C225 153 190 175 150 220Z"
+fill="#202020"/>
+
+<ellipse
+cx="215"
+cy="225"
+rx="8"
+ry="10"
+fill="#222"/>
+
+<ellipse
+cx="285"
+cy="225"
+rx="8"
+ry="10"
+fill="#222"/>
+
+<path
+d="M250 225L238 265L260 265"
+fill="none"
+stroke="#a66d4c"
+stroke-width="6"/>
+
+<path
+d="M220 285Q250 305 280 285"
+fill="none"
+stroke="#8c4938"
+stroke-width="6"/>
+
+</svg>
+
+</div>
+
+</div>
 
 
+<!-- SPEED -->
 
-    <!-- BILLING DATE -->
+<div class="speed-box">
 
-    <div class="billing-date">
+<div class="speed-header">
 
-        <div class="billing-title">
-            BILLING DATE
-        </div>
+<div class="speed-title">
+📶 INTERNET SPEED
+</div>
 
-        <div class="billing-value">
-            01-01-2027
-        </div>
+<div class="speed-live">
+● LIVE
+</div>
 
-    </div>
-
-
-
-    <!-- BILL -->
-
-    <div class="bill">
-
-        <div class="bill-title">
-            BILL
-        </div>
-
-        <div class="bill-value">
-            500 tk
-        </div>
-
-    </div>
+</div>
 
 
+<div class="speed-values">
 
-    <!-- ADDRESS -->
+<div class="speed-value-box">
 
-    <div class="address">
+<div class="speed-value-title download-title">
+DOWNLOAD
+</div>
 
-        <div class="address-title">
-            ADDRESS
-        </div>
+<span
+id="downloadSpeed"
+class="speed-value">
+00
+</span>
 
-        <div class="address-value">
-            sagorika road pahartali Chittagong
-        </div>
+<span
+id="downloadUnit"
+class="speed-unit">
+KBPS
+</span>
 
-    </div>
+</div>
 
 
+<div class="speed-value-box">
 
-    <!-- CONNECTION STATUS -->
+<div class="speed-value-title upload-title">
+UPLOAD
+</div>
 
-    <div class="connection">
+<span
+id="uploadSpeed"
+class="speed-value">
+00
+</span>
 
-        <div class="connection-title">
-            CONNECTING STATUS
-        </div>
+<span
+id="uploadUnit"
+class="speed-unit">
+KBPS
+</span>
 
-        <div class="online">
+</div>
 
-            <span class="online-dot"></span>
+</div>
 
-            Online
 
-        </div>
+<!-- LEGEND -->
 
-    </div>
+<div class="graph-legend">
+
+<div class="legend">
+
+<span class="line red"></span>
+
+Download
+
+</div>
+
+
+<div class="legend">
+
+<span class="line green"></span>
+
+Upload
+
+</div>
+
+</div>
+
+
+<!-- GRAPH -->
+
+<div class="graph-container">
+
+<canvas
+id="speedCanvas">
+</canvas>
+
+</div>
+
+<div class="note">
+Live network activity
+</div>
+
+</div>
+
+
+<!-- NAME -->
+
+<div class="info">
+
+<div class="info-title">
+NAME
+</div>
+
+<div class="info-value">
+Shemanto Islam
+</div>
+
+</div>
+
+
+<!-- BILLING -->
+
+<div class="billing">
+
+<div class="info-title">
+BILLING DATE
+</div>
+
+<div class="info-value">
+01-01-2027
+</div>
+
+</div>
+
+
+<!-- BILL -->
+
+<div class="bill">
+
+<div class="info-title">
+BILL
+</div>
+
+<div class="bill-value">
+500 tk
+</div>
+
+</div>
+
+
+<!-- ADDRESS -->
+
+<div class="address">
+
+<div class="info-title">
+ADDRESS
+</div>
+
+<div class="info-value">
+sagorika road pahartali Chittagong
+</div>
+
+</div>
+
+
+<!-- STATUS -->
+
+<div class="connection">
+
+<div class="info-title">
+CONNECTING STATUS
+</div>
+
+<div class="online">
+
+<span class="dot"></span>
+
+Online
+
+</div>
+
+</div>
 
 
 </div>
 
 
-
 <script>
 
-
-/* =====================================================
-   LOGIN CHECK
-===================================================== */
+/* =========================
+   LOGIN
+========================= */
 
 if(
-    sessionStorage.getItem("loggedIn") !== "true"
+    sessionStorage.getItem("loggedIn")
+    !== "true"
 ){
 
-    window.location.replace("index.html");
+    window.location.replace(
+        "index.html"
+    );
 
 }
 
 
-/* =====================================================
+/* =========================
    USERNAME
-===================================================== */
+========================= */
 
 const savedUsername =
-    sessionStorage.getItem("username");
+sessionStorage.getItem("username");
 
 if(savedUsername){
 
@@ -979,9 +881,9 @@ if(savedUsername){
 }
 
 
-/* =====================================================
+/* =========================
    LOGOUT
-===================================================== */
+========================= */
 
 function logout(){
 
@@ -1000,80 +902,134 @@ function logout(){
 }
 
 
-/* =====================================================
-   SPEED GRAPH
-===================================================== */
+/* =========================
+   THEME
+========================= */
+
+const themeButton =
+document.getElementById(
+    "themeButton"
+);
+
+
+function loadTheme(){
+
+    const theme =
+    localStorage.getItem(
+        "customerTheme"
+    );
+
+
+    if(theme === "dark"){
+
+        document.body.classList.add(
+            "dark"
+        );
+
+        themeButton.textContent =
+            "☀";
+
+    }
+
+}
+
+
+function toggleTheme(){
+
+    document.body.classList.toggle(
+        "dark"
+    );
+
+
+    const dark =
+    document.body.classList.contains(
+        "dark"
+    );
+
+
+    localStorage.setItem(
+        "customerTheme",
+        dark
+        ? "dark"
+        : "light"
+    );
+
+
+    themeButton.textContent =
+        dark
+        ? "☀"
+        : "☾";
+
+
+    drawGraph();
+
+}
+
+
+loadTheme();
+
+
+/* =========================
+   GRAPH
+========================= */
 
 const canvas =
-    document.getElementById(
-        "speedCanvas"
-    );
+document.getElementById(
+    "speedCanvas"
+);
 
 const ctx =
-    canvas.getContext("2d");
+canvas.getContext("2d");
 
 
-const downloadSpeed =
-    document.getElementById(
-        "downloadSpeed"
-    );
+const downloadElement =
+document.getElementById(
+    "downloadSpeed"
+);
 
 const downloadUnit =
-    document.getElementById(
-        "downloadUnit"
-    );
+document.getElementById(
+    "downloadUnit"
+);
 
 
-const uploadSpeed =
-    document.getElementById(
-        "uploadSpeed"
-    );
+const uploadElement =
+document.getElementById(
+    "uploadSpeed"
+);
 
 const uploadUnit =
-    document.getElementById(
-        "uploadUnit"
-    );
-
-
-const speedStatus =
-    document.getElementById(
-        "speedStatus"
-    );
+document.getElementById(
+    "uploadUnit"
+);
 
 
 let downloadHistory = [];
 
 let uploadHistory = [];
 
-const MAX_POINTS = 40;
+const MAX_POINTS = 60;
 
 
-/* =====================================================
-   CANVAS RESIZE
-===================================================== */
+/* =========================
+   RESIZE
+========================= */
 
 function resizeCanvas(){
 
     const rect =
-        canvas.parentElement
-        .getBoundingClientRect();
+    canvas.parentElement
+    .getBoundingClientRect();
 
     const ratio =
-        window.devicePixelRatio || 1;
+    window.devicePixelRatio || 1;
 
 
     canvas.width =
-        rect.width * ratio;
+    rect.width * ratio;
 
     canvas.height =
-        rect.height * ratio;
-
-
-    canvas.style.width =
-        rect.width + "px";
-
-    canvas.style.height =
-        rect.height + "px";
+    rect.height * ratio;
 
 
     ctx.setTransform(
@@ -1097,15 +1053,15 @@ window.addEventListener(
 );
 
 
-/* =====================================================
-   FORMAT SPEED
-===================================================== */
+/* =========================
+   FORMAT
+========================= */
 
-function formatSpeed(mbps){
+function formatSpeed(bytesPerSecond){
 
     if(
-        !isFinite(mbps) ||
-        mbps <= 0
+        !bytesPerSecond ||
+        bytesPerSecond <= 0
     ){
 
         return {
@@ -1116,17 +1072,17 @@ function formatSpeed(mbps){
     }
 
 
-    if(mbps < 1){
+    const kb =
+    bytesPerSecond / 1024;
 
-        const kbps =
-            mbps * 1000;
 
+    if(kb < 1024){
 
         return {
             value:
-                kbps < 10
-                ? kbps.toFixed(1)
-                : Math.round(kbps),
+                kb < 10
+                ? kb.toFixed(1)
+                : Math.round(kb),
 
             unit:"KBPS"
         };
@@ -1136,7 +1092,7 @@ function formatSpeed(mbps){
 
     return {
         value:
-            mbps.toFixed(1),
+            (kb / 1024).toFixed(1),
 
         unit:"MBPS"
     };
@@ -1144,17 +1100,185 @@ function formatSpeed(mbps){
 }
 
 
-/* =====================================================
-   DRAW GRAPH
-===================================================== */
+/* =========================
+   BROWSER ACTIVITY
+========================= */
+
+let lastDown =
+performance.now();
+
+let lastUp =
+performance.now();
+
+
+let downBytes = 0;
+
+let upBytes = 0;
+
+
+/*
+   Browser cannot read the complete
+   phone traffic.
+
+   This function observes page-level
+   activity where available.
+*/
+
+function updateSpeed(){
+
+    const now =
+    performance.now();
+
+
+    const elapsed =
+    (now - lastDown) / 1000;
+
+
+    /*
+       Estimate current page network
+       activity from Performance entries.
+    */
+
+    let totalBytes = 0;
+
+
+    try{
+
+        const resources =
+        performance.getEntriesByType(
+            "resource"
+        );
+
+
+        resources.forEach(
+            resource=>{
+
+                if(
+                    resource.transferSize
+                ){
+
+                    totalBytes +=
+                    resource.transferSize;
+
+                }
+
+            }
+        );
+
+    }
+    catch(e){}
+
+
+    /*
+       We only use newly observed
+       browser resource traffic.
+    */
+
+    const current =
+    Math.max(
+        0,
+        totalBytes - downBytes
+    );
+
+
+    let downloadBps = 0;
+
+
+    if(elapsed > 0){
+
+        downloadBps =
+        current / elapsed;
+
+    }
+
+
+    downBytes =
+    totalBytes;
+
+    lastDown =
+    now;
+
+
+    /*
+       Upload cannot be read globally
+       by normal browser JavaScript.
+       Keep it zero unless your page
+       itself uploads data.
+    */
+
+    let uploadBps = 0;
+
+
+    const d =
+    formatSpeed(
+        downloadBps
+    );
+
+    const u =
+    formatSpeed(
+        uploadBps
+    );
+
+
+    downloadElement.textContent =
+    d.value;
+
+    downloadUnit.textContent =
+    d.unit;
+
+
+    uploadElement.textContent =
+    u.value;
+
+    uploadUnit.textContent =
+    u.unit;
+
+
+    downloadHistory.push(
+        downloadBps / 1024 / 1024
+    );
+
+    uploadHistory.push(
+        uploadBps / 1024 / 1024
+    );
+
+
+    if(
+        downloadHistory.length >
+        MAX_POINTS
+    ){
+
+        downloadHistory.shift();
+
+    }
+
+
+    if(
+        uploadHistory.length >
+        MAX_POINTS
+    ){
+
+        uploadHistory.shift();
+
+    }
+
+
+    drawGraph();
+
+}
+
+
+/* =========================
+   DRAW
+========================= */
 
 function drawGraph(){
 
     const width =
-        canvas.parentElement.clientWidth;
+    canvas.parentElement.clientWidth;
 
     const height =
-        canvas.parentElement.clientHeight;
+    canvas.parentElement.clientHeight;
 
 
     ctx.clearRect(
@@ -1165,22 +1289,29 @@ function drawGraph(){
     );
 
 
-    /* GRID */
+    const dark =
+    document.body.classList.contains(
+        "dark"
+    );
+
 
     ctx.strokeStyle =
-        "#e5e9e7";
+    dark
+    ? "#292929"
+    : "#e4e9e6";
+
 
     ctx.lineWidth = 1;
 
 
     for(
-        let i = 1;
-        i < 5;
+        let i=1;
+        i<5;
         i++
     ){
 
         const y =
-            (height / 5) * i;
+        (height/5)*i;
 
 
         ctx.beginPath();
@@ -1200,84 +1331,66 @@ function drawGraph(){
     }
 
 
-    const allValues =
-        downloadHistory.concat(
-            uploadHistory
-        );
+    const values =
+    downloadHistory.concat(
+        uploadHistory
+    );
 
 
-    if(allValues.length === 0){
+    if(values.length === 0){
 
         return;
 
     }
 
 
-    let maxSpeed =
-        Math.max(
-            ...allValues
-        );
+    let max =
+    Math.max(
+        ...values,
+        0.001
+    );
 
 
-    if(
-        !isFinite(maxSpeed) ||
-        maxSpeed <= 0
-    ){
+    if(max < 0.01){
 
-        maxSpeed = 1;
+        max = 0.01;
 
     }
 
 
-    maxSpeed =
-        Math.ceil(maxSpeed);
+    max *= 1.2;
 
-
-    if(maxSpeed < 1){
-
-        maxSpeed = 1;
-
-    }
-
-
-    /* =========================
-       DOWNLOAD RED
-    ========================= */
 
     drawLine(
         downloadHistory,
         "#e00000",
         width,
         height,
-        maxSpeed
+        max
     );
 
 
-    /* =========================
-       UPLOAD GREEN
-    ========================= */
-
     drawLine(
         uploadHistory,
-        "#0b8f4d",
+        "#0b9b54",
         width,
         height,
-        maxSpeed
+        max
     );
 
 }
 
 
-/* =====================================================
-   DRAW ONE LINE
-===================================================== */
+/* =========================
+   DRAW LINE
+========================= */
 
 function drawLine(
     history,
-    lineColor,
+    color,
     width,
     height,
-    maxSpeed
+    max
 ){
 
     if(history.length === 0){
@@ -1291,32 +1404,29 @@ function drawLine(
 
 
     history.forEach(
-        (speed,index)=>{
+        (value,index)=>{
 
             const x =
-                history.length === 1
-                ? width / 2
-                :
+            history.length === 1
+            ? width/2
+            :
+            (
+                index /
                 (
-                    index /
-                    (
-                        history.length - 1
-                    )
-                ) * width;
+                    history.length-1
+                )
+            ) * width;
 
 
             const y =
-                height -
-                (
-                    (
-                        speed /
-                        maxSpeed
-                    ) *
-                    (
-                        height - 15
-                    )
-                ) -
-                7;
+            height -
+            (
+                value/max
+            ) *
+            (
+                height-15
+            ) -
+            7;
 
 
             if(index === 0){
@@ -1341,15 +1451,15 @@ function drawLine(
 
 
     ctx.strokeStyle =
-        lineColor;
+    color;
 
     ctx.lineWidth = 3;
 
     ctx.lineJoin =
-        "round";
+    "round";
 
     ctx.lineCap =
-        "round";
+    "round";
 
 
     ctx.stroke();
@@ -1357,139 +1467,23 @@ function drawLine(
 }
 
 
-/* =====================================================
-   SIMULATED LIVE GRAPH
-===================================================== */
-
-function updateLiveGraph(){
-
-    /*
-       Browser cannot directly read the ISP router's
-       actual traffic without a proper speed-test server.
-
-       This keeps the graph alive until a real
-       speed-test backend is connected.
-    */
-
-    const connection =
-        navigator.connection ||
-        navigator.mozConnection ||
-        navigator.webkitConnection;
-
-
-    let base =
-        connection &&
-        typeof connection.downlink === "number"
-        ? connection.downlink
-        : 0;
-
-
-    /*
-       Keep idle speed near zero.
-    */
-
-    if(
-        !connection ||
-        base <= 0
-    ){
-
-        base = 0;
-
-    }
-
-
-    /*
-       Small display value for the graph.
-    */
-
-    const download =
-        base > 0
-        ? base
-        : 0;
-
-
-    const upload =
-        base > 0
-        ? base * 0.15
-        : 0;
-
-
-    downloadHistory.push(
-        download
-    );
-
-    uploadHistory.push(
-        upload
-    );
-
-
-    if(
-        downloadHistory.length >
-        MAX_POINTS
-    ){
-
-        downloadHistory.shift();
-
-    }
-
-
-    if(
-        uploadHistory.length >
-        MAX_POINTS
-    ){
-
-        uploadHistory.shift();
-
-    }
-
-
-    const d =
-        formatSpeed(
-            download
-        );
-
-    const u =
-        formatSpeed(
-            upload
-        );
-
-
-    downloadSpeed.textContent =
-        d.value;
-
-    downloadUnit.textContent =
-        d.unit;
-
-
-    uploadSpeed.textContent =
-        u.value;
-
-    uploadUnit.textContent =
-        u.unit;
-
-
-    drawGraph();
-
-}
-
-
-/* =====================================================
+/* =========================
    START
-===================================================== */
+========================= */
 
 resizeCanvas();
 
 
-updateLiveGraph();
-
+/*
+   Update every 0.1 second
+*/
 
 setInterval(
-    updateLiveGraph,
+    updateSpeed,
     100
 );
 
 </script>
-
 
 </body>
 </html>
