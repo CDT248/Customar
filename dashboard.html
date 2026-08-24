@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>User Dashboard</title>
+<title>Customer Portal</title>
 
 <style>
 
@@ -63,7 +64,7 @@ body{
 
 
 /* =========================
-   MAIN
+   MAIN CONTAINER
 ========================= */
 
 .container{
@@ -75,14 +76,14 @@ body{
 
 
 /* =========================
-   TOP USERNAME PASSWORD
+   USERNAME PASSWORD
 ========================= */
 
 .top{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:12px;
-    margin-bottom:14px;
+    margin-bottom:12px;
 }
 
 .box{
@@ -108,6 +109,33 @@ body{
 
 
 /* =========================
+   MAC
+========================= */
+
+.mac-box{
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:18px;
+}
+
+.mac-title{
+    font-size:12px;
+    color:#777;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.mac-value{
+    font-size:17px;
+    font-weight:bold;
+    color:#222;
+    word-break:break-all;
+}
+
+
+/* =========================
    PHOTO
 ========================= */
 
@@ -115,7 +143,7 @@ body{
     width:100%;
     display:flex;
     justify-content:center;
-    margin:18px 0 22px;
+    margin:8px 0 22px;
 }
 
 .photo{
@@ -123,7 +151,7 @@ body{
     height:220px;
     border-radius:50%;
     overflow:hidden;
-    background:#ddd;
+    background:#e5e5e5;
     border:6px solid #fff;
     box-shadow:0 5px 25px rgba(0,0,0,.15);
 }
@@ -132,6 +160,81 @@ body{
     width:100%;
     height:100%;
     object-fit:cover;
+}
+
+
+/* =========================
+   SPEED GRAPH
+========================= */
+
+.speed-box{
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:14px;
+    padding:18px;
+    margin-bottom:14px;
+}
+
+.speed-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.speed-title{
+    font-size:14px;
+    font-weight:bold;
+    color:#555;
+}
+
+.speed-live{
+    font-size:11px;
+    font-weight:bold;
+    color:#08783d;
+    background:#e8f7ef;
+    padding:5px 9px;
+    border-radius:6px;
+}
+
+.speed-current{
+    text-align:center;
+    margin:5px 0 18px;
+}
+
+.speed-number{
+    font-size:38px;
+    font-weight:bold;
+    color:#0b5d3b;
+}
+
+.speed-unit{
+    font-size:15px;
+    color:#777;
+    margin-left:4px;
+    font-weight:bold;
+}
+
+.graph-container{
+    width:100%;
+    height:180px;
+    position:relative;
+    border-radius:10px;
+    background:#f8faf9;
+    overflow:hidden;
+}
+
+#speedCanvas{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+.speed-note{
+    text-align:center;
+    font-size:11px;
+    color:#999;
+    margin-top:8px;
 }
 
 
@@ -188,10 +291,10 @@ body{
 
 
 /* =========================
-   WIFI
+   BILLING DATE
 ========================= */
 
-.wifi{
+.billing-date{
     background:#fff;
     border:1px solid #ddd;
     border-radius:12px;
@@ -199,107 +302,56 @@ body{
     margin-bottom:12px;
 }
 
-.wifi-title{
+.billing-title{
     font-size:12px;
     color:#777;
     font-weight:bold;
     margin-bottom:7px;
 }
 
-.wifi-value{
-    font-size:17px;
+.billing-value{
+    font-size:18px;
     font-weight:bold;
-}
-
-.status{
-    display:inline-block;
-    margin-top:7px;
-    padding:5px 9px;
-    background:#e8f7ef;
-    color:#08783d;
-    border-radius:6px;
-    font-size:11px;
-    font-weight:bold;
+    color:#222;
 }
 
 
 /* =========================
-   SPEED BOX
+   CONNECTION STATUS
 ========================= */
 
-.speed-box{
+.connection{
     background:#fff;
     border:1px solid #ddd;
-    border-radius:14px;
-    padding:18px;
-    margin-top:14px;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:12px;
 }
 
-.speed-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:15px;
-}
-
-.speed-title{
-    font-size:14px;
-    font-weight:bold;
-    color:#555;
-}
-
-.speed-live{
-    font-size:11px;
-    font-weight:bold;
-    color:#08783d;
-    background:#e8f7ef;
-    padding:5px 9px;
-    border-radius:6px;
-}
-
-.speed-current{
-    text-align:center;
-    margin:5px 0 18px;
-}
-
-.speed-number{
-    font-size:38px;
-    font-weight:bold;
-    color:#0b5d3b;
-}
-
-.speed-unit{
-    font-size:15px;
+.connection-title{
+    font-size:12px;
     color:#777;
-    margin-left:4px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.online{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:7px 11px;
+    background:#e8f7ef;
+    color:#08783d;
+    border-radius:7px;
+    font-size:13px;
     font-weight:bold;
 }
 
-.speed-note{
-    text-align:center;
-    font-size:11px;
-    color:#999;
-    margin-top:8px;
-}
-
-
-/* =========================
-   GRAPH
-========================= */
-
-.graph-container{
-    width:100%;
-    height:180px;
-    position:relative;
-    border-radius:10px;
-    background:#f8faf9;
-    overflow:hidden;
-}
-
-#speedCanvas{
-    width:100%;
-    height:100%;
-    display:block;
+.online-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#0aa854;
 }
 
 
@@ -335,8 +387,16 @@ body{
         font-size:14px;
     }
 
+    .mac-value{
+        font-size:15px;
+    }
+
     .info-value{
         font-size:15px;
+    }
+
+    .billing-value{
+        font-size:16px;
     }
 
     .speed-number{
@@ -360,7 +420,7 @@ body{
 <div class="header">
 
     <div class="title">
-        User Dashboard
+        Customer Portal
     </div>
 
     <button
@@ -380,7 +440,9 @@ body{
 <div class="container">
 
 
-    <!-- USERNAME + PASSWORD -->
+    <!-- =========================
+         USERNAME + PASSWORD
+    ========================= -->
 
     <div class="top">
 
@@ -417,7 +479,27 @@ body{
 
 
 
-    <!-- PHOTO -->
+    <!-- =========================
+         MAC
+    ========================= -->
+
+    <div class="mac-box">
+
+        <div class="mac-title">
+            MAC
+        </div>
+
+        <div class="mac-value">
+            22:91:fb:b1:a5:41
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         PHOTO
+    ========================= -->
 
     <div class="photo-box">
 
@@ -426,94 +508,8 @@ body{
             <img
                 id="profilePhoto"
                 src="https://via.placeholder.com/500"
-                alt="Profile Photo">
+                alt="Customer Photo">
 
-        </div>
-
-    </div>
-
-
-
-    <!-- MAC -->
-
-    <div class="info">
-
-        <div class="info-title">
-            MAC
-        </div>
-
-        <div class="info-value">
-            22:91:fb:b1:a5:41
-        </div>
-
-    </div>
-
-
-
-    <!-- NAME -->
-
-    <div class="info">
-
-        <div class="info-title">
-            NAME
-        </div>
-
-        <div class="info-value">
-            Shemanto Islam
-        </div>
-
-    </div>
-
-
-
-    <!-- ADDRESS -->
-
-    <div class="info">
-
-        <div class="info-title">
-            ADDRESS
-        </div>
-
-        <div class="info-value">
-            sagorika road pahartali Chittagong
-        </div>
-
-    </div>
-
-
-
-    <!-- BILL -->
-
-    <div class="bill">
-
-        <div class="bill-title">
-            BILL
-        </div>
-
-        <div class="bill-value">
-            500 tk
-        </div>
-
-    </div>
-
-
-
-    <!-- WIFI -->
-
-    <div class="wifi">
-
-        <div class="wifi-title">
-            OPERATOR / CONNECTED WIFI
-        </div>
-
-        <div
-            class="wifi-value"
-            id="wifiName">
-            Checking...
-        </div>
-
-        <div class="status">
-            ● Connected
         </div>
 
     </div>
@@ -541,8 +537,6 @@ body{
         </div>
 
 
-        <!-- CURRENT SPEED -->
-
         <div class="speed-current">
 
             <span
@@ -558,8 +552,6 @@ body{
         </div>
 
 
-        <!-- GRAPH -->
-
         <div class="graph-container">
 
             <canvas id="speedCanvas"></canvas>
@@ -569,6 +561,100 @@ body{
 
         <div class="speed-note">
             Estimated network speed • Updates every 2 seconds
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         NAME
+    ========================= -->
+
+    <div class="info">
+
+        <div class="info-title">
+            NAME
+        </div>
+
+        <div class="info-value">
+            Shemanto Islam
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         BILLING DATE
+    ========================= -->
+
+    <div class="billing-date">
+
+        <div class="billing-title">
+            BILLING DATE
+        </div>
+
+        <div class="billing-value">
+            01-01-2027
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         BILL
+    ========================= -->
+
+    <div class="bill">
+
+        <div class="bill-title">
+            BILL
+        </div>
+
+        <div class="bill-value">
+            500 tk
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         ADDRESS
+    ========================= -->
+
+    <div class="info">
+
+        <div class="info-title">
+            ADDRESS
+        </div>
+
+        <div class="info-value">
+            sagorika road pahartali Chittagong
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         CONNECTION STATUS
+    ========================= -->
+
+    <div class="connection">
+
+        <div class="connection-title">
+            CONNECTING STATUS
+        </div>
+
+        <div class="online">
+
+            <span class="online-dot"></span>
+
+            Online
+
         </div>
 
     </div>
@@ -623,56 +709,7 @@ function logout(){
 
 
 /* =====================================================
-   WIFI / NETWORK INFORMATION
-===================================================== */
-
-function getNetworkInfo(){
-
-    const connection =
-        navigator.connection ||
-        navigator.mozConnection ||
-        navigator.webkitConnection;
-
-    const wifiElement =
-        document.getElementById("wifiName");
-
-    if(!connection){
-
-        wifiElement.textContent =
-            "Connected Network";
-
-        return;
-
-    }
-
-
-    if(connection.type === "wifi"){
-
-        wifiElement.textContent =
-            "Wi-Fi Connected";
-
-    }
-    else if(connection.type === "cellular"){
-
-        wifiElement.textContent =
-            "Mobile Data";
-
-    }
-    else{
-
-        wifiElement.textContent =
-            "Connected Network";
-
-    }
-
-}
-
-getNetworkInfo();
-
-
-
-/* =====================================================
-   SPEED
+   SPEED GRAPH
 ===================================================== */
 
 const canvas =
@@ -702,17 +739,26 @@ function resizeCanvas(){
     const rect =
         canvas.parentElement.getBoundingClientRect();
 
+    const ratio =
+        window.devicePixelRatio || 1;
+
     canvas.width =
-        rect.width * window.devicePixelRatio;
+        rect.width * ratio;
 
     canvas.height =
-        rect.height * window.devicePixelRatio;
+        rect.height * ratio;
+
+    canvas.style.width =
+        rect.width + "px";
+
+    canvas.style.height =
+        rect.height + "px";
 
     ctx.setTransform(
-        window.devicePixelRatio,
+        ratio,
         0,
         0,
-        window.devicePixelRatio,
+        ratio,
         0,
         0
     );
@@ -721,6 +767,7 @@ function resizeCanvas(){
 
 }
 
+
 window.addEventListener(
     "resize",
     resizeCanvas
@@ -728,7 +775,7 @@ window.addEventListener(
 
 
 /* =====================================================
-   GET ESTIMATED SPEED
+   GET SPEED
 ===================================================== */
 
 function getCurrentSpeed(){
@@ -833,17 +880,16 @@ function drawGraph(){
     );
 
 
-    if(speedHistory.length < 1){
+    if(speedHistory.length === 0){
 
         return;
 
     }
 
 
-    /* GRAPH MAX */
-
     let maxSpeed =
         Math.max(...speedHistory);
+
 
     if(maxSpeed < 10){
 
@@ -858,7 +904,9 @@ function drawGraph(){
     }
 
 
-    /* GRID */
+    /* =========================
+       GRID
+    ========================= */
 
     ctx.strokeStyle =
         "#e4e9e6";
@@ -888,7 +936,9 @@ function drawGraph(){
     }
 
 
-    /* GRAPH LINE */
+    /* =========================
+       GRAPH LINE
+    ========================= */
 
     ctx.beginPath();
 
@@ -899,16 +949,19 @@ function drawGraph(){
             const x =
                 speedHistory.length === 1
                 ? width / 2
-                : (index /
-                    (speedHistory.length - 1))
-                    * width;
+                : (
+                    index /
+                    (speedHistory.length - 1)
+                ) * width;
 
 
             const y =
                 height -
-                ((speed / maxSpeed)
-                * (height - 15))
-                - 7;
+                (
+                    (speed / maxSpeed) *
+                    (height - 15)
+                ) -
+                7;
 
 
             if(index === 0){
@@ -937,55 +990,58 @@ function drawGraph(){
 
     ctx.lineWidth = 3;
 
-    ctx.lineJoin = "round";
+    ctx.lineJoin =
+        "round";
 
-    ctx.lineCap = "round";
+    ctx.lineCap =
+        "round";
 
     ctx.stroke();
 
 
-    /* CURRENT POINT */
+    /* =========================
+       CURRENT POINT
+    ========================= */
 
-    if(speedHistory.length){
+    const lastIndex =
+        speedHistory.length - 1;
 
-        const lastIndex =
-            speedHistory.length - 1;
-
-        const lastSpeed =
-            speedHistory[lastIndex];
-
-
-        const x =
-            speedHistory.length === 1
-            ? width / 2
-            : (lastIndex /
-                (speedHistory.length - 1))
-                * width;
+    const lastSpeed =
+        speedHistory[lastIndex];
 
 
-        const y =
-            height -
-            ((lastSpeed / maxSpeed)
-            * (height - 15))
-            - 7;
+    const lastX =
+        speedHistory.length === 1
+        ? width / 2
+        : (
+            lastIndex /
+            (speedHistory.length - 1)
+        ) * width;
 
 
-        ctx.beginPath();
+    const lastY =
+        height -
+        (
+            (lastSpeed / maxSpeed) *
+            (height - 15)
+        ) -
+        7;
 
-        ctx.arc(
-            x,
-            y,
-            5,
-            0,
-            Math.PI * 2
-        );
 
-        ctx.fillStyle =
-            "#0b5d3b";
+    ctx.beginPath();
 
-        ctx.fill();
+    ctx.arc(
+        lastX,
+        lastY,
+        5,
+        0,
+        Math.PI * 2
+    );
 
-    }
+    ctx.fillStyle =
+        "#0b5d3b";
+
+    ctx.fill();
 
 }
 
