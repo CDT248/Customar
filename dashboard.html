@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard</title>
+<title>User Dashboard</title>
 
 <style>
 
@@ -17,293 +18,245 @@
 
 body{
     min-height:100vh;
-    background:#f5f7f9;
+    background:#f4f6f8;
     color:#222;
 }
 
-/* =========================
-   HEADER
-========================= */
+
+/* ================= HEADER ================= */
 
 .header{
-    width:100%;
-    padding:18px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    height:65px;
     background:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
     border-bottom:1px solid #e5e5e5;
     position:sticky;
     top:0;
     z-index:100;
 }
 
-.header-title{
+.title{
     font-size:20px;
     font-weight:bold;
     color:#0b5d3b;
 }
 
-.logout-btn{
-    border:none;
+.logout{
+    border:0;
     background:#0b5d3b;
-    color:white;
-    padding:10px 18px;
+    color:#fff;
+    padding:10px 17px;
     border-radius:8px;
     font-size:14px;
     font-weight:bold;
     cursor:pointer;
 }
 
-.logout-btn:hover{
-    background:#08492f;
-}
 
-
-/* =========================
-   MAIN
-========================= */
+/* ================= MAIN ================= */
 
 .container{
     width:100%;
     max-width:650px;
-    margin:0 auto;
-    padding:25px 18px 40px;
+    margin:auto;
+    padding:22px 16px 40px;
 }
 
 
-/* =========================
-   TOP USER SECTION
-========================= */
+/* ================= TOP USER ================= */
 
-.top-section{
+.top{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:15px;
-    margin-bottom:18px;
+    gap:12px;
+    margin-bottom:14px;
 }
 
-.info-box{
-    background:white;
-    border:1px solid #dedede;
+.box{
+    background:#fff;
+    border:1px solid #ddd;
     border-radius:12px;
     padding:15px;
 }
 
-.info-label{
-    display:block;
+.label{
     font-size:12px;
     font-weight:bold;
     color:#777;
-    margin-bottom:6px;
-    text-transform:uppercase;
+    margin-bottom:7px;
 }
 
-.info-value{
+.value{
     font-size:16px;
     font-weight:bold;
     color:#222;
+    word-break:break-word;
 }
 
 
-/* =========================
-   MAC
-========================= */
+/* ================= PHOTO ================= */
 
-.mac-box{
+.photo-box{
     width:100%;
-    background:white;
-    border:1px solid #dedede;
-    border-radius:12px;
-    padding:16px;
-    margin-bottom:25px;
-}
-
-.mac-label{
-    font-size:13px;
-    color:#777;
-    font-weight:bold;
-}
-
-.mac-value{
-    font-size:18px;
-    font-weight:bold;
-    margin-top:5px;
-    letter-spacing:1px;
-}
-
-
-/* =========================
-   PROFILE PICTURE
-========================= */
-
-.profile-area{
     display:flex;
     justify-content:center;
-    align-items:center;
-    margin-bottom:30px;
+    margin:18px 0 22px;
 }
 
-.profile-picture{
-    width:230px;
-    height:230px;
+.photo{
+    width:220px;
+    height:220px;
     border-radius:50%;
     overflow:hidden;
-    border:6px solid white;
-    box-shadow:
-        0 5px 25px rgba(0,0,0,0.15);
-    background:#e9ecef;
+    background:#ddd;
+    border:6px solid #fff;
+    box-shadow:0 5px 25px rgba(0,0,0,.15);
 }
 
-.profile-picture img{
+.photo img{
     width:100%;
     height:100%;
     object-fit:cover;
 }
 
 
-/* =========================
-   FORM
-========================= */
+/* ================= INFO ================= */
 
-.form-group{
-    margin-bottom:15px;
+.info{
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:12px;
 }
 
-.form-label{
-    display:block;
-    font-size:13px;
+.info-title{
+    font-size:12px;
+    color:#777;
     font-weight:bold;
-    color:#555;
     margin-bottom:7px;
 }
 
-.form-control{
-    width:100%;
-    height:52px;
-    border:1px solid #d7d7d7;
-    background:#fff;
-    border-radius:10px;
-    padding:0 15px;
-    font-size:16px;
-    outline:none;
-    transition:.2s;
-}
-
-.form-control:focus{
-    border-color:#0b5d3b;
-    box-shadow:0 0 0 3px rgba(11,93,59,.08);
-}
-
-
-/* =========================
-   OPERATOR
-========================= */
-
-.operator-wrapper{
-    position:relative;
-}
-
-.operator-wrapper select{
-    appearance:none;
-    -webkit-appearance:none;
-    cursor:pointer;
-    padding-right:45px;
-}
-
-.dropdown-arrow{
-    position:absolute;
-    right:17px;
-    top:50%;
-    transform:translateY(-50%);
-    pointer-events:none;
-    font-size:18px;
-    color:#555;
-}
-
-
-/* =========================
-   SAVE BUTTON
-========================= */
-
-.save-btn{
-    width:100%;
-    height:52px;
-    margin-top:8px;
-    border:none;
-    border-radius:10px;
-    background:#0b5d3b;
-    color:white;
-    font-size:16px;
+.info-value{
+    font-size:17px;
     font-weight:bold;
-    cursor:pointer;
-}
-
-.save-btn:hover{
-    background:#08492f;
+    line-height:1.4;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* ================= BILL ================= */
+
+.bill{
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:12px;
+}
+
+.bill-title{
+    font-size:12px;
+    color:#777;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+.bill-value{
+    font-size:22px;
+    font-weight:bold;
+    color:#0b5d3b;
+}
+
+
+/* ================= WIFI ================= */
+
+.wifi{
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+}
+
+.wifi-title{
+    font-size:12px;
+    color:#777;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.wifi-value{
+    font-size:17px;
+    font-weight:bold;
+}
+
+.status{
+    display:inline-block;
+    margin-top:7px;
+    padding:5px 9px;
+    background:#e8f7ef;
+    color:#08783d;
+    border-radius:6px;
+    font-size:11px;
+    font-weight:bold;
+}
+
+
+/* ================= MOBILE ================= */
 
 @media(max-width:500px){
 
     .header{
-        padding:15px;
+        height:60px;
+        padding:0 14px;
     }
 
-    .header-title{
+    .title{
         font-size:18px;
     }
 
-    .logout-btn{
+    .logout{
         padding:9px 13px;
-        font-size:13px;
     }
 
     .container{
-        padding:20px 15px 35px;
+        padding:18px 13px 30px;
     }
 
-    .top-section{
-        gap:10px;
+    .photo{
+        width:200px;
+        height:200px;
     }
 
-    .info-box{
-        padding:13px 11px;
-    }
-
-    .info-value{
+    .value{
         font-size:14px;
     }
 
-    .profile-picture{
-        width:200px;
-        height:200px;
+    .info-value{
+        font-size:15px;
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- ================= HEADER ================= -->
 
 <div class="header">
 
-    <div class="header-title">
+    <div class="title">
         User Dashboard
     </div>
 
-    <button class="logout-btn" onclick="logout()">
+    <button class="logout" onclick="logout()">
         Logout
     </button>
 
@@ -311,39 +264,54 @@ body{
 
 
 
-<!-- =========================
-     MAIN
-========================= -->
+<!-- ================= CONTENT ================= -->
 
 <div class="container">
 
 
-    <!-- USERNAME + USER PHOTO -->
+    <!-- USERNAME + PASSWORD -->
 
-    <div class="top-section">
+    <div class="top">
 
-        <div class="info-box">
+        <div class="box">
 
-            <span class="info-label">
-                Username
-            </span>
+            <div class="label">
+                USERNAME
+            </div>
 
-            <div class="info-value" id="username">
+            <div class="value" id="username">
                 ADMIN
             </div>
 
         </div>
 
 
-        <div class="info-box">
+        <div class="box">
 
-            <span class="info-label">
-                User Photo
-            </span>
-
-            <div class="info-value">
-                ✓
+            <div class="label">
+                PASSWORD
             </div>
+
+            <div class="value" id="password">
+                12345
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PHOTO -->
+
+    <div class="photo-box">
+
+        <div class="photo">
+
+            <img
+                src="https://via.placeholder.com/500"
+                alt="Profile Photo"
+            >
 
         </div>
 
@@ -353,32 +321,14 @@ body{
 
     <!-- MAC -->
 
-    <div class="mac-box">
+    <div class="info">
 
-        <div class="mac-label">
+        <div class="info-title">
             MAC
         </div>
 
-        <div class="mac-value" id="mac">
-            D
-        </div>
-
-    </div>
-
-
-
-    <!-- PROFILE PICTURE -->
-
-    <div class="profile-area">
-
-        <div class="profile-picture">
-
-            <img
-                id="profileImage"
-                src="https://via.placeholder.com/500"
-                alt="Profile Picture"
-            >
-
+        <div class="info-value">
+            22:91:fb:b1:a5:41
         </div>
 
     </div>
@@ -387,18 +337,31 @@ body{
 
     <!-- NAME -->
 
-    <div class="form-group">
+    <div class="info">
 
-        <label class="form-label">
+        <div class="info-title">
             NAME
-        </label>
+        </div>
 
-        <input
-            type="text"
-            class="form-control"
-            id="name"
-            placeholder="Enter Name"
-        >
+        <div class="info-value">
+            Shemanto Islam
+        </div>
+
+    </div>
+
+
+
+    <!-- ADDRESS -->
+
+    <div class="info">
+
+        <div class="info-title">
+            ADDRESS
+        </div>
+
+        <div class="info-value">
+            sagorika road pahartali Chittagong
+        </div>
 
     </div>
 
@@ -406,78 +369,37 @@ body{
 
     <!-- BILL -->
 
-    <div class="form-group">
+    <div class="bill">
 
-        <label class="form-label">
+        <div class="bill-title">
             BILL
-        </label>
+        </div>
 
-        <input
-            type="number"
-            class="form-control"
-            id="bill"
-            placeholder="Enter Bill"
-        >
-
-    </div>
-
-
-
-    <!-- OPERATOR -->
-
-    <div class="form-group">
-
-        <label class="form-label">
-            OPERATOR
-        </label>
-
-        <div class="operator-wrapper">
-
-            <select
-                class="form-control"
-                id="operator"
-            >
-
-                <option value="">
-                    Select Operator
-                </option>
-
-                <option value="Grameenphone">
-                    Grameenphone
-                </option>
-
-                <option value="Robi">
-                    Robi
-                </option>
-
-                <option value="Banglalink">
-                    Banglalink
-                </option>
-
-                <option value="Teletalk">
-                    Teletalk
-                </option>
-
-            </select>
-
-            <span class="dropdown-arrow">
-                ▼
-            </span>
-
+        <div class="bill-value">
+            500 tk
         </div>
 
     </div>
 
 
 
-    <!-- SAVE -->
+    <!-- OPERATOR / WIFI -->
 
-    <button
-        class="save-btn"
-        onclick="saveData()"
-    >
-        SAVE
-    </button>
+    <div class="wifi">
+
+        <div class="wifi-title">
+            OPERATOR / CONNECTED WIFI
+        </div>
+
+        <div class="wifi-value" id="wifiName">
+            Connected WiFi
+        </div>
+
+        <div class="status">
+            ● Connected
+        </div>
+
+    </div>
 
 
 </div>
@@ -486,35 +408,30 @@ body{
 
 <script>
 
-/* =========================
-   LOGIN CHECK
-========================= */
+
+/* ================= LOGIN CHECK ================= */
 
 if(sessionStorage.getItem("loggedIn") !== "true"){
 
-    window.location.href = "index.html";
+    window.location.replace("index.html");
 
 }
 
 
-/* =========================
-   SHOW USERNAME
-========================= */
+/* ================= USERNAME ================= */
 
-const savedUsername =
+const username =
     sessionStorage.getItem("username");
 
-if(savedUsername){
+if(username){
 
     document.getElementById("username")
-        .textContent = savedUsername;
+    .textContent = username;
 
 }
 
 
-/* =========================
-   LOGOUT
-========================= */
+/* ================= LOGOUT ================= */
 
 function logout(){
 
@@ -525,53 +442,8 @@ function logout(){
 
 }
 
-
-/* =========================
-   SAVE
-========================= */
-
-function saveData(){
-
-    const name =
-        document.getElementById("name").value.trim();
-
-    const bill =
-        document.getElementById("bill").value.trim();
-
-    const operator =
-        document.getElementById("operator").value;
-
-    if(name === ""){
-
-        alert("Please enter Name.");
-        return;
-
-    }
-
-    if(bill === ""){
-
-        alert("Please enter Bill.");
-        return;
-
-    }
-
-    if(operator === ""){
-
-        alert("Please select Operator.");
-        return;
-
-    }
-
-    alert(
-        "Data Saved!\n\n" +
-        "Name: " + name +
-        "\nBill: " + bill +
-        "\nOperator: " + operator
-    );
-
-}
-
 </script>
+
 
 </body>
 </html>
