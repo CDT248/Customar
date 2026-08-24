@@ -13,7 +13,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
@@ -23,7 +23,9 @@ body{
 }
 
 
-/* ================= HEADER ================= */
+/* =========================
+   HEADER
+========================= */
 
 .header{
     height:65px;
@@ -55,8 +57,14 @@ body{
     cursor:pointer;
 }
 
+.logout:hover{
+    background:#08492f;
+}
 
-/* ================= MAIN ================= */
+
+/* =========================
+   MAIN
+========================= */
 
 .container{
     width:100%;
@@ -66,7 +74,9 @@ body{
 }
 
 
-/* ================= TOP USER ================= */
+/* =========================
+   TOP USERNAME PASSWORD
+========================= */
 
 .top{
     display:grid;
@@ -97,7 +107,9 @@ body{
 }
 
 
-/* ================= PHOTO ================= */
+/* =========================
+   PHOTO
+========================= */
 
 .photo-box{
     width:100%;
@@ -123,7 +135,9 @@ body{
 }
 
 
-/* ================= INFO ================= */
+/* =========================
+   INFORMATION BOX
+========================= */
 
 .info{
     background:#fff;
@@ -147,7 +161,9 @@ body{
 }
 
 
-/* ================= BILL ================= */
+/* =========================
+   BILL
+========================= */
 
 .bill{
     background:#fff;
@@ -171,13 +187,16 @@ body{
 }
 
 
-/* ================= WIFI ================= */
+/* =========================
+   WIFI
+========================= */
 
 .wifi{
     background:#fff;
     border:1px solid #ddd;
     border-radius:12px;
     padding:15px;
+    margin-bottom:12px;
 }
 
 .wifi-title{
@@ -204,7 +223,89 @@ body{
 }
 
 
-/* ================= MOBILE ================= */
+/* =========================
+   SPEED BOX
+========================= */
+
+.speed-box{
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:14px;
+    padding:18px;
+    margin-top:14px;
+}
+
+.speed-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.speed-title{
+    font-size:14px;
+    font-weight:bold;
+    color:#555;
+}
+
+.speed-live{
+    font-size:11px;
+    font-weight:bold;
+    color:#08783d;
+    background:#e8f7ef;
+    padding:5px 9px;
+    border-radius:6px;
+}
+
+.speed-current{
+    text-align:center;
+    margin:5px 0 18px;
+}
+
+.speed-number{
+    font-size:38px;
+    font-weight:bold;
+    color:#0b5d3b;
+}
+
+.speed-unit{
+    font-size:15px;
+    color:#777;
+    margin-left:4px;
+    font-weight:bold;
+}
+
+.speed-note{
+    text-align:center;
+    font-size:11px;
+    color:#999;
+    margin-top:8px;
+}
+
+
+/* =========================
+   GRAPH
+========================= */
+
+.graph-container{
+    width:100%;
+    height:180px;
+    position:relative;
+    border-radius:10px;
+    background:#f8faf9;
+    overflow:hidden;
+}
+
+#speedCanvas{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:500px){
 
@@ -238,6 +339,10 @@ body{
         font-size:15px;
     }
 
+    .speed-number{
+        font-size:34px;
+    }
+
 }
 
 </style>
@@ -248,7 +353,9 @@ body{
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <div class="header">
 
@@ -256,7 +363,9 @@ body{
         User Dashboard
     </div>
 
-    <button class="logout" onclick="logout()">
+    <button
+        class="logout"
+        onclick="logout()">
         Logout
     </button>
 
@@ -264,7 +373,9 @@ body{
 
 
 
-<!-- ================= CONTENT ================= -->
+<!-- =========================
+     MAIN
+========================= -->
 
 <div class="container">
 
@@ -279,7 +390,9 @@ body{
                 USERNAME
             </div>
 
-            <div class="value" id="username">
+            <div
+                class="value"
+                id="username">
                 ADMIN
             </div>
 
@@ -292,7 +405,9 @@ body{
                 PASSWORD
             </div>
 
-            <div class="value" id="password">
+            <div
+                class="value"
+                id="password">
                 12345
             </div>
 
@@ -309,9 +424,9 @@ body{
         <div class="photo">
 
             <img
+                id="profilePhoto"
                 src="https://via.placeholder.com/500"
-                alt="Profile Photo"
-            >
+                alt="Profile Photo">
 
         </div>
 
@@ -383,7 +498,7 @@ body{
 
 
 
-    <!-- OPERATOR / WIFI -->
+    <!-- WIFI -->
 
     <div class="wifi">
 
@@ -391,12 +506,69 @@ body{
             OPERATOR / CONNECTED WIFI
         </div>
 
-        <div class="wifi-value" id="wifiName">
-            Connected WiFi
+        <div
+            class="wifi-value"
+            id="wifiName">
+            Checking...
         </div>
 
         <div class="status">
             ● Connected
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         INTERNET SPEED
+    ========================= -->
+
+    <div class="speed-box">
+
+        <div class="speed-header">
+
+            <div class="speed-title">
+                📶 INTERNET SPEED
+            </div>
+
+            <div
+                class="speed-live"
+                id="speedStatus">
+                ● LIVE
+            </div>
+
+        </div>
+
+
+        <!-- CURRENT SPEED -->
+
+        <div class="speed-current">
+
+            <span
+                class="speed-number"
+                id="speedNumber">
+                --
+            </span>
+
+            <span class="speed-unit">
+                Mbps
+            </span>
+
+        </div>
+
+
+        <!-- GRAPH -->
+
+        <div class="graph-container">
+
+            <canvas id="speedCanvas"></canvas>
+
+        </div>
+
+
+        <div class="speed-note">
+            Estimated network speed • Updates every 2 seconds
         </div>
 
     </div>
@@ -409,7 +581,9 @@ body{
 <script>
 
 
-/* ================= LOGIN CHECK ================= */
+/* =====================================================
+   LOGIN CHECK
+===================================================== */
 
 if(sessionStorage.getItem("loggedIn") !== "true"){
 
@@ -418,29 +592,418 @@ if(sessionStorage.getItem("loggedIn") !== "true"){
 }
 
 
-/* ================= USERNAME ================= */
+/* =====================================================
+   USERNAME
+===================================================== */
 
-const username =
+const savedUsername =
     sessionStorage.getItem("username");
 
-if(username){
+if(savedUsername){
 
     document.getElementById("username")
-    .textContent = username;
+    .textContent = savedUsername;
 
 }
 
 
-/* ================= LOGOUT ================= */
+/* =====================================================
+   LOGOUT
+===================================================== */
 
 function logout(){
 
     sessionStorage.removeItem("loggedIn");
+
     sessionStorage.removeItem("username");
 
     window.location.replace("index.html");
 
 }
+
+
+/* =====================================================
+   WIFI / NETWORK INFORMATION
+===================================================== */
+
+function getNetworkInfo(){
+
+    const connection =
+        navigator.connection ||
+        navigator.mozConnection ||
+        navigator.webkitConnection;
+
+    const wifiElement =
+        document.getElementById("wifiName");
+
+    if(!connection){
+
+        wifiElement.textContent =
+            "Connected Network";
+
+        return;
+
+    }
+
+
+    if(connection.type === "wifi"){
+
+        wifiElement.textContent =
+            "Wi-Fi Connected";
+
+    }
+    else if(connection.type === "cellular"){
+
+        wifiElement.textContent =
+            "Mobile Data";
+
+    }
+    else{
+
+        wifiElement.textContent =
+            "Connected Network";
+
+    }
+
+}
+
+getNetworkInfo();
+
+
+
+/* =====================================================
+   SPEED
+===================================================== */
+
+const canvas =
+    document.getElementById("speedCanvas");
+
+const ctx =
+    canvas.getContext("2d");
+
+const speedNumber =
+    document.getElementById("speedNumber");
+
+const speedStatus =
+    document.getElementById("speedStatus");
+
+
+let speedHistory = [];
+
+const MAX_POINTS = 30;
+
+
+/* =====================================================
+   CANVAS SIZE
+===================================================== */
+
+function resizeCanvas(){
+
+    const rect =
+        canvas.parentElement.getBoundingClientRect();
+
+    canvas.width =
+        rect.width * window.devicePixelRatio;
+
+    canvas.height =
+        rect.height * window.devicePixelRatio;
+
+    ctx.setTransform(
+        window.devicePixelRatio,
+        0,
+        0,
+        window.devicePixelRatio,
+        0,
+        0
+    );
+
+    drawGraph();
+
+}
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+/* =====================================================
+   GET ESTIMATED SPEED
+===================================================== */
+
+function getCurrentSpeed(){
+
+    const connection =
+        navigator.connection ||
+        navigator.mozConnection ||
+        navigator.webkitConnection;
+
+
+    if(
+        connection &&
+        typeof connection.downlink === "number"
+    ){
+
+        return connection.downlink;
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =====================================================
+   UPDATE SPEED
+===================================================== */
+
+function updateSpeed(){
+
+    const speed =
+        getCurrentSpeed();
+
+
+    if(speed === null){
+
+        speedNumber.textContent =
+            "--";
+
+        speedStatus.textContent =
+            "● NOT SUPPORTED";
+
+        speedStatus.style.color =
+            "#777";
+
+        speedStatus.style.background =
+            "#eeeeee";
+
+        return;
+
+    }
+
+
+    speedNumber.textContent =
+        speed.toFixed(1);
+
+
+    speedStatus.textContent =
+        "● LIVE";
+
+    speedStatus.style.color =
+        "#08783d";
+
+    speedStatus.style.background =
+        "#e8f7ef";
+
+
+    speedHistory.push(speed);
+
+
+    if(speedHistory.length > MAX_POINTS){
+
+        speedHistory.shift();
+
+    }
+
+
+    drawGraph();
+
+}
+
+
+/* =====================================================
+   DRAW GRAPH
+===================================================== */
+
+function drawGraph(){
+
+    const width =
+        canvas.parentElement.clientWidth;
+
+    const height =
+        canvas.parentElement.clientHeight;
+
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    if(speedHistory.length < 1){
+
+        return;
+
+    }
+
+
+    /* GRAPH MAX */
+
+    let maxSpeed =
+        Math.max(...speedHistory);
+
+    if(maxSpeed < 10){
+
+        maxSpeed = 10;
+
+    }
+    else{
+
+        maxSpeed =
+            Math.ceil(maxSpeed / 5) * 5;
+
+    }
+
+
+    /* GRID */
+
+    ctx.strokeStyle =
+        "#e4e9e6";
+
+    ctx.lineWidth = 1;
+
+
+    for(let i = 1; i < 5; i++){
+
+        const y =
+            (height / 5) * i;
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            0,
+            y
+        );
+
+        ctx.lineTo(
+            width,
+            y
+        );
+
+        ctx.stroke();
+
+    }
+
+
+    /* GRAPH LINE */
+
+    ctx.beginPath();
+
+
+    speedHistory.forEach(
+        (speed,index)=>{
+
+            const x =
+                speedHistory.length === 1
+                ? width / 2
+                : (index /
+                    (speedHistory.length - 1))
+                    * width;
+
+
+            const y =
+                height -
+                ((speed / maxSpeed)
+                * (height - 15))
+                - 7;
+
+
+            if(index === 0){
+
+                ctx.moveTo(
+                    x,
+                    y
+                );
+
+            }
+            else{
+
+                ctx.lineTo(
+                    x,
+                    y
+                );
+
+            }
+
+        }
+    );
+
+
+    ctx.strokeStyle =
+        "#0b5d3b";
+
+    ctx.lineWidth = 3;
+
+    ctx.lineJoin = "round";
+
+    ctx.lineCap = "round";
+
+    ctx.stroke();
+
+
+    /* CURRENT POINT */
+
+    if(speedHistory.length){
+
+        const lastIndex =
+            speedHistory.length - 1;
+
+        const lastSpeed =
+            speedHistory[lastIndex];
+
+
+        const x =
+            speedHistory.length === 1
+            ? width / 2
+            : (lastIndex /
+                (speedHistory.length - 1))
+                * width;
+
+
+        const y =
+            height -
+            ((lastSpeed / maxSpeed)
+            * (height - 15))
+            - 7;
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            y,
+            5,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+            "#0b5d3b";
+
+        ctx.fill();
+
+    }
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+resizeCanvas();
+
+updateSpeed();
+
+
+setInterval(
+    updateSpeed,
+    2000
+);
+
 
 </script>
 
