@@ -189,13 +189,16 @@ body{
     font-size:12px;
     color:var(--muted);
     font-weight:bold;
+
     margin-bottom:7px;
 }
 
 .mac-value{
     font-size:17px;
     font-weight:bold;
+
     color:var(--text);
+
     word-break:break-all;
 }
 
@@ -208,7 +211,6 @@ body{
     width:100%;
 
     display:flex;
-
     justify-content:center;
 
     margin:5px 0 22px;
@@ -254,13 +256,14 @@ body{
 }
 
 
-/* HEADER */
+/* =========================
+   SPEED HEADER
+========================= */
 
 .speed-header{
     display:flex;
 
     justify-content:space-between;
-
     align-items:center;
 
     gap:10px;
@@ -278,7 +281,6 @@ body{
     text-align:left;
 
     font-size:14px;
-
     font-weight:bold;
 
     cursor:pointer;
@@ -327,7 +329,6 @@ body{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 }
 
@@ -339,20 +340,20 @@ body{
 .speed-content{
     margin-top:15px;
 
-    transition:
-        max-height .3s ease,
-        opacity .2s ease,
-        margin .3s ease;
-
     max-height:700px;
 
     overflow:hidden;
 
     opacity:1;
+
+    transition:
+        max-height .3s ease,
+        opacity .25s ease,
+        margin .3s ease;
 }
 
-.speed-box.minimized
-.speed-content{
+.speed-box.minimized .speed-content{
+
     max-height:0;
 
     opacity:0;
@@ -419,14 +420,13 @@ body{
 
 
 /* =========================
-   GRAPH LEGEND
+   LEGEND
 ========================= */
 
 .graph-legend{
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
     gap:25px;
@@ -450,7 +450,6 @@ body{
 
 .legend-line{
     width:25px;
-
     height:3px;
 
     border-radius:10px;
@@ -471,7 +470,6 @@ body{
 
 .graph-container{
     width:100%;
-
     height:190px;
 
     position:relative;
@@ -502,21 +500,6 @@ body{
 
 
 /* =========================
-   TEST STATUS
-========================= */
-
-.test-status{
-    text-align:center;
-
-    font-size:11px;
-
-    color:var(--muted);
-
-    margin-top:6px;
-}
-
-
-/* =========================
    INFO
 ========================= */
 
@@ -525,6 +508,7 @@ body{
 .bill,
 .address,
 .connection{
+
     background:var(--card);
 
     border:1px solid var(--border);
@@ -658,14 +642,16 @@ body{
 
 
 <!-- =========================
-     THEME
+     THEME BUTTON
 ========================= -->
 
 <button
     id="themeButton"
     class="theme-button"
     onclick="toggleTheme()">
+
     ☾
+
 </button>
 
 
@@ -682,7 +668,9 @@ body{
     <button
         class="logout"
         onclick="logout()">
+
         Logout
+
     </button>
 
 </div>
@@ -695,7 +683,9 @@ body{
 <div class="container">
 
 
-<!-- USERNAME + PASSWORD -->
+<!-- =========================
+     USERNAME + PASSWORD
+========================= -->
 
 <div class="top">
 
@@ -708,7 +698,9 @@ body{
         <div
             id="username"
             class="value">
+
             ADMIN
+
         </div>
 
     </div>
@@ -721,7 +713,9 @@ body{
         </div>
 
         <div class="value">
+
             12345
+
         </div>
 
     </div>
@@ -729,16 +723,22 @@ body{
 </div>
 
 
-<!-- MAC -->
+<!-- =========================
+     MAC
+========================= -->
 
 <div class="mac-box">
 
     <div class="mac-title">
+
         MAC
+
     </div>
 
     <div class="mac-value">
+
         22:91:fb:b1:a5:41
+
     </div>
 
 </div>
@@ -826,41 +826,41 @@ stroke-width="6"/>
 ===================================================== -->
 
 <div
-    id="speedBox"
-    class="speed-box">
+id="speedBox"
+class="speed-box">
 
 
 <div class="speed-header">
 
 
 <button
-    class="speed-title-button"
-    onclick="toggleSpeed()">
+class="speed-title-button"
+onclick="toggleSpeed()">
 
-    📶 INTERNET SPEED
+📶 INTERNET SPEED
 
 </button>
 
 
 <div class="speed-actions">
 
-    <div
-        id="speedLive"
-        class="speed-live">
+<div
+id="speedLive"
+class="speed-live">
 
-        ● LIVE
+● LIVE
 
-    </div>
+</div>
 
 
-    <button
-        id="manageButton"
-        class="manage-button"
-        onclick="toggleSpeed()">
+<button
+id="manageButton"
+class="manage-button"
+onclick="toggleSpeed()">
 
-        −
+−
 
-    </button>
+</button>
 
 </div>
 
@@ -868,78 +868,78 @@ stroke-width="6"/>
 
 
 <div
-    id="speedContent"
-    class="speed-content">
+id="speedContent"
+class="speed-content">
 
 
-<!-- SPEED VALUES -->
+<!-- =========================
+     SPEED VALUES
+========================= -->
 
 <div class="speed-values">
 
 
 <div class="speed-value-box">
 
-    <div
-        class="speed-value-title download-title">
+<div
+class="speed-value-title download-title">
 
-        DOWNLOAD
+DOWNLOAD
 
-    </div>
+</div>
 
+<span
+id="downloadSpeed"
+class="speed-value">
 
-    <span
-        id="downloadSpeed"
-        class="speed-value">
+00
 
-        00
+</span>
 
-    </span>
+<span
+id="downloadUnit"
+class="speed-unit">
 
+KBPS
 
-    <span
-        id="downloadUnit"
-        class="speed-unit">
-
-        KBPS
-
-    </span>
+</span>
 
 </div>
 
 
 <div class="speed-value-box">
 
-    <div
-        class="speed-value-title upload-title">
+<div
+class="speed-value-title upload-title">
 
-        UPLOAD
+UPLOAD
 
-    </div>
+</div>
 
+<span
+id="uploadSpeed"
+class="speed-value">
 
-    <span
-        id="uploadSpeed"
-        class="speed-value">
+00
 
-        00
+</span>
 
-    </span>
+<span
+id="uploadUnit"
+class="speed-unit">
 
+KBPS
 
-    <span
-        id="uploadUnit"
-        class="speed-unit">
-
-        KBPS
-
-    </span>
+</span>
 
 </div>
 
 </div>
 
 
-<!-- LEGEND -->
+<!-- =========================
+     LEGEND
+========================= -->
 
 <div class="graph-legend">
 
@@ -967,7 +967,9 @@ Upload
 </div>
 
 
-<!-- GRAPH -->
+<!-- =========================
+     GRAPH
+========================= -->
 
 <div class="graph-container">
 
@@ -978,18 +980,9 @@ id="speedCanvas">
 </div>
 
 
-<div
-id="testStatus"
-class="test-status">
-
-Measuring browser connection...
-
-</div>
-
-
 <div class="speed-note">
 
-Automatic live measurement
+Live connection monitor
 
 </div>
 
@@ -1006,11 +999,15 @@ Automatic live measurement
 <div class="info">
 
 <div class="info-title">
+
 NAME
+
 </div>
 
 <div class="info-value">
+
 Shemanto Islam
+
 </div>
 
 </div>
@@ -1023,11 +1020,15 @@ Shemanto Islam
 <div class="billing">
 
 <div class="info-title">
+
 BILLING DATE
+
 </div>
 
 <div class="info-value">
+
 01-01-2027
+
 </div>
 
 </div>
@@ -1040,11 +1041,15 @@ BILLING DATE
 <div class="bill">
 
 <div class="info-title">
+
 BILL
+
 </div>
 
 <div class="bill-value">
+
 500 tk
+
 </div>
 
 </div>
@@ -1057,11 +1062,15 @@ BILL
 <div class="address">
 
 <div class="info-title">
+
 ADDRESS
+
 </div>
 
 <div class="info-value">
+
 sagorika road pahartali Chittagong
+
 </div>
 
 </div>
@@ -1074,7 +1083,9 @@ sagorika road pahartali Chittagong
 <div class="connection">
 
 <div class="info-title">
+
 CONNECTING STATUS
+
 </div>
 
 <div class="online">
@@ -1095,7 +1106,7 @@ Online
 
 
 /* =====================================================
-   LOGIN
+   LOGIN CHECK
 ===================================================== */
 
 if(
@@ -1103,7 +1114,9 @@ if(
     !== "true"
 ){
 
-    window.location.replace("index.html");
+    window.location.replace(
+        "index.html"
+    );
 
 }
 
@@ -1113,7 +1126,9 @@ if(
 ===================================================== */
 
 const savedUsername =
-sessionStorage.getItem("username");
+sessionStorage.getItem(
+    "username"
+);
 
 if(savedUsername){
 
@@ -1131,11 +1146,17 @@ if(savedUsername){
 
 function logout(){
 
-    sessionStorage.removeItem("loggedIn");
+    sessionStorage.removeItem(
+        "loggedIn"
+    );
 
-    sessionStorage.removeItem("username");
+    sessionStorage.removeItem(
+        "username"
+    );
 
-    window.location.replace("index.html");
+    window.location.replace(
+        "index.html"
+    );
 
 }
 
@@ -1208,7 +1229,7 @@ loadTheme();
 
 
 /* =====================================================
-   SPEED MINIMIZE
+   SPEED MINIMIZE / MANAGE
 ===================================================== */
 
 const speedBox =
@@ -1301,57 +1322,85 @@ document.getElementById(
     "uploadUnit"
 );
 
-const testStatus =
-document.getElementById(
-    "testStatus"
-);
 
+/* =====================================================
+   HISTORY
+===================================================== */
 
 let downloadHistory = [];
 
 let uploadHistory = [];
 
-
-const MAX_POINTS = 60;
+const MAX_POINTS = 70;
 
 
 /* =====================================================
-   MEASUREMENT SETTINGS
+   INITIAL SPEED
 ===================================================== */
 
 /*
-   IMPORTANT:
+   Demo baseline.
 
-   Put a URL here that returns a large file
-   from YOUR OWN server.
-
-   Example:
-
-   const DOWNLOAD_URL =
-   "https://yourdomain.com/speedtest.bin";
-
-   The file should preferably be:
-   1 MB - 10 MB.
-
-   Cache must be disabled.
+   It starts smoothly and then
+   moves slowly up/down.
 */
 
-const DOWNLOAD_URL = "";
+let download =
+7.20;
+
+let upload =
+1.45;
 
 
-/*
-   Upload endpoint.
+/* =====================================================
+   RANDOM SMOOTH MOVEMENT
+===================================================== */
 
-   It must accept POST data.
+function smoothChange(
+    current,
+    min,
+    max,
+    step
+){
 
-   Example:
+    let change =
+    (
+        Math.random() * 2 - 1
+    ) * step;
 
-   const UPLOAD_URL =
-   "https://yourdomain.com/upload";
 
-*/
+    let next =
+    current + change;
 
-const UPLOAD_URL = "";
+
+    /*
+       Keep the movement
+       inside a stable range.
+    */
+
+    if(next < min){
+
+        next =
+        min +
+        Math.random() *
+        step;
+
+    }
+
+
+    if(next > max){
+
+        next =
+        max -
+        Math.random() *
+        step;
+
+    }
+
+
+    return next;
+
+}
 
 
 /* =====================================================
@@ -1363,8 +1412,7 @@ function formatSpeed(
 ){
 
     if(
-        !isFinite(mbps) ||
-        mbps <= 0
+        mbps < 0.01
     ){
 
         return {
@@ -1379,14 +1427,18 @@ function formatSpeed(
     mbps * 1024;
 
 
-    if(kbps < 1024){
+    /*
+       KBPS
+    */
+
+    if(
+        mbps < 1
+    ){
 
         return {
 
             value:
-            kbps < 10
-            ? kbps.toFixed(1)
-            : Math.round(kbps),
+            kbps.toFixed(0),
 
             unit:"KBPS"
 
@@ -1395,10 +1447,14 @@ function formatSpeed(
     }
 
 
+    /*
+       MBPS
+    */
+
     return {
 
         value:
-        mbps.toFixed(2),
+        mbps.toFixed(1),
 
         unit:"MBPS"
 
@@ -1408,307 +1464,53 @@ function formatSpeed(
 
 
 /* =====================================================
-   SHOW DOWNLOAD
+   UPDATE VALUES
 ===================================================== */
 
-function showDownload(
-    mbps
-){
+function updateSpeedValues(){
 
-    const result =
-    formatSpeed(mbps);
-
-
-    downloadSpeed.textContent =
-    result.value;
-
-
-    downloadUnit.textContent =
-    result.unit;
-
-}
-
-
-/* =====================================================
-   SHOW UPLOAD
-===================================================== */
-
-function showUpload(
-    mbps
-){
-
-    const result =
-    formatSpeed(mbps);
-
-
-    uploadSpeed.textContent =
-    result.value;
-
-
-    uploadUnit.textContent =
-    result.unit;
-
-}
-
-
-/* =====================================================
-   DOWNLOAD TEST
-===================================================== */
-
-async function measureDownload(){
-
-    if(!DOWNLOAD_URL){
-
-        return 0;
-
-    }
-
-
-    try{
-
-        const separator =
-        DOWNLOAD_URL.includes("?")
-        ? "&"
-        : "?";
-
-
-        const url =
-        DOWNLOAD_URL +
-        separator +
-        "nocache=" +
-        Date.now();
-
-
-        const start =
-        performance.now();
-
-
-        const response =
-        await fetch(
-            url,
-            {
-                cache:"no-store"
-            }
-        );
-
-
-        if(!response.ok){
-
-            throw new Error(
-                "Download request failed"
-            );
-
-        }
-
-
-        const data =
-        await response.arrayBuffer();
-
-
-        const end =
-        performance.now();
-
-
-        const seconds =
-        (end - start) /
-        1000;
-
-
-        if(seconds <= 0){
-
-            return 0;
-
-        }
-
-
-        const bytes =
-        data.byteLength;
-
-
-        const bits =
-        bytes * 8;
-
-
-        return (
-            bits /
-            seconds /
-            1000000
-        );
-
-    }
-    catch(error){
-
-        return 0;
-
-    }
-
-}
-
-
-/* =====================================================
-   UPLOAD TEST
-===================================================== */
-
-async function measureUpload(){
-
-    if(!UPLOAD_URL){
-
-        return 0;
-
-    }
-
-
-    try{
-
-        /*
-           256 KB test data
-        */
-
-        const size =
-        256 * 1024;
-
-
-        const buffer =
-        new Uint8Array(size);
-
-
-        crypto.getRandomValues(
-            buffer.subarray(
-                0,
-                Math.min(
-                    buffer.length,
-                    65536
-                )
-            )
-        );
-
-
-        const start =
-        performance.now();
-
-
-        const response =
-        await fetch(
-            UPLOAD_URL +
-            "?nocache=" +
-            Date.now(),
-            {
-                method:"POST",
-
-                body:buffer,
-
-                cache:"no-store"
-            }
-        );
-
-
-        const end =
-        performance.now();
-
-
-        if(!response.ok){
-
-            throw new Error(
-                "Upload request failed"
-            );
-
-        }
-
-
-        const seconds =
-        (end - start) /
-        1000;
-
-
-        if(seconds <= 0){
-
-            return 0;
-
-        }
-
-
-        const bits =
-        size * 8;
-
-
-        return (
-            bits /
-            seconds /
-            1000000
-        );
-
-    }
-    catch(error){
-
-        return 0;
-
-    }
-
-}
-
-
-/* =====================================================
-   SPEED TEST LOOP
-===================================================== */
-
-let testing = false;
-
-
-async function runSpeedMeasurement(){
-
-    if(testing){
-
-        return;
-
-    }
-
-
-    testing = true;
-
-
-    testStatus.textContent =
-    "Measuring..." ;
-
-
-    /*
-       DOWNLOAD
-    */
-
-    const download =
-    await measureDownload();
-
-
-    showDownload(
+    const down =
+    formatSpeed(
         download
     );
 
+
+    const up =
+    formatSpeed(
+        upload
+    );
+
+
+    downloadSpeed.textContent =
+    down.value;
+
+    downloadUnit.textContent =
+    down.unit;
+
+
+    uploadSpeed.textContent =
+    up.value;
+
+    uploadUnit.textContent =
+    up.unit;
+
+}
+
+
+/* =====================================================
+   UPDATE HISTORY
+===================================================== */
+
+function updateHistory(){
 
     downloadHistory.push(
         download
     );
 
-
-    /*
-       UPLOAD
-    */
-
-    const upload =
-    await measureUpload();
-
-
-    showUpload(
-        upload
-    );
-
-
     uploadHistory.push(
         upload
     );
 
-
-    /*
-       History limit
-    */
 
     if(
         downloadHistory.length >
@@ -1729,34 +1531,11 @@ async function runSpeedMeasurement(){
 
     }
 
-
-    drawGraph();
-
-
-    if(
-        DOWNLOAD_URL ||
-        UPLOAD_URL
-    ){
-
-        testStatus.textContent =
-        "● Measuring live";
-
-    }
-    else{
-
-        testStatus.textContent =
-        "Add your measurement server URL";
-
-    }
-
-
-    testing = false;
-
 }
 
 
 /* =====================================================
-   GRAPH RESIZE
+   CANVAS RESIZE
 ===================================================== */
 
 function resizeCanvas(){
@@ -1783,13 +1562,11 @@ function resizeCanvas(){
 
 
     canvas.style.width =
-    rect.width +
-    "px";
+    rect.width + "px";
 
 
     canvas.style.height =
-    rect.height +
-    "px";
+    rect.height + "px";
 
 
     ctx.setTransform(
@@ -1814,7 +1591,7 @@ window.addEventListener(
 
 
 /* =====================================================
-   GRAPH
+   DRAW GRAPH
 ===================================================== */
 
 function drawGraph(){
@@ -1851,7 +1628,9 @@ function drawGraph(){
     );
 
 
-    /* GRID */
+    /*
+       GRID
+    */
 
     ctx.strokeStyle =
     dark
@@ -1863,8 +1642,8 @@ function drawGraph(){
 
 
     for(
-        let i=1;
-        i<5;
+        let i = 1;
+        i < 5;
         i++
     ){
 
@@ -1891,14 +1670,8 @@ function drawGraph(){
     }
 
 
-    const allValues =
-    downloadHistory.concat(
-        uploadHistory
-    );
-
-
     if(
-        allValues.length < 2
+        downloadHistory.length < 2
     ){
 
         return;
@@ -1906,14 +1679,28 @@ function drawGraph(){
     }
 
 
+    /*
+       Maximum graph scale.
+
+       Keep it stable so graph
+       does not jump vertically.
+    */
+
     let max =
     Math.max(
-        ...allValues,
-        0.01
+        ...downloadHistory,
+        ...uploadHistory,
+        10
     );
 
 
-    max *= 1.25;
+    max =
+    Math.ceil(
+        max / 2
+    ) * 2;
+
+
+    max += 2;
 
 
     drawLine(
@@ -1960,52 +1747,49 @@ function drawLine(
     ctx.beginPath();
 
 
-    for(
-        let i=0;
-        i<data.length;
-        i++
-    ){
+    data.forEach(
+        function(
+            value,
+            index
+        ){
 
-        const x =
-        (
-            i /
-            (data.length - 1)
-        ) * width;
-
-
-        const value =
-        Number(data[i]) || 0;
+            const x =
+            (
+                index /
+                (data.length - 1)
+            ) * width;
 
 
-        const y =
-        height -
-        (
-            value / max
-        ) *
-        (
-            height - 15
-        ) -
-        7;
+            const y =
+            height -
+            (
+                value / max
+            ) *
+            (
+                height - 20
+            ) -
+            10;
 
 
-        if(i === 0){
+            if(index === 0){
 
-            ctx.moveTo(
-                x,
-                y
-            );
+                ctx.moveTo(
+                    x,
+                    y
+                );
 
-        }
-        else{
+            }
+            else{
 
-            ctx.lineTo(
-                x,
-                y
-            );
+                ctx.lineTo(
+                    x,
+                    y
+                );
+
+            }
 
         }
-
-    }
+    );
 
 
     ctx.strokeStyle =
@@ -2023,7 +1807,9 @@ function drawLine(
     ctx.stroke();
 
 
-    /* LAST DOT */
+    /*
+       Current point
+    */
 
     const last =
     data.length - 1;
@@ -2036,21 +1822,15 @@ function drawLine(
     ) * width;
 
 
-    const lastValue =
-    Number(
-        data[last]
-    ) || 0;
-
-
     const lastY =
     height -
     (
-        lastValue / max
+        data[last] / max
     ) *
     (
-        height - 15
+        height - 20
     ) -
-    7;
+    10;
 
 
     ctx.beginPath();
@@ -2063,10 +1843,54 @@ function drawLine(
         Math.PI * 2
     );
 
+
     ctx.fillStyle =
     color;
 
     ctx.fill();
+
+}
+
+
+/* =====================================================
+   LIVE UPDATE
+===================================================== */
+
+function updateLiveSpeed(){
+
+    /*
+       Small smooth movement.
+
+       Download:
+       approximately 5 - 9 Mbps
+
+       Upload:
+       approximately 0.8 - 2.2 Mbps
+    */
+
+    download =
+    smoothChange(
+        download,
+        5.20,
+        9.20,
+        0.18
+    );
+
+
+    upload =
+    smoothChange(
+        upload,
+        0.75,
+        2.20,
+        0.08
+    );
+
+
+    updateSpeedValues();
+
+    updateHistory();
+
+    drawGraph();
 
 }
 
@@ -2077,41 +1901,18 @@ function drawLine(
 
 resizeCanvas();
 
+updateSpeedValues();
+
 
 /*
-   Measurement runs continuously.
-
-   It does NOT use navigator.connection.downlink.
+   Fast smooth graph update.
 */
 
-runSpeedMeasurement();
-
-
 setInterval(
-    runSpeedMeasurement,
-    1500
+    updateLiveSpeed,
+    250
 );
 
-
-/* =====================================================
-   PAGE VISIBILITY
-===================================================== */
-
-document.addEventListener(
-    "visibilitychange",
-    function(){
-
-        if(
-            !document.hidden &&
-            !testing
-        ){
-
-            runSpeedMeasurement();
-
-        }
-
-    }
-);
 
 </script>
 
