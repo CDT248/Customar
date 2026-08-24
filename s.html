@@ -4,6 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
@@ -21,161 +22,373 @@
 body{
     min-height:100vh;
     background:#f4f6f8;
+    color:#222;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:20px;
-    color:#222;
+
+    padding:18px;
 }
 
 .card{
     width:100%;
-    max-width:420px;
+    max-width:480px;
+
     background:#fff;
+
     border-radius:20px;
-    padding:25px;
-    box-shadow:0 10px 40px rgba(0,0,0,.12);
-    text-align:center;
+
+    padding:22px;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.12);
 }
 
+
+/* =========================
+   TITLE
+========================= */
+
 .title{
-    font-size:23px;
+    text-align:center;
+
+    font-size:24px;
+
     font-weight:bold;
+
     color:#0b5d3b;
-    margin-bottom:6px;
+
+    margin-bottom:5px;
 }
 
 .subtitle{
-    font-size:12px;
+    text-align:center;
+
     color:#777;
-    margin-bottom:25px;
+
+    font-size:12px;
+
+    margin-bottom:22px;
 }
 
-.speed-area{
-    width:210px;
-    height:210px;
-    border-radius:50%;
-    margin:0 auto 25px;
 
-    border:8px solid #e7eee9;
+/* =========================
+   SPEED
+========================= */
+
+.speed-circle{
+    width:190px;
+    height:190px;
+
+    border-radius:50%;
+
+    margin:0 auto 20px;
+
+    border:8px solid #e6eee9;
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
 
     position:relative;
 }
 
-.speed{
-    font-size:42px;
+.speed-number{
+    font-size:40px;
+
     font-weight:bold;
+
     color:#0b5d3b;
 }
 
-.unit{
-    font-size:14px;
+.speed-unit{
+    font-size:13px;
+
     color:#777;
+
     font-weight:bold;
 }
 
 .status{
-    margin-top:8px;
-    font-size:12px;
+    font-size:11px;
+
     color:#777;
+
+    margin-top:7px;
 }
+
+
+/* =========================
+   DOWNLOAD UPLOAD
+========================= */
 
 .results{
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:12px;
-    margin-bottom:20px;
+
+    margin-bottom:18px;
 }
 
 .result{
-    background:#f7f9f8;
+    background:#f8faf9;
+
     border:1px solid #e1e6e3;
+
     border-radius:12px;
-    padding:15px;
+
+    padding:14px;
 }
 
 .result-title{
     font-size:11px;
+
     font-weight:bold;
-    margin-bottom:7px;
+
+    margin-bottom:6px;
 }
 
-.download{
+.download-title{
     color:#e00000;
 }
 
-.upload{
+.upload-title{
     color:#0b9b54;
 }
 
-.result-value{
-    font-size:22px;
+.result-number{
+    font-size:23px;
+
     font-weight:bold;
 }
 
 .result-unit{
     font-size:10px;
+
     color:#777;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   GRAPH HEADER
+========================= */
+
+.graph-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:9px;
+}
+
+.graph-title{
+    font-size:13px;
+
+    font-weight:bold;
+
+    color:#555;
+}
+
+.legend{
+    display:flex;
+
+    gap:13px;
+
+    font-size:10px;
+
+    font-weight:bold;
+}
+
+.legend-item{
+    display:flex;
+
+    align-items:center;
+
+    gap:4px;
+}
+
+.legend-dot{
+    width:18px;
+
+    height:3px;
+
+    border-radius:5px;
+}
+
+.red{
+    background:#e00000;
+}
+
+.green{
+    background:#0b9b54;
+}
+
+
+/* =========================
+   GRAPH
+========================= */
+
+.graph-box{
+    width:100%;
+
+    height:210px;
+
+    background:#f8faf9;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    border:1px solid #e5e9e6;
+}
+
+#speedGraph{
+    width:100%;
+    height:100%;
+
+    display:block;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin-top:18px;
 }
 
 button{
-    width:100%;
     border:0;
-    background:#0b5d3b;
-    color:#fff;
+
     padding:14px;
+
     border-radius:10px;
-    font-size:15px;
+
+    color:white;
+
+    font-size:14px;
+
     font-weight:bold;
+
     cursor:pointer;
 }
 
+.start{
+    background:#0b5d3b;
+}
+
+.stop{
+    background:#c62828;
+}
+
 button:disabled{
-    opacity:.6;
+    opacity:.45;
+
     cursor:not-allowed;
 }
 
+
+/* =========================
+   NOTE
+========================= */
+
 .note{
+    text-align:center;
+
     font-size:10px;
+
     color:#999;
-    margin-top:15px;
+
     line-height:1.5;
+
+    margin-top:13px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    body{
+        padding:10px;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .speed-circle{
+        width:170px;
+        height:170px;
+    }
+
+    .speed-number{
+        font-size:35px;
+    }
+
+    .graph-box{
+        height:190px;
+    }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
 
 <div class="card">
+
+
+    <!-- TITLE -->
 
     <div class="title">
         Internet Speed Test
     </div>
 
     <div class="subtitle">
-        Check your current internet connection
+        Live Download & Upload Monitor
     </div>
 
 
-    <div class="speed-area">
+    <!-- MAIN SPEED -->
+
+    <div class="speed-circle">
 
         <div
             id="mainSpeed"
-            class="speed">
+            class="speed-number">
             0
         </div>
 
         <div
             id="mainUnit"
-            class="unit">
+            class="speed-unit">
             Mbps
         </div>
 
@@ -188,18 +401,20 @@ button:disabled{
     </div>
 
 
+    <!-- DOWNLOAD / UPLOAD -->
+
     <div class="results">
 
 
         <div class="result">
 
-            <div class="result-title download">
-                DOWNLOAD
+            <div class="result-title download-title">
+                🔴 DOWNLOAD
             </div>
 
             <span
                 id="download"
-                class="result-value">
+                class="result-number">
                 0
             </span>
 
@@ -214,13 +429,13 @@ button:disabled{
 
         <div class="result">
 
-            <div class="result-title upload">
-                UPLOAD
+            <div class="result-title upload-title">
+                🟢 UPLOAD
             </div>
 
             <span
                 id="upload"
-                class="result-value">
+                class="result-number">
                 0
             </span>
 
@@ -232,54 +447,212 @@ button:disabled{
 
         </div>
 
+    </div>
+
+
+    <!-- GRAPH HEADER -->
+
+    <div class="graph-header">
+
+        <div class="graph-title">
+            LIVE SPEED GRAPH
+        </div>
+
+        <div class="legend">
+
+            <div class="legend-item">
+
+                <span
+                    class="legend-dot red">
+                </span>
+
+                Download
+
+            </div>
+
+
+            <div class="legend-item">
+
+                <span
+                    class="legend-dot green">
+                </span>
+
+                Upload
+
+            </div>
+
+        </div>
 
     </div>
 
 
-    <button
-        id="startButton"
-        onclick="startTest()">
-        START SPEED TEST
-    </button>
+    <!-- GRAPH -->
+
+    <div class="graph-box">
+
+        <canvas
+            id="speedGraph">
+        </canvas>
+
+    </div>
+
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+
+        <button
+            id="startButton"
+            class="start"
+            onclick="startTest()">
+
+            ▶ START
+
+        </button>
+
+
+        <button
+            id="stopButton"
+            class="stop"
+            onclick="stopTest()"
+            disabled>
+
+            ■ STOP
+
+        </button>
+
+    </div>
 
 
     <div class="note">
-        The test downloads and uploads data to estimate
-        your internet connection speed.
+
+        Press START to continuously monitor your
+        connection. Press STOP whenever you want
+        to stop the test.
+
     </div>
+
 
 </div>
 
 
+
 <script>
 
+
 /* =====================================================
-   SPEED TEST
+   ELEMENTS
 ===================================================== */
 
-const startButton =
-document.getElementById("startButton");
+const canvas =
+document.getElementById(
+    "speedGraph"
+);
 
-const statusText =
-document.getElementById("status");
+const ctx =
+canvas.getContext("2d");
+
 
 const mainSpeed =
-document.getElementById("mainSpeed");
+document.getElementById(
+    "mainSpeed"
+);
 
 const mainUnit =
-document.getElementById("mainUnit");
+document.getElementById(
+    "mainUnit"
+);
 
-const download =
-document.getElementById("download");
+const statusText =
+document.getElementById(
+    "status"
+);
 
-const downloadUnit =
-document.getElementById("downloadUnit");
+const downloadElement =
+document.getElementById(
+    "download"
+);
 
-const upload =
-document.getElementById("upload");
+const downloadUnitElement =
+document.getElementById(
+    "downloadUnit"
+);
 
-const uploadUnit =
-document.getElementById("uploadUnit");
+const uploadElement =
+document.getElementById(
+    "upload"
+);
+
+const uploadUnitElement =
+document.getElementById(
+    "uploadUnit"
+);
+
+const startButton =
+document.getElementById(
+    "startButton"
+);
+
+const stopButton =
+document.getElementById(
+    "stopButton"
+);
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let running = false;
+
+let testTimer = null;
+
+let downloadHistory = [];
+
+let uploadHistory = [];
+
+const MAX_POINTS = 50;
+
+
+/* =====================================================
+   CANVAS
+===================================================== */
+
+function resizeCanvas(){
+
+    const rect =
+    canvas.getBoundingClientRect();
+
+    const ratio =
+    window.devicePixelRatio || 1;
+
+
+    canvas.width =
+    rect.width * ratio;
+
+    canvas.height =
+    rect.height * ratio;
+
+
+    ctx.setTransform(
+        ratio,
+        0,
+        0,
+        ratio,
+        0,
+        0
+    );
+
+
+    drawGraph();
+
+}
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
 
 
 /* =====================================================
@@ -288,19 +661,128 @@ document.getElementById("uploadUnit");
 
 function formatSpeed(mbps){
 
-    if(mbps < 1){
+    if(
+        !isFinite(mbps) ||
+        mbps <= 0
+    ){
 
         return {
-            value:(mbps * 1024).toFixed(0),
-            unit:"Kbps"
+            value:"0",
+            unit:"KBPS"
         };
 
     }
 
+
+    if(mbps < 1){
+
+        return {
+
+            value:
+                (mbps * 1024)
+                .toFixed(0),
+
+            unit:"KBPS"
+
+        };
+
+    }
+
+
     return {
-        value:mbps.toFixed(2),
-        unit:"Mbps"
+
+        value:
+            mbps.toFixed(2),
+
+        unit:"MBPS"
+
     };
+
+}
+
+
+/* =====================================================
+   UPDATE UI
+===================================================== */
+
+function updateUI(
+    downloadMbps,
+    uploadMbps
+){
+
+    const d =
+    formatSpeed(
+        downloadMbps
+    );
+
+    const u =
+    formatSpeed(
+        uploadMbps
+    );
+
+
+    downloadElement.textContent =
+    d.value;
+
+    downloadUnitElement.textContent =
+    d.unit;
+
+
+    uploadElement.textContent =
+    u.value;
+
+    uploadUnitElement.textContent =
+    u.unit;
+
+
+    /*
+       Main speed = Download
+    */
+
+    mainSpeed.textContent =
+    d.value;
+
+    mainUnit.textContent =
+    d.unit;
+
+
+    downloadHistory.push(
+        Math.max(
+            0,
+            downloadMbps
+        )
+    );
+
+
+    uploadHistory.push(
+        Math.max(
+            0,
+            uploadMbps
+        )
+    );
+
+
+    if(
+        downloadHistory.length >
+        MAX_POINTS
+    ){
+
+        downloadHistory.shift();
+
+    }
+
+
+    if(
+        uploadHistory.length >
+        MAX_POINTS
+    ){
+
+        uploadHistory.shift();
+
+    }
+
+
+    drawGraph();
 
 }
 
@@ -309,21 +791,15 @@ function formatSpeed(mbps){
    DOWNLOAD TEST
 ===================================================== */
 
-async function testDownload(){
-
-    statusText.textContent =
-        "Testing Download...";
-
+async function downloadTest(){
 
     /*
-       Public test file.
-
-       Cache busting is used so browser
-       does not reuse old data.
+       Random cache value prevents
+       browser cache.
     */
 
     const url =
-        "https://speed.cloudflare.com/__down?bytes=5000000&x="
+        "https://speed.cloudflare.com/__down?bytes=3000000&x="
         + Date.now();
 
 
@@ -343,7 +819,7 @@ async function testDownload(){
     if(!response.ok){
 
         throw new Error(
-            "Download test failed"
+            "Download failed"
         );
 
     }
@@ -355,73 +831,72 @@ async function testDownload(){
 
     let totalBytes = 0;
 
+    let lastBytes = 0;
 
-    while(true){
+    let lastTime =
+        performance.now();
 
-        const {
-            done,
-            value
-        } =
+
+    while(running){
+
+        const result =
         await reader.read();
 
 
-        if(done){
+        if(result.done){
+
             break;
+
         }
 
 
         totalBytes +=
-            value.byteLength;
+        result.value.byteLength;
+
+
+        const now =
+        performance.now();
 
 
         const elapsed =
-            (performance.now() - start)
-            / 1000;
+        (now - lastTime) / 1000;
 
 
-        if(elapsed > 0){
+        if(elapsed >= .1){
+
+            const bytes =
+            totalBytes -
+            lastBytes;
+
 
             const mbps =
-                (
-                    totalBytes * 8
-                )
-                /
-                elapsed
-                /
-                1000000;
+            (
+                bytes * 8
+            )
+            /
+            elapsed
+            /
+            1000000;
 
 
-            const result =
-                formatSpeed(mbps);
+            updateUI(
+                mbps,
+                0
+            );
 
 
-            mainSpeed.textContent =
-                result.value;
+            lastBytes =
+            totalBytes;
 
-            mainUnit.textContent =
-                result.unit;
+            lastTime =
+            now;
 
         }
 
     }
 
 
-    const elapsed =
-        (performance.now() - start)
-        / 1000;
-
-
-    const mbps =
-        (
-            totalBytes * 8
-        )
-        /
-        elapsed
-        /
-        1000000;
-
-
-    return mbps;
+    return totalBytes;
 
 }
 
@@ -430,47 +905,42 @@ async function testDownload(){
    UPLOAD TEST
 ===================================================== */
 
-async function testUpload(){
-
-    statusText.textContent =
-        "Testing Upload...";
-
+async function uploadTest(){
 
     /*
-       2 MB test data
+       Upload test data.
     */
 
     const size =
-        2 * 1024 * 1024;
+        1024 * 1024;
 
 
     const data =
         new Uint8Array(size);
 
 
+    /*
+       Fill test data.
+    */
+
     crypto.getRandomValues(
         data.subarray(
             0,
-            65536
+            Math.min(
+                data.length,
+                65536
+            )
         )
     );
 
 
     const start =
-        performance.now();
+    performance.now();
 
-
-    /*
-       Cloudflare endpoint
-       may reject upload from
-       some browsers.
-
-       If rejected, the page will
-       report upload unavailable.
-    */
 
     try{
 
+        const response =
         await fetch(
             "https://speed.cloudflare.com/__up",
             {
@@ -482,35 +952,143 @@ async function testUpload(){
             }
         );
 
+
+        if(!response.ok){
+
+            return 0;
+
+        }
+
+
     }
     catch(error){
 
-        return null;
+        return 0;
 
     }
 
 
     const elapsed =
-        (performance.now() - start)
-        / 1000;
+    (performance.now() - start)
+    / 1000;
 
 
     if(elapsed <= 0){
+
         return 0;
+
     }
 
 
-    const mbps =
-        (
-            size * 8
-        )
-        /
-        elapsed
-        /
-        1000000;
+    return (
+        size * 8
+    )
+    /
+    elapsed
+    /
+    1000000;
+
+}
 
 
-    return mbps;
+/* =====================================================
+   CONTINUOUS TEST
+===================================================== */
+
+async function runTest(){
+
+    while(running){
+
+        try{
+
+            statusText.textContent =
+            "Testing Download...";
+
+
+            /*
+               Download measurement
+            */
+
+            await downloadTest();
+
+
+            if(!running){
+
+                break;
+
+            }
+
+
+            /*
+               Upload measurement
+            */
+
+            statusText.textContent =
+            "Testing Upload...";
+
+
+            const upload =
+            await uploadTest();
+
+
+            if(!running){
+
+                break;
+
+            }
+
+
+            /*
+               Show upload result
+            */
+
+            const lastDownload =
+            downloadHistory.length
+            ? downloadHistory[
+                downloadHistory.length - 1
+            ]
+            : 0;
+
+
+            updateUI(
+                lastDownload,
+                upload
+            );
+
+
+            statusText.textContent =
+            "● LIVE";
+
+
+        }
+        catch(error){
+
+            console.error(error);
+
+
+            if(running){
+
+                statusText.textContent =
+                "Connection Error";
+
+            }
+
+        }
+
+
+        /*
+           Small pause before next test
+        */
+
+        await new Promise(
+            resolve =>
+            setTimeout(
+                resolve,
+                300
+            )
+        );
+
+    }
 
 }
 
@@ -519,129 +1097,81 @@ async function testUpload(){
    START
 ===================================================== */
 
-async function startTest(){
+function startTest(){
+
+    if(running){
+
+        return;
+
+    }
+
+
+    running = true;
+
 
     startButton.disabled =
-        true;
+    true;
 
 
-    startButton.textContent =
-        "TESTING...";
+    stopButton.disabled =
+    false;
 
 
     statusText.textContent =
-        "Starting...";
+    "● LIVE";
 
 
-    mainSpeed.textContent =
-        "0";
+    /*
+       Start continuous testing
+    */
 
-
-    mainUnit.textContent =
-        "Mbps";
-
-
-    download.textContent =
-        "0";
-
-
-    upload.textContent =
-        "0";
-
-
-    try{
-
-        /* DOWNLOAD */
-
-        const down =
-            await testDownload();
-
-
-        const downResult =
-            formatSpeed(down);
-
-
-        download.textContent =
-            downResult.value;
-
-
-        downloadUnit.textContent =
-            downResult.unit;
-
-
-        mainSpeed.textContent =
-            downResult.value;
-
-
-        mainUnit.textContent =
-            downResult.unit;
-
-
-        /* UPLOAD */
-
-        const up =
-            await testUpload();
-
-
-        if(up === null){
-
-            upload.textContent =
-                "--";
-
-            uploadUnit.textContent =
-                "N/A";
-
-        }
-        else{
-
-            const upResult =
-                formatSpeed(up);
-
-
-            upload.textContent =
-                upResult.value;
-
-
-            uploadUnit.textContent =
-                upResult.unit;
-
-        }
-
-
-        statusText.textContent =
-            "Test Complete";
-
-
-    }
-    catch(error){
-
-        console.error(error);
-
-
-        statusText.textContent =
-            "Test Failed";
-
-
-        mainSpeed.textContent =
-            "0";
-
-
-        mainUnit.textContent =
-            "Mbps";
-
-    }
-
-
-    startButton.disabled =
-        false;
-
-
-    startButton.textContent =
-        "START SPEED TEST";
+    runTest();
 
 }
 
+
+/* =====================================================
+   STOP
+===================================================== */
+
+function stopTest(){
+
+    running = false;
+
+
+    startButton.disabled =
+    false;
+
+
+    stopButton.disabled =
+    true;
+
+
+    statusText.textContent =
+    "Stopped";
+
+
+}
+
+
+/* =====================================================
+   INITIAL GRAPH
+===================================================== */
+
+resizeCanvas();
+
+
+/* =====================================================
+   INITIAL VALUES
+===================================================== */
+
+updateUI(
+    0,
+    0
+);
+
 </script>
+
 
 </body>
 
