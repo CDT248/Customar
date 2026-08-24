@@ -872,9 +872,7 @@ id="speedContent"
 class="speed-content">
 
 
-<!-- =========================
-     SPEED VALUES
-========================= -->
+<!-- SPEED VALUES -->
 
 <div class="speed-values">
 
@@ -937,9 +935,7 @@ KBPS
 </div>
 
 
-<!-- =========================
-     LEGEND
-========================= -->
+<!-- LEGEND -->
 
 <div class="graph-legend">
 
@@ -967,9 +963,7 @@ Upload
 </div>
 
 
-<!-- =========================
-     GRAPH
-========================= -->
+<!-- GRAPH -->
 
 <div class="graph-container">
 
@@ -992,9 +986,7 @@ Live connection monitor
 </div>
 
 
-<!-- =========================
-     NAME
-========================= -->
+<!-- NAME -->
 
 <div class="info">
 
@@ -1013,9 +1005,7 @@ Shemanto Islam
 </div>
 
 
-<!-- =========================
-     BILLING DATE
-========================= -->
+<!-- BILLING DATE -->
 
 <div class="billing">
 
@@ -1034,9 +1024,7 @@ BILLING DATE
 </div>
 
 
-<!-- =========================
-     BILL
-========================= -->
+<!-- BILL -->
 
 <div class="bill">
 
@@ -1055,9 +1043,7 @@ BILL
 </div>
 
 
-<!-- =========================
-     ADDRESS
-========================= -->
+<!-- ADDRESS -->
 
 <div class="address">
 
@@ -1076,9 +1062,7 @@ sagorika road pahartali Chittagong
 </div>
 
 
-<!-- =========================
-     CONNECTING STATUS
-========================= -->
+<!-- CONNECTING STATUS -->
 
 <div class="connection">
 
@@ -1229,7 +1213,7 @@ loadTheme();
 
 
 /* =====================================================
-   SPEED MINIMIZE / MANAGE
+   SPEED MINIMIZE
 ===================================================== */
 
 const speedBox =
@@ -1338,22 +1322,13 @@ const MAX_POINTS = 70;
    INITIAL SPEED
 ===================================================== */
 
-/*
-   Demo baseline.
+let download = 7.20;
 
-   It starts smoothly and then
-   moves slowly up/down.
-*/
-
-let download =
-7.20;
-
-let upload =
-1.45;
+let upload = 1.45;
 
 
 /* =====================================================
-   RANDOM SMOOTH MOVEMENT
+   SMOOTH SPEED CHANGE
 ===================================================== */
 
 function smoothChange(
@@ -1373,17 +1348,11 @@ function smoothChange(
     current + change;
 
 
-    /*
-       Keep the movement
-       inside a stable range.
-    */
-
     if(next < min){
 
         next =
         min +
-        Math.random() *
-        step;
+        Math.random() * step;
 
     }
 
@@ -1392,8 +1361,7 @@ function smoothChange(
 
         next =
         max -
-        Math.random() *
-        step;
+        Math.random() * step;
 
     }
 
@@ -1411,9 +1379,7 @@ function formatSpeed(
     mbps
 ){
 
-    if(
-        mbps < 0.01
-    ){
+    if(mbps < 0.01){
 
         return {
             value:"00",
@@ -1427,13 +1393,7 @@ function formatSpeed(
     mbps * 1024;
 
 
-    /*
-       KBPS
-    */
-
-    if(
-        mbps < 1
-    ){
+    if(mbps < 1){
 
         return {
 
@@ -1446,10 +1406,6 @@ function formatSpeed(
 
     }
 
-
-    /*
-       MBPS
-    */
 
     return {
 
@@ -1464,21 +1420,17 @@ function formatSpeed(
 
 
 /* =====================================================
-   UPDATE VALUES
+   UPDATE SPEED VALUES
 ===================================================== */
 
 function updateSpeedValues(){
 
     const down =
-    formatSpeed(
-        download
-    );
+    formatSpeed(download);
 
 
     const up =
-    formatSpeed(
-        upload
-    );
+    formatSpeed(upload);
 
 
     downloadSpeed.textContent =
@@ -1498,7 +1450,7 @@ function updateSpeedValues(){
 
 
 /* =====================================================
-   UPDATE HISTORY
+   HISTORY
 ===================================================== */
 
 function updateHistory(){
@@ -1628,9 +1580,7 @@ function drawGraph(){
     );
 
 
-    /*
-       GRID
-    */
+    /* GRID */
 
     ctx.strokeStyle =
     dark
@@ -1680,10 +1630,7 @@ function drawGraph(){
 
 
     /*
-       Maximum graph scale.
-
-       Keep it stable so graph
-       does not jump vertically.
+       Stable graph scale
     */
 
     let max =
@@ -1807,25 +1754,35 @@ function drawLine(
     ctx.stroke();
 
 
-    /*
-       Current point
-    */
+    /* =================================================
+       CURRENT POINT
+
+       Point এখন শেষ edge-এ নয়।
+       2 point আগে থাকবে।
+    ================================================= */
 
     const last =
     data.length - 1;
 
 
-    const lastX =
+    const pointIndex =
+    Math.max(
+        0,
+        last - 2
+    );
+
+
+    const pointX =
     (
-        last /
+        pointIndex /
         (data.length - 1)
     ) * width;
 
 
-    const lastY =
+    const pointY =
     height -
     (
-        data[last] / max
+        data[pointIndex] / max
     ) *
     (
         height - 20
@@ -1833,11 +1790,33 @@ function drawLine(
     10;
 
 
+    /* Outer glow */
+
     ctx.beginPath();
 
     ctx.arc(
-        lastX,
-        lastY,
+        pointX,
+        pointY,
+        7,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fillStyle =
+    color === "#e00000"
+    ? "rgba(224,0,0,.15)"
+    : "rgba(11,155,84,.15)";
+
+    ctx.fill();
+
+
+    /* Main point */
+
+    ctx.beginPath();
+
+    ctx.arc(
+        pointX,
+        pointY,
         4,
         0,
         Math.PI * 2
@@ -1857,16 +1836,6 @@ function drawLine(
 ===================================================== */
 
 function updateLiveSpeed(){
-
-    /*
-       Small smooth movement.
-
-       Download:
-       approximately 5 - 9 Mbps
-
-       Upload:
-       approximately 0.8 - 2.2 Mbps
-    */
 
     download =
     smoothChange(
@@ -1904,15 +1873,10 @@ resizeCanvas();
 updateSpeedValues();
 
 
-/*
-   Fast smooth graph update.
-*/
-
 setInterval(
     updateLiveSpeed,
     250
 );
-
 
 </script>
 
