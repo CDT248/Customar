@@ -49,7 +49,6 @@ body{
 
 .theme-button{
     position:fixed;
-
     top:5px;
     right:5px;
 
@@ -57,11 +56,9 @@ body{
     height:25px;
 
     border:1px solid var(--border);
-
     border-radius:50%;
 
     background:var(--card);
-
     color:var(--text);
 
     font-size:12px;
@@ -94,25 +91,19 @@ body{
     border-bottom:1px solid var(--border);
 
     position:sticky;
-
     top:0;
-
     z-index:100;
 }
 
 .title{
     font-size:20px;
-
     font-weight:bold;
-
     color:var(--green);
 }
 
 .logout{
     border:0;
-
     background:var(--green);
-
     color:white;
 
     padding:10px 17px;
@@ -120,16 +111,9 @@ body{
     border-radius:8px;
 
     font-size:14px;
-
     font-weight:bold;
 
     cursor:pointer;
-
-    transition:.2s;
-}
-
-.logout:hover{
-    transform:translateY(-1px);
 }
 
 
@@ -139,7 +123,6 @@ body{
 
 .container{
     width:100%;
-
     max-width:650px;
 
     margin:auto;
@@ -244,7 +227,6 @@ body{
 
 .photo{
     width:220px;
-
     height:220px;
 
     border-radius:50%;
@@ -261,22 +243,16 @@ body{
 
 .photo svg{
     width:100%;
-
     height:100%;
-
     display:block;
 }
 
 
 /* =====================================================
-   PREMIUM SPEED BOX
+   SPEED BOX
 ===================================================== */
 
 .speed-box{
-
-    position:relative;
-
-    overflow:hidden;
 
     background:
         linear-gradient(
@@ -296,31 +272,9 @@ body{
     box-shadow:
         0 8px 30px rgba(0,0,0,.06);
 
-}
-
-
-/* decorative glow */
-
-.speed-box::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:180px;
-    height:180px;
-
-    top:-90px;
-    right:-70px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(11,93,59,.12),
-            transparent 70%
-        );
-
-    pointer-events:none;
+    transition:
+        padding .3s,
+        box-shadow .3s;
 }
 
 
@@ -336,23 +290,42 @@ body{
 
     align-items:center;
 
+    cursor:pointer;
+
+    user-select:none;
+
     margin-bottom:15px;
-
-    position:relative;
-
-    z-index:2;
 }
 
 .speed-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
 
     font-size:14px;
 
     font-weight:bold;
 
     color:var(--muted);
-
-    letter-spacing:.3px;
 }
+
+.speed-arrow{
+
+    font-size:10px;
+
+    transition:
+        transform .3s;
+
+    color:var(--muted);
+}
+
+
+/* =========================
+   LIVE
+========================= */
 
 .speed-live{
 
@@ -373,22 +346,19 @@ body{
     padding:6px 9px;
 
     border-radius:20px;
-
-    box-shadow:
-        0 3px 10px rgba(8,120,61,.08);
 }
 
 .live-dot{
 
     width:6px;
-
     height:6px;
 
     background:#0aa854;
 
     border-radius:50%;
 
-    animation:livePulse 1s infinite;
+    animation:
+        livePulse 1s infinite;
 }
 
 @keyframes livePulse{
@@ -412,7 +382,56 @@ body{
 
 
 /* =====================================================
-   SPEED VALUE CARDS
+   SPEED CONTENT
+===================================================== */
+
+.speed-content{
+
+    max-height:600px;
+
+    overflow:hidden;
+
+    opacity:1;
+
+    transition:
+        max-height .4s ease,
+        opacity .25s ease;
+
+}
+
+
+/* =====================================================
+   MINIMIZED
+===================================================== */
+
+.speed-box.minimized{
+
+    padding-bottom:15px;
+
+}
+
+.speed-box.minimized .speed-header{
+
+    margin-bottom:0;
+}
+
+.speed-box.minimized .speed-content{
+
+    max-height:0;
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+.speed-box.minimized .speed-arrow{
+
+    transform:rotate(-90deg);
+}
+
+
+/* =====================================================
+   SPEED VALUES
 ===================================================== */
 
 .speed-values{
@@ -424,17 +443,9 @@ body{
     gap:10px;
 
     margin-bottom:15px;
-
-    position:relative;
-
-    z-index:2;
 }
 
 .speed-value-box{
-
-    position:relative;
-
-    overflow:hidden;
 
     border:1px solid var(--border);
 
@@ -442,10 +453,11 @@ body{
 
     padding:13px;
 
-    background:rgba(255,255,255,.04);
+    background:var(--bg);
 
-    backdrop-filter:blur(8px);
+    position:relative;
 
+    overflow:hidden;
 }
 
 .speed-value-box::after{
@@ -454,25 +466,26 @@ body{
 
     position:absolute;
 
-    width:50px;
+    width:60px;
 
-    height:50px;
+    height:60px;
 
     border-radius:50%;
 
-    right:-20px;
+    right:-25px;
 
-    bottom:-20px;
+    bottom:-25px;
 
     opacity:.08;
-
 }
 
 .download-card::after{
+
     background:#e00000;
 }
 
 .upload-card::after{
+
     background:#0b9b54;
 }
 
@@ -488,10 +501,12 @@ body{
 }
 
 .download-title{
+
     color:#e00000;
 }
 
 .upload-title{
+
     color:#0b9b54;
 }
 
@@ -511,8 +526,6 @@ body{
     font-weight:bold;
 
     color:var(--text);
-
-    letter-spacing:-.5px;
 }
 
 .speed-unit{
@@ -526,7 +539,7 @@ body{
 
 
 /* =====================================================
-   GRAPH LEGEND
+   LEGEND
 ===================================================== */
 
 .graph-legend{
@@ -540,10 +553,6 @@ body{
     gap:28px;
 
     margin-bottom:9px;
-
-    position:relative;
-
-    z-index:2;
 }
 
 .legend{
@@ -571,6 +580,7 @@ body{
 }
 
 .download-line{
+
     background:#e00000;
 
     box-shadow:
@@ -578,6 +588,7 @@ body{
 }
 
 .upload-line{
+
     background:#0b9b54;
 
     box-shadow:
@@ -604,12 +615,11 @@ body{
     background:
         linear-gradient(
             to bottom,
-            rgba(128,128,128,.025),
+            rgba(128,128,128,.02),
             rgba(128,128,128,.08)
         );
 
     border:1px solid var(--border);
-
 }
 
 #speedCanvas{
@@ -620,35 +630,6 @@ body{
 
     display:block;
 }
-
-
-/* graph fade */
-
-.graph-container::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    right:0;
-
-    bottom:0;
-
-    height:25px;
-
-    background:
-        linear-gradient(
-            transparent,
-            var(--bg)
-        );
-
-    opacity:.18;
-
-    pointer-events:none;
-}
-
 
 .speed-note{
 
@@ -753,7 +734,8 @@ body{
     box-shadow:
         0 0 7px #0aa854;
 
-    animation:onlinePulse 1.3s infinite;
+    animation:
+        onlinePulse 1.3s infinite;
 }
 
 @keyframes onlinePulse{
@@ -840,7 +822,7 @@ body{
 
 
 <!-- =========================
-     THEME
+     THEME BUTTON
 ========================= -->
 
 <button
@@ -1013,17 +995,34 @@ stroke-width="6"/>
      INTERNET SPEED
 ===================================================== -->
 
-<div class="speed-box">
+<div
+    id="speedBox"
+    class="speed-box">
 
 
-<div class="speed-header">
+<!-- SPEED HEADER -->
+
+<div
+    class="speed-header"
+    onclick="toggleSpeed()">
+
 
     <div class="speed-title">
+
+        <span
+            id="speedArrow"
+            class="speed-arrow">
+
+            ▼
+
+        </span>
+
         📶 INTERNET SPEED
+
     </div>
 
+
     <div
-        id="speedLive"
         class="speed-live">
 
         <span class="live-dot"></span>
@@ -1032,81 +1031,99 @@ stroke-width="6"/>
 
     </div>
 
+
 </div>
 
 
-<!-- =========================
-     SPEED VALUES
-========================= -->
+<!-- SPEED CONTENT -->
+
+<div
+    id="speedContent"
+    class="speed-content">
+
+
+<!-- VALUES -->
 
 <div class="speed-values">
 
 
-<div class="speed-value-box download-card">
+    <!-- DOWNLOAD -->
 
-    <div class="speed-value-title download-title">
-        DOWNLOAD
+    <div
+        class="speed-value-box download-card">
+
+        <div
+            class="speed-value-title download-title">
+
+            DOWNLOAD
+
+        </div>
+
+
+        <div class="speed-number-row">
+
+            <span
+                id="downloadSpeed"
+                class="speed-value">
+
+                7.2
+
+            </span>
+
+            <span
+                class="speed-unit">
+
+                MBPS
+
+            </span>
+
+        </div>
+
     </div>
 
-    <div class="speed-number-row">
 
-        <span
-            id="downloadSpeed"
-            class="speed-value">
+    <!-- UPLOAD -->
 
-            7.2
+    <div
+        class="speed-value-box upload-card">
 
-        </span>
+        <div
+            class="speed-value-title upload-title">
 
-        <span
-            id="downloadUnit"
-            class="speed-unit">
+            UPLOAD
 
-            MBPS
+        </div>
 
-        </span>
+
+        <div class="speed-number-row">
+
+            <span
+                id="uploadSpeed"
+                class="speed-value">
+
+                1.5
+
+            </span>
+
+            <span
+                class="speed-unit">
+
+                MBPS
+
+            </span>
+
+        </div>
 
     </div>
+
 
 </div>
 
 
-<div class="speed-value-box upload-card">
-
-    <div class="speed-value-title upload-title">
-        UPLOAD
-    </div>
-
-    <div class="speed-number-row">
-
-        <span
-            id="uploadSpeed"
-            class="speed-value">
-
-            1.5
-
-        </span>
-
-        <span
-            id="uploadUnit"
-            class="speed-unit">
-
-            MBPS
-
-        </span>
-
-    </div>
-
-</div>
-
-</div>
-
-
-<!-- =========================
-     LEGEND
-========================= -->
+<!-- LEGEND -->
 
 <div class="graph-legend">
+
 
     <div class="legend">
 
@@ -1129,12 +1146,11 @@ stroke-width="6"/>
 
     </div>
 
+
 </div>
 
 
-<!-- =========================
-     GRAPH
-========================= -->
+<!-- GRAPH -->
 
 <div class="graph-container">
 
@@ -1151,6 +1167,8 @@ stroke-width="6"/>
 
 </div>
 
+
+</div>
 
 </div>
 
@@ -1241,7 +1259,7 @@ stroke-width="6"/>
 
 
 /* =====================================================
-   LOGIN
+   LOGIN CHECK
 ===================================================== */
 
 if(
@@ -1364,6 +1382,58 @@ loadTheme();
 
 
 /* =====================================================
+   SPEED MINIMIZE / MAXIMIZE
+===================================================== */
+
+const speedBox =
+document.getElementById(
+    "speedBox"
+);
+
+
+const savedSpeedState =
+localStorage.getItem(
+    "speedBoxMinimized"
+);
+
+
+if(savedSpeedState === "true"){
+
+    speedBox.classList.add(
+        "minimized"
+    );
+
+}
+
+
+/* =====================================================
+   TOGGLE SPEED
+===================================================== */
+
+function toggleSpeed(){
+
+    speedBox.classList.toggle(
+        "minimized"
+    );
+
+
+    const minimized =
+    speedBox.classList.contains(
+        "minimized"
+    );
+
+
+    localStorage.setItem(
+        "speedBoxMinimized",
+        minimized
+        ? "true"
+        : "false"
+    );
+
+}
+
+
+/* =====================================================
    GRAPH
 ===================================================== */
 
@@ -1373,7 +1443,9 @@ document.getElementById(
 );
 
 const ctx =
-canvas.getContext("2d");
+canvas.getContext(
+    "2d"
+);
 
 
 const downloadElement =
@@ -1381,30 +1453,35 @@ document.getElementById(
     "downloadSpeed"
 );
 
+
 const uploadElement =
 document.getElementById(
     "uploadSpeed"
 );
 
 
-let downloadHistory = [];
+let download =
+7.2;
 
-let uploadHistory = [];
 
-const MAX_POINTS = 80;
+let upload =
+1.5;
+
+
+let downloadHistory =
+[];
+
+
+let uploadHistory =
+[];
+
+
+const MAX_POINTS =
+80;
 
 
 /* =====================================================
-   INITIAL SPEED
-===================================================== */
-
-let download = 7.2;
-
-let upload = 1.5;
-
-
-/* =====================================================
-   SMOOTH RANDOM SPEED
+   SPEED CHANGE
 ===================================================== */
 
 function changeSpeed(
@@ -1445,7 +1522,7 @@ function changeSpeed(
 
 
 /* =====================================================
-   RESIZE
+   RESIZE CANVAS
 ===================================================== */
 
 function resizeCanvas(){
@@ -1510,6 +1587,13 @@ function drawGraph(){
     canvas.clientHeight;
 
 
+    if(!width || !height){
+
+        return;
+
+    }
+
+
     ctx.clearRect(
         0,
         0,
@@ -1533,11 +1617,11 @@ function drawGraph(){
     );
 
 
-    /* =========================
-       GRID
-    ========================= */
+    /* GRID */
 
-    ctx.lineWidth = 1;
+    ctx.lineWidth =
+    1;
+
 
     ctx.strokeStyle =
     dark
@@ -1573,10 +1657,6 @@ function drawGraph(){
 
     }
 
-
-    /* =========================
-       FIXED SCALE
-    ========================= */
 
     const max =
     12;
@@ -1623,7 +1703,8 @@ function drawSmoothLine(
     }
 
 
-    const points = [];
+    const points =
+    [];
 
 
     data.forEach(
@@ -1665,10 +1746,12 @@ function drawSmoothLine(
 
     ctx.beginPath();
 
+
     ctx.moveTo(
         points[0].x,
         height
     );
+
 
     ctx.lineTo(
         points[0].x,
@@ -1684,6 +1767,7 @@ function drawSmoothLine(
 
         const previous =
         points[i - 1];
+
 
         const current =
         points[i];
@@ -1720,24 +1804,26 @@ function drawSmoothLine(
         last.y
     );
 
+
     ctx.lineTo(
         last.x,
         height
     );
 
+
     ctx.closePath();
 
 
+    const gradient =
+    ctx.createLinearGradient(
+        0,
+        0,
+        0,
+        height
+    );
+
+
     if(color === "#e00000"){
-
-        const gradient =
-        ctx.createLinearGradient(
-            0,
-            0,
-            0,
-            height
-        );
-
 
         gradient.addColorStop(
             0,
@@ -1749,21 +1835,8 @@ function drawSmoothLine(
             "rgba(224,0,0,0)"
         );
 
-
-        ctx.fillStyle =
-        gradient;
-
     }
     else{
-
-        const gradient =
-        ctx.createLinearGradient(
-            0,
-            0,
-            0,
-            height
-        );
-
 
         gradient.addColorStop(
             0,
@@ -1775,11 +1848,11 @@ function drawSmoothLine(
             "rgba(11,155,84,0)"
         );
 
-
-        ctx.fillStyle =
-        gradient;
-
     }
+
+
+    ctx.fillStyle =
+    gradient;
 
 
     ctx.fill();
@@ -1790,6 +1863,7 @@ function drawSmoothLine(
     ========================= */
 
     ctx.beginPath();
+
 
     ctx.moveTo(
         points[0].x,
@@ -1805,6 +1879,7 @@ function drawSmoothLine(
 
         const previous =
         points[i - 1];
+
 
         const current =
         points[i];
@@ -1839,38 +1914,42 @@ function drawSmoothLine(
     ctx.strokeStyle =
     color;
 
-    ctx.lineWidth = 3;
+
+    ctx.lineWidth =
+    3;
+
 
     ctx.lineJoin =
     "round";
 
+
     ctx.lineCap =
     "round";
 
-    ctx.shadowBlur = 8;
+
+    ctx.shadowBlur =
+    7;
+
 
     ctx.shadowColor =
     color;
 
+
     ctx.stroke();
 
-    ctx.shadowBlur = 0;
+
+    ctx.shadowBlur =
+    0;
 
 
-    /* =================================================
+    /* =========================
        CURRENT POINT
-
-       Point ডান edge থেকে 2 point আগে
-    ================================================= */
-
-    const lastIndex =
-    data.length - 1;
-
+    ========================= */
 
     const pointIndex =
     Math.max(
         0,
-        lastIndex - 2
+        data.length - 3
     );
 
 
@@ -1884,10 +1963,11 @@ function drawSmoothLine(
 
     ctx.beginPath();
 
+
     ctx.arc(
         point.x,
         point.y,
-        9,
+        10,
         0,
         Math.PI * 2
     );
@@ -1902,9 +1982,10 @@ function drawSmoothLine(
     ctx.fill();
 
 
-    /* white ring */
+    /* white border */
 
     ctx.beginPath();
+
 
     ctx.arc(
         point.x,
@@ -1918,12 +1999,14 @@ function drawSmoothLine(
     ctx.fillStyle =
     "#ffffff";
 
+
     ctx.fill();
 
 
-    /* main point */
+    /* point */
 
     ctx.beginPath();
+
 
     ctx.arc(
         point.x,
@@ -1937,13 +2020,14 @@ function drawSmoothLine(
     ctx.fillStyle =
     color;
 
+
     ctx.fill();
 
 }
 
 
 /* =====================================================
-   UPDATE SPEED
+   UPDATE
 ===================================================== */
 
 function updateSpeed(){
@@ -1953,16 +2037,16 @@ function updateSpeed(){
         download,
         4.5,
         9.5,
-        0.18
+        .18
     );
 
 
     upload =
     changeSpeed(
         upload,
-        0.6,
+        .6,
         2.2,
-        0.07
+        .07
     );
 
 
@@ -2013,19 +2097,35 @@ function updateSpeed(){
    START
 ===================================================== */
 
+for(
+    let i = 0;
+    i < 25;
+    i++
+){
+
+    downloadHistory.push(
+        5 +
+        Math.random() * 3
+    );
+
+
+    uploadHistory.push(
+        .7 +
+        Math.random() * .9
+    );
+
+}
+
+
 resizeCanvas();
 
 
-/*
-   Smooth update
-   প্রতি 200ms
-*/
+/* Smooth graph */
 
 setInterval(
     updateSpeed,
     200
 );
-
 
 </script>
 
