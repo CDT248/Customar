@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#f5f7f9;
+    color:#222;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    width:100%;
+    padding:18px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#ffffff;
+    border-bottom:1px solid #e5e5e5;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.header-title{
+    font-size:20px;
+    font-weight:bold;
+    color:#0b5d3b;
+}
+
+.logout-btn{
+    border:none;
+    background:#0b5d3b;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.logout-btn:hover{
+    background:#08492f;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    width:100%;
+    max-width:650px;
+    margin:0 auto;
+    padding:25px 18px 40px;
+}
+
+
+/* =========================
+   TOP USER SECTION
+========================= */
+
+.top-section{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-bottom:18px;
+}
+
+.info-box{
+    background:white;
+    border:1px solid #dedede;
+    border-radius:12px;
+    padding:15px;
+}
+
+.info-label{
+    display:block;
+    font-size:12px;
+    font-weight:bold;
+    color:#777;
+    margin-bottom:6px;
+    text-transform:uppercase;
+}
+
+.info-value{
+    font-size:16px;
+    font-weight:bold;
+    color:#222;
+}
+
+
+/* =========================
+   MAC
+========================= */
+
+.mac-box{
+    width:100%;
+    background:white;
+    border:1px solid #dedede;
+    border-radius:12px;
+    padding:16px;
+    margin-bottom:25px;
+}
+
+.mac-label{
+    font-size:13px;
+    color:#777;
+    font-weight:bold;
+}
+
+.mac-value{
+    font-size:18px;
+    font-weight:bold;
+    margin-top:5px;
+    letter-spacing:1px;
+}
+
+
+/* =========================
+   PROFILE PICTURE
+========================= */
+
+.profile-area{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.profile-picture{
+    width:230px;
+    height:230px;
+    border-radius:50%;
+    overflow:hidden;
+    border:6px solid white;
+    box-shadow:
+        0 5px 25px rgba(0,0,0,0.15);
+    background:#e9ecef;
+}
+
+.profile-picture img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-label{
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    color:#555;
+    margin-bottom:7px;
+}
+
+.form-control{
+    width:100%;
+    height:52px;
+    border:1px solid #d7d7d7;
+    background:#fff;
+    border-radius:10px;
+    padding:0 15px;
+    font-size:16px;
+    outline:none;
+    transition:.2s;
+}
+
+.form-control:focus{
+    border-color:#0b5d3b;
+    box-shadow:0 0 0 3px rgba(11,93,59,.08);
+}
+
+
+/* =========================
+   OPERATOR
+========================= */
+
+.operator-wrapper{
+    position:relative;
+}
+
+.operator-wrapper select{
+    appearance:none;
+    -webkit-appearance:none;
+    cursor:pointer;
+    padding-right:45px;
+}
+
+.dropdown-arrow{
+    position:absolute;
+    right:17px;
+    top:50%;
+    transform:translateY(-50%);
+    pointer-events:none;
+    font-size:18px;
+    color:#555;
+}
+
+
+/* =========================
+   SAVE BUTTON
+========================= */
+
+.save-btn{
+    width:100%;
+    height:52px;
+    margin-top:8px;
+    border:none;
+    border-radius:10px;
+    background:#0b5d3b;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.save-btn:hover{
+    background:#08492f;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    .header{
+        padding:15px;
+    }
+
+    .header-title{
+        font-size:18px;
+    }
+
+    .logout-btn{
+        padding:9px 13px;
+        font-size:13px;
+    }
+
+    .container{
+        padding:20px 15px 35px;
+    }
+
+    .top-section{
+        gap:10px;
+    }
+
+    .info-box{
+        padding:13px 11px;
+    }
+
+    .info-value{
+        font-size:14px;
+    }
+
+    .profile-picture{
+        width:200px;
+        height:200px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<div class="header">
+
+    <div class="header-title">
+        User Dashboard
+    </div>
+
+    <button class="logout-btn" onclick="logout()">
+        Logout
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<div class="container">
+
+
+    <!-- USERNAME + USER PHOTO -->
+
+    <div class="top-section">
+
+        <div class="info-box">
+
+            <span class="info-label">
+                Username
+            </span>
+
+            <div class="info-value" id="username">
+                ADMIN
+            </div>
+
+        </div>
+
+
+        <div class="info-box">
+
+            <span class="info-label">
+                User Photo
+            </span>
+
+            <div class="info-value">
+                ✓
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MAC -->
+
+    <div class="mac-box">
+
+        <div class="mac-label">
+            MAC
+        </div>
+
+        <div class="mac-value" id="mac">
+            D
+        </div>
+
+    </div>
+
+
+
+    <!-- PROFILE PICTURE -->
+
+    <div class="profile-area">
+
+        <div class="profile-picture">
+
+            <img
+                id="profileImage"
+                src="https://via.placeholder.com/500"
+                alt="Profile Picture"
+            >
+
+        </div>
+
+    </div>
+
+
+
+    <!-- NAME -->
+
+    <div class="form-group">
+
+        <label class="form-label">
+            NAME
+        </label>
+
+        <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter Name"
+        >
+
+    </div>
+
+
+
+    <!-- BILL -->
+
+    <div class="form-group">
+
+        <label class="form-label">
+            BILL
+        </label>
+
+        <input
+            type="number"
+            class="form-control"
+            id="bill"
+            placeholder="Enter Bill"
+        >
+
+    </div>
+
+
+
+    <!-- OPERATOR -->
+
+    <div class="form-group">
+
+        <label class="form-label">
+            OPERATOR
+        </label>
+
+        <div class="operator-wrapper">
+
+            <select
+                class="form-control"
+                id="operator"
+            >
+
+                <option value="">
+                    Select Operator
+                </option>
+
+                <option value="Grameenphone">
+                    Grameenphone
+                </option>
+
+                <option value="Robi">
+                    Robi
+                </option>
+
+                <option value="Banglalink">
+                    Banglalink
+                </option>
+
+                <option value="Teletalk">
+                    Teletalk
+                </option>
+
+            </select>
+
+            <span class="dropdown-arrow">
+                ▼
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- SAVE -->
+
+    <button
+        class="save-btn"
+        onclick="saveData()"
+    >
+        SAVE
+    </button>
+
+
+</div>
+
+
+
+<script>
+
+/* =========================
+   LOGIN CHECK
+========================= */
+
+if(sessionStorage.getItem("loggedIn") !== "true"){
+
+    window.location.href = "index.html";
+
+}
+
+
+/* =========================
+   SHOW USERNAME
+========================= */
+
+const savedUsername =
+    sessionStorage.getItem("username");
+
+if(savedUsername){
+
+    document.getElementById("username")
+        .textContent = savedUsername;
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout(){
+
+    sessionStorage.removeItem("loggedIn");
+    sessionStorage.removeItem("username");
+
+    window.location.replace("index.html");
+
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+function saveData(){
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const bill =
+        document.getElementById("bill").value.trim();
+
+    const operator =
+        document.getElementById("operator").value;
+
+    if(name === ""){
+
+        alert("Please enter Name.");
+        return;
+
+    }
+
+    if(bill === ""){
+
+        alert("Please enter Bill.");
+        return;
+
+    }
+
+    if(operator === ""){
+
+        alert("Please select Operator.");
+        return;
+
+    }
+
+    alert(
+        "Data Saved!\n\n" +
+        "Name: " + name +
+        "\nBill: " + bill +
+        "\nOperator: " + operator
+    );
+
+}
+
+</script>
+
+</body>
+</html>
