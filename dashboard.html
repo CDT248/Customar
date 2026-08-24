@@ -254,10 +254,15 @@ body{
 
     border-radius:14px;
 
-    padding:18px;
+    padding:14px;
 
     margin-bottom:14px;
 }
+
+
+/* =========================
+   SPEED HEADER
+========================= */
 
 .speed-header{
     display:flex;
@@ -266,19 +271,47 @@ body{
 
     align-items:center;
 
-    margin-bottom:15px;
+    gap:10px;
 }
 
-.speed-title{
+
+/*
+   Clicking this header will
+   manage / minimize the speed box.
+*/
+
+.speed-title-button{
+    flex:1;
+
+    border:0;
+
+    background:transparent;
+
+    color:var(--muted);
+
+    text-align:left;
+
     font-size:14px;
 
     font-weight:bold;
 
-    color:var(--muted);
+    cursor:pointer;
+
+    padding:4px 0;
 }
 
+
+.speed-actions{
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+}
+
+
 .speed-live{
-    font-size:11px;
+    font-size:10px;
 
     font-weight:bold;
 
@@ -286,9 +319,67 @@ body{
 
     background:#e8f7ef;
 
-    padding:5px 9px;
+    padding:5px 8px;
 
     border-radius:6px;
+}
+
+
+.manage-button{
+    width:28px;
+    height:28px;
+
+    border:1px solid var(--border);
+
+    border-radius:7px;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    font-size:13px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+
+/* =========================
+   SPEED CONTENT
+========================= */
+
+.speed-content{
+    margin-top:15px;
+
+    transition:
+        max-height .3s ease,
+        opacity .2s ease,
+        margin .3s ease;
+
+    max-height:600px;
+
+    overflow:hidden;
+
+    opacity:1;
+}
+
+
+/* MINIMIZED */
+
+.speed-box.minimized
+.speed-content{
+
+    max-height:0;
+
+    opacity:0;
+
+    margin-top:0;
+
 }
 
 
@@ -739,13 +830,26 @@ stroke-width="6"/>
      INTERNET SPEED
 ========================= -->
 
-<div class="speed-box">
+<div
+    id="speedBox"
+    class="speed-box">
+
+
+<!-- SPEED HEADER -->
 
 <div class="speed-header">
 
-    <div class="speed-title">
-        📶 INTERNET SPEED
-    </div>
+
+<button
+    class="speed-title-button"
+    onclick="toggleSpeed()">
+
+    📶 INTERNET SPEED
+
+</button>
+
+
+<div class="speed-actions">
 
     <div
         id="speedLive"
@@ -753,7 +857,28 @@ stroke-width="6"/>
         ● LIVE
     </div>
 
+
+    <button
+        id="manageButton"
+        class="manage-button"
+        onclick="toggleSpeed()"
+        title="Manage">
+
+        −
+
+    </button>
+
 </div>
+
+
+</div>
+
+
+<!-- SPEED CONTENT -->
+
+<div
+    id="speedContent"
+    class="speed-content">
 
 
 <!-- SPEED VALUES -->
@@ -762,7 +887,8 @@ stroke-width="6"/>
 
 <div class="speed-value-box">
 
-    <div class="speed-value-title download-title">
+    <div
+        class="speed-value-title download-title">
         DOWNLOAD
     </div>
 
@@ -783,7 +909,8 @@ stroke-width="6"/>
 
 <div class="speed-value-box">
 
-    <div class="speed-value-title upload-title">
+    <div
+        class="speed-value-title upload-title">
         UPLOAD
     </div>
 
@@ -845,6 +972,9 @@ id="speedCanvas">
 
 <div class="speed-note">
 Live browser network information
+</div>
+
+
 </div>
 
 </div>
@@ -956,7 +1086,9 @@ if(
 ===================================================== */
 
 const savedUsername =
-sessionStorage.getItem("username");
+sessionStorage.getItem(
+    "username"
+);
 
 if(savedUsername){
 
@@ -1002,9 +1134,9 @@ document.getElementById(
 function loadTheme(){
 
     const theme =
-    localStorage.getItem(
-        "customerTheme"
-    );
+        localStorage.getItem(
+            "customerTheme"
+        );
 
 
     if(theme === "dark"){
@@ -1029,9 +1161,9 @@ function toggleTheme(){
 
 
     const dark =
-    document.body.classList.contains(
-        "dark"
-    );
+        document.body.classList.contains(
+            "dark"
+        );
 
 
     localStorage.setItem(
@@ -1057,7 +1189,71 @@ loadTheme();
 
 
 /* =====================================================
-   SPEED GRAPH SYSTEM
+   SPEED MANAGE / MINIMIZE
+===================================================== */
+
+const speedBox =
+document.getElementById(
+    "speedBox"
+);
+
+const manageButton =
+document.getElementById(
+    "manageButton"
+);
+
+
+function toggleSpeed(){
+
+    speedBox.classList.toggle(
+        "minimized"
+    );
+
+
+    const minimized =
+        speedBox.classList.contains(
+            "minimized"
+        );
+
+
+    manageButton.textContent =
+        minimized
+        ? "+"
+        : "−";
+
+
+    localStorage.setItem(
+        "speedMinimized",
+        minimized
+        ? "true"
+        : "false"
+    );
+
+}
+
+
+/* Restore saved speed state */
+
+if(
+    localStorage.getItem(
+        "speedMinimized"
+    )
+    ===
+    "true"
+){
+
+    speedBox.classList.add(
+        "minimized"
+    );
+
+    manageButton.textContent =
+        "+";
+
+}
+
+
+/* =====================================================
+   SPEED GRAPH
 ===================================================== */
 
 const canvas =
@@ -1070,20 +1266,24 @@ canvas.getContext(
     "2d"
 );
 
+
 const downloadElement =
 document.getElementById(
     "downloadSpeed"
 );
+
 
 const uploadElement =
 document.getElementById(
     "uploadSpeed"
 );
 
+
 const downloadUnitElement =
 document.getElementById(
     "downloadUnit"
 );
+
 
 const uploadUnitElement =
 document.getElementById(
@@ -1099,32 +1299,35 @@ const MAX_POINTS = 80;
 
 
 /* =====================================================
-   CANVAS RESIZE
+   CANVAS SIZE
 ===================================================== */
 
 function resizeCanvas(){
 
     const rect =
-    canvas.parentElement
-    .getBoundingClientRect();
+        canvas.parentElement
+        .getBoundingClientRect();
+
 
     const ratio =
-    window.devicePixelRatio || 1;
+        window.devicePixelRatio || 1;
 
 
     canvas.width =
-    Math.floor(
-        rect.width * ratio
-    );
+        Math.floor(
+            rect.width * ratio
+        );
+
 
     canvas.height =
-    Math.floor(
-        rect.height * ratio
-    );
+        Math.floor(
+            rect.height * ratio
+        );
 
 
     canvas.style.width =
         rect.width + "px";
+
 
     canvas.style.height =
         rect.height + "px";
@@ -1152,7 +1355,7 @@ window.addEventListener(
 
 
 /* =====================================================
-   NETWORK API
+   NETWORK INFORMATION
 ===================================================== */
 
 function getConnection(){
@@ -1168,7 +1371,7 @@ function getConnection(){
 
 
 /* =====================================================
-   DOWNLOAD SPEED
+   DOWNLOAD ESTIMATE
 ===================================================== */
 
 function getDownloadSpeed(){
@@ -1176,12 +1379,6 @@ function getDownloadSpeed(){
     const connection =
         getConnection();
 
-
-    /*
-       Network Information API
-       gives browser's current
-       estimated downlink.
-    */
 
     if(
         connection &&
@@ -1203,7 +1400,7 @@ function getDownloadSpeed(){
 
 
 /* =====================================================
-   PAGE NETWORK ACTIVITY
+   PAGE TRAFFIC
 ===================================================== */
 
 let lastBytes = 0;
@@ -1220,9 +1417,9 @@ function getPageTraffic(){
     try{
 
         const entries =
-        performance.getEntriesByType(
-            "resource"
-        );
+            performance.getEntriesByType(
+                "resource"
+            );
 
 
         for(
@@ -1232,16 +1429,17 @@ function getPageTraffic(){
         ){
 
             const item =
-            entries[i];
+                entries[i];
 
 
             if(
                 typeof item.transferSize
-                === "number"
+                ===
+                "number"
             ){
 
                 total +=
-                item.transferSize;
+                    item.transferSize;
 
             }
 
@@ -1256,14 +1454,14 @@ function getPageTraffic(){
 
 
     const now =
-    performance.now();
+        performance.now();
 
 
     const elapsed =
-    (
-        now -
-        lastTime
-    ) / 1000;
+        (
+            now -
+            lastTime
+        ) / 1000;
 
 
     let speed = 0;
@@ -1274,17 +1472,18 @@ function getPageTraffic(){
     ){
 
         speed =
-        (
-            total -
-            lastBytes
-        ) /
-        elapsed;
+            (
+                total -
+                lastBytes
+            ) /
+            elapsed;
 
     }
 
 
     lastBytes =
         total;
+
 
     lastTime =
         now;
@@ -1299,7 +1498,7 @@ function getPageTraffic(){
 
 
 /* =====================================================
-   FORMAT SPEED
+   SPEED DISPLAY
 ===================================================== */
 
 function setSpeedDisplay(
@@ -1351,6 +1550,7 @@ function setSpeedDisplay(
     element.textContent =
         mbps.toFixed(2);
 
+
     unitElement.textContent =
         "MBPS";
 
@@ -1363,18 +1563,9 @@ function setSpeedDisplay(
 
 function updateSpeed(){
 
-    /*
-       Browser reported download
-    */
-
     const networkDownload =
         getDownloadSpeed();
 
-
-    /*
-       Page traffic is used only
-       when there is active page traffic.
-    */
 
     const pageBytes =
         getPageTraffic();
@@ -1382,16 +1573,11 @@ function updateSpeed(){
 
     const pageMbps =
         (
-            pageBytes *
-            8
+            pageBytes * 8
         ) /
         1024 /
         1024;
 
-
-    /*
-       Prefer browser network estimate.
-    */
 
     const download =
         networkDownload > 0
@@ -1402,9 +1588,9 @@ function updateSpeed(){
 
 
     /*
-       Browser does not expose
-       total phone upload traffic.
-       Therefore we do NOT fake it.
+       Browser cannot read the
+       complete phone upload traffic.
+       Therefore no fake upload value.
     */
 
     const upload = 0;
@@ -1468,6 +1654,7 @@ function drawGraph(){
     const width =
         canvas.clientWidth;
 
+
     const height =
         canvas.clientHeight;
 
@@ -1496,9 +1683,7 @@ function drawGraph(){
         );
 
 
-    /* =========================
-       GRID
-    ========================= */
+    /* GRID */
 
     ctx.strokeStyle =
         dark
@@ -1540,15 +1725,19 @@ function drawGraph(){
     }
 
 
-    /* =========================
-       MAX VALUE
-    ========================= */
-
     const values =
-        downloadHistory
-        .concat(
+        downloadHistory.concat(
             uploadHistory
         );
+
+
+    if(
+        values.length < 2
+    ){
+
+        return;
+
+    }
 
 
     let max =
@@ -1558,18 +1747,10 @@ function drawGraph(){
         );
 
 
-    /*
-       Extra space above line
-    */
-
-    max =
-        max * 1.25;
+    max *= 1.25;
 
 
-    /* =========================
-       DOWNLOAD
-       RED
-    ========================= */
+    /* RED DOWNLOAD */
 
     drawSmoothLine(
         downloadHistory,
@@ -1580,10 +1761,7 @@ function drawGraph(){
     );
 
 
-    /* =========================
-       UPLOAD
-       GREEN
-    ========================= */
+    /* GREEN UPLOAD */
 
     drawSmoothLine(
         uploadHistory,
@@ -1597,7 +1775,7 @@ function drawGraph(){
 
 
 /* =====================================================
-   SMOOTH LINE
+   SMOOTH GRAPH LINE
 ===================================================== */
 
 function drawSmoothLine(
@@ -1636,7 +1814,7 @@ function drawSmoothLine(
             width;
 
 
-        let value =
+        const value =
             Number(
                 data[i]
             ) || 0;
@@ -1681,10 +1859,6 @@ function drawSmoothLine(
     );
 
 
-    /*
-       Smooth quadratic curves
-    */
-
     for(
         let i = 1;
         i < points.length - 1;
@@ -1693,6 +1867,7 @@ function drawSmoothLine(
 
         const current =
             points[i];
+
 
         const next =
             points[i + 1];
@@ -1739,11 +1914,14 @@ function drawSmoothLine(
     ctx.strokeStyle =
         color;
 
+
     ctx.lineWidth =
         3;
 
+
     ctx.lineJoin =
         "round";
+
 
     ctx.lineCap =
         "round";
@@ -1752,9 +1930,7 @@ function drawSmoothLine(
     ctx.stroke();
 
 
-    /*
-       Current point
-    */
+    /* CURRENT POINT */
 
     ctx.beginPath();
 
@@ -1770,6 +1946,7 @@ function drawSmoothLine(
 
     ctx.fillStyle =
         color;
+
 
     ctx.fill();
 
@@ -1805,24 +1982,17 @@ if(connection){
 
 resizeCanvas();
 
+updateSpeed();
+
 
 /*
-   100 milliseconds
-   smooth graph update
+   Update every 100ms
 */
 
 setInterval(
     updateSpeed,
     100
 );
-
-
-/*
-   First update
-*/
-
-updateSpeed();
-
 
 </script>
 
