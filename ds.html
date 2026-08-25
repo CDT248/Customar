@@ -4,9 +4,13 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Customer Portal</title>
+
 
 <style>
 
@@ -17,73 +21,107 @@
     font-family:Arial,Helvetica,sans-serif;
 }
 
+
 :root{
+
     --bg:#f4f6f8;
+
     --card:#ffffff;
+
     --text:#222;
+
     --muted:#777;
+
     --border:#dddddd;
+
     --green:#0b5d3b;
+
 }
+
 
 body.dark{
+
     --bg:#000000;
+
     --card:#111111;
+
     --text:#ffffff;
+
     --muted:#aaaaaa;
+
     --border:#292929;
+
     --green:#19a866;
+
 }
+
 
 body{
+
     min-height:100vh;
+
     background:var(--bg);
+
     color:var(--text);
+
     transition:.3s;
+
 }
 
 
-/* =========================
+/* =====================================================
    THEME BUTTON
-========================= */
+===================================================== */
 
 .theme-button{
+
     position:fixed;
+
     top:5px;
+
     right:5px;
 
     width:25px;
+
     height:25px;
 
     border:1px solid var(--border);
+
     border-radius:50%;
 
     background:var(--card);
+
     color:var(--text);
 
     font-size:12px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     cursor:pointer;
 
     z-index:9999;
+
 }
 
 
-/* =========================
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 .header{
+
     height:65px;
 
     background:var(--card);
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     padding:0 18px;
@@ -91,19 +129,31 @@ body{
     border-bottom:1px solid var(--border);
 
     position:sticky;
+
     top:0;
+
     z-index:100;
+
 }
+
 
 .title{
+
     font-size:20px;
+
     font-weight:bold;
+
     color:var(--green);
+
 }
 
+
 .logout{
+
     border:0;
+
     background:var(--green);
+
     color:white;
 
     padding:10px 17px;
@@ -111,31 +161,37 @@ body{
     border-radius:8px;
 
     font-size:14px;
+
     font-weight:bold;
 
     cursor:pointer;
+
 }
 
 
-/* =========================
+/* =====================================================
    MAIN
-========================= */
+===================================================== */
 
 .container{
+
     width:100%;
+
     max-width:650px;
 
     margin:auto;
 
     padding:22px 16px 40px;
+
 }
 
 
-/* =========================
-   USERNAME PASSWORD
-========================= */
+/* =====================================================
+   TOP
+===================================================== */
 
 .top{
+
     display:grid;
 
     grid-template-columns:1fr 1fr;
@@ -143,9 +199,12 @@ body{
     gap:12px;
 
     margin-bottom:12px;
+
 }
 
+
 .box{
+
     background:var(--card);
 
     border:1px solid var(--border);
@@ -153,9 +212,12 @@ body{
     border-radius:12px;
 
     padding:15px;
+
 }
 
+
 .label{
+
     font-size:12px;
 
     font-weight:bold;
@@ -163,22 +225,27 @@ body{
     color:var(--muted);
 
     margin-bottom:7px;
+
 }
 
+
 .value{
+
     font-size:16px;
 
     font-weight:bold;
 
     color:var(--text);
+
 }
 
 
-/* =========================
+/* =====================================================
    MAC
-========================= */
+===================================================== */
 
 .mac-box{
+
     background:var(--card);
 
     border:1px solid var(--border);
@@ -188,9 +255,12 @@ body{
     padding:15px;
 
     margin-bottom:18px;
+
 }
 
+
 .mac-title{
+
     font-size:12px;
 
     color:var(--muted);
@@ -198,9 +268,12 @@ body{
     font-weight:bold;
 
     margin-bottom:7px;
+
 }
 
+
 .mac-value{
+
     font-size:17px;
 
     font-weight:bold;
@@ -208,14 +281,16 @@ body{
     color:var(--text);
 
     word-break:break-all;
+
 }
 
 
-/* =========================
+/* =====================================================
    PHOTO
-========================= */
+===================================================== */
 
 .photo-box{
+
     width:100%;
 
     display:flex;
@@ -223,10 +298,14 @@ body{
     justify-content:center;
 
     margin:5px 0 22px;
+
 }
 
+
 .photo{
+
     width:220px;
+
     height:220px;
 
     border-radius:50%;
@@ -239,12 +318,18 @@ body{
 
     box-shadow:
         0 7px 30px rgba(0,0,0,.18);
+
 }
 
+
 .photo svg{
+
     width:100%;
+
     height:100%;
+
     display:block;
+
 }
 
 
@@ -272,15 +357,8 @@ body{
     box-shadow:
         0 8px 30px rgba(0,0,0,.06);
 
-    transition:
-        padding .3s,
-        box-shadow .3s;
 }
 
-
-/* =========================
-   SPEED HEADER
-========================= */
 
 .speed-header{
 
@@ -295,7 +373,9 @@ body{
     user-select:none;
 
     margin-bottom:15px;
+
 }
+
 
 .speed-title{
 
@@ -310,22 +390,24 @@ body{
     font-weight:bold;
 
     color:var(--muted);
+
 }
+
 
 .speed-arrow{
 
     font-size:10px;
 
-    transition:
-        transform .3s;
+    transition:transform .3s;
 
     color:var(--muted);
+
 }
 
 
-/* =========================
+/* =====================================================
    LIVE
-========================= */
+===================================================== */
 
 .speed-live{
 
@@ -346,20 +428,24 @@ body{
     padding:6px 9px;
 
     border-radius:20px;
+
 }
+
 
 .live-dot{
 
     width:6px;
+
     height:6px;
 
     background:#0aa854;
 
     border-radius:50%;
 
-    animation:
-        livePulse 1s infinite;
+    animation:livePulse 1s infinite;
+
 }
+
 
 @keyframes livePulse{
 
@@ -400,20 +486,19 @@ body{
 }
 
 
-/* =====================================================
-   MINIMIZED
-===================================================== */
-
 .speed-box.minimized{
 
     padding-bottom:15px;
 
 }
 
+
 .speed-box.minimized .speed-header{
 
     margin-bottom:0;
+
 }
+
 
 .speed-box.minimized .speed-content{
 
@@ -422,11 +507,14 @@ body{
     opacity:0;
 
     pointer-events:none;
+
 }
+
 
 .speed-box.minimized .speed-arrow{
 
     transform:rotate(-90deg);
+
 }
 
 
@@ -443,7 +531,9 @@ body{
     gap:10px;
 
     margin-bottom:15px;
+
 }
+
 
 .speed-value-box{
 
@@ -458,7 +548,9 @@ body{
     position:relative;
 
     overflow:hidden;
+
 }
+
 
 .speed-value-box::after{
 
@@ -477,17 +569,23 @@ body{
     bottom:-25px;
 
     opacity:.08;
+
 }
+
 
 .download-card::after{
 
     background:#e00000;
+
 }
+
 
 .upload-card::after{
 
     background:#0b9b54;
+
 }
+
 
 .speed-value-title{
 
@@ -498,17 +596,23 @@ body{
     margin-bottom:5px;
 
     letter-spacing:.5px;
+
 }
+
 
 .download-title{
 
     color:#e00000;
+
 }
+
 
 .upload-title{
 
     color:#0b9b54;
+
 }
+
 
 .speed-number-row{
 
@@ -517,7 +621,9 @@ body{
     align-items:baseline;
 
     gap:5px;
+
 }
+
 
 .speed-value{
 
@@ -526,7 +632,9 @@ body{
     font-weight:bold;
 
     color:var(--text);
+
 }
+
 
 .speed-unit{
 
@@ -535,6 +643,7 @@ body{
     color:var(--muted);
 
     font-weight:bold;
+
 }
 
 
@@ -553,7 +662,9 @@ body{
     gap:28px;
 
     margin-bottom:9px;
+
 }
+
 
 .legend{
 
@@ -568,7 +679,9 @@ body{
     font-weight:bold;
 
     color:var(--text);
+
 }
+
 
 .legend-line{
 
@@ -577,7 +690,9 @@ body{
     height:3px;
 
     border-radius:20px;
+
 }
+
 
 .download-line{
 
@@ -585,7 +700,9 @@ body{
 
     box-shadow:
         0 0 7px rgba(224,0,0,.4);
+
 }
+
 
 .upload-line{
 
@@ -593,6 +710,7 @@ body{
 
     box-shadow:
         0 0 7px rgba(11,155,84,.4);
+
 }
 
 
@@ -620,7 +738,9 @@ body{
         );
 
     border:1px solid var(--border);
+
 }
+
 
 #speedCanvas{
 
@@ -629,7 +749,9 @@ body{
     height:100%;
 
     display:block;
+
 }
+
 
 .speed-note{
 
@@ -640,12 +762,13 @@ body{
     color:var(--muted);
 
     margin-top:8px;
+
 }
 
 
-/* =========================
+/* =====================================================
    INFO
-========================= */
+===================================================== */
 
 .info,
 .billing,
@@ -662,7 +785,9 @@ body{
     padding:15px;
 
     margin-bottom:12px;
+
 }
+
 
 .info-title{
 
@@ -673,7 +798,9 @@ body{
     font-weight:bold;
 
     margin-bottom:7px;
+
 }
+
 
 .info-value{
 
@@ -684,7 +811,9 @@ body{
     line-height:1.4;
 
     color:var(--text);
+
 }
+
 
 .bill-value{
 
@@ -693,12 +822,13 @@ body{
     font-weight:bold;
 
     color:var(--green);
+
 }
 
 
-/* =========================
+/* =====================================================
    ONLINE
-========================= */
+===================================================== */
 
 .online{
 
@@ -719,7 +849,9 @@ body{
     font-size:13px;
 
     font-weight:bold;
+
 }
+
 
 .online-dot{
 
@@ -734,9 +866,10 @@ body{
     box-shadow:
         0 0 7px #0aa854;
 
-    animation:
-        onlinePulse 1.3s infinite;
+    animation:onlinePulse 1.3s infinite;
+
 }
+
 
 @keyframes onlinePulse{
 
@@ -751,9 +884,9 @@ body{
 }
 
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media(max-width:500px){
 
@@ -762,53 +895,72 @@ body{
         height:60px;
 
         padding:0 14px;
+
     }
+
 
     .title{
 
         font-size:18px;
+
     }
+
 
     .logout{
 
         padding:9px 13px;
+
     }
+
 
     .container{
 
         padding:18px 13px 30px;
+
     }
+
 
     .photo{
 
         width:200px;
 
         height:200px;
+
     }
+
 
     .value{
 
         font-size:14px;
+
     }
+
 
     .mac-value{
 
         font-size:15px;
+
     }
+
 
     .info-value{
 
         font-size:15px;
+
     }
+
 
     .speed-value{
 
         font-size:21px;
+
     }
+
 
     .graph-container{
 
         height:185px;
+
     }
 
 }
@@ -821,23 +973,15 @@ body{
 <body>
 
 
-<!-- =========================
-     THEME BUTTON
-========================= -->
-
 <button
-    id="themeButton"
-    class="theme-button"
-    onclick="toggleTheme()">
+id="themeButton"
+class="theme-button"
+onclick="toggleTheme()">
 
-    ☾
+☾
 
 </button>
 
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <div class="header">
 
@@ -846,8 +990,8 @@ body{
     </div>
 
     <button
-        class="logout"
-        onclick="logout()">
+    class="logout"
+    onclick="logout()">
 
         Logout
 
@@ -855,10 +999,6 @@ body{
 
 </div>
 
-
-<!-- =========================
-     MAIN
-========================= -->
 
 <div class="container">
 
@@ -874,8 +1014,8 @@ body{
         </div>
 
         <div
-            id="username"
-            class="value">
+        id="username"
+        class="value">
 
             Loading...
 
@@ -891,9 +1031,7 @@ body{
         </div>
 
         <div class="value">
-
             ••••••••
-
         </div>
 
     </div>
@@ -991,24 +1129,21 @@ stroke-width="6"/>
 </div>
 
 
-<!-- =====================================================
-     INTERNET SPEED
-===================================================== -->
+<!-- SPEED -->
 
 <div
-    id="speedBox"
-    class="speed-box">
+id="speedBox"
+class="speed-box">
 
 
 <div
-    class="speed-header"
-    onclick="toggleSpeed()">
+class="speed-header"
+onclick="toggleSpeed()">
 
     <div class="speed-title">
 
         <span
-            id="speedArrow"
-            class="speed-arrow">
+        class="speed-arrow">
 
             ▼
 
@@ -1019,8 +1154,7 @@ stroke-width="6"/>
     </div>
 
 
-    <div
-        class="speed-live">
+    <div class="speed-live">
 
         <span class="live-dot"></span>
 
@@ -1032,77 +1166,71 @@ stroke-width="6"/>
 
 
 <div
-    id="speedContent"
-    class="speed-content">
+id="speedContent"
+class="speed-content">
 
 
 <div class="speed-values">
 
 
+<div
+class="speed-value-box download-card">
+
     <div
-        class="speed-value-box download-card">
+    class="speed-value-title download-title">
 
-        <div
-            class="speed-value-title download-title">
-
-            DOWNLOAD
-
-        </div>
-
-
-        <div class="speed-number-row">
-
-            <span
-                id="downloadSpeed"
-                class="speed-value">
-
-                7.2
-
-            </span>
-
-            <span
-                class="speed-unit">
-
-                MBPS
-
-            </span>
-
-        </div>
+        DOWNLOAD
 
     </div>
 
 
-    <div
-        class="speed-value-box upload-card">
+    <div class="speed-number-row">
 
-        <div
-            class="speed-value-title upload-title">
+        <span
+        id="downloadSpeed"
+        class="speed-value">
 
-            UPLOAD
+            7.2
 
-        </div>
+        </span>
 
-
-        <div class="speed-number-row">
-
-            <span
-                id="uploadSpeed"
-                class="speed-value">
-
-                1.5
-
-            </span>
-
-            <span
-                class="speed-unit">
-
-                MBPS
-
-            </span>
-
-        </div>
+        <span class="speed-unit">
+            MBPS
+        </span>
 
     </div>
+
+</div>
+
+
+<div
+class="speed-value-box upload-card">
+
+    <div
+    class="speed-value-title upload-title">
+
+        UPLOAD
+
+    </div>
+
+
+    <div class="speed-number-row">
+
+        <span
+        id="uploadSpeed"
+        class="speed-value">
+
+            1.5
+
+        </span>
+
+        <span class="speed-unit">
+            MBPS
+        </span>
+
+    </div>
+
+</div>
 
 
 </div>
@@ -1110,11 +1238,10 @@ stroke-width="6"/>
 
 <div class="graph-legend">
 
-
     <div class="legend">
 
         <span
-            class="legend-line download-line">
+        class="legend-line download-line">
         </span>
 
         Download
@@ -1125,22 +1252,19 @@ stroke-width="6"/>
     <div class="legend">
 
         <span
-            class="legend-line upload-line">
+        class="legend-line upload-line">
         </span>
 
         Upload
 
     </div>
 
-
 </div>
 
 
 <div class="graph-container">
 
-    <canvas
-        id="speedCanvas">
-    </canvas>
+    <canvas id="speedCanvas"></canvas>
 
 </div>
 
@@ -1217,7 +1341,7 @@ stroke-width="6"/>
 </div>
 
 
-<!-- CONNECTING STATUS -->
+<!-- STATUS -->
 
 <div class="connection">
 
@@ -1242,35 +1366,108 @@ stroke-width="6"/>
 <script>
 
 /* =====================================================
-   LOGIN / SESSION CHECK
+   SESSION FIX
 ===================================================== */
 
 /*
-   IMPORTANT:
+   index.html দুটো storage-এই login save করে।
 
-   index.html uses localStorage.
+   ds.html যেকোনো একটাতে login পেলেই
+   সেটা valid ধরে নেবে।
 
-   তাই ds.html-ও localStorage ব্যবহার করবে।
-
-   sessionStorage আর ব্যবহার করা হচ্ছে না।
+   এরপর দুটো storage-তেই আবার sync করে দেবে।
 */
 
 (function(){
 
-    const loggedIn =
+    let loggedIn =
         localStorage.getItem("loggedIn");
 
-    const username =
+
+    let sessionLoggedIn =
+        sessionStorage.getItem("loggedIn");
+
+
+    let username =
         localStorage.getItem("username");
 
 
+    let sessionUsername =
+        sessionStorage.getItem("username");
+
+
     /*
-    ================================================
-    LOGIN না থাকলে INDEX
-    ================================================
+    ==========================================
+    LOCAL STORAGE LOGIN থাকলে
+    ==========================================
     */
 
-    if(loggedIn !== "true"){
+    if(loggedIn === "true"){
+
+        /*
+        sessionStorage sync
+        */
+
+        sessionStorage.setItem(
+            "loggedIn",
+            "true"
+        );
+
+
+        if(username){
+
+            sessionStorage.setItem(
+                "username",
+                username
+            );
+
+        }
+
+    }
+
+
+    /*
+    ==========================================
+    SESSION STORAGE LOGIN থাকলে
+    ==========================================
+    */
+
+    else if(
+        sessionLoggedIn === "true"
+    ){
+
+        /*
+        localStorage sync
+        */
+
+        localStorage.setItem(
+            "loggedIn",
+            "true"
+        );
+
+
+        if(sessionUsername){
+
+            localStorage.setItem(
+                "username",
+                sessionUsername
+            );
+
+            username =
+                sessionUsername;
+
+        }
+
+    }
+
+
+    /*
+    ==========================================
+    কোন login নেই
+    ==========================================
+    */
+
+    else{
 
         window.location.replace(
             "index.html"
@@ -1282,9 +1479,9 @@ stroke-width="6"/>
 
 
     /*
-    ================================================
+    ==========================================
     USERNAME SHOW
-    ================================================
+    ==========================================
     */
 
     const usernameElement =
@@ -1293,16 +1490,24 @@ stroke-width="6"/>
         );
 
 
+    const finalUsername =
+        localStorage.getItem(
+            "username"
+        ) ||
+        sessionStorage.getItem(
+            "username"
+        );
+
+
     if(
         usernameElement &&
-        username
+        finalUsername
     ){
 
         usernameElement.textContent =
-            username;
+            finalUsername;
 
     }
-
 
 })();
 
@@ -1314,21 +1519,29 @@ stroke-width="6"/>
 function logout(){
 
     /*
-       Login session remove
+    দুই storage থেকেই remove
     */
 
     localStorage.removeItem(
         "loggedIn"
     );
 
-
     localStorage.removeItem(
         "username"
     );
 
 
+    sessionStorage.removeItem(
+        "loggedIn"
+    );
+
+    sessionStorage.removeItem(
+        "username"
+    );
+
+
     /*
-       Login page
+    index.html
     */
 
     window.location.replace(
@@ -1406,7 +1619,7 @@ loadTheme();
 
 
 /* =====================================================
-   SPEED MINIMIZE / MAXIMIZE
+   SPEED
 ===================================================== */
 
 const speedBox =
@@ -1429,10 +1642,6 @@ if(savedSpeedState === "true"){
 
 }
 
-
-/* =====================================================
-   TOGGLE SPEED
-===================================================== */
 
 function toggleSpeed(){
 
@@ -1537,7 +1746,7 @@ function changeSpeed(
 
 
 /* =====================================================
-   RESIZE CANVAS
+   RESIZE
 ===================================================== */
 
 function resizeCanvas(){
@@ -1632,8 +1841,6 @@ function drawGraph(){
         );
 
 
-    /* GRID */
-
     ctx.lineWidth = 1;
 
 
@@ -1707,9 +1914,7 @@ function drawSmoothLine(
     max
 ){
 
-    if(
-        data.length < 2
-    ){
+    if(data.length < 2){
 
         return;
 
@@ -1720,10 +1925,7 @@ function drawSmoothLine(
 
 
     data.forEach(
-        function(
-            value,
-            index
-        ){
+        function(value,index){
 
             const x =
                 (
@@ -1751,8 +1953,6 @@ function drawSmoothLine(
         }
     );
 
-
-    /* AREA */
 
     ctx.beginPath();
 
@@ -1865,7 +2065,6 @@ function drawSmoothLine(
     ctx.fillStyle =
         gradient;
 
-
     ctx.fill();
 
 
@@ -1937,18 +2136,15 @@ function drawSmoothLine(
 
     ctx.shadowBlur = 7;
 
-
     ctx.shadowColor =
         color;
 
-
     ctx.stroke();
-
 
     ctx.shadowBlur = 0;
 
 
-    /* CURRENT POINT */
+    /* POINT */
 
     const pointIndex =
         Math.max(
@@ -2025,7 +2221,7 @@ function drawSmoothLine(
 
 
 /* =====================================================
-   UPDATE SPEED
+   UPDATE
 ===================================================== */
 
 function updateSpeed(){
@@ -2092,7 +2288,7 @@ function updateSpeed(){
 
 
 /* =====================================================
-   INITIAL GRAPH DATA
+   START GRAPH
 ===================================================== */
 
 for(
