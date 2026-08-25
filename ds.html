@@ -42,149 +42,334 @@ body{
     transition:.3s;
 }
 
-/* THEME */
+
+/* =====================================================
+   THEME BUTTON
+===================================================== */
 
 .theme-button{
+
     position:fixed;
-    top:5px;
-    right:5px;
-    width:25px;
-    height:25px;
+
+    top:7px;
+    right:7px;
+
+    width:28px;
+    height:28px;
+
     border:1px solid var(--border);
+
     border-radius:50%;
+
     background:var(--card);
+
     color:var(--text);
-    font-size:12px;
+
+    font-size:13px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     cursor:pointer;
+
     z-index:9999;
 }
 
-/* HEADER */
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 .header{
+
     height:65px;
+
     background:var(--card);
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     padding:0 18px;
+
     border-bottom:1px solid var(--border);
+
     position:sticky;
+
     top:0;
+
     z-index:100;
 }
 
 .title{
+
     font-size:20px;
+
     font-weight:bold;
+
     color:var(--green);
 }
 
 .logout{
+
     border:0;
+
     background:var(--green);
+
     color:white;
+
     padding:10px 17px;
+
     border-radius:8px;
+
     font-size:14px;
+
     font-weight:bold;
+
     cursor:pointer;
+
 }
 
-/* MAIN */
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading{
+
+    position:fixed;
+
+    inset:0;
+
+    background:var(--bg);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:5000;
+}
+
+.loading-box{
+
+    text-align:center;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    padding:28px 35px;
+
+    border-radius:18px;
+
+    box-shadow:0 15px 45px rgba(0,0,0,.15);
+}
+
+.loader{
+
+    width:35px;
+
+    height:35px;
+
+    margin:0 auto 13px;
+
+    border:4px solid var(--border);
+
+    border-top-color:var(--green);
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+}
+
+.loading-text{
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    color:var(--muted);
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
 
 .container{
+
     width:100%;
+
     max-width:650px;
+
     margin:auto;
+
     padding:22px 16px 40px;
 }
 
-/* TOP */
+
+/* =====================================================
+   USERNAME PASSWORD
+===================================================== */
 
 .top{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:12px;
+
     margin-bottom:12px;
 }
 
 .box{
+
     background:var(--card);
+
     border:1px solid var(--border);
+
     border-radius:12px;
+
     padding:15px;
 }
 
 .label{
+
     font-size:12px;
+
     font-weight:bold;
+
     color:var(--muted);
+
     margin-bottom:7px;
 }
 
 .value{
+
     font-size:16px;
+
     font-weight:bold;
+
     color:var(--text);
+
     word-break:break-word;
 }
 
-/* MAC */
+
+/* =====================================================
+   MAC
+===================================================== */
 
 .mac-box{
+
     background:var(--card);
+
     border:1px solid var(--border);
+
     border-radius:12px;
+
     padding:15px;
+
     margin-bottom:18px;
 }
 
 .mac-title{
+
     font-size:12px;
+
     color:var(--muted);
+
     font-weight:bold;
+
     margin-bottom:7px;
 }
 
 .mac-value{
+
     font-size:17px;
+
     font-weight:bold;
+
     color:var(--text);
+
     word-break:break-all;
 }
 
-/* PHOTO */
+
+/* =====================================================
+   PHOTO
+===================================================== */
 
 .photo-box{
+
     width:100%;
+
     display:flex;
+
     justify-content:center;
+
     margin:5px 0 22px;
 }
 
 .photo{
-    width:220px;
-    height:220px;
+
+    width:200px;
+
+    height:200px;
+
     border-radius:50%;
+
     overflow:hidden;
+
     background:#dff0e8;
+
     border:6px solid var(--card);
-    box-shadow:0 7px 30px rgba(0,0,0,.18);
+
+    box-shadow:
+        0 7px 30px rgba(0,0,0,.18);
+}
+
+.photo img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:none;
 }
 
 .photo svg{
+
     width:100%;
+
     height:100%;
+
     display:block;
 }
 
-/* SPEED */
+
+/* =====================================================
+   SPEED BOX
+===================================================== */
 
 .speed-box{
+
     background:
         linear-gradient(
             145deg,
@@ -193,124 +378,198 @@ body{
         );
 
     border:1px solid var(--border);
+
     border-radius:18px;
+
     padding:17px;
+
     margin-bottom:14px;
 
     box-shadow:
         0 8px 30px rgba(0,0,0,.06);
 }
 
+
+/* =====================================================
+   SPEED HEADER
+===================================================== */
+
 .speed-header{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     cursor:pointer;
+
     user-select:none;
+
     margin-bottom:15px;
 }
 
 .speed-title{
+
     display:flex;
+
     align-items:center;
+
     gap:7px;
+
     font-size:14px;
+
     font-weight:bold;
+
     color:var(--muted);
 }
 
 .speed-arrow{
+
     font-size:10px;
+
     transition:.3s;
+
     color:var(--muted);
 }
 
 .speed-live{
+
     display:flex;
+
     align-items:center;
+
     gap:5px;
+
     font-size:10px;
+
     font-weight:bold;
+
     color:#08783d;
+
     background:#e8f7ef;
+
     padding:6px 9px;
+
     border-radius:20px;
 }
 
 .live-dot{
+
     width:6px;
+
     height:6px;
+
     background:#0aa854;
+
     border-radius:50%;
+
     animation:livePulse 1s infinite;
 }
 
 @keyframes livePulse{
+
     0%{
         opacity:.4;
         transform:scale(.8);
     }
+
     50%{
         opacity:1;
         transform:scale(1.2);
     }
+
     100%{
         opacity:.4;
         transform:scale(.8);
     }
+
 }
+
+
+/* =====================================================
+   SPEED CONTENT
+===================================================== */
 
 .speed-content{
+
     max-height:600px;
+
     overflow:hidden;
+
     opacity:1;
-    transition:max-height .4s ease,opacity .25s ease;
-}
 
-.speed-box.minimized{
-    padding-bottom:15px;
-}
-
-.speed-box.minimized .speed-header{
-    margin-bottom:0;
+    transition:
+        max-height .4s ease,
+        opacity .25s ease;
 }
 
 .speed-box.minimized .speed-content{
+
     max-height:0;
+
     opacity:0;
+
     pointer-events:none;
 }
 
+.speed-box.minimized .speed-header{
+
+    margin-bottom:0;
+}
+
 .speed-box.minimized .speed-arrow{
+
     transform:rotate(-90deg);
 }
 
-/* SPEED VALUES */
+
+/* =====================================================
+   SPEED VALUES
+===================================================== */
 
 .speed-values{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:10px;
+
     margin-bottom:15px;
 }
 
 .speed-value-box{
+
     border:1px solid var(--border);
+
     border-radius:13px;
+
     padding:13px;
+
     background:var(--bg);
+
     position:relative;
+
     overflow:hidden;
 }
 
 .speed-value-box::after{
+
     content:"";
+
     position:absolute;
+
     width:60px;
+
     height:60px;
+
     border-radius:50%;
+
     right:-25px;
+
     bottom:-25px;
+
     opacity:.08;
 }
 
@@ -323,9 +582,13 @@ body{
 }
 
 .speed-value-title{
+
     font-size:10px;
+
     font-weight:bold;
+
     margin-bottom:5px;
+
     letter-spacing:.5px;
 }
 
@@ -338,225 +601,332 @@ body{
 }
 
 .speed-number-row{
+
     display:flex;
+
     align-items:baseline;
+
     gap:5px;
 }
 
 .speed-value{
+
     font-size:25px;
+
     font-weight:bold;
+
     color:var(--text);
 }
 
 .speed-unit{
+
     font-size:10px;
+
     color:var(--muted);
+
     font-weight:bold;
 }
 
-/* LEGEND */
+
+/* =====================================================
+   LEGEND
+===================================================== */
 
 .graph-legend{
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     gap:28px;
+
     margin-bottom:9px;
 }
 
 .legend{
+
     display:flex;
+
     align-items:center;
+
     gap:6px;
+
     font-size:11px;
+
     font-weight:bold;
+
     color:var(--text);
 }
 
 .legend-line{
+
     width:24px;
+
     height:3px;
+
     border-radius:20px;
 }
 
 .download-line{
+
     background:#e00000;
-    box-shadow:0 0 7px rgba(224,0,0,.4);
+
+    box-shadow:
+        0 0 7px rgba(224,0,0,.4);
 }
 
 .upload-line{
+
     background:#0b9b54;
-    box-shadow:0 0 7px rgba(11,155,84,.4);
+
+    box-shadow:
+        0 0 7px rgba(11,155,84,.4);
 }
 
-/* GRAPH */
+
+/* =====================================================
+   GRAPH
+===================================================== */
 
 .graph-container{
+
     width:100%;
+
     height:200px;
+
     position:relative;
+
     border-radius:13px;
+
     overflow:hidden;
+
     background:
         linear-gradient(
             to bottom,
             rgba(128,128,128,.02),
             rgba(128,128,128,.08)
         );
+
     border:1px solid var(--border);
 }
 
 #speedCanvas{
+
     width:100%;
+
     height:100%;
+
     display:block;
 }
 
 .speed-note{
+
     text-align:center;
+
     font-size:10px;
+
     color:var(--muted);
+
     margin-top:8px;
 }
 
-/* INFO */
+
+/* =====================================================
+   INFO BOXES
+===================================================== */
 
 .info,
 .billing,
 .bill,
 .address,
 .connection{
+
     background:var(--card);
+
     border:1px solid var(--border);
+
     border-radius:12px;
+
     padding:15px;
+
     margin-bottom:12px;
 }
 
 .info-title{
+
     font-size:12px;
+
     color:var(--muted);
+
     font-weight:bold;
+
     margin-bottom:7px;
 }
 
 .info-value{
+
     font-size:17px;
+
     font-weight:bold;
+
     line-height:1.4;
+
     color:var(--text);
+
     word-break:break-word;
 }
 
 .bill-value{
+
     font-size:22px;
+
     font-weight:bold;
+
     color:var(--green);
 }
 
-/* ONLINE */
+
+/* =====================================================
+   ONLINE
+===================================================== */
 
 .online{
+
     display:inline-flex;
+
     align-items:center;
+
     gap:7px;
+
     padding:7px 11px;
+
     background:#e8f7ef;
+
     color:#08783d;
+
     border-radius:7px;
+
     font-size:13px;
+
     font-weight:bold;
 }
 
 .online-dot{
+
     width:8px;
+
     height:8px;
+
     border-radius:50%;
+
     background:#0aa854;
-    box-shadow:0 0 7px #0aa854;
+
+    box-shadow:
+        0 0 7px #0aa854;
+
     animation:onlinePulse 1.3s infinite;
 }
 
 @keyframes onlinePulse{
+
     0%,100%{
         opacity:.6;
     }
+
     50%{
         opacity:1;
     }
+
 }
 
-/* LOADING */
 
-.loading{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.55);
-    backdrop-filter:blur(4px);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    z-index:99999;
-}
+/* =====================================================
+   ERROR
+===================================================== */
 
-.loading-box{
-    background:white;
-    color:#222;
-    padding:20px 28px;
-    border-radius:14px;
+.error-box{
+
+    display:none;
+
+    background:#fff0f0;
+
+    color:#c62828;
+
+    border:1px solid #ffcaca;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-size:13px;
+
     font-weight:bold;
-    font-size:14px;
+
+    margin-bottom:15px;
 }
 
-body.dark .loading-box{
-    background:#151515;
-    color:white;
-}
 
-/* MOBILE */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:500px){
 
     .header{
+
         height:60px;
+
         padding:0 14px;
     }
 
     .title{
+
         font-size:18px;
     }
 
     .logout{
+
         padding:9px 13px;
     }
 
     .container{
+
         padding:18px 13px 30px;
     }
 
     .photo{
-        width:200px;
-        height:200px;
+
+        width:190px;
+
+        height:190px;
     }
 
     .value{
+
         font-size:14px;
     }
 
     .mac-value{
+
         font-size:15px;
     }
 
     .info-value{
+
         font-size:15px;
     }
 
     .speed-value{
+
         font-size:21px;
     }
 
     .graph-container{
+
         height:185px;
     }
 
@@ -570,6 +940,31 @@ body.dark .loading-box{
 <body>
 
 
+<!-- =====================================================
+     LOADING
+===================================================== -->
+
+<div
+    id="loading"
+    class="loading">
+
+    <div class="loading-box">
+
+        <div class="loader"></div>
+
+        <div class="loading-text">
+            Loading customer data...
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     THEME
+===================================================== -->
+
 <button
     id="themeButton"
     class="theme-button"
@@ -579,6 +974,10 @@ body.dark .loading-box{
 
 </button>
 
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <div class="header">
 
@@ -597,7 +996,17 @@ body.dark .loading-box{
 </div>
 
 
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
 <div class="container">
+
+
+<div
+    id="errorBox"
+    class="error-box">
+</div>
 
 
 <!-- USERNAME + PASSWORD -->
@@ -665,7 +1074,14 @@ body.dark .loading-box{
 
 <div class="photo">
 
+
+<img
+    id="profilePhoto"
+    alt="Customer Photo">
+
+
 <svg
+id="defaultPhoto"
 viewBox="0 0 500 500"
 xmlns="http://www.w3.org/2000/svg">
 
@@ -734,21 +1150,24 @@ stroke-width="6"/>
 </div>
 
 
-<!-- SPEED -->
+<!-- =====================================================
+     SPEED
+===================================================== -->
 
 <div
-    id="speedBox"
-    class="speed-box">
+id="speedBox"
+class="speed-box">
+
 
 <div
-    class="speed-header"
-    onclick="toggleSpeed()">
+class="speed-header"
+onclick="toggleSpeed()">
 
     <div class="speed-title">
 
         <span
-            id="speedArrow"
-            class="speed-arrow">
+        id="speedArrow"
+        class="speed-arrow">
 
             ▼
 
@@ -757,6 +1176,7 @@ stroke-width="6"/>
         📶 INTERNET SPEED
 
     </div>
+
 
     <div class="speed-live">
 
@@ -770,69 +1190,62 @@ stroke-width="6"/>
 
 
 <div
-    id="speedContent"
-    class="speed-content">
+id="speedContent"
+class="speed-content">
 
 
 <div class="speed-values">
 
 
-    <div
-        class="speed-value-box download-card">
+<div class="speed-value-box download-card">
 
-        <div
-            class="speed-value-title download-title">
+    <div class="speed-value-title download-title">
+        DOWNLOAD
+    </div>
 
-            DOWNLOAD
+    <div class="speed-number-row">
 
-        </div>
+        <span
+        id="downloadSpeed"
+        class="speed-value">
 
-        <div class="speed-number-row">
+            0.0
 
-            <span
-                id="downloadSpeed"
-                class="speed-value">
+        </span>
 
-                0.0
-
-            </span>
-
-            <span class="speed-unit">
-                MBPS
-            </span>
-
-        </div>
+        <span class="speed-unit">
+            MBPS
+        </span>
 
     </div>
 
+</div>
 
-    <div
-        class="speed-value-box upload-card">
 
-        <div
-            class="speed-value-title upload-title">
+<div class="speed-value-box upload-card">
 
-            UPLOAD
+    <div class="speed-value-title upload-title">
+        UPLOAD
+    </div>
 
-        </div>
+    <div class="speed-number-row">
 
-        <div class="speed-number-row">
+        <span
+        id="uploadSpeed"
+        class="speed-value">
 
-            <span
-                id="uploadSpeed"
-                class="speed-value">
+            0.0
 
-                0.0
+        </span>
 
-            </span>
-
-            <span class="speed-unit">
-                MBPS
-            </span>
-
-        </div>
+        <span class="speed-unit">
+            MBPS
+        </span>
 
     </div>
+
+</div>
+
 
 </div>
 
@@ -841,19 +1254,16 @@ stroke-width="6"/>
 
     <div class="legend">
 
-        <span
-            class="legend-line download-line">
-        </span>
+        <span class="legend-line download-line"></span>
 
         Download
 
     </div>
 
+
     <div class="legend">
 
-        <span
-            class="legend-line upload-line">
-        </span>
+        <span class="legend-line upload-line"></span>
 
         Upload
 
@@ -870,16 +1280,20 @@ stroke-width="6"/>
 
 
 <div class="speed-note">
+
     Live network activity monitor
-</div>
-
-
-</div>
 
 </div>
 
 
-<!-- NAME -->
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     NAME
+===================================================== -->
 
 <div class="info">
 
@@ -898,7 +1312,9 @@ stroke-width="6"/>
 </div>
 
 
-<!-- BILLING DATE -->
+<!-- =====================================================
+     BILLING DATE
+===================================================== -->
 
 <div class="billing">
 
@@ -917,7 +1333,9 @@ stroke-width="6"/>
 </div>
 
 
-<!-- BILL -->
+<!-- =====================================================
+     BILL
+===================================================== -->
 
 <div class="bill">
 
@@ -936,7 +1354,9 @@ stroke-width="6"/>
 </div>
 
 
-<!-- ADDRESS -->
+<!-- =====================================================
+     ADDRESS
+===================================================== -->
 
 <div class="address">
 
@@ -955,7 +1375,9 @@ stroke-width="6"/>
 </div>
 
 
-<!-- STATUS -->
+<!-- =====================================================
+     CONNECTION
+===================================================== -->
 
 <div class="connection">
 
@@ -963,9 +1385,7 @@ stroke-width="6"/>
         CONNECTING STATUS
     </div>
 
-    <div
-        id="status"
-        class="online">
+    <div class="online">
 
         <span class="online-dot"></span>
 
@@ -979,69 +1399,105 @@ stroke-width="6"/>
 </div>
 
 
-<div
-    id="loading"
-    class="loading">
-
-    <div class="loading-box">
-        Loading customer data...
-    </div>
-
-</div>
-
-
 <script>
 
-/* ============================================================
+
+/* =====================================================
    API URL
-============================================================ */
+===================================================== */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEda0meR5ZzPbUZqH_5dpbIQWt1Z7fArv6adM5yRMGMDYwOkkZn-O1bZ0v4xHFTuGmwA/exec";
 
 
-/* ============================================================
+/* =====================================================
    LOGIN CHECK
-============================================================ */
+===================================================== */
 
 const loggedIn =
-localStorage.getItem("loggedIn") === "true" ||
-sessionStorage.getItem("loggedIn") === "true";
+sessionStorage.getItem("loggedIn") === "true" ||
+localStorage.getItem("loggedIn") === "true";
 
 
 if(!loggedIn){
 
-    window.location.replace(
-        "index.html"
-    );
+    window.location.replace("index.html");
 
 }
 
 
-/* ============================================================
+/* =====================================================
    GET USERNAME
-============================================================ */
+===================================================== */
 
-const username =
+const currentUsername =
 sessionStorage.getItem("username") ||
 localStorage.getItem("username");
 
 
-if(!username){
+if(!currentUsername){
 
-    localStorage.removeItem("loggedIn");
-    sessionStorage.removeItem("loggedIn");
-
-    window.location.replace(
-        "index.html"
-    );
+    window.location.replace("index.html");
 
 }
 
 
-/* ============================================================
+/* =====================================================
+   HELPER
+===================================================== */
+
+function findValue(data, names){
+
+    if(!data){
+
+        return "";
+
+    }
+
+
+    const keys =
+        Object.keys(data);
+
+
+    for(
+        const name of names
+    ){
+
+        const wanted =
+            String(name)
+            .toLowerCase()
+            .replace(/[\s_-]/g,"");
+
+
+        for(
+            const key of keys
+        ){
+
+            const normalized =
+                String(key)
+                .toLowerCase()
+                .replace(/[\s_-]/g,"");
+
+
+            if(normalized === wanted){
+
+                return data[key];
+
+            }
+
+        }
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =====================================================
    LOAD CUSTOMER DATA
-============================================================ */
+===================================================== */
 
 async function loadCustomerData(){
 
@@ -1049,10 +1505,12 @@ async function loadCustomerData(){
 
         const url =
             API_URL +
-            "?action=customer" +
+            "?action=getUser" +
             "&username=" +
-            encodeURIComponent(username) +
-            "&t=" +
+            encodeURIComponent(
+                currentUsername
+            ) +
+            "&_=" +
             Date.now();
 
 
@@ -1077,142 +1535,304 @@ async function loadCustomerData(){
 
 
         if(
+            !result ||
             result.success !== true
         ){
 
-            alert(
-                result.message ||
-                "Customer data not found."
+            throw new Error(
+                result &&
+                result.message
+                ? result.message
+                : "Customer data not found."
             );
-
-            logout();
-
-            return;
 
         }
 
 
         const data =
-            result.data ||
-            result.customer ||
-            result;
+            result.data || {};
 
 
-        /* USERNAME */
+        /*
+        ===============================
+        USERNAME
+        ===============================
+        */
+
+        const username =
+            findValue(
+                data,
+                [
+                    "Username",
+                    "username"
+                ]
+            ) ||
+            currentUsername;
+
 
         document.getElementById(
             "username"
         ).textContent =
-            data.username ||
             username;
 
 
-        /* PASSWORD */
+        /*
+        ===============================
+        PASSWORD
+        ===============================
+        */
+
+        const password =
+            findValue(
+                data,
+                [
+                    "Password",
+                    "password"
+                ]
+            );
+
 
         document.getElementById(
             "password"
         ).textContent =
-            data.password ||
-            "••••••";
+            password || "••••••";
 
 
-        /* MAC */
+        /*
+        ===============================
+        MAC
+        ===============================
+        */
+
+        const mac =
+            findValue(
+                data,
+                [
+                    "MAC",
+                    "Mac",
+                    "Mac Address",
+                    "MAC Address"
+                ]
+            );
+
 
         document.getElementById(
             "mac"
         ).textContent =
-            data.mac ||
-            "Not available";
+            mac || "Not available";
 
 
-        /* NAME */
+        /*
+        ===============================
+        NAME
+        ===============================
+        */
+
+        const name =
+            findValue(
+                data,
+                [
+                    "Name",
+                    "Customer Name"
+                ]
+            );
+
 
         document.getElementById(
             "name"
         ).textContent =
-            data.name ||
-            "Not available";
+            name || "Not available";
 
 
-        /* BILLING DATE */
+        /*
+        ===============================
+        DOWNLOAD
+        ===============================
+        */
+
+        const download =
+            findValue(
+                data,
+                [
+                    "Download",
+                    "Download Mbps",
+                    "Download Speed"
+                ]
+            );
+
+
+        if(download){
+
+            downloadBase =
+                parseFloat(
+                    String(download)
+                    .replace(/[^\d.]/g,"")
+                ) || 7;
+
+        }
+
+
+        /*
+        ===============================
+        UPLOAD
+        ===============================
+        */
+
+        const upload =
+            findValue(
+                data,
+                [
+                    "Upload",
+                    "Upload Mbps",
+                    "Upload Speed"
+                ]
+            );
+
+
+        if(upload){
+
+            uploadBase =
+                parseFloat(
+                    String(upload)
+                    .replace(/[^\d.]/g,"")
+                ) || 1.5;
+
+        }
+
+
+        /*
+        ===============================
+        BILLING DATE
+        ===============================
+        */
+
+        const billingDate =
+            findValue(
+                data,
+                [
+                    "Billing Date",
+                    "BillingDate",
+                    "Bill Date",
+                    "Renew Date"
+                ]
+            );
+
 
         document.getElementById(
             "billingDate"
         ).textContent =
-            data.billingDate ||
-            "Not available";
+            billingDate || "Not available";
 
 
-        /* BILL */
+        /*
+        ===============================
+        BILL
+        ===============================
+        */
+
+        const bill =
+            findValue(
+                data,
+                [
+                    "Bill",
+                    "Customer Bill",
+                    "Amount"
+                ]
+            );
+
 
         document.getElementById(
             "bill"
         ).textContent =
-            data.bill
-            ? data.bill + " tk"
+            bill
+            ? String(bill).includes("tk")
+                ? bill
+                : bill + " tk"
             : "Not available";
 
 
-        /* ADDRESS */
+        /*
+        ===============================
+        ADDRESS
+        ===============================
+        */
+
+        const address =
+            findValue(
+                data,
+                [
+                    "Address",
+                    "Customer Address"
+                ]
+            );
+
 
         document.getElementById(
             "address"
         ).textContent =
-            data.address ||
-            "Not available";
+            address || "Not available";
 
 
-        /* STATUS */
+        /*
+        ===============================
+        PHOTO
+        ===============================
+        */
 
-        setStatus(
-            data.status
-        );
-
-
-        /* SPEED */
-
-        let d =
-            parseFloat(
-                data.download
+        const photo =
+            findValue(
+                data,
+                [
+                    "Photo",
+                    "Picture",
+                    "Photo URL",
+                    "Picture URL",
+                    "Image"
+                ]
             );
 
-        let u =
-            parseFloat(
-                data.upload
-            );
+
+        if(photo){
+
+            const image =
+                document.getElementById(
+                    "profilePhoto"
+                );
+
+            const defaultPhoto =
+                document.getElementById(
+                    "defaultPhoto"
+                );
 
 
-        if(isNaN(d)){
-            d = 7;
+            image.src =
+                photo;
+
+
+            image.onload =
+                function(){
+
+                    image.style.display =
+                        "block";
+
+                    defaultPhoto.style.display =
+                        "none";
+
+                };
+
+
+            image.onerror =
+                function(){
+
+                    image.style.display =
+                        "none";
+
+                    defaultPhoto.style.display =
+                        "block";
+
+                };
+
         }
-
-        if(isNaN(u)){
-            u = 1.5;
-        }
-
-
-        baseDownload = d;
-        baseUpload = u;
-
-
-        download =
-            baseDownload;
-
-        upload =
-            baseUpload;
-
-
-        downloadElement.textContent =
-            download.toFixed(1);
-
-        uploadElement.textContent =
-            upload.toFixed(1);
-
-
-        createHistory();
-
-
-        resizeCanvas();
 
 
         document.getElementById(
@@ -1224,97 +1844,54 @@ async function loadCustomerData(){
 
     catch(error){
 
-        console.error(
-            error
-        );
+        console.error(error);
 
-
-        alert(
-            "Unable to load customer data."
-        );
 
         document.getElementById(
             "loading"
         ).style.display =
             "none";
 
-    }
 
-}
-
-
-/* ============================================================
-   STATUS
-============================================================ */
-
-function setStatus(status){
-
-    const element =
-        document.getElementById(
-            "status"
-        );
-
-
-    const value =
-        String(
-            status || "Online"
-        ).toLowerCase();
-
-
-    if(
-        value === "offline" ||
-        value === "blocked" ||
-        value === "inactive"
-    ){
-
-        element.innerHTML =
-            '<span class="online-dot"></span> ' +
-            (
-                status ||
-                "Offline"
+        const errorBox =
+            document.getElementById(
+                "errorBox"
             );
 
-        element.style.background =
-            "#ffe9e9";
 
-        element.style.color =
-            "#c40000";
+        errorBox.style.display =
+            "block";
 
-    }
 
-    else{
-
-        element.innerHTML =
-            '<span class="online-dot"></span> ' +
-            (
-                status ||
-                "Online"
-            );
+        errorBox.textContent =
+            "Unable to load customer data: " +
+            error.message;
 
     }
 
 }
 
 
-/* ============================================================
+/* =====================================================
    LOGOUT
-============================================================ */
+===================================================== */
 
 function logout(){
 
-    localStorage.removeItem(
+    sessionStorage.removeItem(
         "loggedIn"
     );
 
-    localStorage.removeItem(
+    sessionStorage.removeItem(
         "username"
     );
 
-    sessionStorage.removeItem(
+
+    localStorage.removeItem(
         "loggedIn"
     );
 
-    sessionStorage.removeItem(
+    localStorage.removeItem(
         "username"
     );
 
@@ -1326,9 +1903,9 @@ function logout(){
 }
 
 
-/* ============================================================
+/* =====================================================
    THEME
-============================================================ */
+===================================================== */
 
 const themeButton =
 document.getElementById(
@@ -1393,9 +1970,9 @@ function toggleTheme(){
 loadTheme();
 
 
-/* ============================================================
-   SPEED BOX
-============================================================ */
+/* =====================================================
+   SPEED MINIMIZE
+===================================================== */
 
 const speedBox =
 document.getElementById(
@@ -1425,19 +2002,25 @@ function toggleSpeed(){
     );
 
 
-    localStorage.setItem(
-        "speedBoxMinimized",
+    const minimized =
         speedBox.classList.contains(
             "minimized"
-        )
+        );
+
+
+    localStorage.setItem(
+        "speedBoxMinimized",
+        minimized
+        ? "true"
+        : "false"
     );
 
 }
 
 
-/* ============================================================
+/* =====================================================
    GRAPH
-============================================================ */
+===================================================== */
 
 const canvas =
 document.getElementById(
@@ -1461,11 +2044,11 @@ document.getElementById(
 );
 
 
-let baseDownload = 7;
+let downloadBase = 7.2;
 
-let baseUpload = 1.5;
+let uploadBase = 1.5;
 
-let download = 7;
+let download = 7.2;
 
 let upload = 1.5;
 
@@ -1476,111 +2059,43 @@ let uploadHistory = [];
 const MAX_POINTS = 80;
 
 
-/* ============================================================
-   CREATE HISTORY
-============================================================ */
+/* =====================================================
+   RANDOM SPEED
+===================================================== */
 
-function createHistory(){
-
-    downloadHistory = [];
-    uploadHistory = [];
-
-
-    for(
-        let i = 0;
-        i < 80;
-        i++
-    ){
-
-        downloadHistory.push(
-            getNaturalSpeed(
-                baseDownload,
-                0.20
-            )
-        );
-
-
-        uploadHistory.push(
-            getNaturalSpeed(
-                baseUpload,
-                0.15
-            )
-        );
-
-    }
-
-}
-
-
-/* ============================================================
-   NATURAL SPEED
-============================================================ */
-
-function getNaturalSpeed(
+function randomSpeed(
     base,
-    variation
+    percent
 ){
+
+    const variation =
+        base *
+        percent;
+
 
     let value =
         base +
         (
-            Math.random() *
-            2 -
-            1
+            Math.random() * 2 - 1
         ) *
-        (
-            base *
-            variation
-        );
+        variation;
 
 
-    /* মাঝে মাঝে একটু বেশি */
+    if(value < 0){
 
-    if(
-        Math.random() <
-        0.10
-    ){
-
-        value +=
-            base *
-            (
-                0.10 +
-                Math.random() *
-                0.15
-            );
+        value = 0;
 
     }
 
 
-    /* মাঝে মাঝে একটু কম */
-
-    if(
-        Math.random() <
-        0.08
-    ){
-
-        value -=
-            base *
-            (
-                0.08 +
-                Math.random() *
-                0.12
-            );
-
-    }
-
-
-    return Math.max(
-        0.1,
-        value
-    );
+    return value;
 
 }
 
 
-/* ============================================================
+/* =====================================================
    RESIZE
-============================================================ */
+===================================================== */
 
 function resizeCanvas(){
 
@@ -1630,14 +2145,15 @@ window.addEventListener(
 );
 
 
-/* ============================================================
+/* =====================================================
    DRAW GRAPH
-============================================================ */
+===================================================== */
 
 function drawGraph(){
 
     const width =
         canvas.clientWidth;
+
 
     const height =
         canvas.clientHeight;
@@ -1645,8 +2161,7 @@ function drawGraph(){
 
     if(
         !width ||
-        !height ||
-        downloadHistory.length < 2
+        !height
     ){
 
         return;
@@ -1660,6 +2175,15 @@ function drawGraph(){
         width,
         height
     );
+
+
+    if(
+        downloadHistory.length < 2
+    ){
+
+        return;
+
+    }
 
 
     const dark =
@@ -1707,14 +2231,10 @@ function drawGraph(){
     }
 
 
-    /*
-    Dynamic maximum.
-    */
-
-    const maxValue =
+    const max =
         Math.max(
-            baseDownload * 1.5,
-            10
+            10,
+            downloadBase * 1.6
         );
 
 
@@ -1723,7 +2243,7 @@ function drawGraph(){
         "#e00000",
         width,
         height,
-        maxValue
+        max
     );
 
 
@@ -1732,15 +2252,15 @@ function drawGraph(){
         "#0b9b54",
         width,
         height,
-        maxValue
+        max
     );
 
 }
 
 
-/* ============================================================
-   DRAW SMOOTH LINE
-============================================================ */
+/* =====================================================
+   DRAW LINE
+===================================================== */
 
 function drawSmoothLine(
     data,
@@ -1771,9 +2291,7 @@ function drawSmoothLine(
             const x =
                 (
                     index /
-                    (
-                        data.length - 1
-                    )
+                    (data.length - 1)
                 ) *
                 width;
 
@@ -1781,8 +2299,7 @@ function drawSmoothLine(
             const y =
                 height -
                 (
-                    value /
-                    max
+                    value / max
                 ) *
                 (
                     height - 22
@@ -1825,6 +2342,7 @@ function drawSmoothLine(
         const previous =
             points[i - 1];
 
+
         const current =
             points[i];
 
@@ -1860,10 +2378,12 @@ function drawSmoothLine(
         last.y
     );
 
+
     ctx.lineTo(
         last.x,
         height
     );
+
 
     ctx.closePath();
 
@@ -1877,9 +2397,7 @@ function drawSmoothLine(
         );
 
 
-    if(
-        color === "#e00000"
-    ){
+    if(color === "#e00000"){
 
         gradient.addColorStop(
             0,
@@ -1911,6 +2429,7 @@ function drawSmoothLine(
     ctx.fillStyle =
         gradient;
 
+
     ctx.fill();
 
 
@@ -1933,6 +2452,7 @@ function drawSmoothLine(
 
         const previous =
             points[i - 1];
+
 
         const current =
             points[i];
@@ -1984,19 +2504,26 @@ function drawSmoothLine(
 
     ctx.stroke();
 
-    ctx.shadowBlur =
-        0;
+    ctx.shadowBlur = 0;
 
 
     /* CURRENT POINT */
 
+    const pointIndex =
+        Math.max(
+            0,
+            data.length - 1
+        );
+
+
     const point =
         points[
-            points.length - 1
+            pointIndex
         ];
 
 
     ctx.beginPath();
+
 
     ctx.arc(
         point.x,
@@ -2012,32 +2539,17 @@ function drawSmoothLine(
         ? "rgba(224,0,0,.14)"
         : "rgba(11,155,84,.14)";
 
-    ctx.fill();
-
-
-    ctx.beginPath();
-
-    ctx.arc(
-        point.x,
-        point.y,
-        5,
-        0,
-        Math.PI * 2
-    );
-
-
-    ctx.fillStyle =
-        "#ffffff";
 
     ctx.fill();
 
 
     ctx.beginPath();
 
+
     ctx.arc(
         point.x,
         point.y,
-        3.5,
+        4,
         0,
         Math.PI * 2
     );
@@ -2046,53 +2558,35 @@ function drawSmoothLine(
     ctx.fillStyle =
         color;
 
+
     ctx.fill();
 
 }
 
 
-/* ============================================================
+/* =====================================================
    UPDATE SPEED
-============================================================ */
+===================================================== */
 
 function updateSpeed(){
 
     /*
-    Base speed থেকে natural movement.
+    Download একটু বেশি/কম হবে
+    এবং stable থাকবে না।
     */
 
-    const targetDownload =
-        getNaturalSpeed(
-            baseDownload,
-            0.18
+    download =
+        randomSpeed(
+            downloadBase,
+            .14
         );
 
 
-    const targetUpload =
-        getNaturalSpeed(
-            baseUpload,
-            0.18
+    upload =
+        randomSpeed(
+            uploadBase,
+            .20
         );
-
-
-    /*
-    Smooth movement
-    */
-
-    download +=
-        (
-            targetDownload -
-            download
-        ) *
-        0.18;
-
-
-    upload +=
-        (
-            targetUpload -
-            upload
-        ) *
-        0.18;
 
 
     downloadElement.textContent =
@@ -2138,31 +2632,52 @@ function updateSpeed(){
 }
 
 
-/* ============================================================
-   START
-============================================================ */
+/* =====================================================
+   INITIAL GRAPH
+===================================================== */
 
-loadCustomerData();
+for(
+    let i = 0;
+    i < 30;
+    i++
+){
+
+    downloadHistory.push(
+        randomSpeed(
+            downloadBase,
+            .14
+        )
+    );
 
 
-/*
-Initial graph-এর জন্য fallback history
-*/
+    uploadHistory.push(
+        randomSpeed(
+            uploadBase,
+            .20
+        )
+    );
 
-createHistory();
+}
 
 
 resizeCanvas();
 
 
-/*
-প্রতি 500ms-এ speed পরিবর্তন হবে।
-*/
+/* =====================================================
+   START
+===================================================== */
 
 setInterval(
     updateSpeed,
-    500
+    350
 );
+
+
+/* =====================================================
+   LOAD DATA
+===================================================== */
+
+loadCustomerData();
 
 </script>
 
