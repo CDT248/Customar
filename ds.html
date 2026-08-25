@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -18,1033 +17,547 @@
     font-family:Arial,Helvetica,sans-serif;
 }
 
+:root{
+    --bg:#f4f6f8;
+    --card:#ffffff;
+    --text:#222;
+    --muted:#777;
+    --border:#dddddd;
+    --green:#0b5d3b;
+}
+
+body.dark{
+    --bg:#000000;
+    --card:#111111;
+    --text:#ffffff;
+    --muted:#aaaaaa;
+    --border:#292929;
+    --green:#19a866;
+}
+
 body{
-
     min-height:100vh;
-
-    background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(0,255,170,.16),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 88% 80%,
-            rgba(0,140,255,.17),
-            transparent 34%
-        ),
-        linear-gradient(
-            135deg,
-            #020617,
-            #071b2e,
-            #061b16
-        );
-
-    color:white;
-
-    overflow-x:hidden;
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
 }
 
+/* THEME */
 
-/* =====================================================
-   BACKGROUND
-===================================================== */
-
-.bg-circle{
-
+.theme-button{
     position:fixed;
-
+    top:5px;
+    right:5px;
+    width:25px;
+    height:25px;
+    border:1px solid var(--border);
     border-radius:50%;
-
-    pointer-events:none;
-
-    filter:blur(3px);
-
-    z-index:0;
-
+    background:var(--card);
+    color:var(--text);
+    font-size:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:9999;
 }
 
-.c1{
-
-    width:300px;
-    height:300px;
-
-    left:-120px;
-    top:-100px;
-
-    background:
-        rgba(0,255,170,.10);
-
-}
-
-.c2{
-
-    width:380px;
-    height:380px;
-
-    right:-160px;
-    bottom:-150px;
-
-    background:
-        rgba(0,140,255,.10);
-
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
+/* HEADER */
 
 .header{
-
     height:65px;
-
-    width:100%;
-
-    background:
-        rgba(5,15,25,.82);
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.09);
-
-    backdrop-filter:
-        blur(18px);
-
+    background:var(--card);
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
-    padding:
-        0 18px;
-
+    padding:0 18px;
+    border-bottom:1px solid var(--border);
     position:sticky;
-
     top:0;
-
     z-index:100;
-
 }
 
-.brand{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-}
-
-.brand-icon{
-
-    width:38px;
-
-    height:38px;
-
-    border-radius:11px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00d084,
-            #008cff
-        );
-
-    box-shadow:
-        0 8px 25px
-        rgba(0,180,255,.20);
-
-}
-
-.brand-text{
-
-    font-size:17px;
-
-    font-weight:800;
-
-}
-
-.header-right{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-}
-
-.theme-btn{
-
-    width:36px;
-
-    height:36px;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(255,255,255,.10);
-
-    background:
-        rgba(255,255,255,.05);
-
-    color:white;
-
-    cursor:pointer;
-
+.title{
+    font-size:20px;
+    font-weight:bold;
+    color:var(--green);
 }
 
 .logout{
-
     border:0;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00c878,
-            #008cff
-        );
-
+    background:var(--green);
     color:white;
-
-    padding:
-        10px 15px;
-
-    border-radius:9px;
-
-    font-size:12px;
-
+    padding:10px 17px;
+    border-radius:8px;
+    font-size:14px;
     font-weight:bold;
-
     cursor:pointer;
-
 }
 
-
-/* =====================================================
-   MAIN
-===================================================== */
+/* MAIN */
 
 .container{
-
     width:100%;
-
-    max-width:700px;
-
+    max-width:650px;
     margin:auto;
-
-    padding:
-        22px 15px 40px;
-
-    position:relative;
-
-    z-index:2;
-
+    padding:22px 16px 40px;
 }
 
+/* TOP */
 
-/* =====================================================
-   LOADING
-===================================================== */
-
-.loading{
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-        linear-gradient(
-            135deg,
-            #020617,
-            #071b2e,
-            #061b16
-        );
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    flex-direction:column;
-
-    z-index:9999;
-
-}
-
-.spinner{
-
-    width:42px;
-
-    height:42px;
-
-    border:
-        4px solid
-        rgba(255,255,255,.12);
-
-    border-top-color:
-        #00d084;
-
-    border-right-color:
-        #008cff;
-
-    border-radius:50%;
-
-    animation:
-        spin .8s linear infinite;
-
-    margin-bottom:12px;
-
-}
-
-@keyframes spin{
-
-    to{
-        transform:rotate(360deg);
-    }
-
-}
-
-.loading-text{
-
-    color:#9ca3af;
-
-    font-size:12px;
-
-    font-weight:bold;
-
-}
-
-
-/* =====================================================
-   ERROR
-===================================================== */
-
-.error{
-
-    display:none;
-
-    background:
-        rgba(255,70,70,.10);
-
-    border:
-        1px solid
-        rgba(255,80,80,.25);
-
-    color:#ff7777;
-
-    border-radius:12px;
-
-    padding:13px;
-
-    margin-bottom:13px;
-
-    font-size:12px;
-
-    font-weight:bold;
-
-    text-align:center;
-
-}
-
-
-/* =====================================================
-   PROFILE
-===================================================== */
-
-.profile{
-
-    background:
-        rgba(10,20,32,.82);
-
-    border:
-        1px solid
-        rgba(255,255,255,.10);
-
-    border-radius:20px;
-
-    padding:18px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    box-shadow:
-        0 20px 55px
-        rgba(0,0,0,.30);
-
-    backdrop-filter:
-        blur(18px);
-
-    margin-bottom:13px;
-
-}
-
-.profile-photo{
-
-    width:82px;
-
-    height:82px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    background:#123;
-
-    border:
-        3px solid
-        rgba(0,208,132,.35);
-
-    box-shadow:
-        0 8px 28px
-        rgba(0,0,0,.35);
-
-}
-
-.profile-info{
-
-    flex:1;
-
-    min-width:0;
-
-}
-
-.profile-name{
-
-    font-size:21px;
-
-    font-weight:900;
-
-    margin-bottom:4px;
-
-    word-break:break-word;
-
-}
-
-.profile-username{
-
-    color:#8e9aaa;
-
-    font-size:12px;
-
-    margin-bottom:9px;
-
-}
-
-.online{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:6px;
-
-    padding:
-        6px 10px;
-
-    border-radius:20px;
-
-    background:
-        rgba(0,208,132,.10);
-
-    border:
-        1px solid
-        rgba(0,208,132,.15);
-
-    color:#35e89a;
-
-    font-size:9px;
-
-    font-weight:bold;
-
-}
-
-.online-dot{
-
-    width:7px;
-
-    height:7px;
-
-    border-radius:50%;
-
-    background:#00d084;
-
-    box-shadow:
-        0 0 8px
-        #00d084;
-
-    animation:
-        pulse 1.1s infinite;
-
-}
-
-@keyframes pulse{
-
-    0%,100%{
-        opacity:.45;
-        transform:scale(.8);
-    }
-
-    50%{
-        opacity:1;
-        transform:scale(1.15);
-    }
-
-}
-
-
-/* =====================================================
-   SECTION TITLE
-===================================================== */
-
-.section-title{
-
-    color:#8190a0;
-
-    font-size:10px;
-
-    font-weight:900;
-
-    letter-spacing:.6px;
-
-    margin:
-        18px 2px 8px;
-
-}
-
-
-/* =====================================================
-   TWO COLUMN
-===================================================== */
-
-.two{
-
+.top{
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:11px;
-
-    margin-bottom:11px;
-
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:12px;
 }
 
-
-/* =====================================================
-   INFO CARD
-===================================================== */
-
-.info-card{
-
-    background:
-        rgba(10,20,32,.80);
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    border-radius:13px;
-
-    padding:14px;
-
-    box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.20);
-
-    backdrop-filter:
-        blur(14px);
-
+.box{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:15px;
 }
 
 .label{
-
-    font-size:9px;
-
-    color:#778596;
-
-    font-weight:900;
-
-    letter-spacing:.5px;
-
+    font-size:12px;
+    font-weight:bold;
+    color:var(--muted);
     margin-bottom:7px;
-
 }
 
 .value{
-
-    color:white;
-
-    font-size:15px;
-
-    font-weight:800;
-
+    font-size:16px;
+    font-weight:bold;
+    color:var(--text);
     word-break:break-word;
-
 }
 
+/* MAC */
 
-/* =====================================================
-   MAC
-===================================================== */
-
-.mac-card{
-
-    background:
-        rgba(10,20,32,.80);
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    border-radius:13px;
-
-    padding:14px;
-
-    box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.20);
-
-    margin-bottom:11px;
-
+.mac-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:18px;
 }
 
-.mac{
+.mac-title{
+    font-size:12px;
+    color:var(--muted);
+    font-weight:bold;
+    margin-bottom:7px;
+}
 
-    font-family:monospace;
-
-    color:#dce6ee;
-
-    font-size:15px;
-
-    font-weight:900;
-
-    letter-spacing:.6px;
-
+.mac-value{
+    font-size:17px;
+    font-weight:bold;
+    color:var(--text);
     word-break:break-all;
-
 }
 
+/* PHOTO */
 
-/* =====================================================
-   SPEED CARD
-===================================================== */
+.photo-box{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin:5px 0 22px;
+}
 
-.speed-card{
+.photo{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#dff0e8;
+    border:6px solid var(--card);
+    box-shadow:0 7px 30px rgba(0,0,0,.18);
+}
 
+.photo svg{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+/* SPEED */
+
+.speed-box{
     background:
-        rgba(10,20,32,.82);
+        linear-gradient(
+            145deg,
+            var(--card),
+            var(--bg)
+        );
 
-    border:
-        1px solid
-        rgba(255,255,255,.10);
-
+    border:1px solid var(--border);
     border-radius:18px;
-
     padding:17px;
+    margin-bottom:14px;
 
     box-shadow:
-        0 20px 55px
-        rgba(0,0,0,.28);
-
-    backdrop-filter:
-        blur(18px);
-
-    margin-bottom:13px;
-
+        0 8px 30px rgba(0,0,0,.06);
 }
 
 .speed-header{
-
     display:flex;
-
-    align-items:center;
-
     justify-content:space-between;
-
-    margin-bottom:14px;
-
+    align-items:center;
+    cursor:pointer;
+    user-select:none;
+    margin-bottom:15px;
 }
 
 .speed-title{
-
-    font-size:13px;
-
-    font-weight:900;
-
-}
-
-.live{
-
     display:flex;
-
     align-items:center;
-
-    gap:5px;
-
-    padding:
-        6px 9px;
-
-    border-radius:20px;
-
-    color:#35e89a;
-
-    background:
-        rgba(0,208,132,.09);
-
-    border:
-        1px solid
-        rgba(0,208,132,.14);
-
-    font-size:9px;
-
-    font-weight:900;
-
+    gap:7px;
+    font-size:14px;
+    font-weight:bold;
+    color:var(--muted);
 }
 
+.speed-arrow{
+    font-size:10px;
+    transition:.3s;
+    color:var(--muted);
+}
 
-/* =====================================================
-   SPEED VALUES
-===================================================== */
+.speed-live{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-size:10px;
+    font-weight:bold;
+    color:#08783d;
+    background:#e8f7ef;
+    padding:6px 9px;
+    border-radius:20px;
+}
+
+.live-dot{
+    width:6px;
+    height:6px;
+    background:#0aa854;
+    border-radius:50%;
+    animation:livePulse 1s infinite;
+}
+
+@keyframes livePulse{
+    0%{
+        opacity:.4;
+        transform:scale(.8);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.2);
+    }
+    100%{
+        opacity:.4;
+        transform:scale(.8);
+    }
+}
+
+.speed-content{
+    max-height:600px;
+    overflow:hidden;
+    opacity:1;
+    transition:max-height .4s ease,opacity .25s ease;
+}
+
+.speed-box.minimized{
+    padding-bottom:15px;
+}
+
+.speed-box.minimized .speed-header{
+    margin-bottom:0;
+}
+
+.speed-box.minimized .speed-content{
+    max-height:0;
+    opacity:0;
+    pointer-events:none;
+}
+
+.speed-box.minimized .speed-arrow{
+    transform:rotate(-90deg);
+}
+
+/* SPEED VALUES */
 
 .speed-values{
-
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:10px;
-
-    margin-bottom:12px;
-
+    margin-bottom:15px;
 }
 
-.speed-box{
-
-    background:
-        rgba(255,255,255,.035);
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
+.speed-value-box{
+    border:1px solid var(--border);
     border-radius:13px;
-
     padding:13px;
-
-}
-
-.speed-label{
-
-    font-size:9px;
-
-    font-weight:900;
-
-    margin-bottom:6px;
-
-}
-
-.download{
-
-    color:#ff5252;
-
-}
-
-.upload{
-
-    color:#35e89a;
-
-}
-
-.speed-number{
-
-    display:flex;
-
-    align-items:baseline;
-
-    gap:5px;
-
-}
-
-.speed-number strong{
-
-    font-size:25px;
-
-    font-weight:900;
-
-    color:white;
-
-}
-
-.speed-number span{
-
-    font-size:9px;
-
-    color:#778596;
-
-    font-weight:900;
-
-}
-
-
-/* =====================================================
-   GRAPH
-===================================================== */
-
-.graph{
-
-    width:100%;
-
-    height:190px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    border-radius:13px;
-
+    background:var(--bg);
+    position:relative;
     overflow:hidden;
-
-    background:
-        rgba(0,0,0,.15);
-
 }
 
-#canvas{
+.speed-value-box::after{
+    content:"";
+    position:absolute;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    right:-25px;
+    bottom:-25px;
+    opacity:.08;
+}
 
+.download-card::after{
+    background:#e00000;
+}
+
+.upload-card::after{
+    background:#0b9b54;
+}
+
+.speed-value-title{
+    font-size:10px;
+    font-weight:bold;
+    margin-bottom:5px;
+    letter-spacing:.5px;
+}
+
+.download-title{
+    color:#e00000;
+}
+
+.upload-title{
+    color:#0b9b54;
+}
+
+.speed-number-row{
+    display:flex;
+    align-items:baseline;
+    gap:5px;
+}
+
+.speed-value{
+    font-size:25px;
+    font-weight:bold;
+    color:var(--text);
+}
+
+.speed-unit{
+    font-size:10px;
+    color:var(--muted);
+    font-weight:bold;
+}
+
+/* LEGEND */
+
+.graph-legend{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:28px;
+    margin-bottom:9px;
+}
+
+.legend{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:11px;
+    font-weight:bold;
+    color:var(--text);
+}
+
+.legend-line{
+    width:24px;
+    height:3px;
+    border-radius:20px;
+}
+
+.download-line{
+    background:#e00000;
+    box-shadow:0 0 7px rgba(224,0,0,.4);
+}
+
+.upload-line{
+    background:#0b9b54;
+    box-shadow:0 0 7px rgba(11,155,84,.4);
+}
+
+/* GRAPH */
+
+.graph-container{
     width:100%;
-
-    height:100%;
-
-    display:block;
-
-}
-
-.graph-note{
-
-    text-align:center;
-
-    color:#657385;
-
-    font-size:9px;
-
-    margin-top:7px;
-
-}
-
-
-/* =====================================================
-   BILL CARD
-===================================================== */
-
-.bill-card{
-
+    height:200px;
+    position:relative;
+    border-radius:13px;
+    overflow:hidden;
     background:
         linear-gradient(
-            135deg,
-            rgba(0,200,120,.95),
-            rgba(0,140,255,.95)
+            to bottom,
+            rgba(128,128,128,.02),
+            rgba(128,128,128,.08)
         );
-
-    border-radius:17px;
-
-    padding:18px;
-
-    box-shadow:
-        0 15px 40px
-        rgba(0,160,200,.18);
-
-    margin-bottom:12px;
-
+    border:1px solid var(--border);
 }
 
-.bill-label{
-
-    font-size:9px;
-
-    font-weight:900;
-
-    opacity:.75;
-
-    margin-bottom:5px;
-
+#speedCanvas{
+    width:100%;
+    height:100%;
+    display:block;
 }
 
-.bill{
-
-    font-size:29px;
-
-    font-weight:900;
-
-}
-
-.bill-date{
-
-    font-size:10px;
-
-    opacity:.85;
-
-    margin-top:5px;
-
-}
-
-
-/* =====================================================
-   ADDRESS
-===================================================== */
-
-.address-card{
-
-    background:
-        rgba(10,20,32,.82);
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    border-radius:13px;
-
-    padding:15px;
-
-    box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.20);
-
-    margin-bottom:12px;
-
-}
-
-.address{
-
-    color:#edf2f6;
-
-    font-size:14px;
-
-    font-weight:700;
-
-    line-height:1.5;
-
-    word-break:break-word;
-
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.footer{
-
+.speed-note{
     text-align:center;
-
-    color:#596879;
-
-    font-size:9px;
-
-    padding:10px;
-
+    font-size:10px;
+    color:var(--muted);
+    margin-top:8px;
 }
 
+/* INFO */
 
-/* =====================================================
-   MOBILE
-===================================================== */
+.info,
+.billing,
+.bill,
+.address,
+.connection{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:12px;
+}
 
-@media(max-width:520px){
+.info-title{
+    font-size:12px;
+    color:var(--muted);
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.info-value{
+    font-size:17px;
+    font-weight:bold;
+    line-height:1.4;
+    color:var(--text);
+    word-break:break-word;
+}
+
+.bill-value{
+    font-size:22px;
+    font-weight:bold;
+    color:var(--green);
+}
+
+/* ONLINE */
+
+.online{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:7px 11px;
+    background:#e8f7ef;
+    color:#08783d;
+    border-radius:7px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.online-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#0aa854;
+    box-shadow:0 0 7px #0aa854;
+    animation:onlinePulse 1.3s infinite;
+}
+
+@keyframes onlinePulse{
+    0%,100%{
+        opacity:.6;
+    }
+    50%{
+        opacity:1;
+    }
+}
+
+/* LOADING */
+
+.loading{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(4px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:99999;
+}
+
+.loading-box{
+    background:white;
+    color:#222;
+    padding:20px 28px;
+    border-radius:14px;
+    font-weight:bold;
+    font-size:14px;
+}
+
+body.dark .loading-box{
+    background:#151515;
+    color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
 
     .header{
-
         height:60px;
-
-        padding:0 12px;
-
+        padding:0 14px;
     }
 
-    .brand-icon{
-
-        width:34px;
-
-        height:34px;
-
-    }
-
-    .brand-text{
-
-        font-size:15px;
-
+    .title{
+        font-size:18px;
     }
 
     .logout{
-
-        padding:
-            9px 12px;
-
+        padding:9px 13px;
     }
 
     .container{
-
-        padding:
-            16px 12px 30px;
-
+        padding:18px 13px 30px;
     }
 
-    .profile-photo{
-
-        width:70px;
-
-        height:70px;
-
+    .photo{
+        width:200px;
+        height:200px;
     }
 
-    .profile-name{
-
-        font-size:18px;
-
+    .value{
+        font-size:14px;
     }
 
-    .speed-number strong{
+    .mac-value{
+        font-size:15px;
+    }
 
+    .info-value{
+        font-size:15px;
+    }
+
+    .speed-value{
         font-size:21px;
-
     }
 
-    .graph{
-
-        height:175px;
-
-    }
-
-}
-
-@media(max-width:360px){
-
-    .two{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .speed-values{
-
-        grid-template-columns:1fr;
-
+    .graph-container{
+        height:185px;
     }
 
 }
@@ -1053,58 +566,25 @@ body{
 
 </head>
 
+
 <body>
 
-<div class="bg-circle c1"></div>
-<div class="bg-circle c2"></div>
 
-<!-- =====================================================
-     LOADING
-===================================================== -->
+<button
+    id="themeButton"
+    class="theme-button"
+    onclick="toggleTheme()">
 
-<div id="loading" class="loading">
+    ☾
 
-```
-<div class="spinner"></div>
+</button>
 
-<div class="loading-text">
-    Loading your account...
-</div>
-```
 
-</div>
+<div class="header">
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header class="header">
-
-```
-<div class="brand">
-
-    <div class="brand-icon">
-        ◈
-    </div>
-
-    <div class="brand-text">
+    <div class="title">
         Customer Portal
     </div>
-
-</div>
-
-
-<div class="header-right">
-
-    <button
-        id="themeBtn"
-        class="theme-btn"
-        onclick="toggleTheme()">
-
-        ☾
-
-    </button>
-
 
     <button
         class="logout"
@@ -1115,194 +595,170 @@ body{
     </button>
 
 </div>
-```
-
-</header>
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
-<main class="container">
-
-<div
-    id="errorBox"
-    class="error">
-</div>
-
-<!-- PROFILE -->
-
-<div class="profile">
-
-```
-<img
-    id="photo"
-    class="profile-photo"
-    alt="Profile">
 
 
-<div class="profile-info">
+<div class="container">
 
-    <div
-        id="name"
-        class="profile-name">
 
-        Customer
+<!-- USERNAME + PASSWORD -->
+
+<div class="top">
+
+    <div class="box">
+
+        <div class="label">
+            USERNAME
+        </div>
+
+        <div
+            id="username"
+            class="value">
+
+            Loading...
+
+        </div>
 
     </div>
 
 
-    <div
-        id="profileUsername"
-        class="profile-username">
+    <div class="box">
 
-        @username
+        <div class="label">
+            PASSWORD
+        </div>
 
-    </div>
+        <div
+            id="password"
+            class="value">
 
+            Loading...
 
-    <div class="online">
-
-        <span class="online-dot"></span>
-
-        <span id="connection">
-            Online
-        </span>
-
-    </div>
-
-</div>
-```
-
-</div>
-
-<!-- =====================================================
-     ACCOUNT
-===================================================== -->
-
-<div class="section-title">
-    ACCOUNT INFORMATION
-</div>
-
-<div class="two">
-
-```
-<div class="info-card">
-
-    <div class="label">
-        USERNAME
-    </div>
-
-    <div
-        id="username"
-        class="value">
-
-        --
+        </div>
 
     </div>
 
 </div>
 
-
-<div class="info-card">
-
-    <div class="label">
-        PASSWORD
-    </div>
-
-    <div
-        id="password"
-        class="value">
-
-        --
-
-    </div>
-
-</div>
-```
-
-</div>
 
 <!-- MAC -->
 
-<div class="mac-card">
+<div class="mac-box">
 
-```
-<div class="label">
-    MAC ADDRESS
+    <div class="mac-title">
+        MAC
+    </div>
+
+    <div
+        id="mac"
+        class="mac-value">
+
+        Loading...
+
+    </div>
+
 </div>
+
+
+<!-- PHOTO -->
+
+<div class="photo-box">
+
+<div class="photo">
+
+<svg
+viewBox="0 0 500 500"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect
+width="500"
+height="500"
+fill="#e8f4ef"/>
+
+<circle
+cx="250"
+cy="250"
+r="210"
+fill="#d2eadf"/>
+
+<path
+d="M115 470
+C125 350 180 315 250 315
+C320 315 375 350 385 470Z"
+fill="#0b5d3b"/>
+
+<ellipse
+cx="250"
+cy="220"
+rx="105"
+ry="125"
+fill="#e5aa7d"/>
+
+<path
+d="M150 220
+C140 135 180 80 250 80
+C330 80 370 145 350 230
+C330 185 305 165 270 160
+C225 153 190 175 150 220Z"
+fill="#202020"/>
+
+<ellipse
+cx="215"
+cy="225"
+rx="8"
+ry="10"
+fill="#222"/>
+
+<ellipse
+cx="285"
+cy="225"
+rx="8"
+ry="10"
+fill="#222"/>
+
+<path
+d="M250 225L238 265L260 265"
+fill="none"
+stroke="#a66d4c"
+stroke-width="6"/>
+
+<path
+d="M220 285Q250 305 280 285"
+fill="none"
+stroke="#8c4938"
+stroke-width="6"/>
+
+</svg>
+
+</div>
+
+</div>
+
+
+<!-- SPEED -->
 
 <div
-    id="mac"
-    class="mac">
+    id="speedBox"
+    class="speed-box">
 
-    --
-
-</div>
-```
-
-</div>
-
-<!-- PACKAGE / PHONE -->
-
-<div class="two">
-
-```
-<div class="info-card">
-
-    <div class="label">
-        PACKAGE
-    </div>
-
-    <div
-        id="package"
-        class="value">
-
-        --
-
-    </div>
-
-</div>
-
-
-<div class="info-card">
-
-    <div class="label">
-        PHONE NUMBER
-    </div>
-
-    <div
-        id="phone"
-        class="value">
-
-        --
-
-    </div>
-
-</div>
-```
-
-</div>
-
-<!-- =====================================================
-     SPEED
-===================================================== -->
-
-<div class="section-title">
-    INTERNET ACTIVITY
-</div>
-
-<div class="speed-card">
-
-```
-<div class="speed-header">
+<div
+    class="speed-header"
+    onclick="toggleSpeed()">
 
     <div class="speed-title">
-        📶 LIVE INTERNET SPEED
+
+        <span
+            id="speedArrow"
+            class="speed-arrow">
+
+            ▼
+
+        </span>
+
+        📶 INTERNET SPEED
+
     </div>
 
-
-    <div class="live">
+    <div class="speed-live">
 
         <span class="live-dot"></span>
 
@@ -1313,146 +769,205 @@ body{
 </div>
 
 
+<div
+    id="speedContent"
+    class="speed-content">
+
+
 <div class="speed-values">
 
 
-    <div class="speed-box">
+    <div
+        class="speed-value-box download-card">
 
-        <div class="speed-label download">
+        <div
+            class="speed-value-title download-title">
+
             DOWNLOAD
+
         </div>
 
+        <div class="speed-number-row">
 
-        <div class="speed-number">
+            <span
+                id="downloadSpeed"
+                class="speed-value">
 
-            <strong id="download">
                 0.0
-            </strong>
 
-            <span>
-                Mbps
+            </span>
+
+            <span class="speed-unit">
+                MBPS
             </span>
 
         </div>
 
-    </div>
-
-
-    <div class="speed-box">
-
-        <div class="speed-label upload">
-            UPLOAD
-        </div>
-
-
-        <div class="speed-number">
-
-            <strong id="upload">
-                0.0
-            </strong>
-
-            <span>
-                Mbps
-            </span>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<div class="graph">
-
-    <canvas
-        id="canvas">
-    </canvas>
-
-</div>
-
-
-<div class="graph-note">
-    Live network activity monitor
-</div>
-```
-
-</div>
-
-<!-- =====================================================
-     BILLING
-===================================================== -->
-
-<div class="section-title">
-    BILLING INFORMATION
-</div>
-
-<div class="bill-card">
-
-```
-<div class="bill-label">
-    CURRENT BILL
-</div>
-
-
-<div
-    id="bill"
-    class="bill">
-
-    0 TK
-
-</div>
-
-
-<div class="bill-date">
-
-    Billing Date:
-
-    <span id="billingDate">
-        --
-
-    </span>
-
-</div>
-```
-
-</div>
-
-<!-- ADDRESS -->
-
-<div class="address-card">
-
-```
-<div class="label">
-    ADDRESS
-</div>
-
-
-<div
-    id="address"
-    class="address">
-
-    --
-
-</div>
-```
-
-</div>
-
-<!-- STATUS -->
-
-<div class="two">
-
-```
-<div class="info-card">
-
-    <div class="label">
-        CONNECTION STATUS
     </div>
 
 
     <div
-        id="connectionStatus"
-        class="value">
+        class="speed-value-box upload-card">
+
+        <div
+            class="speed-value-title upload-title">
+
+            UPLOAD
+
+        </div>
+
+        <div class="speed-number-row">
+
+            <span
+                id="uploadSpeed"
+                class="speed-value">
+
+                0.0
+
+            </span>
+
+            <span class="speed-unit">
+                MBPS
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="graph-legend">
+
+    <div class="legend">
+
+        <span
+            class="legend-line download-line">
+        </span>
+
+        Download
+
+    </div>
+
+    <div class="legend">
+
+        <span
+            class="legend-line upload-line">
+        </span>
+
+        Upload
+
+    </div>
+
+</div>
+
+
+<div class="graph-container">
+
+    <canvas id="speedCanvas"></canvas>
+
+</div>
+
+
+<div class="speed-note">
+    Live network activity monitor
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NAME -->
+
+<div class="info">
+
+    <div class="info-title">
+        NAME
+    </div>
+
+    <div
+        id="name"
+        class="info-value">
+
+        Loading...
+
+    </div>
+
+</div>
+
+
+<!-- BILLING DATE -->
+
+<div class="billing">
+
+    <div class="info-title">
+        BILLING DATE
+    </div>
+
+    <div
+        id="billingDate"
+        class="info-value">
+
+        Loading...
+
+    </div>
+
+</div>
+
+
+<!-- BILL -->
+
+<div class="bill">
+
+    <div class="info-title">
+        BILL
+    </div>
+
+    <div
+        id="bill"
+        class="bill-value">
+
+        Loading...
+
+    </div>
+
+</div>
+
+
+<!-- ADDRESS -->
+
+<div class="address">
+
+    <div class="info-title">
+        ADDRESS
+    </div>
+
+    <div
+        id="address"
+        class="info-value">
+
+        Loading...
+
+    </div>
+
+</div>
+
+
+<!-- STATUS -->
+
+<div class="connection">
+
+    <div class="info-title">
+        CONNECTING STATUS
+    </div>
+
+    <div
+        id="status"
+        class="online">
+
+        <span class="online-dot"></span>
 
         Online
 
@@ -1461,87 +976,40 @@ body{
 </div>
 
 
-<div class="info-card">
-
-    <div class="label">
-        ACCOUNT STATUS
-    </div>
+</div>
 
 
-    <div
-        id="status"
-        class="value">
+<div
+    id="loading"
+    class="loading">
 
-        Active
-
+    <div class="loading-box">
+        Loading customer data...
     </div>
 
 </div>
-```
 
-</div>
-
-<div class="footer">
-    Customer Portal
-</div>
-
-</main>
 
 <script>
 
-
-/* =====================================================
+/* ============================================================
    API URL
-===================================================== */
+============================================================ */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEda0meR5ZzPbUZqH_5dpbIQWt1Z7fArv6adM5yRMGMDYwOkkZn-O1bZ0v4xHFTuGmwA/exec";
 
 
-/* =====================================================
+/* ============================================================
    LOGIN CHECK
-===================================================== */
+============================================================ */
 
-/*
- * তোমার index.html localStorage এবং
- * sessionStorage দুটোতেই login save করে।
- *
- * তাই এখানে দুটোই check করা হচ্ছে।
- */
-
-const localLogin =
-localStorage.getItem(
-    "loggedIn"
-);
+const loggedIn =
+localStorage.getItem("loggedIn") === "true" ||
+sessionStorage.getItem("loggedIn") === "true";
 
 
-const sessionLogin =
-sessionStorage.getItem(
-    "loggedIn"
-);
-
-
-const usernameFromSession =
-sessionStorage.getItem(
-    "username"
-);
-
-
-const usernameFromLocal =
-localStorage.getItem(
-    "username"
-);
-
-
-const currentUsername =
-usernameFromSession ||
-usernameFromLocal;
-
-
-if(
-    localLogin !== "true" &&
-    sessionLogin !== "true"
-){
+if(!loggedIn){
 
     window.location.replace(
         "index.html"
@@ -1550,168 +1018,210 @@ if(
 }
 
 
-/* =====================================================
-   DEFAULT PHOTO
-===================================================== */
+/* ============================================================
+   GET USERNAME
+============================================================ */
 
-const DEFAULT_PHOTO =
-"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23071b2e'/%3E%3Ccircle cx='150' cy='110' r='55' fill='%238fa9a0'/%3E%3Cpath d='M55 290c12-75 55-105 95-105s83 30 95 105' fill='%2300c878'/%3E%3C/svg%3E";
-
-
-document.getElementById(
-    "photo"
-).src =
-DEFAULT_PHOTO;
+const username =
+sessionStorage.getItem("username") ||
+localStorage.getItem("username");
 
 
-/* =====================================================
-   CLEAN VALUE
-===================================================== */
+if(!username){
 
-function cleanValue(value){
+    localStorage.removeItem("loggedIn");
+    sessionStorage.removeItem("loggedIn");
 
-    if(
-        value === undefined ||
-        value === null ||
-        String(value).trim() === ""
-    ){
-
-        return "--";
-
-    }
-
-    return String(value);
-
-}
-
-
-/* =====================================================
-   ERROR
-===================================================== */
-
-function showError(message){
-
-    document.getElementById(
-        "loading"
-    ).style.display =
-    "none";
-
-
-    const box =
-    document.getElementById(
-        "errorBox"
+    window.location.replace(
+        "index.html"
     );
 
-
-    box.style.display =
-    "block";
-
-
-    box.textContent =
-    message;
-
 }
 
 
-/* =====================================================
-   LOAD CUSTOMER
-===================================================== */
+/* ============================================================
+   LOAD CUSTOMER DATA
+============================================================ */
 
-async function loadCustomer(){
-
-    if(!currentUsername){
-
-        window.location.replace(
-            "index.html"
-        );
-
-        return;
-
-    }
-
+async function loadCustomerData(){
 
     try{
 
         const url =
-        API_URL +
-        "?action=getCustomer" +
-        "&username=" +
-        encodeURIComponent(
-            currentUsername
-        );
+            API_URL +
+            "?action=customer" +
+            "&username=" +
+            encodeURIComponent(username) +
+            "&t=" +
+            Date.now();
 
 
         const response =
-        await fetch(
-            url,
-            {
-                method:"GET",
-                cache:"no-store"
-            }
-        );
-
-
-        if(!response.ok){
-
-            throw new Error(
-                "Server Error"
+            await fetch(
+                url,
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
             );
-
-        }
 
 
         const result =
-        await response.json();
+            await response.json();
 
 
         console.log(
-            "CUSTOMER RESPONSE:",
+            "CUSTOMER DATA:",
             result
         );
 
 
         if(
-            result.success === false
+            result.success !== true
         ){
 
-            throw new Error(
+            alert(
                 result.message ||
-                "Customer not found"
+                "Customer data not found."
             );
+
+            logout();
+
+            return;
 
         }
 
 
         const data =
-        result.customer ||
-        result.user ||
-        result.data ||
-        result;
+            result.data ||
+            result.customer ||
+            result;
 
 
-        if(
-            !data ||
-            typeof data !== "object"
-        ){
+        /* USERNAME */
 
-            throw new Error(
-                "Customer data not found"
+        document.getElementById(
+            "username"
+        ).textContent =
+            data.username ||
+            username;
+
+
+        /* PASSWORD */
+
+        document.getElementById(
+            "password"
+        ).textContent =
+            data.password ||
+            "••••••";
+
+
+        /* MAC */
+
+        document.getElementById(
+            "mac"
+        ).textContent =
+            data.mac ||
+            "Not available";
+
+
+        /* NAME */
+
+        document.getElementById(
+            "name"
+        ).textContent =
+            data.name ||
+            "Not available";
+
+
+        /* BILLING DATE */
+
+        document.getElementById(
+            "billingDate"
+        ).textContent =
+            data.billingDate ||
+            "Not available";
+
+
+        /* BILL */
+
+        document.getElementById(
+            "bill"
+        ).textContent =
+            data.bill
+            ? data.bill + " tk"
+            : "Not available";
+
+
+        /* ADDRESS */
+
+        document.getElementById(
+            "address"
+        ).textContent =
+            data.address ||
+            "Not available";
+
+
+        /* STATUS */
+
+        setStatus(
+            data.status
+        );
+
+
+        /* SPEED */
+
+        let d =
+            parseFloat(
+                data.download
             );
 
+        let u =
+            parseFloat(
+                data.upload
+            );
+
+
+        if(isNaN(d)){
+            d = 7;
+        }
+
+        if(isNaN(u)){
+            u = 1.5;
         }
 
 
-        displayCustomer(
-            data
-        );
+        baseDownload = d;
+        baseUpload = u;
+
+
+        download =
+            baseDownload;
+
+        upload =
+            baseUpload;
+
+
+        downloadElement.textContent =
+            download.toFixed(1);
+
+        uploadElement.textContent =
+            upload.toFixed(1);
+
+
+        createHistory();
+
+
+        resizeCanvas();
 
 
         document.getElementById(
             "loading"
         ).style.display =
-        "none";
+            "none";
 
     }
+
     catch(error){
 
         console.error(
@@ -1719,242 +1229,76 @@ async function loadCustomer(){
         );
 
 
-        showError(
-            "Customer data could not be loaded. Please check your Apps Script deployment and Code.gs."
+        alert(
+            "Unable to load customer data."
         );
+
+        document.getElementById(
+            "loading"
+        ).style.display =
+            "none";
 
     }
 
 }
 
 
-/* =====================================================
-   DISPLAY CUSTOMER
-===================================================== */
+/* ============================================================
+   STATUS
+============================================================ */
 
-function displayCustomer(data){
+function setStatus(status){
 
-
-    const username =
-    data.username ??
-    data.Username ??
-    data.userName ??
-    currentUsername;
+    const element =
+        document.getElementById(
+            "status"
+        );
 
 
-    const password =
-    data.password ??
-    data.Password ??
-    "--";
-
-
-    const name =
-    data.name ??
-    data.Name ??
-    data.customerName ??
-    "Customer";
-
-
-    const mac =
-    data.mac ??
-    data.MAC ??
-    data.macAddress ??
-    data.Mac ??
-    "--";
-
-
-    const download =
-    data.download ??
-    data.Download ??
-    data.downloadSpeed ??
-    data.DownloadSpeed ??
-    0;
-
-
-    const upload =
-    data.upload ??
-    data.Upload ??
-    data.uploadSpeed ??
-    data.UploadSpeed ??
-    0;
-
-
-    const packageValue =
-    data.package ??
-    data.Package ??
-    data.packageName ??
-    "--";
-
-
-    const phone =
-    data.phone ??
-    data.Phone ??
-    data.number ??
-    data.Number ??
-    "--";
-
-
-    const bill =
-    data.bill ??
-    data.Bill ??
-    data.amount ??
-    data.Amount ??
-    0;
-
-
-    const billingDate =
-    data.billingDate ??
-    data.BillingDate ??
-    data.billing ??
-    "--";
-
-
-    const address =
-    data.address ??
-    data.Address ??
-    "--";
-
-
-    const photo =
-    data.photo ??
-    data.Photo ??
-    data.image ??
-    data.Image ??
-    "";
-
-
-    const status =
-    data.status ??
-    data.Status ??
-    "Active";
-
-
-    const connection =
-    data.connectionStatus ??
-    data.ConnectionStatus ??
-    data.connection ??
-    "Online";
-
-
-    document.getElementById(
-        "name"
-    ).textContent =
-    cleanValue(name);
-
-
-    document.getElementById(
-        "profileUsername"
-    ).textContent =
-    "@" +
-    cleanValue(username);
-
-
-    document.getElementById(
-        "username"
-    ).textContent =
-    cleanValue(username);
-
-
-    document.getElementById(
-        "password"
-    ).textContent =
-    cleanValue(password);
-
-
-    document.getElementById(
-        "mac"
-    ).textContent =
-    cleanValue(mac);
-
-
-    document.getElementById(
-        "package"
-    ).textContent =
-    cleanValue(packageValue);
-
-
-    document.getElementById(
-        "phone"
-    ).textContent =
-    cleanValue(phone);
-
-
-    document.getElementById(
-        "bill"
-    ).textContent =
-    cleanValue(bill) +
-    " TK";
-
-
-    document.getElementById(
-        "billingDate"
-    ).textContent =
-    cleanValue(billingDate);
-
-
-    document.getElementById(
-        "address"
-    ).textContent =
-    cleanValue(address);
-
-
-    document.getElementById(
-        "status"
-    ).textContent =
-    cleanValue(status);
-
-
-    document.getElementById(
-        "connection"
-    ).textContent =
-    cleanValue(connection);
-
-
-    document.getElementById(
-        "connectionStatus"
-    ).textContent =
-    cleanValue(connection);
+    const value =
+        String(
+            status || "Online"
+        ).toLowerCase();
 
 
     if(
-        photo &&
-        String(photo).trim() !== ""
+        value === "offline" ||
+        value === "blocked" ||
+        value === "inactive"
     ){
 
-        document.getElementById(
-            "photo"
-        ).src =
-        photo;
+        element.innerHTML =
+            '<span class="online-dot"></span> ' +
+            (
+                status ||
+                "Offline"
+            );
+
+        element.style.background =
+            "#ffe9e9";
+
+        element.style.color =
+            "#c40000";
 
     }
 
+    else{
 
-    baseDownload =
-    Number(download) || 0;
+        element.innerHTML =
+            '<span class="online-dot"></span> ' +
+            (
+                status ||
+                "Online"
+            );
 
-
-    baseUpload =
-    Number(upload) || 0;
-
-
-    currentDownload =
-    baseDownload;
-
-
-    currentUpload =
-    baseUpload;
-
-
-    createNewTarget();
-
-    initializeGraph();
+    }
 
 }
 
 
-/* =====================================================
+/* ============================================================
    LOGOUT
-===================================================== */
+============================================================ */
 
 function logout(){
 
@@ -1966,7 +1310,6 @@ function logout(){
         "username"
     );
 
-
     sessionStorage.removeItem(
         "loggedIn"
     );
@@ -1983,142 +1326,790 @@ function logout(){
 }
 
 
-/* =====================================================
-   SPEED VARIABLES
-===================================================== */
+/* ============================================================
+   THEME
+============================================================ */
 
-let baseDownload = 0;
-
-let baseUpload = 0;
-
-let currentDownload = 0;
-
-let currentUpload = 0;
-
-let downloadTarget = 0;
-
-let uploadTarget = 0;
-
-let downloadHistory = [];
-
-let uploadHistory = [];
+const themeButton =
+document.getElementById(
+    "themeButton"
+);
 
 
-const MAX_POINTS = 70;
+function loadTheme(){
+
+    const theme =
+        localStorage.getItem(
+            "customerTheme"
+        );
 
 
-/* =====================================================
-   NEW TARGET
-===================================================== */
+    if(theme === "dark"){
 
-function createNewTarget(){
+        document.body.classList.add(
+            "dark"
+        );
 
-    const downloadVariation =
-    Math.max(
-        baseDownload * .20,
-        .35
+        themeButton.textContent =
+            "☀";
+
+    }
+
+}
+
+
+function toggleTheme(){
+
+    document.body.classList.toggle(
+        "dark"
     );
 
 
-    const uploadVariation =
-    Math.max(
-        baseUpload * .25,
-        .15
+    const dark =
+        document.body.classList.contains(
+            "dark"
+        );
+
+
+    localStorage.setItem(
+        "customerTheme",
+        dark
+        ? "dark"
+        : "light"
     );
 
 
-    downloadTarget =
-    baseDownload +
-    (
-        Math.random() * 2 - 1
-    ) *
-    downloadVariation;
+    themeButton.textContent =
+        dark
+        ? "☀"
+        : "☾";
 
 
-    uploadTarget =
-    baseUpload +
-    (
-        Math.random() * 2 - 1
-    ) *
-    uploadVariation;
+    drawGraph();
+
+}
 
 
-    downloadTarget =
-    Math.max(
-        .2,
-        downloadTarget
-    );
+loadTheme();
 
 
-    uploadTarget =
-    Math.max(
-        .1,
-        uploadTarget
+/* ============================================================
+   SPEED BOX
+============================================================ */
+
+const speedBox =
+document.getElementById(
+    "speedBox"
+);
+
+
+const savedSpeedState =
+localStorage.getItem(
+    "speedBoxMinimized"
+);
+
+
+if(savedSpeedState === "true"){
+
+    speedBox.classList.add(
+        "minimized"
     );
 
 }
 
 
-/* =====================================================
-   SPEED UPDATE
-===================================================== */
+function toggleSpeed(){
 
-function updateSpeed(){
-
-    /*
-     * ধীরে ধীরে target-এর দিকে যাবে।
-     */
-
-    currentDownload +=
-    (
-        downloadTarget -
-        currentDownload
-    ) * .045;
+    speedBox.classList.toggle(
+        "minimized"
+    );
 
 
-    currentUpload +=
-    (
-        uploadTarget -
-        currentUpload
-    ) * .055;
+    localStorage.setItem(
+        "speedBoxMinimized",
+        speedBox.classList.contains(
+            "minimized"
+        )
+    );
+
+}
 
 
-    /*
-     * Target-এর কাছাকাছি গেলে
-     * নতুন target তৈরি হবে।
-     */
+/* ============================================================
+   GRAPH
+============================================================ */
 
-    if(
-        Math.abs(
-            currentDownload -
-            downloadTarget
-        ) < .08
+const canvas =
+document.getElementById(
+    "speedCanvas"
+);
+
+const ctx =
+canvas.getContext(
+    "2d"
+);
+
+
+const downloadElement =
+document.getElementById(
+    "downloadSpeed"
+);
+
+const uploadElement =
+document.getElementById(
+    "uploadSpeed"
+);
+
+
+let baseDownload = 7;
+
+let baseUpload = 1.5;
+
+let download = 7;
+
+let upload = 1.5;
+
+let downloadHistory = [];
+
+let uploadHistory = [];
+
+const MAX_POINTS = 80;
+
+
+/* ============================================================
+   CREATE HISTORY
+============================================================ */
+
+function createHistory(){
+
+    downloadHistory = [];
+    uploadHistory = [];
+
+
+    for(
+        let i = 0;
+        i < 80;
+        i++
     ){
 
-        createNewTarget();
+        downloadHistory.push(
+            getNaturalSpeed(
+                baseDownload,
+                0.20
+            )
+        );
+
+
+        uploadHistory.push(
+            getNaturalSpeed(
+                baseUpload,
+                0.15
+            )
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   NATURAL SPEED
+============================================================ */
+
+function getNaturalSpeed(
+    base,
+    variation
+){
+
+    let value =
+        base +
+        (
+            Math.random() *
+            2 -
+            1
+        ) *
+        (
+            base *
+            variation
+        );
+
+
+    /* মাঝে মাঝে একটু বেশি */
+
+    if(
+        Math.random() <
+        0.10
+    ){
+
+        value +=
+            base *
+            (
+                0.10 +
+                Math.random() *
+                0.15
+            );
 
     }
 
 
-    document.getElementById(
-        "download"
-    ).textContent =
-    currentDownload.toFixed(1);
+    /* মাঝে মাঝে একটু কম */
+
+    if(
+        Math.random() <
+        0.08
+    ){
+
+        value -=
+            base *
+            (
+                0.08 +
+                Math.random() *
+                0.12
+            );
+
+    }
 
 
-    document.getElementById(
-        "upload"
-    ).textContent =
-    currentUpload.toFixed(1);
+    return Math.max(
+        0.1,
+        value
+    );
+
+}
+
+
+/* ============================================================
+   RESIZE
+============================================================ */
+
+function resizeCanvas(){
+
+    const rect =
+        canvas.parentElement
+        .getBoundingClientRect();
+
+
+    const ratio =
+        window.devicePixelRatio || 1;
+
+
+    canvas.width =
+        rect.width * ratio;
+
+
+    canvas.height =
+        rect.height * ratio;
+
+
+    canvas.style.width =
+        rect.width + "px";
+
+
+    canvas.style.height =
+        rect.height + "px";
+
+
+    ctx.setTransform(
+        ratio,
+        0,
+        0,
+        ratio,
+        0,
+        0
+    );
+
+
+    drawGraph();
+
+}
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+/* ============================================================
+   DRAW GRAPH
+============================================================ */
+
+function drawGraph(){
+
+    const width =
+        canvas.clientWidth;
+
+    const height =
+        canvas.clientHeight;
+
+
+    if(
+        !width ||
+        !height ||
+        downloadHistory.length < 2
+    ){
+
+        return;
+
+    }
+
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    const dark =
+        document.body.classList.contains(
+            "dark"
+        );
+
+
+    /* GRID */
+
+    ctx.lineWidth = 1;
+
+    ctx.strokeStyle =
+        dark
+        ? "rgba(255,255,255,.06)"
+        : "rgba(0,0,0,.06)";
+
+
+    for(
+        let i = 1;
+        i < 6;
+        i++
+    ){
+
+        const y =
+            (
+                height / 6
+            ) * i;
+
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            0,
+            y
+        );
+
+        ctx.lineTo(
+            width,
+            y
+        );
+
+        ctx.stroke();
+
+    }
+
+
+    /*
+    Dynamic maximum.
+    */
+
+    const maxValue =
+        Math.max(
+            baseDownload * 1.5,
+            10
+        );
+
+
+    drawSmoothLine(
+        downloadHistory,
+        "#e00000",
+        width,
+        height,
+        maxValue
+    );
+
+
+    drawSmoothLine(
+        uploadHistory,
+        "#0b9b54",
+        width,
+        height,
+        maxValue
+    );
+
+}
+
+
+/* ============================================================
+   DRAW SMOOTH LINE
+============================================================ */
+
+function drawSmoothLine(
+    data,
+    color,
+    width,
+    height,
+    max
+){
+
+    if(
+        data.length < 2
+    ){
+
+        return;
+
+    }
+
+
+    const points = [];
+
+
+    data.forEach(
+        function(
+            value,
+            index
+        ){
+
+            const x =
+                (
+                    index /
+                    (
+                        data.length - 1
+                    )
+                ) *
+                width;
+
+
+            const y =
+                height -
+                (
+                    value /
+                    max
+                ) *
+                (
+                    height - 22
+                ) -
+                11;
+
+
+            points.push({
+                x:x,
+                y:y
+            });
+
+        }
+    );
+
+
+    /* AREA */
+
+    ctx.beginPath();
+
+
+    ctx.moveTo(
+        points[0].x,
+        height
+    );
+
+
+    ctx.lineTo(
+        points[0].x,
+        points[0].y
+    );
+
+
+    for(
+        let i = 1;
+        i < points.length;
+        i++
+    ){
+
+        const previous =
+            points[i - 1];
+
+        const current =
+            points[i];
+
+
+        const midX =
+            (
+                previous.x +
+                current.x
+            ) / 2;
+
+
+        ctx.quadraticCurveTo(
+            previous.x,
+            previous.y,
+            midX,
+            (
+                previous.y +
+                current.y
+            ) / 2
+        );
+
+    }
+
+
+    const last =
+        points[
+            points.length - 1
+        ];
+
+
+    ctx.lineTo(
+        last.x,
+        last.y
+    );
+
+    ctx.lineTo(
+        last.x,
+        height
+    );
+
+    ctx.closePath();
+
+
+    const gradient =
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            height
+        );
+
+
+    if(
+        color === "#e00000"
+    ){
+
+        gradient.addColorStop(
+            0,
+            "rgba(224,0,0,.13)"
+        );
+
+        gradient.addColorStop(
+            1,
+            "rgba(224,0,0,0)"
+        );
+
+    }
+
+    else{
+
+        gradient.addColorStop(
+            0,
+            "rgba(11,155,84,.13)"
+        );
+
+        gradient.addColorStop(
+            1,
+            "rgba(11,155,84,0)"
+        );
+
+    }
+
+
+    ctx.fillStyle =
+        gradient;
+
+    ctx.fill();
+
+
+    /* LINE */
+
+    ctx.beginPath();
+
+
+    ctx.moveTo(
+        points[0].x,
+        points[0].y
+    );
+
+
+    for(
+        let i = 1;
+        i < points.length;
+        i++
+    ){
+
+        const previous =
+            points[i - 1];
+
+        const current =
+            points[i];
+
+
+        const midX =
+            (
+                previous.x +
+                current.x
+            ) / 2;
+
+
+        ctx.quadraticCurveTo(
+            previous.x,
+            previous.y,
+            midX,
+            (
+                previous.y +
+                current.y
+            ) / 2
+        );
+
+    }
+
+
+    ctx.lineTo(
+        last.x,
+        last.y
+    );
+
+
+    ctx.strokeStyle =
+        color;
+
+    ctx.lineWidth =
+        3;
+
+    ctx.lineJoin =
+        "round";
+
+    ctx.lineCap =
+        "round";
+
+    ctx.shadowBlur =
+        7;
+
+    ctx.shadowColor =
+        color;
+
+    ctx.stroke();
+
+    ctx.shadowBlur =
+        0;
+
+
+    /* CURRENT POINT */
+
+    const point =
+        points[
+            points.length - 1
+        ];
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        point.x,
+        point.y,
+        9,
+        0,
+        Math.PI * 2
+    );
+
+
+    ctx.fillStyle =
+        color === "#e00000"
+        ? "rgba(224,0,0,.14)"
+        : "rgba(11,155,84,.14)";
+
+    ctx.fill();
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        point.x,
+        point.y,
+        5,
+        0,
+        Math.PI * 2
+    );
+
+
+    ctx.fillStyle =
+        "#ffffff";
+
+    ctx.fill();
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        point.x,
+        point.y,
+        3.5,
+        0,
+        Math.PI * 2
+    );
+
+
+    ctx.fillStyle =
+        color;
+
+    ctx.fill();
+
+}
+
+
+/* ============================================================
+   UPDATE SPEED
+============================================================ */
+
+function updateSpeed(){
+
+    /*
+    Base speed থেকে natural movement.
+    */
+
+    const targetDownload =
+        getNaturalSpeed(
+            baseDownload,
+            0.18
+        );
+
+
+    const targetUpload =
+        getNaturalSpeed(
+            baseUpload,
+            0.18
+        );
+
+
+    /*
+    Smooth movement
+    */
+
+    download +=
+        (
+            targetDownload -
+            download
+        ) *
+        0.18;
+
+
+    upload +=
+        (
+            targetUpload -
+            upload
+        ) *
+        0.18;
+
+
+    downloadElement.textContent =
+        download.toFixed(1);
+
+
+    uploadElement.textContent =
+        upload.toFixed(1);
 
 
     downloadHistory.push(
-        currentDownload
+        download
     );
 
 
     uploadHistory.push(
-        currentUpload
+        upload
     );
 
 
@@ -2147,612 +2138,30 @@ function updateSpeed(){
 }
 
 
-/* =====================================================
-   CANVAS
-===================================================== */
-
-const canvas =
-document.getElementById(
-    "canvas"
-);
-
-const ctx =
-canvas.getContext(
-    "2d"
-);
-
-
-/* =====================================================
-   RESIZE
-===================================================== */
-
-function resizeCanvas(){
-
-    const rect =
-    canvas.parentElement
-    .getBoundingClientRect();
-
-
-    const ratio =
-    window.devicePixelRatio ||
-    1;
-
-
-    canvas.width =
-    rect.width * ratio;
-
-
-    canvas.height =
-    rect.height * ratio;
-
-
-    canvas.style.width =
-    rect.width +
-    "px";
-
-
-    canvas.style.height =
-    rect.height +
-    "px";
-
-
-    ctx.setTransform(
-        ratio,
-        0,
-        0,
-        ratio,
-        0,
-        0
-    );
-
-
-    drawGraph();
-
-}
-
-
-window.addEventListener(
-    "resize",
-    resizeCanvas
-);
-
-
-/* =====================================================
-   INITIAL GRAPH
-===================================================== */
-
-function initializeGraph(){
-
-    downloadHistory = [];
-
-    uploadHistory = [];
-
-
-    for(
-        let i=0;
-        i<MAX_POINTS;
-        i++
-    ){
-
-        const d =
-        baseDownload +
-        (
-            Math.random() * 2 - 1
-        ) *
-        Math.max(
-            baseDownload * .12,
-            .25
-        );
-
-
-        const u =
-        baseUpload +
-        (
-            Math.random() * 2 - 1
-        ) *
-        Math.max(
-            baseUpload * .15,
-            .10
-        );
-
-
-        downloadHistory.push(
-            Math.max(
-                .1,
-                d
-            )
-        );
-
-
-        uploadHistory.push(
-            Math.max(
-                .1,
-                u
-            )
-        );
-
-    }
-
-
-    resizeCanvas();
-
-}
-
-
-/* =====================================================
-   GRAPH
-===================================================== */
-
-function drawGraph(){
-
-    const width =
-    canvas.clientWidth;
-
-
-    const height =
-    canvas.clientHeight;
-
-
-    if(
-        !width ||
-        !height
-    ){
-
-        return;
-
-    }
-
-
-    ctx.clearRect(
-        0,
-        0,
-        width,
-        height
-    );
-
-
-    const highest =
-    Math.max(
-        baseDownload,
-        baseUpload,
-        ...downloadHistory,
-        ...uploadHistory,
-        1
-    );
-
-
-    const maxValue =
-    Math.max(
-        highest * 1.25,
-        5
-    );
-
-
-    /* GRID */
-
-    ctx.lineWidth = 1;
-
-    ctx.strokeStyle =
-    "rgba(255,255,255,.055)";
-
-
-    for(
-        let i=1;
-        i<6;
-        i++
-    ){
-
-        const y =
-        (
-            height / 6
-        ) * i;
-
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            0,
-            y
-        );
-
-        ctx.lineTo(
-            width,
-            y
-        );
-
-        ctx.stroke();
-
-    }
-
-
-    drawLine(
-        downloadHistory,
-        "#ff3b3b",
-        width,
-        height,
-        maxValue
-    );
-
-
-    drawLine(
-        uploadHistory,
-        "#00d084",
-        width,
-        height,
-        maxValue
-    );
-
-}
-
-
-/* =====================================================
-   DRAW LINE
-===================================================== */
-
-function drawLine(
-    data,
-    color,
-    width,
-    height,
-    maxValue
-){
-
-    if(
-        data.length < 2
-    ){
-
-        return;
-
-    }
-
-
-    const points = [];
-
-
-    data.forEach(
-        function(
-            value,
-            index
-        ){
-
-            const x =
-            (
-                index /
-                (
-                    data.length - 1
-                )
-            ) *
-            width;
-
-
-            const y =
-            height -
-            (
-                value /
-                maxValue
-            ) *
-            (
-                height - 20
-            ) -
-            10;
-
-
-            points.push({
-                x:x,
-                y:y
-            });
-
-        }
-    );
-
-
-    /*
-     * AREA
-     */
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        points[0].x,
-        height
-    );
-
-    ctx.lineTo(
-        points[0].x,
-        points[0].y
-    );
-
-
-    for(
-        let i=1;
-        i<points.length;
-        i++
-    ){
-
-        const p =
-        points[i-1];
-
-        const c =
-        points[i];
-
-
-        const midX =
-        (
-            p.x +
-            c.x
-        ) / 2;
-
-
-        const midY =
-        (
-            p.y +
-            c.y
-        ) / 2;
-
-
-        ctx.quadraticCurveTo(
-            p.x,
-            p.y,
-            midX,
-            midY
-        );
-
-    }
-
-
-    const last =
-    points[
-        points.length - 1
-    ];
-
-
-    ctx.lineTo(
-        last.x,
-        last.y
-    );
-
-    ctx.lineTo(
-        last.x,
-        height
-    );
-
-    ctx.closePath();
-
-
-    const gradient =
-    ctx.createLinearGradient(
-        0,
-        0,
-        0,
-        height
-    );
-
-
-    if(
-        color === "#ff3b3b"
-    ){
-
-        gradient.addColorStop(
-            0,
-            "rgba(255,59,59,.14)"
-        );
-
-        gradient.addColorStop(
-            1,
-            "rgba(255,59,59,0)"
-        );
-
-    }
-    else{
-
-        gradient.addColorStop(
-            0,
-            "rgba(0,208,132,.14)"
-        );
-
-        gradient.addColorStop(
-            1,
-            "rgba(0,208,132,0)"
-        );
-
-    }
-
-
-    ctx.fillStyle =
-    gradient;
-
-    ctx.fill();
-
-
-    /*
-     * LINE
-     */
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        points[0].x,
-        points[0].y
-    );
-
-
-    for(
-        let i=1;
-        i<points.length;
-        i++
-    ){
-
-        const p =
-        points[i-1];
-
-        const c =
-        points[i];
-
-
-        const midX =
-        (
-            p.x +
-            c.x
-        ) / 2;
-
-
-        const midY =
-        (
-            p.y +
-            c.y
-        ) / 2;
-
-
-        ctx.quadraticCurveTo(
-            p.x,
-            p.y,
-            midX,
-            midY
-        );
-
-    }
-
-
-    ctx.lineTo(
-        last.x,
-        last.y
-    );
-
-
-    ctx.strokeStyle =
-    color;
-
-    ctx.lineWidth =
-    2.7;
-
-    ctx.lineCap =
-    "round";
-
-    ctx.lineJoin =
-    "round";
-
-    ctx.shadowBlur =
-    7;
-
-    ctx.shadowColor =
-    color;
-
-    ctx.stroke();
-
-    ctx.shadowBlur = 0;
-
-
-    /*
-     * CURRENT POINT
-     */
-
-    ctx.beginPath();
-
-    ctx.arc(
-        last.x,
-        last.y,
-        8,
-        0,
-        Math.PI * 2
-    );
-
-
-    ctx.fillStyle =
-    color === "#ff3b3b"
-    ? "rgba(255,59,59,.12)"
-    : "rgba(0,208,132,.12)";
-
-
-    ctx.fill();
-
-
-    ctx.beginPath();
-
-    ctx.arc(
-        last.x,
-        last.y,
-        3.5,
-        0,
-        Math.PI * 2
-    );
-
-
-    ctx.fillStyle =
-    color;
-
-    ctx.fill();
-
-}
-
-
-/* =====================================================
-   THEME
-===================================================== */
-
-const themeBtn =
-document.getElementById(
-    "themeBtn"
-);
-
-
-function toggleTheme(){
-
-    /*
-     * এই version dark theme-কে
-     * primary রাখছে।
-     */
-
-    const body =
-    document.body;
-
-
-    if(
-        body.dataset.theme === "light"
-    ){
-
-        body.dataset.theme =
-        "dark";
-
-        themeBtn.textContent =
-        "☾";
-
-    }
-    else{
-
-        /*
-         * Login page-এর সাথে মিল রাখার
-         * জন্য dark background বজায় থাকবে।
-         */
-
-        body.dataset.theme =
-        "light";
-
-        themeBtn.textContent =
-        "☀";
-
-    }
-
-}
-
-
-/* =====================================================
+/* ============================================================
    START
-===================================================== */
+============================================================ */
 
-loadCustomer();
+loadCustomerData();
 
 
 /*
- * প্রতি 250ms speed update।
- *
- * Speed stable থাকবে না।
- * Base speed-এর আশেপাশে
- * smoothভাবে কম-বেশি হবে।
- */
+Initial graph-এর জন্য fallback history
+*/
+
+createHistory();
+
+
+resizeCanvas();
+
+
+/*
+প্রতি 500ms-এ speed পরিবর্তন হবে।
+*/
 
 setInterval(
     updateSpeed,
-    250
+    500
 );
 
 </script>
