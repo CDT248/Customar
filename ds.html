@@ -4,13 +4,15 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>Customer Portal</title>
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     margin:0;
@@ -21,23 +23,34 @@ content="width=device-width, initial-scale=1.0">
 
 :root{
 
-    --bg:#f4f6f8;
+    --bg:#f4f7f6;
     --card:#ffffff;
-    --text:#202020;
-    --muted:#777;
-    --border:#dddddd;
+    --text:#18201d;
+    --muted:#7a8580;
+    --border:#e1e7e4;
+
     --green:#08783d;
+    --green2:#12a85d;
+
+    --red:#e00000;
+    --orange:#f59e0b;
+
+    --shadow:0 8px 30px rgba(0,0,0,.06);
 
 }
 
 body.dark{
 
-    --bg:#050505;
-    --card:#111111;
+    --bg:#050706;
+    --card:#111412;
     --text:#ffffff;
-    --muted:#aaaaaa;
-    --border:#292929;
+    --muted:#9ca7a1;
+    --border:#272c29;
+
     --green:#19a866;
+    --green2:#27c978;
+
+    --shadow:0 8px 30px rgba(0,0,0,.30);
 
 }
 
@@ -54,44 +67,13 @@ body{
 }
 
 
-/* =====================================================
-   THEME
-===================================================== */
-
-.theme-button{
-
-    position:fixed;
-
-    top:7px;
-
-    right:7px;
-
-    width:28px;
-
-    height:28px;
-
-    border:1px solid var(--border);
-
-    border-radius:50%;
-
-    background:var(--card);
-
-    color:var(--text);
-
-    cursor:pointer;
-
-    z-index:9999;
-
-}
-
-
-/* =====================================================
+/* =========================================================
    HEADER
-===================================================== */
+========================================================= */
 
 .header{
 
-    height:65px;
+    height:66px;
 
     background:var(--card);
 
@@ -109,17 +91,107 @@ body{
 
     top:0;
 
-    z-index:100;
+    z-index:1000;
+
+}
+
+.logo-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.logo-icon{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--green2)
+        );
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:19px;
+
+    box-shadow:
+        0 5px 15px rgba(8,120,61,.25);
 
 }
 
 .title{
 
-    color:var(--green);
-
-    font-size:20px;
+    font-size:18px;
 
     font-weight:bold;
+
+    color:var(--green);
+
+}
+
+.header-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.icon-btn{
+
+    width:36px;
+
+    height:36px;
+
+    border-radius:10px;
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    position:relative;
+
+}
+
+.notification-dot{
+
+    position:absolute;
+
+    top:6px;
+
+    right:6px;
+
+    width:7px;
+
+    height:7px;
+
+    border-radius:50%;
+
+    background:#e00000;
+
+    display:none;
 
 }
 
@@ -131,9 +203,9 @@ body{
 
     color:white;
 
-    padding:10px 17px;
+    padding:10px 15px;
 
-    border-radius:8px;
+    border-radius:9px;
 
     font-weight:bold;
 
@@ -142,44 +214,42 @@ body{
 }
 
 
-/* =====================================================
+/* =========================================================
    CONTAINER
-===================================================== */
+========================================================= */
 
 .container{
 
     width:100%;
 
-    max-width:650px;
+    max-width:700px;
 
     margin:auto;
 
-    padding:22px 16px 40px;
+    padding:20px 15px 45px;
 
 }
 
 
-/* =====================================================
+/* =========================================================
    LOADING
-===================================================== */
+========================================================= */
 
 .loading{
 
     text-align:center;
 
-    padding:50px 20px;
+    padding:70px 20px;
 
     color:var(--muted);
-
-    font-size:14px;
 
 }
 
 .loader{
 
-    width:35px;
+    width:40px;
 
-    height:35px;
+    height:40px;
 
     border:4px solid var(--border);
 
@@ -202,9 +272,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================================================
    ERROR
-===================================================== */
+========================================================= */
 
 .error-box{
 
@@ -212,68 +282,246 @@ body{
 
     background:#fff0f0;
 
-    color:#d00000;
+    color:#c80000;
 
-    border:1px solid #ffcccc;
-
-    border-radius:12px;
+    border:1px solid #ffcaca;
 
     padding:15px;
 
+    border-radius:12px;
+
     margin-bottom:15px;
 
-    font-size:13px;
-
     text-align:center;
+
+    font-size:13px;
 
 }
 
 
-/* =====================================================
-   TOP
-===================================================== */
+/* =========================================================
+   PROFILE CARD
+========================================================= */
 
-.top{
+.profile-card{
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--green2)
+        );
+
+    color:white;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    margin-bottom:14px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 12px 35px rgba(8,120,61,.20);
+
+}
+
+.profile-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    right:-70px;
+
+    top:-70px;
+
+}
+
+.profile-content{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.profile-photo{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    padding:3px;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+}
+
+.profile-photo img{
+
+    width:100%;
+
+    height:100%;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    display:none;
+
+}
+
+.default-avatar{
+
+    width:100%;
+
+    height:100%;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#e9f7ef;
+
+    color:var(--green);
+
+    font-size:30px;
+
+}
+
+.profile-name{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    margin-bottom:5px;
+
+}
+
+.profile-username{
+
+    font-size:12px;
+
+    opacity:.85;
+
+}
+
+.status-pill{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    margin-top:8px;
+
+    background:rgba(255,255,255,.16);
+
+    padding:5px 9px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+}
+
+.status-dot{
+
+    width:6px;
+
+    height:6px;
+
+    background:#75ffad;
+
+    border-radius:50%;
+
+    box-shadow:0 0 8px #75ffad;
+
+}
+
+
+/* =========================================================
+   BASIC INFO
+========================================================= */
+
+.info-grid{
 
     display:grid;
 
     grid-template-columns:1fr 1fr;
 
-    gap:12px;
+    gap:10px;
 
-    margin-bottom:12px;
+    margin-bottom:14px;
 
 }
 
-.box{
+.info-card{
 
     background:var(--card);
 
     border:1px solid var(--border);
 
-    border-radius:12px;
+    border-radius:14px;
 
-    padding:15px;
+    padding:14px;
+
+    box-shadow:var(--shadow);
 
 }
 
-.label{
+.info-label{
 
     color:var(--muted);
 
-    font-size:11px;
+    font-size:10px;
 
     font-weight:bold;
 
     margin-bottom:7px;
 
+    letter-spacing:.3px;
+
 }
 
-.value{
+.info-value{
 
     color:var(--text);
 
-    font-size:16px;
+    font-size:15px;
 
     font-weight:bold;
 
@@ -281,26 +529,82 @@ body{
 
 }
 
+.password-row{
 
-/* =====================================================
-   MAC
-===================================================== */
+    display:flex;
 
-.mac-box{
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:5px;
+
+}
+
+.password-text{
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+.eye-btn{
+
+    border:0;
+
+    background:transparent;
+
+    color:var(--muted);
+
+    cursor:pointer;
+
+    font-size:15px;
+
+}
+
+
+/* =========================================================
+   MAC / IP
+========================================================= */
+
+.network-card{
 
     background:var(--card);
 
     border:1px solid var(--border);
 
-    border-radius:12px;
+    border-radius:15px;
 
     padding:15px;
 
-    margin-bottom:18px;
+    margin-bottom:14px;
+
+    box-shadow:var(--shadow);
 
 }
 
-.mac-title{
+.network-row{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:8px 0;
+
+}
+
+.network-row + .network-row{
+
+    border-top:1px solid var(--border);
+
+}
+
+.network-label{
 
     color:var(--muted);
 
@@ -308,74 +612,31 @@ body{
 
     font-weight:bold;
 
-    margin-bottom:7px;
-
 }
 
-.mac-value{
+.network-value{
 
     color:var(--text);
 
-    font-size:16px;
+    font-size:13px;
 
     font-weight:bold;
+
+    text-align:right;
 
     word-break:break-all;
 
 }
 
 
-/* =====================================================
-   PHOTO
-===================================================== */
-
-.photo-box{
-
-    display:flex;
-
-    justify-content:center;
-
-    margin:5px 0 22px;
-
-}
-
-.photo{
-
-    width:190px;
-
-    height:190px;
-
-    border-radius:50%;
-
-    overflow:hidden;
-
-    background:#dff0e8;
-
-    border:6px solid var(--card);
-
-    box-shadow:
-        0 7px 30px rgba(0,0,0,.18);
-
-}
-
-.photo svg{
-
-    width:100%;
-
-    height:100%;
-
-    display:block;
-
-}
-
-
-/* =====================================================
+/* =========================================================
    SPEED
-===================================================== */
+========================================================= */
 
 .speed-box{
 
     background:
+
         linear-gradient(
             145deg,
             var(--card),
@@ -390,8 +651,7 @@ body{
 
     margin-bottom:14px;
 
-    box-shadow:
-        0 8px 30px rgba(0,0,0,.06);
+    box-shadow:var(--shadow);
 
 }
 
@@ -399,9 +659,9 @@ body{
 
     display:flex;
 
-    justify-content:space-between;
-
     align-items:center;
+
+    justify-content:space-between;
 
     cursor:pointer;
 
@@ -413,7 +673,7 @@ body{
 
     color:var(--muted);
 
-    font-size:14px;
+    font-size:13px;
 
     font-weight:bold;
 
@@ -431,14 +691,13 @@ body{
 
 }
 
-.speed-box.minimized
-.speed-arrow{
+.speed-box.minimized .speed-arrow{
 
     transform:rotate(-90deg);
 
 }
 
-.speed-live{
+.live{
 
     display:flex;
 
@@ -446,17 +705,17 @@ body{
 
     gap:5px;
 
-    font-size:10px;
-
-    font-weight:bold;
+    background:#e8f7ef;
 
     color:#08783d;
-
-    background:#e8f7ef;
 
     padding:6px 9px;
 
     border-radius:20px;
+
+    font-size:9px;
+
+    font-weight:bold;
 
 }
 
@@ -485,7 +744,7 @@ body{
 
 .speed-content{
 
-    max-height:600px;
+    max-height:700px;
 
     overflow:hidden;
 
@@ -495,19 +754,13 @@ body{
 
 }
 
-.speed-box.minimized
-.speed-content{
+.speed-box.minimized .speed-content{
 
     max-height:0;
 
     opacity:0;
 
 }
-
-
-/* =====================================================
-   SPEED VALUES
-===================================================== */
 
 .speed-values{
 
@@ -517,11 +770,13 @@ body{
 
     gap:10px;
 
-    margin-bottom:15px;
+    margin-bottom:14px;
 
 }
 
-.speed-value-box{
+.speed-card{
+
+    background:var(--bg);
 
     border:1px solid var(--border);
 
@@ -529,11 +784,9 @@ body{
 
     padding:13px;
 
-    background:var(--bg);
-
 }
 
-.speed-value-title{
+.speed-label{
 
     font-size:10px;
 
@@ -543,31 +796,21 @@ body{
 
 }
 
-.download-title{
+.download-label{
 
     color:#e00000;
 
 }
 
-.upload-title{
+.upload-label{
 
     color:#0b9b54;
 
 }
 
-.speed-number-row{
+.speed-number{
 
-    display:flex;
-
-    align-items:baseline;
-
-    gap:5px;
-
-}
-
-.speed-value{
-
-    font-size:25px;
+    font-size:24px;
 
     font-weight:bold;
 
@@ -577,75 +820,15 @@ body{
 
     color:var(--muted);
 
-    font-size:10px;
+    font-size:9px;
 
     font-weight:bold;
 
 }
-
-
-/* =====================================================
-   LEGEND
-===================================================== */
-
-.graph-legend{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:28px;
-
-    margin-bottom:9px;
-
-}
-
-.legend{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-
-    font-size:11px;
-
-    font-weight:bold;
-
-}
-
-.legend-line{
-
-    width:24px;
-
-    height:3px;
-
-    border-radius:20px;
-
-}
-
-.download-line{
-
-    background:#e00000;
-
-}
-
-.upload-line{
-
-    background:#0b9b54;
-
-}
-
-
-/* =====================================================
-   GRAPH
-===================================================== */
 
 .graph-container{
 
-    width:100%;
-
-    height:200px;
+    height:205px;
 
     border:1px solid var(--border);
 
@@ -665,42 +848,177 @@ body{
 
 }
 
+.legend{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    margin:9px 0;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+}
+
+.legend-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+}
+
+.legend-line{
+
+    width:23px;
+
+    height:3px;
+
+    border-radius:20px;
+
+}
+
+.red-line{
+
+    background:#e00000;
+
+}
+
+.green-line{
+
+    background:#0b9b54;
+
+}
+
 .speed-note{
 
     text-align:center;
 
     color:var(--muted);
 
-    font-size:10px;
+    font-size:9px;
 
     margin-top:8px;
 
 }
 
 
-/* =====================================================
-   INFORMATION
-===================================================== */
+/* =========================================================
+   PACKAGE
+========================================================= */
 
-.info,
-.billing,
-.bill,
-.address,
-.connection{
+.section-card{
 
     background:var(--card);
 
     border:1px solid var(--border);
 
-    border-radius:12px;
+    border-radius:15px;
 
-    padding:15px;
+    padding:16px;
 
-    margin-bottom:12px;
+    margin-bottom:14px;
+
+    box-shadow:var(--shadow);
 
 }
 
-.info-title{
+.section-title{
+
+    color:var(--text);
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    margin-bottom:13px;
+
+}
+
+.package-main{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+}
+
+.package-name{
+
+    color:var(--green);
+
+    font-size:21px;
+
+    font-weight:bold;
+
+}
+
+.package-label{
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-top:3px;
+
+}
+
+.package-price{
+
+    text-align:right;
+
+}
+
+.package-price strong{
+
+    color:var(--green);
+
+    font-size:20px;
+
+}
+
+
+/* =========================================================
+   BILL
+========================================================= */
+
+.bill-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:17px;
+
+    margin-bottom:14px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.bill-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.bill-label{
 
     color:var(--muted);
 
@@ -708,111 +1026,296 @@ body{
 
     font-weight:bold;
 
-    margin-bottom:7px;
-
 }
 
-.info-value{
-
-    color:var(--text);
-
-    font-size:17px;
-
-    font-weight:bold;
-
-    line-height:1.5;
-
-    word-break:break-word;
-
-}
-
-.bill-value{
+.bill-amount{
 
     color:var(--green);
 
-    font-size:23px;
+    font-size:27px;
 
     font-weight:bold;
 
+    margin-top:4px;
+
 }
 
-
-/* =====================================================
-   STATUS
-===================================================== */
-
-.online{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:7px;
+.paid{
 
     background:#e8f7ef;
 
     color:#08783d;
 
-    padding:7px 11px;
+}
 
-    border-radius:7px;
+.unpaid{
 
-    font-size:13px;
+    background:#fff1f1;
+
+    color:#d00000;
+
+}
+
+.due{
+
+    background:#fff7e6;
+
+    color:#b66a00;
+
+}
+
+.bill-status{
+
+    padding:7px 10px;
+
+    border-radius:20px;
+
+    font-size:10px;
 
     font-weight:bold;
 
 }
 
-.online-dot{
+.bill-details{
 
-    width:8px;
+    display:grid;
 
-    height:8px;
+    grid-template-columns:1fr 1fr;
 
-    border-radius:50%;
+    gap:10px;
 
-    background:#0aa854;
+    margin-top:15px;
 
-    box-shadow:0 0 7px #0aa854;
+    padding-top:13px;
+
+    border-top:1px solid var(--border);
 
 }
 
 
-/* =====================================================
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+}
+
+.contact-item{
+
+    background:var(--bg);
+
+    border:1px solid var(--border);
+
+    border-radius:11px;
+
+    padding:12px;
+
+}
+
+.contact-label{
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    margin-bottom:5px;
+
+}
+
+.contact-value{
+
+    color:var(--text);
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    word-break:break-word;
+
+}
+
+
+/* =========================================================
+   SUPPORT
+========================================================= */
+
+.support-button{
+
+    width:100%;
+
+    border:0;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--green2)
+        );
+
+    color:white;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 7px 20px rgba(8,120,61,.18);
+
+}
+
+.support-button:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* =========================================================
+   NOTIFICATION PANEL
+========================================================= */
+
+.notification-panel{
+
+    position:fixed;
+
+    top:72px;
+
+    right:12px;
+
+    width:290px;
+
+    max-width:calc(100vw - 24px);
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
+
+    padding:15px;
+
+    z-index:2000;
+
+    display:none;
+
+}
+
+.notification-panel.show{
+
+    display:block;
+
+}
+
+.notification-title{
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+}
+
+.notification-item{
+
+    padding:11px;
+
+    background:var(--bg);
+
+    border-radius:10px;
+
+    font-size:12px;
+
+    color:var(--text);
+
+    margin-bottom:7px;
+
+}
+
+.notification-time{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-top:4px;
+
+}
+
+
+/* =========================================================
    MOBILE
-===================================================== */
+========================================================= */
 
 @media(max-width:500px){
 
     .header{
 
-        height:60px;
-
-        padding:0 14px;
+        padding:0 12px;
 
     }
 
     .title{
 
-        font-size:18px;
+        font-size:16px;
+
+    }
+
+    .logout{
+
+        padding:9px 11px;
+
+        font-size:12px;
 
     }
 
     .container{
 
-        padding:18px 13px 30px;
+        padding:15px 12px 35px;
 
     }
 
-    .photo{
+    .profile-name{
 
-        width:180px;
-
-        height:180px;
+        font-size:18px;
 
     }
 
-    .speed-value{
+    .profile-photo{
+
+        width:65px;
+
+        height:65px;
+
+    }
+
+    .info-value{
+
+        font-size:14px;
+
+    }
+
+    .speed-number{
 
         font-size:21px;
 
@@ -826,6 +1329,27 @@ body{
 
 }
 
+
+/* =========================================================
+   SMALL SCREEN
+========================================================= */
+
+@media(max-width:360px){
+
+    .info-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .contact-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
 </style>
 
 </head>
@@ -834,34 +1358,93 @@ body{
 <body>
 
 
-<button
-id="themeButton"
-class="theme-button"
-onclick="toggleTheme()">
-
-☾
-
-</button>
-
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header class="header">
 
-    <div class="title">
-        Customer Portal
+    <div class="logo-area">
+
+        <div class="logo-icon">
+            🌐
+        </div>
+
+        <div class="title">
+            Customer Portal
+        </div>
+
     </div>
 
-    <button
-    class="logout"
-    onclick="logout()">
 
-        Logout
+    <div class="header-actions">
 
-    </button>
+        <button
+        class="icon-btn"
+        onclick="toggleNotifications()">
+
+            🔔
+
+            <span
+            id="notificationDot"
+            class="notification-dot">
+            </span>
+
+        </button>
+
+
+        <button
+        id="themeButton"
+        class="icon-btn"
+        onclick="toggleTheme()">
+
+            ☾
+
+        </button>
+
+
+        <button
+        class="logout"
+        onclick="logout()">
+
+            Logout
+
+        </button>
+
+    </div>
 
 </header>
 
 
-<div class="container">
+<!-- =====================================================
+     NOTIFICATION
+===================================================== -->
+
+<div
+id="notificationPanel"
+class="notification-panel">
+
+    <div class="notification-title">
+        🔔 Notifications
+    </div>
+
+    <div
+    id="notificationList">
+
+        <div class="notification-item">
+            No new notifications.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="container">
 
 
 <div
@@ -878,7 +1461,6 @@ class="loading">
 <div
 id="errorBox"
 class="error-box">
-
 </div>
 
 
@@ -888,37 +1470,114 @@ style="display:none;">
 
 
 <!-- =====================================================
-     USERNAME + PASSWORD
+     PROFILE
 ===================================================== -->
 
-<div class="top">
+<div class="profile-card">
+
+    <div class="profile-content">
+
+        <div class="profile-photo">
+
+            <img
+            id="profileImage"
+            alt="Profile">
+
+            <div
+            id="defaultAvatar"
+            class="default-avatar">
+
+                👤
+
+            </div>
+
+        </div>
 
 
-    <div class="box">
+        <div>
 
-        <div class="label">
+            <div
+            id="name"
+            class="profile-name">
+
+                -
+
+            </div>
+
+            <div
+            id="profileUsername"
+            class="profile-username">
+
+                Username: -
+
+            </div>
+
+            <div class="status-pill">
+
+                <span class="status-dot"></span>
+
+                <span id="profileStatus">
+                    ONLINE
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     USER INFO
+===================================================== -->
+
+<div class="info-grid">
+
+
+    <div class="info-card">
+
+        <div class="info-label">
             USERNAME
         </div>
 
         <div
         id="username"
-        class="value">
+        class="info-value">
+
             -
+
         </div>
 
     </div>
 
 
-    <div class="box">
+    <div class="info-card">
 
-        <div class="label">
+        <div class="info-label">
             PASSWORD
         </div>
 
-        <div
-        id="password"
-        class="value">
-            -
+        <div class="password-row">
+
+            <span
+            id="password"
+            class="info-value password-text">
+
+                ••••••••
+
+            </span>
+
+            <button
+            id="eyeButton"
+            class="eye-btn"
+            onclick="togglePassword()">
+
+                👁
+
+            </button>
+
         </div>
 
     </div>
@@ -928,99 +1587,79 @@ style="display:none;">
 
 
 <!-- =====================================================
-     MAC
+     NETWORK
 ===================================================== -->
 
-<div class="mac-box">
+<div class="network-card">
 
-    <div class="mac-title">
-        MAC
+
+    <div class="network-row">
+
+        <span class="network-label">
+            MAC ADDRESS
+        </span>
+
+        <span
+        id="mac"
+        class="network-value">
+
+            -
+
+        </span>
+
     </div>
 
-    <div
-    id="mac"
-    class="mac-value">
 
-        -
+    <div class="network-row">
+
+        <span class="network-label">
+            IP ADDRESS
+        </span>
+
+        <span
+        id="ip"
+        class="network-value">
+
+            -
+
+        </span>
 
     </div>
 
-</div>
+
+    <div class="network-row">
+
+        <span class="network-label">
+            CONNECTION
+        </span>
+
+        <span
+        id="connectionStatus"
+        class="network-value">
+
+            Online
+
+        </span>
+
+    </div>
 
 
-<!-- =====================================================
-     PHOTO
-===================================================== -->
+    <div class="network-row">
 
-<div class="photo-box">
+        <span class="network-label">
+            LAST SEEN
+        </span>
 
-<div class="photo">
+        <span
+        id="lastSeen"
+        class="network-value">
 
-<svg
-viewBox="0 0 500 500"
-xmlns="http://www.w3.org/2000/svg">
+            -
 
-<rect
-width="500"
-height="500"
-fill="#e8f4ef"/>
+        </span>
 
-<circle
-cx="250"
-cy="250"
-r="210"
-fill="#d2eadf"/>
+    </div>
 
-<path
-d="M115 470
-C125 350 180 315 250 315
-C320 315 375 350 385 470Z"
-fill="#0b5d3b"/>
-
-<ellipse
-cx="250"
-cy="220"
-rx="105"
-ry="125"
-fill="#e5aa7d"/>
-
-<path
-d="M150 220
-C140 135 180 80 250 80
-C330 80 370 145 350 230
-C330 185 305 165 270 160
-C225 153 190 175 150 220Z"
-fill="#202020"/>
-
-<ellipse
-cx="215"
-cy="225"
-rx="8"
-ry="10"
-fill="#222"/>
-
-<ellipse
-cx="285"
-cy="225"
-rx="8"
-ry="10"
-fill="#222"/>
-
-<path
-d="M250 225L238 265L260 265"
-fill="none"
-stroke="#a66d4c"
-stroke-width="6"/>
-
-<path
-d="M220 285Q250 305 280 285"
-fill="none"
-stroke="#8c4938"
-stroke-width="6"/>
-
-</svg>
-
-</div>
 
 </div>
 
@@ -1034,164 +1673,133 @@ id="speedBox"
 class="speed-box">
 
 
-<div
-class="speed-header"
-onclick="toggleSpeed()">
-
-
-    <div class="speed-title">
-
-        <span
-        id="speedArrow"
-        class="speed-arrow">
-
-            ▼
-
-        </span>
-
-        📶 INTERNET SPEED
-
-    </div>
-
-
-    <div class="speed-live">
-
-        <span class="live-dot"></span>
-
-        LIVE
-
-    </div>
-
-
-</div>
-
-
-<div
-class="speed-content">
-
-
-<div class="speed-values">
-
-
-    <div class="speed-value-box">
-
-        <div
-        class="speed-value-title download-title">
-
-            DOWNLOAD
-
-        </div>
-
-        <div class="speed-number-row">
-
-            <span
-            id="downloadSpeed"
-            class="speed-value">
-
-                0
-
-            </span>
-
-            <span class="speed-unit">
-                MBPS
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <div class="speed-value-box">
-
-        <div
-        class="speed-value-title upload-title">
-
-            UPLOAD
-
-        </div>
-
-        <div class="speed-number-row">
-
-            <span
-            id="uploadSpeed"
-            class="speed-value">
-
-                0
-
-            </span>
-
-            <span class="speed-unit">
-                MBPS
-            </span>
-
-        </div>
-
-    </div>
-
-
-</div>
-
-
-<div class="graph-legend">
-
-    <div class="legend">
-
-        <span
-        class="legend-line download-line">
-        </span>
-
-        Download
-
-    </div>
-
-
-    <div class="legend">
-
-        <span
-        class="legend-line upload-line">
-        </span>
-
-        Upload
-
-    </div>
-
-</div>
-
-
-<div class="graph-container">
-
-    <canvas id="speedCanvas"></canvas>
-
-</div>
-
-
-<div class="speed-note">
-
-    Live network activity monitor
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     NAME
-===================================================== -->
-
-<div class="info">
-
-    <div class="info-title">
-        NAME
-    </div>
-
     <div
-    id="name"
-    class="info-value">
+    class="speed-header"
+    onclick="toggleSpeed()">
 
-        -
+
+        <div class="speed-title">
+
+            <span
+            class="speed-arrow">
+
+                ▼
+
+            </span>
+
+            📶 INTERNET SPEED
+
+        </div>
+
+
+        <div class="live">
+
+            <span class="live-dot"></span>
+
+            LIVE
+
+        </div>
+
+
+    </div>
+
+
+    <div class="speed-content">
+
+
+        <div class="speed-values">
+
+
+            <div class="speed-card">
+
+                <div
+                class="speed-label download-label">
+
+                    DOWNLOAD
+
+                </div>
+
+                <span
+                id="downloadSpeed"
+                class="speed-number">
+
+                    0
+
+                </span>
+
+                <span class="speed-unit">
+                    MBPS
+                </span>
+
+            </div>
+
+
+            <div class="speed-card">
+
+                <div
+                class="speed-label upload-label">
+
+                    UPLOAD
+
+                </div>
+
+                <span
+                id="uploadSpeed"
+                class="speed-number">
+
+                    0
+
+                </span>
+
+                <span class="speed-unit">
+                    MBPS
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="legend">
+
+            <div class="legend-item">
+
+                <span
+                class="legend-line red-line">
+                </span>
+
+                Download
+
+            </div>
+
+
+            <div class="legend-item">
+
+                <span
+                class="legend-line green-line">
+                </span>
+
+                Upload
+
+            </div>
+
+        </div>
+
+
+        <div class="graph-container">
+
+            <canvas id="speedCanvas"></canvas>
+
+        </div>
+
+
+        <div class="speed-note">
+
+            Live network activity monitor
+
+        </div>
+
 
     </div>
 
@@ -1199,20 +1807,50 @@ class="speed-content">
 
 
 <!-- =====================================================
-     BILLING DATE
+     PACKAGE
 ===================================================== -->
 
-<div class="billing">
+<div class="section-card">
 
-    <div class="info-title">
-        BILLING DATE
+    <div class="section-title">
+        📦 Internet Package
     </div>
 
-    <div
-    id="billingDate"
-    class="info-value">
 
-        -
+    <div class="package-main">
+
+        <div>
+
+            <div
+            id="package"
+            class="package-name">
+
+                -
+
+            </div>
+
+            <div class="package-label">
+                Current Package
+            </div>
+
+        </div>
+
+
+        <div class="package-price">
+
+            <strong
+            id="packagePrice">
+
+                -
+
+            </strong>
+
+            <div class="package-label">
+                Monthly
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -1223,17 +1861,75 @@ class="speed-content">
      BILL
 ===================================================== -->
 
-<div class="bill">
+<div class="bill-card">
 
-    <div class="info-title">
-        BILL
+
+    <div class="bill-top">
+
+        <div>
+
+            <div class="bill-label">
+                CURRENT BILL
+            </div>
+
+            <div
+            id="bill"
+            class="bill-amount">
+
+                -
+
+            </div>
+
+        </div>
+
+
+        <div
+        id="billStatus"
+        class="bill-status unpaid">
+
+            UNPAID
+
+        </div>
+
     </div>
 
-    <div
-    id="bill"
-    class="bill-value">
 
-        -
+    <div class="bill-details">
+
+
+        <div>
+
+            <div class="info-label">
+                BILLING DATE
+            </div>
+
+            <div
+            id="billingDate"
+            class="info-value">
+
+                -
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <div class="info-label">
+                DUE DATE
+            </div>
+
+            <div
+            id="dueDate"
+            class="info-value">
+
+                -
+
+            </div>
+
+        </div>
+
 
     </div>
 
@@ -1241,20 +1937,71 @@ class="speed-content">
 
 
 <!-- =====================================================
-     ADDRESS
+     CONTACT
 ===================================================== -->
 
-<div class="address">
+<div class="section-card">
 
-    <div class="info-title">
-        ADDRESS
+    <div class="section-title">
+        👤 Customer Information
     </div>
 
-    <div
-    id="address"
-    class="info-value">
 
-        -
+    <div class="contact-grid">
+
+
+        <div class="contact-item">
+
+            <div class="contact-label">
+                PHONE
+            </div>
+
+            <div
+            id="phone"
+            class="contact-value">
+
+                -
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <div class="contact-label">
+                EMAIL
+            </div>
+
+            <div
+            id="email"
+            class="contact-value">
+
+                -
+
+            </div>
+
+        </div>
+
+
+        <div
+        style="grid-column:1/-1;"
+        class="contact-item">
+
+            <div class="contact-label">
+                ADDRESS
+            </div>
+
+            <div
+            id="address"
+            class="contact-value">
+
+                -
+
+            </div>
+
+        </div>
+
 
     </div>
 
@@ -1262,73 +2009,59 @@ class="speed-content">
 
 
 <!-- =====================================================
-     STATUS
+     SUPPORT
 ===================================================== -->
 
-<div class="connection">
+<div class="section-card">
 
-    <div class="info-title">
-        CONNECTING STATUS
+    <div class="section-title">
+        🎫 Need Help?
     </div>
 
-    <div class="online">
+    <button
+    class="support-button"
+    onclick="openSupport()">
 
-        <span class="online-dot"></span>
+        + Create New Support Request
 
-        Online
-
-    </div>
-
-</div>
-
+    </button>
 
 </div>
 
+
 </div>
+
+</main>
 
 
 <script>
 
-/* =====================================================
-   GOOGLE APPS SCRIPT URL
-===================================================== */
+/* =========================================================
+   GOOGLE APPS SCRIPT
+========================================================= */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEda0meR5ZzPbUZqH_5dpbIQWt1Z7fArv6adM5yRMGMDYwOkkZn-O1bZ0v4xHFTuGmwA/exec";
 
 
-/* =====================================================
+/* =========================================================
    LOGIN CHECK
-===================================================== */
+========================================================= */
 
 const loggedIn =
     localStorage.getItem("loggedIn") === "true" ||
     sessionStorage.getItem("loggedIn") === "true";
 
 
-if(!loggedIn){
-
-    window.location.replace(
-        "index.html"
-    );
-
-}
-
-
-/* =====================================================
-   GET USERNAME
-===================================================== */
-
-const username =
+const currentUsername =
     localStorage.getItem("username") ||
     sessionStorage.getItem("username");
 
 
-if(!username){
-
-    localStorage.clear();
-
-    sessionStorage.clear();
+if(
+    !loggedIn ||
+    !currentUsername
+){
 
     window.location.replace(
         "index.html"
@@ -1337,29 +2070,44 @@ if(!username){
 }
 
 
-/* =====================================================
+/* =========================================================
    ELEMENTS
-===================================================== */
+========================================================= */
 
 const loading =
-    document.getElementById(
-        "loading"
-    );
+document.getElementById("loading");
 
 const dashboard =
-    document.getElementById(
-        "dashboard"
-    );
+document.getElementById("dashboard");
 
 const errorBox =
-    document.getElementById(
-        "errorBox"
-    );
+document.getElementById("errorBox");
 
 
-/* =====================================================
+/* =========================================================
+   SAFE VALUE
+========================================================= */
+
+function safeValue(value){
+
+    if(
+        value === undefined ||
+        value === null ||
+        String(value).trim() === ""
+    ){
+
+        return "-";
+
+    }
+
+    return String(value);
+
+}
+
+
+/* =========================================================
    LOAD CUSTOMER
-===================================================== */
+========================================================= */
 
 async function loadCustomer(){
 
@@ -1370,7 +2118,7 @@ async function loadCustomer(){
             "?action=customer" +
             "&username=" +
             encodeURIComponent(
-                username
+                currentUsername
             );
 
 
@@ -1399,7 +2147,7 @@ async function loadCustomer(){
 
 
         console.log(
-            "CUSTOMER DATA:",
+            "Customer API:",
             data
         );
 
@@ -1410,7 +2158,7 @@ async function loadCustomer(){
 
             throw new Error(
                 data.message ||
-                "Customer data not found."
+                "Customer information not found."
             );
 
         }
@@ -1424,97 +2172,121 @@ async function loadCustomer(){
 
     catch(error){
 
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         loading.style.display =
             "none";
 
-
         errorBox.style.display =
             "block";
 
-
         errorBox.textContent =
             error.message ||
-            "Unable to load customer data.";
+            "Unable to load customer information.";
 
     }
 
 }
 
 
-/* =====================================================
+/* =========================================================
    SHOW CUSTOMER
-===================================================== */
+========================================================= */
 
-function showCustomer(
-    data
-){
+function showCustomer(data){
 
     loading.style.display =
         "none";
 
+    errorBox.style.display =
+        "none";
 
     dashboard.style.display =
         "block";
 
 
-    /*
-    -----------------------------------------------------
-    USERNAME
-    -----------------------------------------------------
-    */
+    /* USERNAME */
 
     document.getElementById(
         "username"
     ).textContent =
-        data.username || "-";
+        safeValue(data.username);
 
 
-    /*
-    -----------------------------------------------------
-    PASSWORD
-    -----------------------------------------------------
-    */
+    document.getElementById(
+        "profileUsername"
+    ).textContent =
+        "Username: " +
+        safeValue(data.username);
+
+
+    /* PASSWORD */
+
+    window.customerPassword =
+        safeValue(data.password);
+
 
     document.getElementById(
         "password"
     ).textContent =
-        data.password || "-";
+        "••••••••";
 
 
-    /*
-    -----------------------------------------------------
-    MAC
-    -----------------------------------------------------
-    */
-
-    document.getElementById(
-        "mac"
-    ).textContent =
-        data.mac || "-";
-
-
-    /*
-    -----------------------------------------------------
-    NAME
-    -----------------------------------------------------
-    */
+    /* NAME */
 
     document.getElementById(
         "name"
     ).textContent =
-        data.name || "-";
+        safeValue(data.name);
 
 
-    /*
-    -----------------------------------------------------
-    DOWNLOAD
-    -----------------------------------------------------
-    */
+    /* MAC */
+
+    document.getElementById(
+        "mac"
+    ).textContent =
+        safeValue(data.mac);
+
+
+    /* IP */
+
+    document.getElementById(
+        "ip"
+    ).textContent =
+        safeValue(data.ip);
+
+
+    /* STATUS */
+
+    const status =
+        safeValue(
+            data.status ||
+            data.connectionStatus ||
+            "Online"
+        );
+
+
+    document.getElementById(
+        "profileStatus"
+    ).textContent =
+        status.toUpperCase();
+
+
+    document.getElementById(
+        "connectionStatus"
+    ).textContent =
+        status;
+
+
+    /* LAST SEEN */
+
+    document.getElementById(
+        "lastSeen"
+    ).textContent =
+        safeValue(data.lastSeen);
+
+
+    /* DOWNLOAD */
 
     const download =
         parseFloat(
@@ -1522,11 +2294,7 @@ function showCustomer(
         ) || 0;
 
 
-    /*
-    -----------------------------------------------------
-    UPLOAD
-    -----------------------------------------------------
-    */
+    /* UPLOAD */
 
     const upload =
         parseFloat(
@@ -1546,49 +2314,136 @@ function showCustomer(
         upload;
 
 
-    /*
-    -----------------------------------------------------
-    BILLING DATE
-    -----------------------------------------------------
-    */
+    /* PACKAGE */
 
     document.getElementById(
-        "billingDate"
+        "package"
     ).textContent =
-        data.billingDate || "-";
+        safeValue(
+            data.package ||
+            data.packageName
+        );
 
 
-    /*
-    -----------------------------------------------------
-    BILL
-    -----------------------------------------------------
-    */
+    /* PACKAGE PRICE */
+
+    document.getElementById(
+        "packagePrice"
+    ).textContent =
+        data.packagePrice
+            ? data.packagePrice + " Tk"
+            : "-";
+
+
+    /* BILL */
+
+    const bill =
+        safeValue(data.bill);
+
 
     document.getElementById(
         "bill"
     ).textContent =
-        data.bill
-            ? data.bill + " tk"
-            : "-";
+        bill === "-"
+            ? "-"
+            : bill + " Tk";
 
 
-    /*
-    -----------------------------------------------------
-    ADDRESS
-    -----------------------------------------------------
-    */
+    /* BILLING DATE */
+
+    document.getElementById(
+        "billingDate"
+    ).textContent =
+        safeValue(
+            data.billingDate
+        );
+
+
+    /* DUE DATE */
+
+    document.getElementById(
+        "dueDate"
+    ).textContent =
+        safeValue(
+            data.dueDate
+        );
+
+
+    /* PHONE */
+
+    document.getElementById(
+        "phone"
+    ).textContent =
+        safeValue(
+            data.phone ||
+            data.number
+        );
+
+
+    /* EMAIL */
+
+    document.getElementById(
+        "email"
+    ).textContent =
+        safeValue(
+            data.email
+        );
+
+
+    /* ADDRESS */
 
     document.getElementById(
         "address"
     ).textContent =
-        data.address || "-";
+        safeValue(
+            data.address
+        );
 
 
-    /*
-    -----------------------------------------------------
-    START GRAPH
-    -----------------------------------------------------
-    */
+    /* PHOTO */
+
+    if(data.photo){
+
+        const image =
+            document.getElementById(
+                "profileImage"
+            );
+
+        const avatar =
+            document.getElementById(
+                "defaultAvatar"
+            );
+
+
+        image.src =
+            data.photo;
+
+
+        image.style.display =
+            "block";
+
+
+        avatar.style.display =
+            "none";
+
+    }
+
+
+    /* BILL STATUS */
+
+    setBillStatus(
+        data
+    );
+
+
+    /* NOTIFICATION */
+
+    createNotifications(
+        data
+    );
+
+
+    /* GRAPH */
 
     startGraph(
         download,
@@ -1598,9 +2453,128 @@ function showCustomer(
 }
 
 
-/* =====================================================
+/* =========================================================
+   BILL STATUS
+========================================================= */
+
+function setBillStatus(data){
+
+    const element =
+        document.getElementById(
+            "billStatus"
+        );
+
+
+    const rawStatus =
+        String(
+            data.billStatus ||
+            data.paymentStatus ||
+            ""
+        ).toLowerCase();
+
+
+    element.className =
+        "bill-status";
+
+
+    if(
+        rawStatus.includes("paid")
+    ){
+
+        element.classList.add(
+            "paid"
+        );
+
+        element.textContent =
+            "PAID";
+
+        return;
+
+    }
+
+
+    if(
+        rawStatus.includes("due")
+    ){
+
+        element.classList.add(
+            "due"
+        );
+
+        element.textContent =
+            "DUE";
+
+        return;
+
+    }
+
+
+    element.classList.add(
+        "unpaid"
+    );
+
+    element.textContent =
+        "UNPAID";
+
+}
+
+
+/* =========================================================
+   PASSWORD SHOW / HIDE
+========================================================= */
+
+let passwordVisible =
+false;
+
+
+function togglePassword(){
+
+    const password =
+        document.getElementById(
+            "password"
+        );
+
+
+    const button =
+        document.getElementById(
+            "eyeButton"
+        );
+
+
+    if(
+        passwordVisible
+    ){
+
+        password.textContent =
+            "••••••••";
+
+        button.textContent =
+            "👁";
+
+        passwordVisible =
+            false;
+
+    }
+    else{
+
+        password.textContent =
+            window.customerPassword ||
+            "-";
+
+        button.textContent =
+            "🙈";
+
+        passwordVisible =
+            true;
+
+    }
+
+}
+
+
+/* =========================================================
    LOGOUT
-===================================================== */
+========================================================= */
 
 function logout(){
 
@@ -1629,14 +2603,14 @@ function logout(){
 }
 
 
-/* =====================================================
+/* =========================================================
    THEME
-===================================================== */
+========================================================= */
 
 const themeButton =
-    document.getElementById(
-        "themeButton"
-    );
+document.getElementById(
+    "themeButton"
+);
 
 
 function loadTheme(){
@@ -1647,7 +2621,9 @@ function loadTheme(){
         );
 
 
-    if(theme === "dark"){
+    if(
+        theme === "dark"
+    ){
 
         document.body.classList.add(
             "dark"
@@ -1696,28 +2672,34 @@ function toggleTheme(){
 loadTheme();
 
 
-/* =====================================================
+/* =========================================================
    SPEED BOX
-===================================================== */
-
-const speedBox =
-    document.getElementById(
-        "speedBox"
-    );
-
+========================================================= */
 
 function toggleSpeed(){
 
-    speedBox.classList.toggle(
+    document.getElementById(
+        "speedBox"
+    ).classList.toggle(
         "minimized"
     );
 
 }
 
 
-/* =====================================================
-   GRAPH VARIABLES
-===================================================== */
+/* =========================================================
+   GRAPH
+========================================================= */
+
+const canvas =
+document.getElementById(
+    "speedCanvas"
+);
+
+
+const ctx =
+canvas.getContext("2d");
+
 
 let downloadValue = 0;
 
@@ -1729,12 +2711,10 @@ let uploadHistory = [];
 
 const MAX_POINTS = 80;
 
-let graphTimer = null;
 
-
-/* =====================================================
+/* =========================================================
    START GRAPH
-===================================================== */
+========================================================= */
 
 function startGraph(
     download,
@@ -1743,7 +2723,6 @@ function startGraph(
 
     downloadValue =
         download;
-
 
     uploadValue =
         upload;
@@ -1754,30 +2733,32 @@ function startGraph(
     uploadHistory = [];
 
 
-    /*
-    Initial graph
-    */
-
     for(
-        let i = 0;
-        i < 25;
+        let i=0;
+        i<30;
         i++
     ){
 
         downloadHistory.push(
-            download *
-            (
-                .75 +
-                Math.random() * .25
+            Math.max(
+                0,
+                download *
+                (
+                    .75 +
+                    Math.random()*.25
+                )
             )
         );
 
 
         uploadHistory.push(
-            upload *
-            (
-                .75 +
-                Math.random() * .25
+            Math.max(
+                0,
+                upload *
+                (
+                    .75 +
+                    Math.random()*.25
+                )
             )
         );
 
@@ -1786,74 +2767,56 @@ function startGraph(
 
     resizeCanvas();
 
+}
 
-    if(graphTimer){
 
-        clearInterval(
-            graphTimer
-        );
+/* =========================================================
+   UPDATE GRAPH
+========================================================= */
+
+function updateGraph(){
+
+    if(
+        downloadValue === 0 &&
+        uploadValue === 0
+    ){
+
+        return;
 
     }
 
 
-    graphTimer =
-        setInterval(
-            updateGraph,
-            300
-        );
-
-}
-
-
-/* =====================================================
-   GRAPH UPDATE
-===================================================== */
-
-function updateGraph(){
-
-    /*
-    Slight fake live movement around
-    the Sheet value.
-
-    Sheet-এর মূল speed value পরিবর্তন হয় না।
-    */
-
-    const downloadVariation =
+    const d =
         Math.max(
             0,
             downloadValue *
             (
                 1 +
                 (
-                    Math.random() * .08 -
+                    Math.random()*.08 -
                     .04
                 )
             )
         );
 
 
-    const uploadVariation =
+    const u =
         Math.max(
             0,
             uploadValue *
             (
                 1 +
                 (
-                    Math.random() * .08 -
+                    Math.random()*.08 -
                     .04
                 )
             )
         );
 
 
-    downloadHistory.push(
-        downloadVariation
-    );
+    downloadHistory.push(d);
 
-
-    uploadHistory.push(
-        uploadVariation
-    );
+    uploadHistory.push(u);
 
 
     if(
@@ -1881,21 +2844,15 @@ function updateGraph(){
 }
 
 
-/* =====================================================
-   CANVAS
-===================================================== */
-
-const canvas =
-    document.getElementById(
-        "speedCanvas"
-    );
+setInterval(
+    updateGraph,
+    300
+);
 
 
-const ctx =
-    canvas.getContext(
-        "2d"
-    );
-
+/* =========================================================
+   CANVAS RESIZE
+========================================================= */
 
 function resizeCanvas(){
 
@@ -1945,9 +2902,9 @@ window.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================================================
    DRAW GRAPH
-===================================================== */
+========================================================= */
 
 function drawGraph(){
 
@@ -1961,7 +2918,8 @@ function drawGraph(){
 
     if(
         !width ||
-        !height
+        !height ||
+        downloadHistory.length < 2
     ){
 
         return;
@@ -1977,24 +2935,13 @@ function drawGraph(){
     );
 
 
-    if(
-        downloadHistory.length < 2
-    ){
-
-        return;
-
-    }
-
-
     const dark =
         document.body.classList.contains(
             "dark"
         );
 
 
-    /*
-    GRID
-    */
+    /* GRID */
 
     ctx.lineWidth = 1;
 
@@ -2005,15 +2952,13 @@ function drawGraph(){
 
 
     for(
-        let i = 1;
-        i < 6;
+        let i=1;
+        i<6;
         i++
     ){
 
         const y =
-            (
-                height / 6
-            ) * i;
+            height/6*i;
 
 
         ctx.beginPath();
@@ -2032,10 +2977,6 @@ function drawGraph(){
 
     }
 
-
-    /*
-    Dynamic max
-    */
 
     const max =
         Math.max(
@@ -2065,9 +3006,9 @@ function drawGraph(){
 }
 
 
-/* =====================================================
+/* =========================================================
    DRAW LINE
-===================================================== */
+========================================================= */
 
 function drawLine(
     data,
@@ -2086,21 +3027,16 @@ function drawLine(
     }
 
 
-    const points = [];
+    const points=[];
 
 
     data.forEach(
-        function(
-            value,
-            index
-        ){
+        (value,index)=>{
 
             const x =
+                index /
                 (
-                    index /
-                    (
-                        data.length - 1
-                    )
+                    data.length-1
                 ) *
                 width;
 
@@ -2108,35 +3044,31 @@ function drawLine(
             const y =
                 height -
                 (
-                    value / max
+                    value/max
                 ) *
                 (
-                    height - 22
+                    height-22
                 ) -
                 11;
 
 
             points.push({
-                x:x,
-                y:y
+                x,
+                y
             });
 
         }
     );
 
 
-    /*
-    AREA
-    */
+    /* AREA */
 
     ctx.beginPath();
-
 
     ctx.moveTo(
         points[0].x,
         height
     );
-
 
     ctx.lineTo(
         points[0].x,
@@ -2145,34 +3077,31 @@ function drawLine(
 
 
     for(
-        let i = 1;
-        i < points.length;
+        let i=1;
+        i<points.length;
         i++
     ){
 
-        const previous =
-            points[i - 1];
+        const p =
+            points[i-1];
 
-
-        const current =
+        const c =
             points[i];
 
 
         const midX =
             (
-                previous.x +
-                current.x
-            ) / 2;
+                p.x+c.x
+            )/2;
 
 
         ctx.quadraticCurveTo(
-            previous.x,
-            previous.y,
+            p.x,
+            p.y,
             midX,
             (
-                previous.y +
-                current.y
-            ) / 2
+                p.y+c.y
+            )/2
         );
 
     }
@@ -2180,7 +3109,7 @@ function drawLine(
 
     const last =
         points[
-            points.length - 1
+            points.length-1
         ];
 
 
@@ -2189,12 +3118,10 @@ function drawLine(
         last.y
     );
 
-
     ctx.lineTo(
         last.x,
         height
     );
-
 
     ctx.closePath();
 
@@ -2208,11 +3135,13 @@ function drawLine(
         );
 
 
-    if(color === "#e00000"){
+    if(
+        color === "#e00000"
+    ){
 
         gradient.addColorStop(
             0,
-            "rgba(224,0,0,.13)"
+            "rgba(224,0,0,.14)"
         );
 
         gradient.addColorStop(
@@ -2225,7 +3154,7 @@ function drawLine(
 
         gradient.addColorStop(
             0,
-            "rgba(11,155,84,.13)"
+            "rgba(11,155,84,.14)"
         );
 
         gradient.addColorStop(
@@ -2242,12 +3171,9 @@ function drawLine(
     ctx.fill();
 
 
-    /*
-    LINE
-    */
+    /* LINE */
 
     ctx.beginPath();
-
 
     ctx.moveTo(
         points[0].x,
@@ -2256,34 +3182,31 @@ function drawLine(
 
 
     for(
-        let i = 1;
-        i < points.length;
+        let i=1;
+        i<points.length;
         i++
     ){
 
-        const previous =
-            points[i - 1];
+        const p =
+            points[i-1];
 
-
-        const current =
+        const c =
             points[i];
 
 
         const midX =
             (
-                previous.x +
-                current.x
-            ) / 2;
+                p.x+c.x
+            )/2;
 
 
         ctx.quadraticCurveTo(
-            previous.x,
-            previous.y,
+            p.x,
+            p.y,
             midX,
             (
-                previous.y +
-                current.y
-            ) / 2
+                p.y+c.y
+            )/2
         );
 
     }
@@ -2316,73 +3239,176 @@ function drawLine(
     ctx.shadowBlur = 0;
 
 
-    /*
-    CURRENT POINT
-    */
-
-    const point =
-        points[
-            Math.max(
-                0,
-                points.length - 3
-            )
-        ];
-
+    /* POINT */
 
     ctx.beginPath();
 
-
     ctx.arc(
-        point.x,
-        point.y,
-        9,
+        last.x,
+        last.y,
+        5,
         0,
-        Math.PI * 2
+        Math.PI*2
     );
-
-
-    ctx.fillStyle =
-        color === "#e00000"
-            ? "rgba(224,0,0,.14)"
-            : "rgba(11,155,84,.14)";
-
-
-    ctx.fill();
-
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-        point.x,
-        point.y,
-        4,
-        0,
-        Math.PI * 2
-    );
-
 
     ctx.fillStyle =
         color;
-
 
     ctx.fill();
 
 }
 
 
-/* =====================================================
-   AUTO REFRESH CUSTOMER DATA
-===================================================== */
+/* =========================================================
+   NOTIFICATIONS
+========================================================= */
 
-/*
-   প্রতি 60 সেকেন্ডে Sheet থেকে আবার
-   customer data নিয়ে আসবে।
+function createNotifications(data){
 
-   তাই admin Sheet-এ Download/Bill/
-   Address ইত্যাদি পরিবর্তন করলে
-   dashboard refresh ছাড়াই update হবে।
-*/
+    const list =
+        document.getElementById(
+            "notificationList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    let count = 0;
+
+
+    if(
+        data.dueDate
+    ){
+
+        const item =
+            document.createElement(
+                "div"
+            );
+
+
+        item.className =
+            "notification-item";
+
+
+        item.innerHTML =
+            "📅 Billing date: " +
+            safeValue(
+                data.billingDate
+            ) +
+            "<span class='notification-time'>" +
+            "Due: " +
+            safeValue(
+                data.dueDate
+            ) +
+            "</span>";
+
+
+        list.appendChild(
+            item
+        );
+
+
+        count++;
+
+    }
+
+
+    if(
+        data.billStatus &&
+        String(
+            data.billStatus
+        ).toLowerCase()
+        !== "paid"
+    ){
+
+        const item =
+            document.createElement(
+                "div"
+            );
+
+
+        item.className =
+            "notification-item";
+
+
+        item.innerHTML =
+            "💰 Your current bill is " +
+            safeValue(
+                data.bill
+            ) +
+            " Tk.";
+
+
+        list.appendChild(
+            item
+        );
+
+
+        count++;
+
+    }
+
+
+    if(
+        count === 0
+    ){
+
+        list.innerHTML =
+            "<div class='notification-item'>" +
+            "✓ No new notifications." +
+            "</div>";
+
+    }
+
+
+    document.getElementById(
+        "notificationDot"
+    ).style.display =
+        count > 0
+            ? "block"
+            : "none";
+
+}
+
+
+/* =========================================================
+   NOTIFICATION TOGGLE
+========================================================= */
+
+function toggleNotifications(){
+
+    document.getElementById(
+        "notificationPanel"
+    ).classList.toggle(
+        "show"
+    );
+
+}
+
+
+/* =========================================================
+   SUPPORT
+========================================================= */
+
+function openSupport(){
+
+    /*
+       পরে চাইলে এখানে support.html
+       অথবা Google Sheet support form
+       connect করা যাবে।
+    */
+
+    alert(
+        "Support system will be connected here."
+    );
+
+}
+
+
+/* =========================================================
+   AUTO REFRESH
+========================================================= */
 
 setInterval(
     loadCustomer,
@@ -2390,18 +3416,20 @@ setInterval(
 );
 
 
-/* =====================================================
+/* =========================================================
    INITIAL LOAD
-===================================================== */
+========================================================= */
 
-if(loggedIn && username){
+if(
+    loggedIn &&
+    currentUsername
+){
 
     loadCustomer();
 
 }
 
 </script>
-
 
 </body>
 
