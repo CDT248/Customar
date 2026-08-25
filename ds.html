@@ -877,7 +877,7 @@ body{
             id="username"
             class="value">
 
-            ADMIN
+            Loading...
 
         </div>
 
@@ -892,7 +892,7 @@ body{
 
         <div class="value">
 
-            12345
+            ••••••••
 
         </div>
 
@@ -1000,12 +1000,9 @@ stroke-width="6"/>
     class="speed-box">
 
 
-<!-- SPEED HEADER -->
-
 <div
     class="speed-header"
     onclick="toggleSpeed()">
-
 
     <div class="speed-title">
 
@@ -1031,23 +1028,16 @@ stroke-width="6"/>
 
     </div>
 
-
 </div>
 
-
-<!-- SPEED CONTENT -->
 
 <div
     id="speedContent"
     class="speed-content">
 
 
-<!-- VALUES -->
-
 <div class="speed-values">
 
-
-    <!-- DOWNLOAD -->
 
     <div
         class="speed-value-box download-card">
@@ -1081,8 +1071,6 @@ stroke-width="6"/>
 
     </div>
 
-
-    <!-- UPLOAD -->
 
     <div
         class="speed-value-box upload-card">
@@ -1120,8 +1108,6 @@ stroke-width="6"/>
 </div>
 
 
-<!-- LEGEND -->
-
 <div class="graph-legend">
 
 
@@ -1149,8 +1135,6 @@ stroke-width="6"/>
 
 </div>
 
-
-<!-- GRAPH -->
 
 <div class="graph-container">
 
@@ -1257,40 +1241,70 @@ stroke-width="6"/>
 
 <script>
 
-
 /* =====================================================
-   LOGIN CHECK
+   LOGIN / SESSION CHECK
 ===================================================== */
 
-if(
-    sessionStorage.getItem("loggedIn")
-    !== "true"
-){
+/*
+   IMPORTANT:
 
-    window.location.replace(
-        "index.html"
-    );
+   index.html uses localStorage.
 
-}
+   তাই ds.html-ও localStorage ব্যবহার করবে।
+
+   sessionStorage আর ব্যবহার করা হচ্ছে না।
+*/
+
+(function(){
+
+    const loggedIn =
+        localStorage.getItem("loggedIn");
+
+    const username =
+        localStorage.getItem("username");
 
 
-/* =====================================================
-   USERNAME
-===================================================== */
+    /*
+    ================================================
+    LOGIN না থাকলে INDEX
+    ================================================
+    */
 
-const savedUsername =
-sessionStorage.getItem(
-    "username"
-);
+    if(loggedIn !== "true"){
 
-if(savedUsername){
+        window.location.replace(
+            "index.html"
+        );
 
-    document.getElementById(
-        "username"
-    ).textContent =
-    savedUsername;
+        return;
 
-}
+    }
+
+
+    /*
+    ================================================
+    USERNAME SHOW
+    ================================================
+    */
+
+    const usernameElement =
+        document.getElementById(
+            "username"
+        );
+
+
+    if(
+        usernameElement &&
+        username
+    ){
+
+        usernameElement.textContent =
+            username;
+
+    }
+
+
+})();
 
 
 /* =====================================================
@@ -1299,13 +1313,23 @@ if(savedUsername){
 
 function logout(){
 
-    sessionStorage.removeItem(
+    /*
+       Login session remove
+    */
+
+    localStorage.removeItem(
         "loggedIn"
     );
 
-    sessionStorage.removeItem(
+
+    localStorage.removeItem(
         "username"
     );
+
+
+    /*
+       Login page
+    */
 
     window.location.replace(
         "index.html"
@@ -1327,9 +1351,9 @@ document.getElementById(
 function loadTheme(){
 
     const theme =
-    localStorage.getItem(
-        "customerTheme"
-    );
+        localStorage.getItem(
+            "customerTheme"
+        );
 
 
     if(theme === "dark"){
@@ -1339,7 +1363,7 @@ function loadTheme(){
         );
 
         themeButton.textContent =
-        "☀";
+            "☀";
 
     }
 
@@ -1354,23 +1378,23 @@ function toggleTheme(){
 
 
     const dark =
-    document.body.classList.contains(
-        "dark"
-    );
+        document.body.classList.contains(
+            "dark"
+        );
 
 
     localStorage.setItem(
         "customerTheme",
         dark
-        ? "dark"
-        : "light"
+            ? "dark"
+            : "light"
     );
 
 
     themeButton.textContent =
-    dark
-    ? "☀"
-    : "☾";
+        dark
+            ? "☀"
+            : "☾";
 
 
     drawGraph();
@@ -1418,16 +1442,16 @@ function toggleSpeed(){
 
 
     const minimized =
-    speedBox.classList.contains(
-        "minimized"
-    );
+        speedBox.classList.contains(
+            "minimized"
+        );
 
 
     localStorage.setItem(
         "speedBoxMinimized",
         minimized
-        ? "true"
-        : "false"
+            ? "true"
+            : "false"
     );
 
 }
@@ -1460,24 +1484,15 @@ document.getElementById(
 );
 
 
-let download =
-7.2;
+let download = 7.2;
 
+let upload = 1.5;
 
-let upload =
-1.5;
+let downloadHistory = [];
 
+let uploadHistory = [];
 
-let downloadHistory =
-[];
-
-
-let uploadHistory =
-[];
-
-
-const MAX_POINTS =
-80;
+const MAX_POINTS = 80;
 
 
 /* =====================================================
@@ -1492,17 +1507,17 @@ function changeSpeed(
 ){
 
     let next =
-    current +
-    (
-        Math.random() * 2 - 1
-    ) * step;
+        current +
+        (
+            Math.random() * 2 - 1
+        ) * step;
 
 
     if(next < min){
 
         next =
-        min +
-        Math.random() * step;
+            min +
+            Math.random() * step;
 
     }
 
@@ -1510,8 +1525,8 @@ function changeSpeed(
     if(next > max){
 
         next =
-        max -
-        Math.random() * step;
+            max -
+            Math.random() * step;
 
     }
 
@@ -1528,28 +1543,28 @@ function changeSpeed(
 function resizeCanvas(){
 
     const rect =
-    canvas.parentElement
-    .getBoundingClientRect();
+        canvas.parentElement
+        .getBoundingClientRect();
 
 
     const ratio =
-    window.devicePixelRatio || 1;
+        window.devicePixelRatio || 1;
 
 
     canvas.width =
-    rect.width * ratio;
+        rect.width * ratio;
 
 
     canvas.height =
-    rect.height * ratio;
+        rect.height * ratio;
 
 
     canvas.style.width =
-    rect.width + "px";
+        rect.width + "px";
 
 
     canvas.style.height =
-    rect.height + "px";
+        rect.height + "px";
 
 
     ctx.setTransform(
@@ -1580,11 +1595,11 @@ window.addEventListener(
 function drawGraph(){
 
     const width =
-    canvas.clientWidth;
+        canvas.clientWidth;
 
 
     const height =
-    canvas.clientHeight;
+        canvas.clientHeight;
 
 
     if(!width || !height){
@@ -1612,21 +1627,20 @@ function drawGraph(){
 
 
     const dark =
-    document.body.classList.contains(
-        "dark"
-    );
+        document.body.classList.contains(
+            "dark"
+        );
 
 
     /* GRID */
 
-    ctx.lineWidth =
-    1;
+    ctx.lineWidth = 1;
 
 
     ctx.strokeStyle =
-    dark
-    ? "rgba(255,255,255,.06)"
-    : "rgba(0,0,0,.06)";
+        dark
+            ? "rgba(255,255,255,.06)"
+            : "rgba(0,0,0,.06)";
 
 
     for(
@@ -1636,9 +1650,9 @@ function drawGraph(){
     ){
 
         const y =
-        (
-            height / 6
-        ) * i;
+            (
+                height / 6
+            ) * i;
 
 
         ctx.beginPath();
@@ -1658,8 +1672,7 @@ function drawGraph(){
     }
 
 
-    const max =
-    12;
+    const max = 12;
 
 
     drawSmoothLine(
@@ -1703,8 +1716,7 @@ function drawSmoothLine(
     }
 
 
-    const points =
-    [];
+    const points = [];
 
 
     data.forEach(
@@ -1714,21 +1726,21 @@ function drawSmoothLine(
         ){
 
             const x =
-            (
-                index /
-                (data.length - 1)
-            ) * width;
+                (
+                    index /
+                    (data.length - 1)
+                ) * width;
 
 
             const y =
-            height -
-            (
-                value / max
-            ) *
-            (
-                height - 22
-            ) -
-            11;
+                height -
+                (
+                    value / max
+                ) *
+                (
+                    height - 22
+                ) -
+                11;
 
 
             points.push({
@@ -1740,9 +1752,7 @@ function drawSmoothLine(
     );
 
 
-    /* =========================
-       AREA
-    ========================= */
+    /* AREA */
 
     ctx.beginPath();
 
@@ -1766,18 +1776,18 @@ function drawSmoothLine(
     ){
 
         const previous =
-        points[i - 1];
+            points[i - 1];
 
 
         const current =
-        points[i];
+            points[i];
 
 
         const midX =
-        (
-            previous.x +
-            current.x
-        ) / 2;
+            (
+                previous.x +
+                current.x
+            ) / 2;
 
 
         ctx.quadraticCurveTo(
@@ -1794,9 +1804,9 @@ function drawSmoothLine(
 
 
     const last =
-    points[
-        points.length - 1
-    ];
+        points[
+            points.length - 1
+        ];
 
 
     ctx.lineTo(
@@ -1815,12 +1825,12 @@ function drawSmoothLine(
 
 
     const gradient =
-    ctx.createLinearGradient(
-        0,
-        0,
-        0,
-        height
-    );
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            height
+        );
 
 
     if(color === "#e00000"){
@@ -1836,6 +1846,7 @@ function drawSmoothLine(
         );
 
     }
+
     else{
 
         gradient.addColorStop(
@@ -1852,15 +1863,13 @@ function drawSmoothLine(
 
 
     ctx.fillStyle =
-    gradient;
+        gradient;
 
 
     ctx.fill();
 
 
-    /* =========================
-       LINE
-    ========================= */
+    /* LINE */
 
     ctx.beginPath();
 
@@ -1878,18 +1887,18 @@ function drawSmoothLine(
     ){
 
         const previous =
-        points[i - 1];
+            points[i - 1];
 
 
         const current =
-        points[i];
+            points[i];
 
 
         const midX =
-        (
-            previous.x +
-            current.x
-        ) / 2;
+            (
+                previous.x +
+                current.x
+            ) / 2;
 
 
         ctx.quadraticCurveTo(
@@ -1912,54 +1921,47 @@ function drawSmoothLine(
 
 
     ctx.strokeStyle =
-    color;
+        color;
 
 
-    ctx.lineWidth =
-    3;
+    ctx.lineWidth = 3;
 
 
     ctx.lineJoin =
-    "round";
+        "round";
 
 
     ctx.lineCap =
-    "round";
+        "round";
 
 
-    ctx.shadowBlur =
-    7;
+    ctx.shadowBlur = 7;
 
 
     ctx.shadowColor =
-    color;
+        color;
 
 
     ctx.stroke();
 
 
-    ctx.shadowBlur =
-    0;
+    ctx.shadowBlur = 0;
 
 
-    /* =========================
-       CURRENT POINT
-    ========================= */
+    /* CURRENT POINT */
 
     const pointIndex =
-    Math.max(
-        0,
-        data.length - 3
-    );
+        Math.max(
+            0,
+            data.length - 3
+        );
 
 
     const point =
-    points[
-        pointIndex
-    ];
+        points[
+            pointIndex
+        ];
 
-
-    /* glow */
 
     ctx.beginPath();
 
@@ -1974,15 +1976,13 @@ function drawSmoothLine(
 
 
     ctx.fillStyle =
-    color === "#e00000"
-    ? "rgba(224,0,0,.14)"
-    : "rgba(11,155,84,.14)";
+        color === "#e00000"
+            ? "rgba(224,0,0,.14)"
+            : "rgba(11,155,84,.14)";
 
 
     ctx.fill();
 
-
-    /* white border */
 
     ctx.beginPath();
 
@@ -1997,13 +1997,11 @@ function drawSmoothLine(
 
 
     ctx.fillStyle =
-    "#ffffff";
+        "#ffffff";
 
 
     ctx.fill();
 
-
-    /* point */
 
     ctx.beginPath();
 
@@ -2018,7 +2016,7 @@ function drawSmoothLine(
 
 
     ctx.fillStyle =
-    color;
+        color;
 
 
     ctx.fill();
@@ -2027,35 +2025,35 @@ function drawSmoothLine(
 
 
 /* =====================================================
-   UPDATE
+   UPDATE SPEED
 ===================================================== */
 
 function updateSpeed(){
 
     download =
-    changeSpeed(
-        download,
-        4.5,
-        9.5,
-        .18
-    );
+        changeSpeed(
+            download,
+            4.5,
+            9.5,
+            .18
+        );
 
 
     upload =
-    changeSpeed(
-        upload,
-        .6,
-        2.2,
-        .07
-    );
+        changeSpeed(
+            upload,
+            .6,
+            2.2,
+            .07
+        );
 
 
     downloadElement.textContent =
-    download.toFixed(1);
+        download.toFixed(1);
 
 
     uploadElement.textContent =
-    upload.toFixed(1);
+        upload.toFixed(1);
 
 
     downloadHistory.push(
@@ -2094,7 +2092,7 @@ function updateSpeed(){
 
 
 /* =====================================================
-   START
+   INITIAL GRAPH DATA
 ===================================================== */
 
 for(
@@ -2120,15 +2118,12 @@ for(
 resizeCanvas();
 
 
-/* Smooth graph */
-
 setInterval(
     updateSpeed,
     200
 );
 
 </script>
-
 
 </body>
 
