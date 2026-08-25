@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Customer Dashboard</title>
+<title>Customer Portal</title>
 
 <style>
 
@@ -17,34 +18,76 @@
     font-family:Arial,Helvetica,sans-serif;
 }
 
-:root{
-    --bg:#f3f7f5;
-    --card:#ffffff;
-    --text:#17211d;
-    --muted:#7b8580;
-    --border:#dfe7e3;
-    --green:#087a4b;
-    --green2:#12b86b;
-    --red:#e00000;
-    --shadow:0 8px 30px rgba(0,0,0,.06);
-}
-
-body.dark{
-    --bg:#07100c;
-    --card:#101914;
-    --text:#ffffff;
-    --muted:#9ca9a3;
-    --border:#26342d;
-    --green:#19b86b;
-    --green2:#20d77d;
-    --shadow:0 10px 35px rgba(0,0,0,.4);
-}
-
 body{
+
     min-height:100vh;
-    background:var(--bg);
-    color:var(--text);
-    transition:.3s;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(0,255,170,.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 88% 80%,
+            rgba(0,140,255,.17),
+            transparent 34%
+        ),
+        linear-gradient(
+            135deg,
+            #020617,
+            #071b2e,
+            #061b16
+        );
+
+    color:white;
+
+    overflow-x:hidden;
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.bg-circle{
+
+    position:fixed;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    filter:blur(3px);
+
+    z-index:0;
+
+}
+
+.c1{
+
+    width:300px;
+    height:300px;
+
+    left:-120px;
+    top:-100px;
+
+    background:
+        rgba(0,255,170,.10);
+
+}
+
+.c2{
+
+    width:380px;
+    height:380px;
+
+    right:-160px;
+    bottom:-150px;
+
+    background:
+        rgba(0,140,255,.10);
+
 }
 
 
@@ -53,94 +96,140 @@ body{
 ===================================================== */
 
 .header{
+
     height:65px;
-    background:var(--card);
-    border-bottom:1px solid var(--border);
+
+    width:100%;
+
+    background:
+        rgba(5,15,25,.82);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.09);
+
+    backdrop-filter:
+        blur(18px);
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
-    padding:0 18px;
+    padding:
+        0 18px;
 
     position:sticky;
+
     top:0;
-    z-index:1000;
+
+    z-index:100;
+
 }
 
-.logo-area{
+.brand{
+
     display:flex;
+
     align-items:center;
+
     gap:10px;
+
 }
 
-.logo{
+.brand-icon{
+
     width:38px;
+
     height:38px;
 
+    border-radius:11px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
-    border-radius:11px;
+    font-size:18px;
 
     background:
         linear-gradient(
             135deg,
-            var(--green),
-            var(--green2)
+            #00d084,
+            #008cff
         );
 
-    color:#fff;
-    font-size:19px;
-
     box-shadow:
-        0 6px 18px rgba(8,122,75,.25);
+        0 8px 25px
+        rgba(0,180,255,.20);
+
 }
 
-.logo-text{
-    color:var(--green);
-    font-size:18px;
+.brand-text{
+
+    font-size:17px;
+
     font-weight:800;
+
 }
 
 .header-right{
+
     display:flex;
+
     align-items:center;
+
     gap:8px;
+
 }
 
 .theme-btn{
+
     width:36px;
+
     height:36px;
 
     border-radius:50%;
 
-    border:1px solid var(--border);
+    border:
+        1px solid
+        rgba(255,255,255,.10);
 
-    background:var(--card);
-    color:var(--text);
+    background:
+        rgba(255,255,255,.05);
+
+    color:white;
 
     cursor:pointer;
 
-    font-size:15px;
 }
 
-.logout-btn{
+.logout{
+
     border:0;
 
-    background:var(--green);
+    background:
+        linear-gradient(
+            135deg,
+            #00c878,
+            #008cff
+        );
 
-    color:#fff;
+    color:white;
 
-    padding:10px 16px;
+    padding:
+        10px 15px;
 
     border-radius:9px;
 
-    font-size:13px;
-    font-weight:800;
+    font-size:12px;
+
+    font-weight:bold;
 
     cursor:pointer;
+
 }
 
 
@@ -149,12 +238,20 @@ body{
 ===================================================== */
 
 .container{
+
     width:100%;
+
     max-width:700px;
 
     margin:auto;
 
-    padding:22px 15px 40px;
+    padding:
+        22px 15px 40px;
+
+    position:relative;
+
+    z-index:2;
+
 }
 
 
@@ -163,45 +260,72 @@ body{
 ===================================================== */
 
 .loading{
+
     position:fixed;
+
     inset:0;
 
-    background:var(--bg);
+    background:
+        linear-gradient(
+            135deg,
+            #020617,
+            #071b2e,
+            #061b16
+        );
 
     display:flex;
-    flex-direction:column;
 
-    justify-content:center;
     align-items:center;
 
+    justify-content:center;
+
+    flex-direction:column;
+
     z-index:9999;
+
 }
 
 .spinner{
+
     width:42px;
+
     height:42px;
 
-    border:4px solid var(--border);
+    border:
+        4px solid
+        rgba(255,255,255,.12);
 
-    border-top-color:var(--green);
+    border-top-color:
+        #00d084;
+
+    border-right-color:
+        #008cff;
 
     border-radius:50%;
 
-    animation:spin .8s linear infinite;
+    animation:
+        spin .8s linear infinite;
 
     margin-bottom:12px;
+
 }
 
 @keyframes spin{
+
     to{
         transform:rotate(360deg);
     }
+
 }
 
 .loading-text{
-    font-size:13px;
-    color:var(--muted);
-    font-weight:700;
+
+    color:#9ca3af;
+
+    font-size:12px;
+
+    font-weight:bold;
+
 }
 
 
@@ -210,13 +334,17 @@ body{
 ===================================================== */
 
 .error{
+
     display:none;
 
-    background:#fff0f0;
+    background:
+        rgba(255,70,70,.10);
 
-    border:1px solid #ffcaca;
+    border:
+        1px solid
+        rgba(255,80,80,.25);
 
-    color:#c62828;
+    color:#ff7777;
 
     border-radius:12px;
 
@@ -224,9 +352,12 @@ body{
 
     margin-bottom:13px;
 
-    font-size:13px;
+    font-size:12px;
 
-    font-weight:700;
+    font-weight:bold;
+
+    text-align:center;
+
 }
 
 
@@ -235,11 +366,15 @@ body{
 ===================================================== */
 
 .profile{
-    background:var(--card);
 
-    border:1px solid var(--border);
+    background:
+        rgba(10,20,32,.82);
 
-    border-radius:18px;
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius:20px;
 
     padding:18px;
 
@@ -249,81 +384,114 @@ body{
 
     gap:15px;
 
-    box-shadow:var(--shadow);
+    box-shadow:
+        0 20px 55px
+        rgba(0,0,0,.30);
+
+    backdrop-filter:
+        blur(18px);
 
     margin-bottom:13px;
+
 }
 
 .profile-photo{
+
     width:82px;
+
     height:82px;
 
     border-radius:50%;
 
     object-fit:cover;
 
-    background:#dff2e8;
+    background:#123;
 
-    border:4px solid var(--bg);
+    border:
+        3px solid
+        rgba(0,208,132,.35);
 
     box-shadow:
-        0 6px 20px rgba(0,0,0,.12);
+        0 8px 28px
+        rgba(0,0,0,.35);
+
 }
 
 .profile-info{
+
     flex:1;
+
     min-width:0;
+
 }
 
 .profile-name{
+
     font-size:21px;
+
     font-weight:900;
 
     margin-bottom:4px;
 
     word-break:break-word;
+
 }
 
 .profile-username{
+
+    color:#8e9aaa;
+
     font-size:12px;
 
-    color:var(--muted);
+    margin-bottom:9px;
 
-    margin-bottom:8px;
 }
 
 .online{
+
     display:inline-flex;
 
     align-items:center;
 
     gap:6px;
 
-    background:#e8f7ef;
-
-    color:#08783d;
+    padding:
+        6px 10px;
 
     border-radius:20px;
 
-    padding:6px 10px;
+    background:
+        rgba(0,208,132,.10);
 
-    font-size:10px;
+    border:
+        1px solid
+        rgba(0,208,132,.15);
 
-    font-weight:800;
+    color:#35e89a;
+
+    font-size:9px;
+
+    font-weight:bold;
+
 }
 
 .online-dot{
+
     width:7px;
+
     height:7px;
 
     border-radius:50%;
 
-    background:#0ab456;
+    background:#00d084;
 
     box-shadow:
-        0 0 7px #0ab456;
+        0 0 8px
+        #00d084;
 
-    animation:pulse 1.1s infinite;
+    animation:
+        pulse 1.1s infinite;
+
 }
 
 @keyframes pulse{
@@ -342,19 +510,22 @@ body{
 
 
 /* =====================================================
-   SECTION
+   SECTION TITLE
 ===================================================== */
 
 .section-title{
-    font-size:11px;
+
+    color:#8190a0;
+
+    font-size:10px;
 
     font-weight:900;
 
-    color:var(--muted);
+    letter-spacing:.6px;
 
-    margin:19px 2px 8px;
+    margin:
+        18px 2px 8px;
 
-    letter-spacing:.4px;
 }
 
 
@@ -363,13 +534,16 @@ body{
 ===================================================== */
 
 .two{
+
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap:11px;
 
     margin-bottom:11px;
+
 }
 
 
@@ -378,37 +552,51 @@ body{
 ===================================================== */
 
 .info-card{
-    background:var(--card);
 
-    border:1px solid var(--border);
+    background:
+        rgba(10,20,32,.80);
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
 
     border-radius:13px;
 
     padding:14px;
 
-    box-shadow:var(--shadow);
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.20);
+
+    backdrop-filter:
+        blur(14px);
+
 }
 
 .label{
+
     font-size:9px;
 
-    color:var(--muted);
+    color:#778596;
 
     font-weight:900;
 
     letter-spacing:.5px;
 
     margin-bottom:7px;
+
 }
 
 .value{
-    font-size:15px;
 
-    color:var(--text);
+    color:white;
+
+    font-size:15px;
 
     font-weight:800;
 
     word-break:break-word;
+
 }
 
 
@@ -417,29 +605,40 @@ body{
 ===================================================== */
 
 .mac-card{
-    background:var(--card);
 
-    border:1px solid var(--border);
+    background:
+        rgba(10,20,32,.80);
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
 
     border-radius:13px;
 
     padding:14px;
 
-    box-shadow:var(--shadow);
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.20);
 
     margin-bottom:11px;
+
 }
 
 .mac{
+
     font-family:monospace;
 
-    font-size:16px;
+    color:#dce6ee;
+
+    font-size:15px;
 
     font-weight:900;
 
-    letter-spacing:.5px;
+    letter-spacing:.6px;
 
     word-break:break-all;
+
 }
 
 
@@ -448,68 +647,75 @@ body{
 ===================================================== */
 
 .speed-card{
-    background:
-        linear-gradient(
-            145deg,
-            var(--card),
-            var(--bg)
-        );
 
-    border:1px solid var(--border);
+    background:
+        rgba(10,20,32,.82);
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
 
     border-radius:18px;
 
     padding:17px;
 
-    box-shadow:var(--shadow);
+    box-shadow:
+        0 20px 55px
+        rgba(0,0,0,.28);
+
+    backdrop-filter:
+        blur(18px);
 
     margin-bottom:13px;
+
 }
 
 .speed-header{
-    display:flex;
 
-    justify-content:space-between;
+    display:flex;
 
     align-items:center;
 
+    justify-content:space-between;
+
     margin-bottom:14px;
+
 }
 
 .speed-title{
-    font-size:14px;
+
+    font-size:13px;
+
     font-weight:900;
+
 }
 
 .live{
+
     display:flex;
 
     align-items:center;
 
     gap:5px;
 
-    background:#e8f7ef;
-
-    color:#08783d;
-
-    padding:6px 9px;
+    padding:
+        6px 9px;
 
     border-radius:20px;
+
+    color:#35e89a;
+
+    background:
+        rgba(0,208,132,.09);
+
+    border:
+        1px solid
+        rgba(0,208,132,.14);
 
     font-size:9px;
 
     font-weight:900;
-}
 
-.live-dot{
-    width:6px;
-    height:6px;
-
-    border-radius:50%;
-
-    background:#0ab456;
-
-    animation:pulse 1s infinite;
 }
 
 
@@ -518,65 +724,83 @@ body{
 ===================================================== */
 
 .speed-values{
+
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap:10px;
 
     margin-bottom:12px;
+
 }
 
 .speed-box{
-    background:var(--bg);
 
-    border:1px solid var(--border);
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
     border-radius:13px;
 
     padding:13px;
+
 }
 
 .speed-label{
+
     font-size:9px;
 
     font-weight:900;
 
     margin-bottom:6px;
+
 }
 
 .download{
-    color:var(--red);
+
+    color:#ff5252;
+
 }
 
 .upload{
-    color:#0b9b54;
+
+    color:#35e89a;
+
 }
 
 .speed-number{
+
     display:flex;
 
     align-items:baseline;
 
     gap:5px;
+
 }
 
 .speed-number strong{
+
     font-size:25px;
 
     font-weight:900;
 
-    color:var(--text);
+    color:white;
 
-    transition:.25s;
 }
 
 .speed-number span{
+
     font-size:9px;
 
-    color:var(--muted);
+    color:#778596;
 
     font-weight:900;
+
 }
 
 
@@ -585,86 +809,100 @@ body{
 ===================================================== */
 
 .graph{
+
     width:100%;
+
     height:190px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
     border-radius:13px;
 
     overflow:hidden;
 
     background:
-        linear-gradient(
-            to bottom,
-            rgba(128,128,128,.02),
-            rgba(128,128,128,.08)
-        );
+        rgba(0,0,0,.15);
+
 }
 
 #canvas{
+
     width:100%;
+
     height:100%;
+
     display:block;
+
 }
 
 .graph-note{
+
     text-align:center;
 
-    color:var(--muted);
+    color:#657385;
 
     font-size:9px;
 
     margin-top:7px;
+
 }
 
 
 /* =====================================================
-   BILL
+   BILL CARD
 ===================================================== */
 
 .bill-card{
+
     background:
         linear-gradient(
             135deg,
-            var(--green),
-            var(--green2)
+            rgba(0,200,120,.95),
+            rgba(0,140,255,.95)
         );
 
-    color:#fff;
-
-    border-radius:16px;
+    border-radius:17px;
 
     padding:18px;
 
     box-shadow:
-        0 10px 30px rgba(8,122,75,.22);
+        0 15px 40px
+        rgba(0,160,200,.18);
 
     margin-bottom:12px;
+
 }
 
 .bill-label{
-    font-size:10px;
 
-    opacity:.8;
+    font-size:9px;
 
     font-weight:900;
 
-    margin-bottom:6px;
+    opacity:.75;
+
+    margin-bottom:5px;
+
 }
 
 .bill{
+
     font-size:29px;
 
     font-weight:900;
+
 }
 
 .bill-date{
-    font-size:11px;
+
+    font-size:10px;
+
+    opacity:.85;
 
     margin-top:5px;
 
-    opacity:.85;
 }
 
 
@@ -673,27 +911,38 @@ body{
 ===================================================== */
 
 .address-card{
-    background:var(--card);
 
-    border:1px solid var(--border);
+    background:
+        rgba(10,20,32,.82);
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
 
     border-radius:13px;
 
     padding:15px;
 
-    box-shadow:var(--shadow);
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.20);
 
     margin-bottom:12px;
+
 }
 
 .address{
-    font-size:15px;
+
+    color:#edf2f6;
+
+    font-size:14px;
+
+    font-weight:700;
 
     line-height:1.5;
 
-    font-weight:800;
-
     word-break:break-word;
+
 }
 
 
@@ -702,13 +951,15 @@ body{
 ===================================================== */
 
 .footer{
+
     text-align:center;
 
-    color:var(--muted);
+    color:#596879;
 
     font-size:9px;
 
     padding:10px;
+
 }
 
 
@@ -719,60 +970,65 @@ body{
 @media(max-width:520px){
 
     .header{
+
         height:60px;
+
         padding:0 12px;
+
     }
 
-    .logo{
+    .brand-icon{
+
         width:34px;
+
         height:34px;
+
     }
 
-    .logo-text{
-        font-size:16px;
+    .brand-text{
+
+        font-size:15px;
+
     }
 
-    .logout-btn{
-        padding:9px 12px;
-        font-size:12px;
-    }
+    .logout{
 
-    .theme-btn{
-        width:34px;
-        height:34px;
+        padding:
+            9px 12px;
+
     }
 
     .container{
-        padding:16px 12px 30px;
-    }
 
-    .profile{
-        padding:15px;
+        padding:
+            16px 12px 30px;
+
     }
 
     .profile-photo{
+
         width:70px;
+
         height:70px;
+
     }
 
     .profile-name{
+
         font-size:18px;
-    }
 
-    .value{
-        font-size:14px;
-    }
-
-    .mac{
-        font-size:14px;
     }
 
     .speed-number strong{
+
         font-size:21px;
+
     }
 
     .graph{
+
         height:175px;
+
     }
 
 }
@@ -780,11 +1036,15 @@ body{
 @media(max-width:360px){
 
     .two{
+
         grid-template-columns:1fr;
+
     }
 
     .speed-values{
+
         grid-template-columns:1fr;
+
     }
 
 }
@@ -794,6 +1054,9 @@ body{
 </head>
 
 <body>
+
+<div class="bg-circle c1"></div>
+<div class="bg-circle c2"></div>
 
 <!-- =====================================================
      LOADING
@@ -818,13 +1081,13 @@ body{
 <header class="header">
 
 ```
-<div class="logo-area">
+<div class="brand">
 
-    <div class="logo">
+    <div class="brand-icon">
         ◈
     </div>
 
-    <div class="logo-text">
+    <div class="brand-text">
         Customer Portal
     </div>
 
@@ -844,7 +1107,7 @@ body{
 
 
     <button
-        class="logout-btn"
+        class="logout"
         onclick="logout()">
 
         Logout
@@ -862,7 +1125,10 @@ body{
 
 <main class="container">
 
-<div id="errorBox" class="error"></div>
+<div
+    id="errorBox"
+    class="error">
+</div>
 
 <!-- PROFILE -->
 
@@ -872,7 +1138,8 @@ body{
 <img
     id="photo"
     class="profile-photo"
-    alt="Profile Photo">
+    alt="Profile">
+
 
 <div class="profile-info">
 
@@ -884,6 +1151,7 @@ body{
 
     </div>
 
+
     <div
         id="profileUsername"
         class="profile-username">
@@ -891,6 +1159,7 @@ body{
         @username
 
     </div>
+
 
     <div class="online">
 
@@ -907,7 +1176,9 @@ body{
 
 </div>
 
-<!-- ACCOUNT -->
+<!-- =====================================================
+     ACCOUNT
+===================================================== -->
 
 <div class="section-title">
     ACCOUNT INFORMATION
@@ -1013,7 +1284,9 @@ body{
 
 </div>
 
-<!-- SPEED -->
+<!-- =====================================================
+     SPEED
+===================================================== -->
 
 <div class="section-title">
     INTERNET ACTIVITY
@@ -1027,6 +1300,7 @@ body{
     <div class="speed-title">
         📶 LIVE INTERNET SPEED
     </div>
+
 
     <div class="live">
 
@@ -1047,6 +1321,7 @@ body{
         <div class="speed-label download">
             DOWNLOAD
         </div>
+
 
         <div class="speed-number">
 
@@ -1069,6 +1344,7 @@ body{
             UPLOAD
         </div>
 
+
         <div class="speed-number">
 
             <strong id="upload">
@@ -1088,7 +1364,9 @@ body{
 
 <div class="graph">
 
-    <canvas id="canvas"></canvas>
+    <canvas
+        id="canvas">
+    </canvas>
 
 </div>
 
@@ -1100,7 +1378,9 @@ body{
 
 </div>
 
-<!-- BILLING -->
+<!-- =====================================================
+     BILLING
+===================================================== -->
 
 <div class="section-title">
     BILLING INFORMATION
@@ -1113,6 +1393,7 @@ body{
     CURRENT BILL
 </div>
 
+
 <div
     id="bill"
     class="bill">
@@ -1121,12 +1402,14 @@ body{
 
 </div>
 
+
 <div class="bill-date">
 
     Billing Date:
 
     <span id="billingDate">
         --
+
     </span>
 
 </div>
@@ -1142,6 +1425,7 @@ body{
 <div class="label">
     ADDRESS
 </div>
+
 
 <div
     id="address"
@@ -1165,6 +1449,7 @@ body{
         CONNECTION STATUS
     </div>
 
+
     <div
         id="connectionStatus"
         class="value">
@@ -1182,6 +1467,7 @@ body{
         ACCOUNT STATUS
     </div>
 
+
     <div
         id="status"
         class="value">
@@ -1196,7 +1482,7 @@ body{
 </div>
 
 <div class="footer">
-    Customer Dashboard
+    Customer Portal
 </div>
 
 </main>
@@ -1205,7 +1491,7 @@ body{
 
 
 /* =====================================================
-   APPS SCRIPT URL
+   API URL
 ===================================================== */
 
 const API_URL =
@@ -1216,16 +1502,45 @@ const API_URL =
    LOGIN CHECK
 ===================================================== */
 
-const loggedIn =
-sessionStorage.getItem("loggedIn");
+/*
+ * তোমার index.html localStorage এবং
+ * sessionStorage দুটোতেই login save করে।
+ *
+ * তাই এখানে দুটোই check করা হচ্ছে।
+ */
 
-const sessionUsername =
-sessionStorage.getItem("username");
+const localLogin =
+localStorage.getItem(
+    "loggedIn"
+);
+
+
+const sessionLogin =
+sessionStorage.getItem(
+    "loggedIn"
+);
+
+
+const usernameFromSession =
+sessionStorage.getItem(
+    "username"
+);
+
+
+const usernameFromLocal =
+localStorage.getItem(
+    "username"
+);
+
+
+const currentUsername =
+usernameFromSession ||
+usernameFromLocal;
 
 
 if(
-    loggedIn !== "true" ||
-    !sessionUsername
+    localLogin !== "true" &&
+    sessionLogin !== "true"
 ){
 
     window.location.replace(
@@ -1240,31 +1555,32 @@ if(
 ===================================================== */
 
 const DEFAULT_PHOTO =
-"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23dff2e8'/%3E%3Ccircle cx='150' cy='110' r='55' fill='%2390bda8'/%3E%3Cpath d='M55 290c12-75 55-105 95-105s83 30 95 105' fill='%23087a4b'/%3E%3C/svg%3E";
+"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23071b2e'/%3E%3Ccircle cx='150' cy='110' r='55' fill='%238fa9a0'/%3E%3Cpath d='M55 290c12-75 55-105 95-105s83 30 95 105' fill='%2300c878'/%3E%3C/svg%3E";
 
 
 document.getElementById(
     "photo"
-).src = DEFAULT_PHOTO;
+).src =
+DEFAULT_PHOTO;
 
 
 /* =====================================================
-   HELPERS
+   CLEAN VALUE
 ===================================================== */
 
-function cleanValue(v){
+function cleanValue(value){
 
     if(
-        v === undefined ||
-        v === null ||
-        String(v).trim() === ""
+        value === undefined ||
+        value === null ||
+        String(value).trim() === ""
     ){
 
         return "--";
 
     }
 
-    return String(v);
+    return String(value);
 
 }
 
@@ -1303,16 +1619,26 @@ function showError(message){
 
 async function loadCustomer(){
 
+    if(!currentUsername){
+
+        window.location.replace(
+            "index.html"
+        );
+
+        return;
+
+    }
+
+
     try{
-
-        const username =
-        sessionUsername.trim();
-
 
         const url =
         API_URL +
-        "?action=getCustomer&username=" +
-        encodeURIComponent(username);
+        "?action=getCustomer" +
+        "&username=" +
+        encodeURIComponent(
+            currentUsername
+        );
 
 
         const response =
@@ -1328,7 +1654,7 @@ async function loadCustomer(){
         if(!response.ok){
 
             throw new Error(
-                "Server error"
+                "Server Error"
             );
 
         }
@@ -1339,7 +1665,7 @@ async function loadCustomer(){
 
 
         console.log(
-            "Customer:",
+            "CUSTOMER RESPONSE:",
             result
         );
 
@@ -1369,7 +1695,7 @@ async function loadCustomer(){
         ){
 
             throw new Error(
-                "Invalid customer data"
+                "Customer data not found"
             );
 
         }
@@ -1385,7 +1711,6 @@ async function loadCustomer(){
         ).style.display =
         "none";
 
-
     }
     catch(error){
 
@@ -1393,8 +1718,9 @@ async function loadCustomer(){
             error
         );
 
+
         showError(
-            "Customer information could not be loaded. Check your Code.gs and Apps Script deployment."
+            "Customer data could not be loaded. Please check your Apps Script deployment and Code.gs."
         );
 
     }
@@ -1408,11 +1734,12 @@ async function loadCustomer(){
 
 function displayCustomer(data){
 
+
     const username =
     data.username ??
     data.Username ??
     data.userName ??
-    sessionUsername;
+    currentUsername;
 
 
     const password =
@@ -1436,7 +1763,7 @@ function displayCustomer(data){
     "--";
 
 
-    const downloadValue =
+    const download =
     data.download ??
     data.Download ??
     data.downloadSpeed ??
@@ -1444,7 +1771,7 @@ function displayCustomer(data){
     0;
 
 
-    const uploadValue =
+    const upload =
     data.upload ??
     data.Upload ??
     data.uploadSpeed ??
@@ -1459,7 +1786,7 @@ function displayCustomer(data){
     "--";
 
 
-    const phoneValue =
+    const phone =
     data.phone ??
     data.Phone ??
     data.number ??
@@ -1467,7 +1794,7 @@ function displayCustomer(data){
     "--";
 
 
-    const billValue =
+    const bill =
     data.bill ??
     data.Bill ??
     data.amount ??
@@ -1475,20 +1802,20 @@ function displayCustomer(data){
     0;
 
 
-    const billingValue =
+    const billingDate =
     data.billingDate ??
     data.BillingDate ??
     data.billing ??
     "--";
 
 
-    const addressValue =
+    const address =
     data.address ??
     data.Address ??
     "--";
 
 
-    const photoValue =
+    const photo =
     data.photo ??
     data.Photo ??
     data.image ??
@@ -1496,13 +1823,13 @@ function displayCustomer(data){
     "";
 
 
-    const statusValue =
+    const status =
     data.status ??
     data.Status ??
     "Active";
 
 
-    const connectionValue =
+    const connection =
     data.connectionStatus ??
     data.ConnectionStatus ??
     data.connection ??
@@ -1549,75 +1876,65 @@ function displayCustomer(data){
     document.getElementById(
         "phone"
     ).textContent =
-    cleanValue(phoneValue);
+    cleanValue(phone);
 
 
     document.getElementById(
         "bill"
     ).textContent =
-    cleanValue(billValue) +
+    cleanValue(bill) +
     " TK";
 
 
     document.getElementById(
         "billingDate"
     ).textContent =
-    cleanValue(billingValue);
+    cleanValue(billingDate);
 
 
     document.getElementById(
         "address"
     ).textContent =
-    cleanValue(addressValue);
+    cleanValue(address);
 
 
     document.getElementById(
         "status"
     ).textContent =
-    cleanValue(statusValue);
+    cleanValue(status);
 
 
     document.getElementById(
         "connection"
     ).textContent =
-    cleanValue(connectionValue);
+    cleanValue(connection);
 
 
     document.getElementById(
         "connectionStatus"
     ).textContent =
-    cleanValue(connectionValue);
+    cleanValue(connection);
 
 
     if(
-        photoValue &&
-        String(photoValue).trim() !== ""
+        photo &&
+        String(photo).trim() !== ""
     ){
 
         document.getElementById(
             "photo"
         ).src =
-        photoValue;
+        photo;
 
     }
 
 
-    /*
-     * IMPORTANT
-     *
-     * Sheet-এর Download/Upload হলো
-     * BASE SPEED.
-     *
-     * এই base speed-এর আশেপাশে
-     * live variation হবে।
-     */
-
     baseDownload =
-    Number(downloadValue) || 0;
+    Number(download) || 0;
 
 
     baseUpload =
-    Number(uploadValue) || 0;
+    Number(upload) || 0;
 
 
     currentDownload =
@@ -1628,17 +1945,7 @@ function displayCustomer(data){
     baseUpload;
 
 
-    document.getElementById(
-        "download"
-    ).textContent =
-    currentDownload.toFixed(1);
-
-
-    document.getElementById(
-        "upload"
-    ).textContent =
-    currentUpload.toFixed(1);
-
+    createNewTarget();
 
     initializeGraph();
 
@@ -1651,6 +1958,15 @@ function displayCustomer(data){
 
 function logout(){
 
+    localStorage.removeItem(
+        "loggedIn"
+    );
+
+    localStorage.removeItem(
+        "username"
+    );
+
+
     sessionStorage.removeItem(
         "loggedIn"
     );
@@ -1659,89 +1975,12 @@ function logout(){
         "username"
     );
 
-    sessionStorage.removeItem(
-        "user"
-    );
-
 
     window.location.replace(
         "index.html"
     );
 
 }
-
-
-/* =====================================================
-   THEME
-===================================================== */
-
-const themeBtn =
-document.getElementById(
-    "themeBtn"
-);
-
-
-function loadTheme(){
-
-    const saved =
-    localStorage.getItem(
-        "customerTheme"
-    );
-
-
-    if(saved === "dark"){
-
-        document.body.classList.add(
-            "dark"
-        );
-
-        themeBtn.textContent =
-        "☀";
-
-    }
-    else{
-
-        themeBtn.textContent =
-        "☾";
-
-    }
-
-}
-
-
-function toggleTheme(){
-
-    document.body.classList.toggle(
-        "dark"
-    );
-
-
-    const dark =
-    document.body.classList.contains(
-        "dark"
-    );
-
-
-    localStorage.setItem(
-        "customerTheme",
-        dark
-        ? "dark"
-        : "light"
-    );
-
-
-    themeBtn.textContent =
-    dark
-    ? "☀"
-    : "☾";
-
-
-    drawGraph();
-
-}
-
-
-loadTheme();
 
 
 /* =====================================================
@@ -1765,34 +2004,26 @@ let downloadHistory = [];
 let uploadHistory = [];
 
 
-const MAX_POINTS = 75;
+const MAX_POINTS = 70;
 
 
 /* =====================================================
-   CREATE NEW TARGET
+   NEW TARGET
 ===================================================== */
 
 function createNewTarget(){
 
-    /*
-     * Download variation:
-     *
-     * Base-এর প্রায় ±18%
-     *
-     * minimum 0.2 Mbps
-     */
-
     const downloadVariation =
     Math.max(
-        baseDownload * 0.18,
-        0.35
+        baseDownload * .20,
+        .35
     );
 
 
     const uploadVariation =
     Math.max(
-        baseUpload * 0.22,
-        0.15
+        baseUpload * .25,
+        .15
     );
 
 
@@ -1812,60 +2043,56 @@ function createNewTarget(){
     uploadVariation;
 
 
-    if(
-        downloadTarget < 0.2
-    ){
-
-        downloadTarget = 0.2;
-
-    }
+    downloadTarget =
+    Math.max(
+        .2,
+        downloadTarget
+    );
 
 
-    if(
-        uploadTarget < 0.1
-    ){
-
-        uploadTarget = 0.1;
-
-    }
+    uploadTarget =
+    Math.max(
+        .1,
+        uploadTarget
+    );
 
 }
 
 
 /* =====================================================
-   SMOOTH SPEED MOVEMENT
+   SPEED UPDATE
 ===================================================== */
 
-function smoothSpeed(){
+function updateSpeed(){
 
     /*
-     * Target-এর দিকে ধীরে ধীরে যাবে।
-     * তাই sudden jump হবে না।
+     * ধীরে ধীরে target-এর দিকে যাবে।
      */
 
     currentDownload +=
     (
         downloadTarget -
         currentDownload
-    ) * 0.035;
+    ) * .045;
 
 
     currentUpload +=
     (
         uploadTarget -
         currentUpload
-    ) * 0.045;
+    ) * .055;
 
 
     /*
-     * মাঝে মাঝে নতুন target তৈরি
+     * Target-এর কাছাকাছি গেলে
+     * নতুন target তৈরি হবে।
      */
 
     if(
         Math.abs(
             currentDownload -
             downloadTarget
-        ) < 0.08
+        ) < .08
     ){
 
         createNewTarget();
@@ -1921,7 +2148,77 @@ function smoothSpeed(){
 
 
 /* =====================================================
-   GRAPH INIT
+   CANVAS
+===================================================== */
+
+const canvas =
+document.getElementById(
+    "canvas"
+);
+
+const ctx =
+canvas.getContext(
+    "2d"
+);
+
+
+/* =====================================================
+   RESIZE
+===================================================== */
+
+function resizeCanvas(){
+
+    const rect =
+    canvas.parentElement
+    .getBoundingClientRect();
+
+
+    const ratio =
+    window.devicePixelRatio ||
+    1;
+
+
+    canvas.width =
+    rect.width * ratio;
+
+
+    canvas.height =
+    rect.height * ratio;
+
+
+    canvas.style.width =
+    rect.width +
+    "px";
+
+
+    canvas.style.height =
+    rect.height +
+    "px";
+
+
+    ctx.setTransform(
+        ratio,
+        0,
+        0,
+        ratio,
+        0,
+        0
+    );
+
+
+    drawGraph();
+
+}
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+/* =====================================================
+   INITIAL GRAPH
 ===================================================== */
 
 function initializeGraph(){
@@ -1931,27 +2228,11 @@ function initializeGraph(){
     uploadHistory = [];
 
 
-    currentDownload =
-    baseDownload;
-
-
-    currentUpload =
-    baseUpload;
-
-
-    createNewTarget();
-
-
     for(
         let i=0;
         i<MAX_POINTS;
         i++
     ){
-
-        /*
-         * Initial graph-ও একই base-এর
-         * আশেপাশে থাকবে।
-         */
 
         const d =
         baseDownload +
@@ -1999,71 +2280,7 @@ function initializeGraph(){
 
 
 /* =====================================================
-   CANVAS RESIZE
-===================================================== */
-
-const canvas =
-document.getElementById(
-    "canvas"
-);
-
-const ctx =
-canvas.getContext(
-    "2d"
-);
-
-
-function resizeCanvas(){
-
-    const rect =
-    canvas.parentElement
-    .getBoundingClientRect();
-
-
-    const ratio =
-    window.devicePixelRatio ||
-    1;
-
-
-    canvas.width =
-    rect.width * ratio;
-
-
-    canvas.height =
-    rect.height * ratio;
-
-
-    canvas.style.width =
-    rect.width + "px";
-
-
-    canvas.style.height =
-    rect.height + "px";
-
-
-    ctx.setTransform(
-        ratio,
-        0,
-        0,
-        ratio,
-        0,
-        0
-    );
-
-
-    drawGraph();
-
-}
-
-
-window.addEventListener(
-    "resize",
-    resizeCanvas
-);
-
-
-/* =====================================================
-   DRAW GRAPH
+   GRAPH
 ===================================================== */
 
 function drawGraph(){
@@ -2094,16 +2311,6 @@ function drawGraph(){
     );
 
 
-    const dark =
-    document.body.classList.contains(
-        "dark"
-    );
-
-
-    /*
-     * Dynamic graph scale
-     */
-
     const highest =
     Math.max(
         baseDownload,
@@ -2126,9 +2333,7 @@ function drawGraph(){
     ctx.lineWidth = 1;
 
     ctx.strokeStyle =
-    dark
-    ? "rgba(255,255,255,.055)"
-    : "rgba(0,0,0,.055)";
+    "rgba(255,255,255,.055)";
 
 
     for(
@@ -2160,18 +2365,18 @@ function drawGraph(){
     }
 
 
-    drawSmoothLine(
+    drawLine(
         downloadHistory,
-        "#e00000",
+        "#ff3b3b",
         width,
         height,
         maxValue
     );
 
 
-    drawSmoothLine(
+    drawLine(
         uploadHistory,
-        "#0b9b54",
+        "#00d084",
         width,
         height,
         maxValue
@@ -2181,10 +2386,10 @@ function drawGraph(){
 
 
 /* =====================================================
-   SMOOTH LINE
+   DRAW LINE
 ===================================================== */
 
-function drawSmoothLine(
+function drawLine(
     data,
     color,
     width,
@@ -2205,7 +2410,10 @@ function drawSmoothLine(
 
 
     data.forEach(
-        function(value,index){
+        function(
+            value,
+            index
+        ){
 
             const x =
             (
@@ -2217,17 +2425,10 @@ function drawSmoothLine(
             width;
 
 
-            const safeValue =
-            Math.max(
-                0,
-                value
-            );
-
-
             const y =
             height -
             (
-                safeValue /
+                value /
                 maxValue
             ) *
             (
@@ -2245,7 +2446,9 @@ function drawSmoothLine(
     );
 
 
-    /* AREA */
+    /*
+     * AREA
+     */
 
     ctx.beginPath();
 
@@ -2266,30 +2469,30 @@ function drawSmoothLine(
         i++
     ){
 
-        const previous =
+        const p =
         points[i-1];
 
-        const current =
+        const c =
         points[i];
 
 
         const midX =
         (
-            previous.x +
-            current.x
+            p.x +
+            c.x
         ) / 2;
 
 
         const midY =
         (
-            previous.y +
-            current.y
+            p.y +
+            c.y
         ) / 2;
 
 
         ctx.quadraticCurveTo(
-            previous.x,
-            previous.y,
+            p.x,
+            p.y,
             midX,
             midY
         );
@@ -2308,12 +2511,10 @@ function drawSmoothLine(
         last.y
     );
 
-
     ctx.lineTo(
         last.x,
         height
     );
-
 
     ctx.closePath();
 
@@ -2328,17 +2529,17 @@ function drawSmoothLine(
 
 
     if(
-        color === "#e00000"
+        color === "#ff3b3b"
     ){
 
         gradient.addColorStop(
             0,
-            "rgba(224,0,0,.14)"
+            "rgba(255,59,59,.14)"
         );
 
         gradient.addColorStop(
             1,
-            "rgba(224,0,0,0)"
+            "rgba(255,59,59,0)"
         );
 
     }
@@ -2346,12 +2547,12 @@ function drawSmoothLine(
 
         gradient.addColorStop(
             0,
-            "rgba(11,155,84,.14)"
+            "rgba(0,208,132,.14)"
         );
 
         gradient.addColorStop(
             1,
-            "rgba(11,155,84,0)"
+            "rgba(0,208,132,0)"
         );
 
     }
@@ -2363,7 +2564,9 @@ function drawSmoothLine(
     ctx.fill();
 
 
-    /* LINE */
+    /*
+     * LINE
+     */
 
     ctx.beginPath();
 
@@ -2379,30 +2582,30 @@ function drawSmoothLine(
         i++
     ){
 
-        const previous =
+        const p =
         points[i-1];
 
-        const current =
+        const c =
         points[i];
 
 
         const midX =
         (
-            previous.x +
-            current.x
+            p.x +
+            c.x
         ) / 2;
 
 
         const midY =
         (
-            previous.y +
-            current.y
+            p.y +
+            c.y
         ) / 2;
 
 
         ctx.quadraticCurveTo(
-            previous.x,
-            previous.y,
+            p.x,
+            p.y,
             midX,
             midY
         );
@@ -2439,7 +2642,9 @@ function drawSmoothLine(
     ctx.shadowBlur = 0;
 
 
-    /* CURRENT POINT */
+    /*
+     * CURRENT POINT
+     */
 
     ctx.beginPath();
 
@@ -2451,10 +2656,12 @@ function drawSmoothLine(
         Math.PI * 2
     );
 
+
     ctx.fillStyle =
-    color === "#e00000"
-    ? "rgba(224,0,0,.12)"
-    : "rgba(11,155,84,.12)";
+    color === "#ff3b3b"
+    ? "rgba(255,59,59,.12)"
+    : "rgba(0,208,132,.12)";
+
 
     ctx.fill();
 
@@ -2469,10 +2676,61 @@ function drawSmoothLine(
         Math.PI * 2
     );
 
+
     ctx.fillStyle =
     color;
 
     ctx.fill();
+
+}
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const themeBtn =
+document.getElementById(
+    "themeBtn"
+);
+
+
+function toggleTheme(){
+
+    /*
+     * এই version dark theme-কে
+     * primary রাখছে।
+     */
+
+    const body =
+    document.body;
+
+
+    if(
+        body.dataset.theme === "light"
+    ){
+
+        body.dataset.theme =
+        "dark";
+
+        themeBtn.textContent =
+        "☾";
+
+    }
+    else{
+
+        /*
+         * Login page-এর সাথে মিল রাখার
+         * জন্য dark background বজায় থাকবে।
+         */
+
+        body.dataset.theme =
+        "light";
+
+        themeBtn.textContent =
+        "☀";
+
+    }
 
 }
 
@@ -2485,16 +2743,20 @@ loadCustomer();
 
 
 /*
- * প্রতি 250ms graph update হবে।
- * Speed ধীরে ধীরে target-এর দিকে যাবে।
+ * প্রতি 250ms speed update।
+ *
+ * Speed stable থাকবে না।
+ * Base speed-এর আশেপাশে
+ * smoothভাবে কম-বেশি হবে।
  */
 
 setInterval(
-    smoothSpeed,
+    updateSpeed,
     250
 );
 
 </script>
 
 </body>
+
 </html>
