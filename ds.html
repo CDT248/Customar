@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html lang="en">
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Customer Portal</title>
+<title>Customer Dashboard</title>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     margin:0;
@@ -22,94 +18,69 @@
 }
 
 :root{
-
-    --bg:#f4f7f6;
+    --bg:#f3f7f5;
     --card:#ffffff;
-    --text:#18201d;
-    --muted:#7a8580;
-    --border:#e1e7e4;
-
-    --green:#08783d;
-    --green2:#12a85d;
-
+    --text:#17211d;
+    --muted:#7b8580;
+    --border:#dfe7e3;
+    --green:#087a4b;
+    --green2:#12b86b;
     --red:#e00000;
-    --orange:#f59e0b;
-
     --shadow:0 8px 30px rgba(0,0,0,.06);
-
 }
 
 body.dark{
-
-    --bg:#050706;
-    --card:#111412;
+    --bg:#07100c;
+    --card:#101914;
     --text:#ffffff;
-    --muted:#9ca7a1;
-    --border:#272c29;
-
-    --green:#19a866;
-    --green2:#27c978;
-
-    --shadow:0 8px 30px rgba(0,0,0,.30);
-
+    --muted:#9ca9a3;
+    --border:#26342d;
+    --green:#19b86b;
+    --green2:#20d77d;
+    --shadow:0 10px 35px rgba(0,0,0,.4);
 }
 
 body{
-
     min-height:100vh;
-
     background:var(--bg);
-
     color:var(--text);
-
     transition:.3s;
-
 }
 
 
-/* =========================================================
+/* =====================================================
    HEADER
-========================================================= */
+===================================================== */
 
 .header{
-
-    height:66px;
-
+    height:65px;
     background:var(--card);
-
     border-bottom:1px solid var(--border);
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     padding:0 18px;
 
     position:sticky;
-
     top:0;
-
     z-index:1000;
-
 }
 
 .logo-area{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
-
 }
 
-.logo-icon{
-
+.logo{
     width:38px;
-
     height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     border-radius:11px;
 
@@ -120,136 +91,95 @@ body{
             var(--green2)
         );
 
-    color:white;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
+    color:#fff;
     font-size:19px;
 
     box-shadow:
-        0 5px 15px rgba(8,120,61,.25);
-
+        0 6px 18px rgba(8,122,75,.25);
 }
 
-.title{
-
-    font-size:18px;
-
-    font-weight:bold;
-
+.logo-text{
     color:var(--green);
-
+    font-size:18px;
+    font-weight:800;
 }
 
-.header-actions{
-
+.header-right{
     display:flex;
-
     align-items:center;
-
     gap:8px;
-
 }
 
-.icon-btn{
-
+.theme-btn{
     width:36px;
-
     height:36px;
 
-    border-radius:10px;
+    border-radius:50%;
 
     border:1px solid var(--border);
 
     background:var(--card);
-
     color:var(--text);
 
     cursor:pointer;
 
-    position:relative;
-
+    font-size:15px;
 }
 
-.notification-dot{
-
-    position:absolute;
-
-    top:6px;
-
-    right:6px;
-
-    width:7px;
-
-    height:7px;
-
-    border-radius:50%;
-
-    background:#e00000;
-
-    display:none;
-
-}
-
-.logout{
-
+.logout-btn{
     border:0;
 
     background:var(--green);
 
-    color:white;
+    color:#fff;
 
-    padding:10px 15px;
+    padding:10px 16px;
 
     border-radius:9px;
 
-    font-weight:bold;
+    font-size:13px;
+    font-weight:800;
 
     cursor:pointer;
-
 }
 
 
-/* =========================================================
-   CONTAINER
-========================================================= */
+/* =====================================================
+   MAIN
+===================================================== */
 
 .container{
-
     width:100%;
-
     max-width:700px;
 
     margin:auto;
 
-    padding:20px 15px 45px;
-
+    padding:22px 15px 40px;
 }
 
 
-/* =========================================================
+/* =====================================================
    LOADING
-========================================================= */
+===================================================== */
 
 .loading{
+    position:fixed;
+    inset:0;
 
-    text-align:center;
+    background:var(--bg);
 
-    padding:70px 20px;
+    display:flex;
+    flex-direction:column;
 
-    color:var(--muted);
+    justify-content:center;
+    align-items:center;
 
+    z-index:9999;
 }
 
-.loader{
-
-    width:40px;
-
-    height:40px;
+.spinner{
+    width:42px;
+    height:42px;
 
     border:4px solid var(--border);
 
@@ -259,102 +189,59 @@ body{
 
     animation:spin .8s linear infinite;
 
-    margin:0 auto 15px;
-
+    margin-bottom:12px;
 }
 
 @keyframes spin{
-
     to{
         transform:rotate(360deg);
     }
+}
 
+.loading-text{
+    font-size:13px;
+    color:var(--muted);
+    font-weight:700;
 }
 
 
-/* =========================================================
+/* =====================================================
    ERROR
-========================================================= */
+===================================================== */
 
-.error-box{
-
+.error{
     display:none;
 
     background:#fff0f0;
 
-    color:#c80000;
-
     border:1px solid #ffcaca;
 
-    padding:15px;
+    color:#c62828;
 
     border-radius:12px;
 
-    margin-bottom:15px;
+    padding:13px;
 
-    text-align:center;
+    margin-bottom:13px;
 
     font-size:13px;
 
+    font-weight:700;
 }
 
 
-/* =========================================================
-   PROFILE CARD
-========================================================= */
+/* =====================================================
+   PROFILE
+===================================================== */
 
-.profile-card{
+.profile{
+    background:var(--card);
 
-    background:
+    border:1px solid var(--border);
 
-        linear-gradient(
-            135deg,
-            var(--green),
-            var(--green2)
-        );
+    border-radius:18px;
 
-    color:white;
-
-    border-radius:20px;
-
-    padding:20px;
-
-    margin-bottom:14px;
-
-    position:relative;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 12px 35px rgba(8,120,61,.20);
-
-}
-
-.profile-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:180px;
-
-    height:180px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.08);
-
-    right:-70px;
-
-    top:-70px;
-
-}
-
-.profile-content{
-
-    position:relative;
-
-    z-index:2;
+    padding:18px;
 
     display:flex;
 
@@ -362,281 +249,206 @@ body{
 
     gap:15px;
 
+    box-shadow:var(--shadow);
+
+    margin-bottom:13px;
 }
 
 .profile-photo{
-
-    width:72px;
-
-    height:72px;
-
-    border-radius:50%;
-
-    background:#ffffff;
-
-    padding:3px;
-
-    overflow:hidden;
-
-    flex-shrink:0;
-
-}
-
-.profile-photo img{
-
-    width:100%;
-
-    height:100%;
+    width:82px;
+    height:82px;
 
     border-radius:50%;
 
     object-fit:cover;
 
-    display:none;
+    background:#dff2e8;
 
+    border:4px solid var(--bg);
+
+    box-shadow:
+        0 6px 20px rgba(0,0,0,.12);
 }
 
-.default-avatar{
-
-    width:100%;
-
-    height:100%;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#e9f7ef;
-
-    color:var(--green);
-
-    font-size:30px;
-
+.profile-info{
+    flex:1;
+    min-width:0;
 }
 
 .profile-name{
+    font-size:21px;
+    font-weight:900;
 
-    font-size:20px;
+    margin-bottom:4px;
 
-    font-weight:bold;
-
-    margin-bottom:5px;
-
+    word-break:break-word;
 }
 
 .profile-username{
-
     font-size:12px;
 
-    opacity:.85;
+    color:var(--muted);
 
+    margin-bottom:8px;
 }
 
-.status-pill{
-
+.online{
     display:inline-flex;
 
     align-items:center;
 
-    gap:5px;
+    gap:6px;
 
-    margin-top:8px;
+    background:#e8f7ef;
 
-    background:rgba(255,255,255,.16);
-
-    padding:5px 9px;
+    color:#08783d;
 
     border-radius:20px;
 
+    padding:6px 10px;
+
     font-size:10px;
 
-    font-weight:bold;
-
+    font-weight:800;
 }
 
-.status-dot{
-
-    width:6px;
-
-    height:6px;
-
-    background:#75ffad;
+.online-dot{
+    width:7px;
+    height:7px;
 
     border-radius:50%;
 
-    box-shadow:0 0 8px #75ffad;
+    background:#0ab456;
+
+    box-shadow:
+        0 0 7px #0ab456;
+
+    animation:pulse 1.1s infinite;
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        opacity:.45;
+        transform:scale(.8);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.15);
+    }
 
 }
 
 
-/* =========================================================
-   BASIC INFO
-========================================================= */
+/* =====================================================
+   SECTION
+===================================================== */
 
-.info-grid{
+.section-title{
+    font-size:11px;
 
+    font-weight:900;
+
+    color:var(--muted);
+
+    margin:19px 2px 8px;
+
+    letter-spacing:.4px;
+}
+
+
+/* =====================================================
+   TWO COLUMN
+===================================================== */
+
+.two{
     display:grid;
 
     grid-template-columns:1fr 1fr;
 
-    gap:10px;
+    gap:11px;
 
-    margin-bottom:14px;
-
+    margin-bottom:11px;
 }
 
-.info-card{
 
+/* =====================================================
+   INFO CARD
+===================================================== */
+
+.info-card{
     background:var(--card);
 
     border:1px solid var(--border);
 
-    border-radius:14px;
+    border-radius:13px;
+
+    padding:14px;
+
+    box-shadow:var(--shadow);
+}
+
+.label{
+    font-size:9px;
+
+    color:var(--muted);
+
+    font-weight:900;
+
+    letter-spacing:.5px;
+
+    margin-bottom:7px;
+}
+
+.value{
+    font-size:15px;
+
+    color:var(--text);
+
+    font-weight:800;
+
+    word-break:break-word;
+}
+
+
+/* =====================================================
+   MAC
+===================================================== */
+
+.mac-card{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:13px;
 
     padding:14px;
 
     box-shadow:var(--shadow);
 
+    margin-bottom:11px;
 }
 
-.info-label{
+.mac{
+    font-family:monospace;
 
-    color:var(--muted);
+    font-size:16px;
 
-    font-size:10px;
+    font-weight:900;
 
-    font-weight:bold;
-
-    margin-bottom:7px;
-
-    letter-spacing:.3px;
-
-}
-
-.info-value{
-
-    color:var(--text);
-
-    font-size:15px;
-
-    font-weight:bold;
-
-    word-break:break-word;
-
-}
-
-.password-row{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:5px;
-
-}
-
-.password-text{
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-}
-
-.eye-btn{
-
-    border:0;
-
-    background:transparent;
-
-    color:var(--muted);
-
-    cursor:pointer;
-
-    font-size:15px;
-
-}
-
-
-/* =========================================================
-   MAC / IP
-========================================================= */
-
-.network-card{
-
-    background:var(--card);
-
-    border:1px solid var(--border);
-
-    border-radius:15px;
-
-    padding:15px;
-
-    margin-bottom:14px;
-
-    box-shadow:var(--shadow);
-
-}
-
-.network-row{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:15px;
-
-    padding:8px 0;
-
-}
-
-.network-row + .network-row{
-
-    border-top:1px solid var(--border);
-
-}
-
-.network-label{
-
-    color:var(--muted);
-
-    font-size:11px;
-
-    font-weight:bold;
-
-}
-
-.network-value{
-
-    color:var(--text);
-
-    font-size:13px;
-
-    font-weight:bold;
-
-    text-align:right;
+    letter-spacing:.5px;
 
     word-break:break-all;
-
 }
 
 
-/* =========================================================
-   SPEED
-========================================================= */
+/* =====================================================
+   SPEED CARD
+===================================================== */
 
-.speed-box{
-
+.speed-card{
     background:
-
         linear-gradient(
             145deg,
             var(--card),
@@ -649,56 +461,27 @@ body{
 
     padding:17px;
 
-    margin-bottom:14px;
-
     box-shadow:var(--shadow);
 
+    margin-bottom:13px;
 }
 
 .speed-header{
-
     display:flex;
-
-    align-items:center;
 
     justify-content:space-between;
 
-    cursor:pointer;
+    align-items:center;
 
-    margin-bottom:15px;
-
+    margin-bottom:14px;
 }
 
 .speed-title{
-
-    color:var(--muted);
-
-    font-size:13px;
-
-    font-weight:bold;
-
-}
-
-.speed-arrow{
-
-    display:inline-block;
-
-    margin-right:5px;
-
-    font-size:10px;
-
-    transition:.3s;
-
-}
-
-.speed-box.minimized .speed-arrow{
-
-    transform:rotate(-90deg);
-
+    font-size:14px;
+    font-weight:900;
 }
 
 .live{
-
     display:flex;
 
     align-items:center;
@@ -715,67 +498,36 @@ body{
 
     font-size:9px;
 
-    font-weight:bold;
-
+    font-weight:900;
 }
 
 .live-dot{
-
     width:6px;
-
     height:6px;
 
     border-radius:50%;
 
-    background:#0aa854;
+    background:#0ab456;
 
     animation:pulse 1s infinite;
-
 }
 
-@keyframes pulse{
 
-    50%{
-        opacity:.3;
-        transform:scale(.7);
-    }
-
-}
-
-.speed-content{
-
-    max-height:700px;
-
-    overflow:hidden;
-
-    opacity:1;
-
-    transition:.4s;
-
-}
-
-.speed-box.minimized .speed-content{
-
-    max-height:0;
-
-    opacity:0;
-
-}
+/* =====================================================
+   SPEED VALUES
+===================================================== */
 
 .speed-values{
-
     display:grid;
 
     grid-template-columns:1fr 1fr;
 
     gap:10px;
 
-    margin-bottom:14px;
-
+    margin-bottom:12px;
 }
 
-.speed-card{
-
+.speed-box{
     background:var(--bg);
 
     border:1px solid var(--border);
@@ -783,52 +535,58 @@ body{
     border-radius:13px;
 
     padding:13px;
-
 }
 
 .speed-label{
+    font-size:9px;
 
-    font-size:10px;
+    font-weight:900;
 
-    font-weight:bold;
-
-    margin-bottom:5px;
-
+    margin-bottom:6px;
 }
 
-.download-label{
-
-    color:#e00000;
-
+.download{
+    color:var(--red);
 }
 
-.upload-label{
-
+.upload{
     color:#0b9b54;
-
 }
 
 .speed-number{
+    display:flex;
 
-    font-size:24px;
+    align-items:baseline;
 
-    font-weight:bold;
-
+    gap:5px;
 }
 
-.speed-unit{
+.speed-number strong{
+    font-size:25px;
+
+    font-weight:900;
+
+    color:var(--text);
+
+    transition:.25s;
+}
+
+.speed-number span{
+    font-size:9px;
 
     color:var(--muted);
 
-    font-size:9px;
-
-    font-weight:bold;
-
+    font-weight:900;
 }
 
-.graph-container{
 
-    height:205px;
+/* =====================================================
+   GRAPH
+===================================================== */
+
+.graph{
+    width:100%;
+    height:190px;
 
     border:1px solid var(--border);
 
@@ -836,516 +594,197 @@ body{
 
     overflow:hidden;
 
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(128,128,128,.02),
+            rgba(128,128,128,.08)
+        );
 }
 
-#speedCanvas{
-
+#canvas{
     width:100%;
-
     height:100%;
-
     display:block;
-
 }
 
-.legend{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:25px;
-
-    margin:9px 0;
-
-    font-size:10px;
-
-    font-weight:bold;
-
-}
-
-.legend-item{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:5px;
-
-}
-
-.legend-line{
-
-    width:23px;
-
-    height:3px;
-
-    border-radius:20px;
-
-}
-
-.red-line{
-
-    background:#e00000;
-
-}
-
-.green-line{
-
-    background:#0b9b54;
-
-}
-
-.speed-note{
-
+.graph-note{
     text-align:center;
 
     color:var(--muted);
 
     font-size:9px;
 
-    margin-top:8px;
-
+    margin-top:7px;
 }
 
 
-/* =========================================================
-   PACKAGE
-========================================================= */
-
-.section-card{
-
-    background:var(--card);
-
-    border:1px solid var(--border);
-
-    border-radius:15px;
-
-    padding:16px;
-
-    margin-bottom:14px;
-
-    box-shadow:var(--shadow);
-
-}
-
-.section-title{
-
-    color:var(--text);
-
-    font-size:14px;
-
-    font-weight:bold;
-
-    margin-bottom:13px;
-
-}
-
-.package-main{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:10px;
-
-}
-
-.package-name{
-
-    color:var(--green);
-
-    font-size:21px;
-
-    font-weight:bold;
-
-}
-
-.package-label{
-
-    color:var(--muted);
-
-    font-size:10px;
-
-    margin-top:3px;
-
-}
-
-.package-price{
-
-    text-align:right;
-
-}
-
-.package-price strong{
-
-    color:var(--green);
-
-    font-size:20px;
-
-}
-
-
-/* =========================================================
+/* =====================================================
    BILL
-========================================================= */
+===================================================== */
 
 .bill-card{
-
-    background:var(--card);
-
-    border:1px solid var(--border);
-
-    border-radius:16px;
-
-    padding:17px;
-
-    margin-bottom:14px;
-
-    box-shadow:var(--shadow);
-
-}
-
-.bill-top{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-}
-
-.bill-label{
-
-    color:var(--muted);
-
-    font-size:11px;
-
-    font-weight:bold;
-
-}
-
-.bill-amount{
-
-    color:var(--green);
-
-    font-size:27px;
-
-    font-weight:bold;
-
-    margin-top:4px;
-
-}
-
-.paid{
-
-    background:#e8f7ef;
-
-    color:#08783d;
-
-}
-
-.unpaid{
-
-    background:#fff1f1;
-
-    color:#d00000;
-
-}
-
-.due{
-
-    background:#fff7e6;
-
-    color:#b66a00;
-
-}
-
-.bill-status{
-
-    padding:7px 10px;
-
-    border-radius:20px;
-
-    font-size:10px;
-
-    font-weight:bold;
-
-}
-
-.bill-details{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:10px;
-
-    margin-top:15px;
-
-    padding-top:13px;
-
-    border-top:1px solid var(--border);
-
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-grid{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:10px;
-
-}
-
-.contact-item{
-
-    background:var(--bg);
-
-    border:1px solid var(--border);
-
-    border-radius:11px;
-
-    padding:12px;
-
-}
-
-.contact-label{
-
-    color:var(--muted);
-
-    font-size:9px;
-
-    font-weight:bold;
-
-    margin-bottom:5px;
-
-}
-
-.contact-value{
-
-    color:var(--text);
-
-    font-size:13px;
-
-    font-weight:bold;
-
-    word-break:break-word;
-
-}
-
-
-/* =========================================================
-   SUPPORT
-========================================================= */
-
-.support-button{
-
-    width:100%;
-
-    border:0;
-
     background:
-
         linear-gradient(
             135deg,
             var(--green),
             var(--green2)
         );
 
-    color:white;
+    color:#fff;
 
-    padding:14px;
+    border-radius:16px;
 
-    border-radius:12px;
-
-    font-size:14px;
-
-    font-weight:bold;
-
-    cursor:pointer;
+    padding:18px;
 
     box-shadow:
-        0 7px 20px rgba(8,120,61,.18);
+        0 10px 30px rgba(8,122,75,.22);
 
+    margin-bottom:12px;
 }
 
-.support-button:active{
+.bill-label{
+    font-size:10px;
 
-    transform:scale(.98);
+    opacity:.8;
 
+    font-weight:900;
+
+    margin-bottom:6px;
+}
+
+.bill{
+    font-size:29px;
+
+    font-weight:900;
+}
+
+.bill-date{
+    font-size:11px;
+
+    margin-top:5px;
+
+    opacity:.85;
 }
 
 
-/* =========================================================
-   NOTIFICATION PANEL
-========================================================= */
+/* =====================================================
+   ADDRESS
+===================================================== */
 
-.notification-panel{
-
-    position:fixed;
-
-    top:72px;
-
-    right:12px;
-
-    width:290px;
-
-    max-width:calc(100vw - 24px);
-
+.address-card{
     background:var(--card);
 
     border:1px solid var(--border);
 
-    border-radius:14px;
-
-    box-shadow:0 15px 40px rgba(0,0,0,.18);
+    border-radius:13px;
 
     padding:15px;
 
-    z-index:2000;
+    box-shadow:var(--shadow);
 
-    display:none;
-
+    margin-bottom:12px;
 }
 
-.notification-panel.show{
+.address{
+    font-size:15px;
 
-    display:block;
+    line-height:1.5;
 
+    font-weight:800;
+
+    word-break:break-word;
 }
 
-.notification-title{
 
-    font-size:14px;
+/* =====================================================
+   FOOTER
+===================================================== */
 
-    font-weight:bold;
-
-    margin-bottom:10px;
-
-}
-
-.notification-item{
-
-    padding:11px;
-
-    background:var(--bg);
-
-    border-radius:10px;
-
-    font-size:12px;
-
-    color:var(--text);
-
-    margin-bottom:7px;
-
-}
-
-.notification-time{
-
-    display:block;
+.footer{
+    text-align:center;
 
     color:var(--muted);
 
     font-size:9px;
 
-    margin-top:4px;
-
+    padding:10px;
 }
 
 
-/* =========================================================
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 
-@media(max-width:500px){
+@media(max-width:520px){
 
     .header{
-
+        height:60px;
         padding:0 12px;
-
     }
 
-    .title{
+    .logo{
+        width:34px;
+        height:34px;
+    }
 
+    .logo-text{
         font-size:16px;
-
     }
 
-    .logout{
-
-        padding:9px 11px;
-
+    .logout-btn{
+        padding:9px 12px;
         font-size:12px;
+    }
 
+    .theme-btn{
+        width:34px;
+        height:34px;
     }
 
     .container{
-
-        padding:15px 12px 35px;
-
+        padding:16px 12px 30px;
     }
 
-    .profile-name{
-
-        font-size:18px;
-
+    .profile{
+        padding:15px;
     }
 
     .profile-photo{
-
-        width:65px;
-
-        height:65px;
-
+        width:70px;
+        height:70px;
     }
 
-    .info-value{
+    .profile-name{
+        font-size:18px;
+    }
 
+    .value{
         font-size:14px;
-
     }
 
-    .speed-number{
+    .mac{
+        font-size:14px;
+    }
 
+    .speed-number strong{
         font-size:21px;
-
     }
 
-    .graph-container{
-
-        height:185px;
-
+    .graph{
+        height:175px;
     }
 
 }
 
-
-/* =========================================================
-   SMALL SCREEN
-========================================================= */
-
 @media(max-width:360px){
 
-    .info-grid{
-
+    .two{
         grid-template-columns:1fr;
-
     }
 
-    .contact-grid{
-
+    .speed-values{
         grid-template-columns:1fr;
-
     }
 
 }
@@ -1354,9 +793,23 @@ body{
 
 </head>
 
-
 <body>
 
+<!-- =====================================================
+     LOADING
+===================================================== -->
+
+<div id="loading" class="loading">
+
+```
+<div class="spinner"></div>
+
+<div class="loading-text">
+    Loading your account...
+</div>
+```
+
+</div>
 
 <!-- =====================================================
      HEADER
@@ -1364,81 +817,44 @@ body{
 
 <header class="header">
 
-    <div class="logo-area">
+```
+<div class="logo-area">
 
-        <div class="logo-icon">
-            🌐
-        </div>
-
-        <div class="title">
-            Customer Portal
-        </div>
-
+    <div class="logo">
+        ◈
     </div>
 
-
-    <div class="header-actions">
-
-        <button
-        class="icon-btn"
-        onclick="toggleNotifications()">
-
-            🔔
-
-            <span
-            id="notificationDot"
-            class="notification-dot">
-            </span>
-
-        </button>
-
-
-        <button
-        id="themeButton"
-        class="icon-btn"
-        onclick="toggleTheme()">
-
-            ☾
-
-        </button>
-
-
-        <button
-        class="logout"
-        onclick="logout()">
-
-            Logout
-
-        </button>
-
-    </div>
-
-</header>
-
-
-<!-- =====================================================
-     NOTIFICATION
-===================================================== -->
-
-<div
-id="notificationPanel"
-class="notification-panel">
-
-    <div class="notification-title">
-        🔔 Notifications
-    </div>
-
-    <div
-    id="notificationList">
-
-        <div class="notification-item">
-            No new notifications.
-        </div>
-
+    <div class="logo-text">
+        Customer Portal
     </div>
 
 </div>
 
+
+<div class="header-right">
+
+    <button
+        id="themeBtn"
+        class="theme-btn"
+        onclick="toggleTheme()">
+
+        ☾
+
+    </button>
+
+
+    <button
+        class="logout-btn"
+        onclick="logout()">
+
+        Logout
+
+    </button>
+
+</div>
+```
+
+</header>
 
 <!-- =====================================================
      MAIN
@@ -1446,409 +862,222 @@ class="notification-panel">
 
 <main class="container">
 
+<div id="errorBox" class="error"></div>
 
-<div
-id="loading"
-class="loading">
+<!-- PROFILE -->
 
-    <div class="loader"></div>
+<div class="profile">
 
-    Loading customer information...
+```
+<img
+    id="photo"
+    class="profile-photo"
+    alt="Profile Photo">
 
-</div>
-
-
-<div
-id="errorBox"
-class="error-box">
-</div>
-
-
-<div
-id="dashboard"
-style="display:none;">
-
-
-<!-- =====================================================
-     PROFILE
-===================================================== -->
-
-<div class="profile-card">
-
-    <div class="profile-content">
-
-        <div class="profile-photo">
-
-            <img
-            id="profileImage"
-            alt="Profile">
-
-            <div
-            id="defaultAvatar"
-            class="default-avatar">
-
-                👤
-
-            </div>
-
-        </div>
-
-
-        <div>
-
-            <div
-            id="name"
-            class="profile-name">
-
-                -
-
-            </div>
-
-            <div
-            id="profileUsername"
-            class="profile-username">
-
-                Username: -
-
-            </div>
-
-            <div class="status-pill">
-
-                <span class="status-dot"></span>
-
-                <span id="profileStatus">
-                    ONLINE
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     USER INFO
-===================================================== -->
-
-<div class="info-grid">
-
-
-    <div class="info-card">
-
-        <div class="info-label">
-            USERNAME
-        </div>
-
-        <div
-        id="username"
-        class="info-value">
-
-            -
-
-        </div>
-
-    </div>
-
-
-    <div class="info-card">
-
-        <div class="info-label">
-            PASSWORD
-        </div>
-
-        <div class="password-row">
-
-            <span
-            id="password"
-            class="info-value password-text">
-
-                ••••••••
-
-            </span>
-
-            <button
-            id="eyeButton"
-            class="eye-btn"
-            onclick="togglePassword()">
-
-                👁
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-</div>
-
-
-<!-- =====================================================
-     NETWORK
-===================================================== -->
-
-<div class="network-card">
-
-
-    <div class="network-row">
-
-        <span class="network-label">
-            MAC ADDRESS
-        </span>
-
-        <span
-        id="mac"
-        class="network-value">
-
-            -
-
-        </span>
-
-    </div>
-
-
-    <div class="network-row">
-
-        <span class="network-label">
-            IP ADDRESS
-        </span>
-
-        <span
-        id="ip"
-        class="network-value">
-
-            -
-
-        </span>
-
-    </div>
-
-
-    <div class="network-row">
-
-        <span class="network-label">
-            CONNECTION
-        </span>
-
-        <span
-        id="connectionStatus"
-        class="network-value">
-
-            Online
-
-        </span>
-
-    </div>
-
-
-    <div class="network-row">
-
-        <span class="network-label">
-            LAST SEEN
-        </span>
-
-        <span
-        id="lastSeen"
-        class="network-value">
-
-            -
-
-        </span>
-
-    </div>
-
-
-</div>
-
-
-<!-- =====================================================
-     SPEED
-===================================================== -->
-
-<div
-id="speedBox"
-class="speed-box">
-
+<div class="profile-info">
 
     <div
-    class="speed-header"
-    onclick="toggleSpeed()">
+        id="name"
+        class="profile-name">
 
-
-        <div class="speed-title">
-
-            <span
-            class="speed-arrow">
-
-                ▼
-
-            </span>
-
-            📶 INTERNET SPEED
-
-        </div>
-
-
-        <div class="live">
-
-            <span class="live-dot"></span>
-
-            LIVE
-
-        </div>
-
+        Customer
 
     </div>
 
+    <div
+        id="profileUsername"
+        class="profile-username">
 
-    <div class="speed-content">
+        @username
 
+    </div>
 
-        <div class="speed-values">
+    <div class="online">
 
+        <span class="online-dot"></span>
 
-            <div class="speed-card">
+        <span id="connection">
+            Online
+        </span>
 
-                <div
-                class="speed-label download-label">
+    </div>
 
-                    DOWNLOAD
+</div>
+```
 
-                </div>
+</div>
 
-                <span
-                id="downloadSpeed"
-                class="speed-number">
+<!-- ACCOUNT -->
 
-                    0
+<div class="section-title">
+    ACCOUNT INFORMATION
+</div>
 
-                </span>
+<div class="two">
 
-                <span class="speed-unit">
-                    MBPS
-                </span>
+```
+<div class="info-card">
 
-            </div>
+    <div class="label">
+        USERNAME
+    </div>
 
+    <div
+        id="username"
+        class="value">
 
-            <div class="speed-card">
-
-                <div
-                class="speed-label upload-label">
-
-                    UPLOAD
-
-                </div>
-
-                <span
-                id="uploadSpeed"
-                class="speed-number">
-
-                    0
-
-                </span>
-
-                <span class="speed-unit">
-                    MBPS
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="legend">
-
-            <div class="legend-item">
-
-                <span
-                class="legend-line red-line">
-                </span>
-
-                Download
-
-            </div>
-
-
-            <div class="legend-item">
-
-                <span
-                class="legend-line green-line">
-                </span>
-
-                Upload
-
-            </div>
-
-        </div>
-
-
-        <div class="graph-container">
-
-            <canvas id="speedCanvas"></canvas>
-
-        </div>
-
-
-        <div class="speed-note">
-
-            Live network activity monitor
-
-        </div>
-
+        --
 
     </div>
 
 </div>
 
 
-<!-- =====================================================
-     PACKAGE
-===================================================== -->
+<div class="info-card">
 
-<div class="section-card">
-
-    <div class="section-title">
-        📦 Internet Package
+    <div class="label">
+        PASSWORD
     </div>
 
+    <div
+        id="password"
+        class="value">
 
-    <div class="package-main">
+        --
 
-        <div>
+    </div>
 
-            <div
-            id="package"
-            class="package-name">
+</div>
+```
 
-                -
+</div>
 
-            </div>
+<!-- MAC -->
 
-            <div class="package-label">
-                Current Package
-            </div>
+<div class="mac-card">
 
+```
+<div class="label">
+    MAC ADDRESS
+</div>
+
+<div
+    id="mac"
+    class="mac">
+
+    --
+
+</div>
+```
+
+</div>
+
+<!-- PACKAGE / PHONE -->
+
+<div class="two">
+
+```
+<div class="info-card">
+
+    <div class="label">
+        PACKAGE
+    </div>
+
+    <div
+        id="package"
+        class="value">
+
+        --
+
+    </div>
+
+</div>
+
+
+<div class="info-card">
+
+    <div class="label">
+        PHONE NUMBER
+    </div>
+
+    <div
+        id="phone"
+        class="value">
+
+        --
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<!-- SPEED -->
+
+<div class="section-title">
+    INTERNET ACTIVITY
+</div>
+
+<div class="speed-card">
+
+```
+<div class="speed-header">
+
+    <div class="speed-title">
+        📶 LIVE INTERNET SPEED
+    </div>
+
+    <div class="live">
+
+        <span class="live-dot"></span>
+
+        LIVE
+
+    </div>
+
+</div>
+
+
+<div class="speed-values">
+
+
+    <div class="speed-box">
+
+        <div class="speed-label download">
+            DOWNLOAD
         </div>
 
+        <div class="speed-number">
 
-        <div class="package-price">
-
-            <strong
-            id="packagePrice">
-
-                -
-
+            <strong id="download">
+                0.0
             </strong>
 
-            <div class="package-label">
-                Monthly
+            <span>
+                Mbps
+            </span>
 
-            </div>
+        </div>
+
+    </div>
+
+
+    <div class="speed-box">
+
+        <div class="speed-label upload">
+            UPLOAD
+        </div>
+
+        <div class="speed-number">
+
+            <strong id="upload">
+                0.0
+            </strong>
+
+            <span>
+                Mbps
+            </span>
 
         </div>
 
@@ -1857,210 +1086,146 @@ class="speed-box">
 </div>
 
 
-<!-- =====================================================
-     BILL
-===================================================== -->
+<div class="graph">
+
+    <canvas id="canvas"></canvas>
+
+</div>
+
+
+<div class="graph-note">
+    Live network activity monitor
+</div>
+```
+
+</div>
+
+<!-- BILLING -->
+
+<div class="section-title">
+    BILLING INFORMATION
+</div>
 
 <div class="bill-card">
 
+```
+<div class="bill-label">
+    CURRENT BILL
+</div>
 
-    <div class="bill-top">
+<div
+    id="bill"
+    class="bill">
 
-        <div>
+    0 TK
 
-            <div class="bill-label">
-                CURRENT BILL
-            </div>
+</div>
 
-            <div
-            id="bill"
-            class="bill-amount">
+<div class="bill-date">
 
-                -
+    Billing Date:
 
-            </div>
+    <span id="billingDate">
+        --
+    </span>
 
-        </div>
+</div>
+```
 
+</div>
 
-        <div
-        id="billStatus"
-        class="bill-status unpaid">
+<!-- ADDRESS -->
 
-            UNPAID
+<div class="address-card">
 
-        </div>
+```
+<div class="label">
+    ADDRESS
+</div>
 
+<div
+    id="address"
+    class="address">
+
+    --
+
+</div>
+```
+
+</div>
+
+<!-- STATUS -->
+
+<div class="two">
+
+```
+<div class="info-card">
+
+    <div class="label">
+        CONNECTION STATUS
     </div>
 
+    <div
+        id="connectionStatus"
+        class="value">
 
-    <div class="bill-details">
-
-
-        <div>
-
-            <div class="info-label">
-                BILLING DATE
-            </div>
-
-            <div
-            id="billingDate"
-            class="info-value">
-
-                -
-
-            </div>
-
-        </div>
-
-
-        <div>
-
-            <div class="info-label">
-                DUE DATE
-            </div>
-
-            <div
-            id="dueDate"
-            class="info-value">
-
-                -
-
-            </div>
-
-        </div>
-
+        Online
 
     </div>
 
 </div>
 
 
-<!-- =====================================================
-     CONTACT
-===================================================== -->
+<div class="info-card">
 
-<div class="section-card">
-
-    <div class="section-title">
-        👤 Customer Information
+    <div class="label">
+        ACCOUNT STATUS
     </div>
 
+    <div
+        id="status"
+        class="value">
 
-    <div class="contact-grid">
-
-
-        <div class="contact-item">
-
-            <div class="contact-label">
-                PHONE
-            </div>
-
-            <div
-            id="phone"
-            class="contact-value">
-
-                -
-
-            </div>
-
-        </div>
-
-
-        <div class="contact-item">
-
-            <div class="contact-label">
-                EMAIL
-            </div>
-
-            <div
-            id="email"
-            class="contact-value">
-
-                -
-
-            </div>
-
-        </div>
-
-
-        <div
-        style="grid-column:1/-1;"
-        class="contact-item">
-
-            <div class="contact-label">
-                ADDRESS
-            </div>
-
-            <div
-            id="address"
-            class="contact-value">
-
-                -
-
-            </div>
-
-        </div>
-
+        Active
 
     </div>
 
 </div>
-
-
-<!-- =====================================================
-     SUPPORT
-===================================================== -->
-
-<div class="section-card">
-
-    <div class="section-title">
-        🎫 Need Help?
-    </div>
-
-    <button
-    class="support-button"
-    onclick="openSupport()">
-
-        + Create New Support Request
-
-    </button>
+```
 
 </div>
 
-
+<div class="footer">
+    Customer Dashboard
 </div>
 
 </main>
 
-
 <script>
 
-/* =========================================================
-   GOOGLE APPS SCRIPT
-========================================================= */
+
+/* =====================================================
+   APPS SCRIPT URL
+===================================================== */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEda0meR5ZzPbUZqH_5dpbIQWt1Z7fArv6adM5yRMGMDYwOkkZn-O1bZ0v4xHFTuGmwA/exec";
 
 
-/* =========================================================
+/* =====================================================
    LOGIN CHECK
-========================================================= */
+===================================================== */
 
 const loggedIn =
-    localStorage.getItem("loggedIn") === "true" ||
-    sessionStorage.getItem("loggedIn") === "true";
+sessionStorage.getItem("loggedIn");
 
-
-const currentUsername =
-    localStorage.getItem("username") ||
-    sessionStorage.getItem("username");
+const sessionUsername =
+sessionStorage.getItem("username");
 
 
 if(
-    !loggedIn ||
-    !currentUsername
+    loggedIn !== "true" ||
+    !sessionUsername
 ){
 
     window.location.replace(
@@ -2070,529 +1235,432 @@ if(
 }
 
 
-/* =========================================================
-   ELEMENTS
-========================================================= */
+/* =====================================================
+   DEFAULT PHOTO
+===================================================== */
 
-const loading =
-document.getElementById("loading");
-
-const dashboard =
-document.getElementById("dashboard");
-
-const errorBox =
-document.getElementById("errorBox");
+const DEFAULT_PHOTO =
+"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23dff2e8'/%3E%3Ccircle cx='150' cy='110' r='55' fill='%2390bda8'/%3E%3Cpath d='M55 290c12-75 55-105 95-105s83 30 95 105' fill='%23087a4b'/%3E%3C/svg%3E";
 
 
-/* =========================================================
-   SAFE VALUE
-========================================================= */
+document.getElementById(
+    "photo"
+).src = DEFAULT_PHOTO;
 
-function safeValue(value){
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function cleanValue(v){
 
     if(
-        value === undefined ||
-        value === null ||
-        String(value).trim() === ""
+        v === undefined ||
+        v === null ||
+        String(v).trim() === ""
     ){
 
-        return "-";
+        return "--";
 
     }
 
-    return String(value);
+    return String(v);
 
 }
 
 
-/* =========================================================
+/* =====================================================
+   ERROR
+===================================================== */
+
+function showError(message){
+
+    document.getElementById(
+        "loading"
+    ).style.display =
+    "none";
+
+
+    const box =
+    document.getElementById(
+        "errorBox"
+    );
+
+
+    box.style.display =
+    "block";
+
+
+    box.textContent =
+    message;
+
+}
+
+
+/* =====================================================
    LOAD CUSTOMER
-========================================================= */
+===================================================== */
 
 async function loadCustomer(){
 
     try{
 
+        const username =
+        sessionUsername.trim();
+
+
         const url =
-            API_URL +
-            "?action=customer" +
-            "&username=" +
-            encodeURIComponent(
-                currentUsername
-            );
+        API_URL +
+        "?action=getCustomer&username=" +
+        encodeURIComponent(username);
 
 
         const response =
-            await fetch(
-                url,
-                {
-                    method:"GET",
-                    cache:"no-store"
-                }
-            );
+        await fetch(
+            url,
+            {
+                method:"GET",
+                cache:"no-store"
+            }
+        );
 
 
         if(!response.ok){
 
             throw new Error(
-                "Server error: " +
-                response.status
+                "Server error"
+            );
+
+        }
+
+
+        const result =
+        await response.json();
+
+
+        console.log(
+            "Customer:",
+            result
+        );
+
+
+        if(
+            result.success === false
+        ){
+
+            throw new Error(
+                result.message ||
+                "Customer not found"
             );
 
         }
 
 
         const data =
-            await response.json();
-
-
-        console.log(
-            "Customer API:",
-            data
-        );
+        result.customer ||
+        result.user ||
+        result.data ||
+        result;
 
 
         if(
-            data.success !== true
+            !data ||
+            typeof data !== "object"
         ){
 
             throw new Error(
-                data.message ||
-                "Customer information not found."
+                "Invalid customer data"
             );
 
         }
 
 
-        showCustomer(
+        displayCustomer(
             data
         );
 
-    }
 
+        document.getElementById(
+            "loading"
+        ).style.display =
+        "none";
+
+
+    }
     catch(error){
 
-        console.error(error);
+        console.error(
+            error
+        );
 
-        loading.style.display =
-            "none";
-
-        errorBox.style.display =
-            "block";
-
-        errorBox.textContent =
-            error.message ||
-            "Unable to load customer information.";
+        showError(
+            "Customer information could not be loaded. Check your Code.gs and Apps Script deployment."
+        );
 
     }
 
 }
 
 
-/* =========================================================
-   SHOW CUSTOMER
-========================================================= */
+/* =====================================================
+   DISPLAY CUSTOMER
+===================================================== */
 
-function showCustomer(data){
+function displayCustomer(data){
 
-    loading.style.display =
-        "none";
-
-    errorBox.style.display =
-        "none";
-
-    dashboard.style.display =
-        "block";
+    const username =
+    data.username ??
+    data.Username ??
+    data.userName ??
+    sessionUsername;
 
 
-    /* USERNAME */
+    const password =
+    data.password ??
+    data.Password ??
+    "--";
+
+
+    const name =
+    data.name ??
+    data.Name ??
+    data.customerName ??
+    "Customer";
+
+
+    const mac =
+    data.mac ??
+    data.MAC ??
+    data.macAddress ??
+    data.Mac ??
+    "--";
+
+
+    const downloadValue =
+    data.download ??
+    data.Download ??
+    data.downloadSpeed ??
+    data.DownloadSpeed ??
+    0;
+
+
+    const uploadValue =
+    data.upload ??
+    data.Upload ??
+    data.uploadSpeed ??
+    data.UploadSpeed ??
+    0;
+
+
+    const packageValue =
+    data.package ??
+    data.Package ??
+    data.packageName ??
+    "--";
+
+
+    const phoneValue =
+    data.phone ??
+    data.Phone ??
+    data.number ??
+    data.Number ??
+    "--";
+
+
+    const billValue =
+    data.bill ??
+    data.Bill ??
+    data.amount ??
+    data.Amount ??
+    0;
+
+
+    const billingValue =
+    data.billingDate ??
+    data.BillingDate ??
+    data.billing ??
+    "--";
+
+
+    const addressValue =
+    data.address ??
+    data.Address ??
+    "--";
+
+
+    const photoValue =
+    data.photo ??
+    data.Photo ??
+    data.image ??
+    data.Image ??
+    "";
+
+
+    const statusValue =
+    data.status ??
+    data.Status ??
+    "Active";
+
+
+    const connectionValue =
+    data.connectionStatus ??
+    data.ConnectionStatus ??
+    data.connection ??
+    "Online";
+
 
     document.getElementById(
-        "username"
+        "name"
     ).textContent =
-        safeValue(data.username);
+    cleanValue(name);
 
 
     document.getElementById(
         "profileUsername"
     ).textContent =
-        "Username: " +
-        safeValue(data.username);
+    "@" +
+    cleanValue(username);
 
 
-    /* PASSWORD */
-
-    window.customerPassword =
-        safeValue(data.password);
+    document.getElementById(
+        "username"
+    ).textContent =
+    cleanValue(username);
 
 
     document.getElementById(
         "password"
     ).textContent =
-        "••••••••";
+    cleanValue(password);
 
-
-    /* NAME */
-
-    document.getElementById(
-        "name"
-    ).textContent =
-        safeValue(data.name);
-
-
-    /* MAC */
 
     document.getElementById(
         "mac"
     ).textContent =
-        safeValue(data.mac);
+    cleanValue(mac);
 
-
-    /* IP */
-
-    document.getElementById(
-        "ip"
-    ).textContent =
-        safeValue(data.ip);
-
-
-    /* STATUS */
-
-    const status =
-        safeValue(
-            data.status ||
-            data.connectionStatus ||
-            "Online"
-        );
-
-
-    document.getElementById(
-        "profileStatus"
-    ).textContent =
-        status.toUpperCase();
-
-
-    document.getElementById(
-        "connectionStatus"
-    ).textContent =
-        status;
-
-
-    /* LAST SEEN */
-
-    document.getElementById(
-        "lastSeen"
-    ).textContent =
-        safeValue(data.lastSeen);
-
-
-    /* DOWNLOAD */
-
-    const download =
-        parseFloat(
-            data.download
-        ) || 0;
-
-
-    /* UPLOAD */
-
-    const upload =
-        parseFloat(
-            data.upload
-        ) || 0;
-
-
-    document.getElementById(
-        "downloadSpeed"
-    ).textContent =
-        download;
-
-
-    document.getElementById(
-        "uploadSpeed"
-    ).textContent =
-        upload;
-
-
-    /* PACKAGE */
 
     document.getElementById(
         "package"
     ).textContent =
-        safeValue(
-            data.package ||
-            data.packageName
-        );
+    cleanValue(packageValue);
 
-
-    /* PACKAGE PRICE */
 
     document.getElementById(
-        "packagePrice"
+        "phone"
     ).textContent =
-        data.packagePrice
-            ? data.packagePrice + " Tk"
-            : "-";
-
-
-    /* BILL */
-
-    const bill =
-        safeValue(data.bill);
+    cleanValue(phoneValue);
 
 
     document.getElementById(
         "bill"
     ).textContent =
-        bill === "-"
-            ? "-"
-            : bill + " Tk";
+    cleanValue(billValue) +
+    " TK";
 
-
-    /* BILLING DATE */
 
     document.getElementById(
         "billingDate"
     ).textContent =
-        safeValue(
-            data.billingDate
-        );
+    cleanValue(billingValue);
 
-
-    /* DUE DATE */
-
-    document.getElementById(
-        "dueDate"
-    ).textContent =
-        safeValue(
-            data.dueDate
-        );
-
-
-    /* PHONE */
-
-    document.getElementById(
-        "phone"
-    ).textContent =
-        safeValue(
-            data.phone ||
-            data.number
-        );
-
-
-    /* EMAIL */
-
-    document.getElementById(
-        "email"
-    ).textContent =
-        safeValue(
-            data.email
-        );
-
-
-    /* ADDRESS */
 
     document.getElementById(
         "address"
     ).textContent =
-        safeValue(
-            data.address
-        );
+    cleanValue(addressValue);
 
 
-    /* PHOTO */
-
-    if(data.photo){
-
-        const image =
-            document.getElementById(
-                "profileImage"
-            );
-
-        const avatar =
-            document.getElementById(
-                "defaultAvatar"
-            );
+    document.getElementById(
+        "status"
+    ).textContent =
+    cleanValue(statusValue);
 
 
-        image.src =
-            data.photo;
+    document.getElementById(
+        "connection"
+    ).textContent =
+    cleanValue(connectionValue);
 
 
-        image.style.display =
-            "block";
+    document.getElementById(
+        "connectionStatus"
+    ).textContent =
+    cleanValue(connectionValue);
 
 
-        avatar.style.display =
-            "none";
+    if(
+        photoValue &&
+        String(photoValue).trim() !== ""
+    ){
+
+        document.getElementById(
+            "photo"
+        ).src =
+        photoValue;
 
     }
 
 
-    /* BILL STATUS */
+    /*
+     * IMPORTANT
+     *
+     * Sheet-এর Download/Upload হলো
+     * BASE SPEED.
+     *
+     * এই base speed-এর আশেপাশে
+     * live variation হবে।
+     */
 
-    setBillStatus(
-        data
-    );
+    baseDownload =
+    Number(downloadValue) || 0;
 
 
-    /* NOTIFICATION */
-
-    createNotifications(
-        data
-    );
+    baseUpload =
+    Number(uploadValue) || 0;
 
 
-    /* GRAPH */
+    currentDownload =
+    baseDownload;
 
-    startGraph(
-        download,
-        upload
-    );
+
+    currentUpload =
+    baseUpload;
+
+
+    document.getElementById(
+        "download"
+    ).textContent =
+    currentDownload.toFixed(1);
+
+
+    document.getElementById(
+        "upload"
+    ).textContent =
+    currentUpload.toFixed(1);
+
+
+    initializeGraph();
 
 }
 
 
-/* =========================================================
-   BILL STATUS
-========================================================= */
-
-function setBillStatus(data){
-
-    const element =
-        document.getElementById(
-            "billStatus"
-        );
-
-
-    const rawStatus =
-        String(
-            data.billStatus ||
-            data.paymentStatus ||
-            ""
-        ).toLowerCase();
-
-
-    element.className =
-        "bill-status";
-
-
-    if(
-        rawStatus.includes("paid")
-    ){
-
-        element.classList.add(
-            "paid"
-        );
-
-        element.textContent =
-            "PAID";
-
-        return;
-
-    }
-
-
-    if(
-        rawStatus.includes("due")
-    ){
-
-        element.classList.add(
-            "due"
-        );
-
-        element.textContent =
-            "DUE";
-
-        return;
-
-    }
-
-
-    element.classList.add(
-        "unpaid"
-    );
-
-    element.textContent =
-        "UNPAID";
-
-}
-
-
-/* =========================================================
-   PASSWORD SHOW / HIDE
-========================================================= */
-
-let passwordVisible =
-false;
-
-
-function togglePassword(){
-
-    const password =
-        document.getElementById(
-            "password"
-        );
-
-
-    const button =
-        document.getElementById(
-            "eyeButton"
-        );
-
-
-    if(
-        passwordVisible
-    ){
-
-        password.textContent =
-            "••••••••";
-
-        button.textContent =
-            "👁";
-
-        passwordVisible =
-            false;
-
-    }
-    else{
-
-        password.textContent =
-            window.customerPassword ||
-            "-";
-
-        button.textContent =
-            "🙈";
-
-        passwordVisible =
-            true;
-
-    }
-
-}
-
-
-/* =========================================================
+/* =====================================================
    LOGOUT
-========================================================= */
+===================================================== */
 
 function logout(){
 
-    localStorage.removeItem(
-        "loggedIn"
-    );
-
-    localStorage.removeItem(
-        "username"
-    );
-
-
     sessionStorage.removeItem(
         "loggedIn"
     );
 
     sessionStorage.removeItem(
         "username"
+    );
+
+    sessionStorage.removeItem(
+        "user"
     );
 
 
@@ -2603,34 +1671,38 @@ function logout(){
 }
 
 
-/* =========================================================
+/* =====================================================
    THEME
-========================================================= */
+===================================================== */
 
-const themeButton =
+const themeBtn =
 document.getElementById(
-    "themeButton"
+    "themeBtn"
 );
 
 
 function loadTheme(){
 
-    const theme =
-        localStorage.getItem(
-            "customerTheme"
-        );
+    const saved =
+    localStorage.getItem(
+        "customerTheme"
+    );
 
 
-    if(
-        theme === "dark"
-    ){
+    if(saved === "dark"){
 
         document.body.classList.add(
             "dark"
         );
 
-        themeButton.textContent =
-            "☀";
+        themeBtn.textContent =
+        "☀";
+
+    }
+    else{
+
+        themeBtn.textContent =
+        "☾";
 
     }
 
@@ -2645,23 +1717,23 @@ function toggleTheme(){
 
 
     const dark =
-        document.body.classList.contains(
-            "dark"
-        );
+    document.body.classList.contains(
+        "dark"
+    );
 
 
     localStorage.setItem(
         "customerTheme",
         dark
-            ? "dark"
-            : "light"
+        ? "dark"
+        : "light"
     );
 
 
-    themeButton.textContent =
-        dark
-            ? "☀"
-            : "☾";
+    themeBtn.textContent =
+    dark
+    ? "☀"
+    : "☾";
 
 
     drawGraph();
@@ -2672,151 +1744,155 @@ function toggleTheme(){
 loadTheme();
 
 
-/* =========================================================
-   SPEED BOX
-========================================================= */
+/* =====================================================
+   SPEED VARIABLES
+===================================================== */
 
-function toggleSpeed(){
+let baseDownload = 0;
 
-    document.getElementById(
-        "speedBox"
-    ).classList.toggle(
-        "minimized"
-    );
+let baseUpload = 0;
 
-}
+let currentDownload = 0;
 
+let currentUpload = 0;
 
-/* =========================================================
-   GRAPH
-========================================================= */
+let downloadTarget = 0;
 
-const canvas =
-document.getElementById(
-    "speedCanvas"
-);
-
-
-const ctx =
-canvas.getContext("2d");
-
-
-let downloadValue = 0;
-
-let uploadValue = 0;
+let uploadTarget = 0;
 
 let downloadHistory = [];
 
 let uploadHistory = [];
 
-const MAX_POINTS = 80;
+
+const MAX_POINTS = 75;
 
 
-/* =========================================================
-   START GRAPH
-========================================================= */
+/* =====================================================
+   CREATE NEW TARGET
+===================================================== */
 
-function startGraph(
-    download,
-    upload
-){
+function createNewTarget(){
 
-    downloadValue =
-        download;
+    /*
+     * Download variation:
+     *
+     * Base-এর প্রায় ±18%
+     *
+     * minimum 0.2 Mbps
+     */
 
-    uploadValue =
-        upload;
+    const downloadVariation =
+    Math.max(
+        baseDownload * 0.18,
+        0.35
+    );
 
 
-    downloadHistory = [];
+    const uploadVariation =
+    Math.max(
+        baseUpload * 0.22,
+        0.15
+    );
 
-    uploadHistory = [];
+
+    downloadTarget =
+    baseDownload +
+    (
+        Math.random() * 2 - 1
+    ) *
+    downloadVariation;
 
 
-    for(
-        let i=0;
-        i<30;
-        i++
+    uploadTarget =
+    baseUpload +
+    (
+        Math.random() * 2 - 1
+    ) *
+    uploadVariation;
+
+
+    if(
+        downloadTarget < 0.2
     ){
 
-        downloadHistory.push(
-            Math.max(
-                0,
-                download *
-                (
-                    .75 +
-                    Math.random()*.25
-                )
-            )
-        );
-
-
-        uploadHistory.push(
-            Math.max(
-                0,
-                upload *
-                (
-                    .75 +
-                    Math.random()*.25
-                )
-            )
-        );
+        downloadTarget = 0.2;
 
     }
 
 
-    resizeCanvas();
+    if(
+        uploadTarget < 0.1
+    ){
+
+        uploadTarget = 0.1;
+
+    }
 
 }
 
 
-/* =========================================================
-   UPDATE GRAPH
-========================================================= */
+/* =====================================================
+   SMOOTH SPEED MOVEMENT
+===================================================== */
 
-function updateGraph(){
+function smoothSpeed(){
+
+    /*
+     * Target-এর দিকে ধীরে ধীরে যাবে।
+     * তাই sudden jump হবে না।
+     */
+
+    currentDownload +=
+    (
+        downloadTarget -
+        currentDownload
+    ) * 0.035;
+
+
+    currentUpload +=
+    (
+        uploadTarget -
+        currentUpload
+    ) * 0.045;
+
+
+    /*
+     * মাঝে মাঝে নতুন target তৈরি
+     */
 
     if(
-        downloadValue === 0 &&
-        uploadValue === 0
+        Math.abs(
+            currentDownload -
+            downloadTarget
+        ) < 0.08
     ){
 
-        return;
+        createNewTarget();
 
     }
 
 
-    const d =
-        Math.max(
-            0,
-            downloadValue *
-            (
-                1 +
-                (
-                    Math.random()*.08 -
-                    .04
-                )
-            )
-        );
+    document.getElementById(
+        "download"
+    ).textContent =
+    currentDownload.toFixed(1);
 
 
-    const u =
-        Math.max(
-            0,
-            uploadValue *
-            (
-                1 +
-                (
-                    Math.random()*.08 -
-                    .04
-                )
-            )
-        );
+    document.getElementById(
+        "upload"
+    ).textContent =
+    currentUpload.toFixed(1);
 
 
-    downloadHistory.push(d);
+    downloadHistory.push(
+        currentDownload
+    );
 
-    uploadHistory.push(u);
+
+    uploadHistory.push(
+        currentUpload
+    );
 
 
     if(
@@ -2844,41 +1920,125 @@ function updateGraph(){
 }
 
 
-setInterval(
-    updateGraph,
-    300
+/* =====================================================
+   GRAPH INIT
+===================================================== */
+
+function initializeGraph(){
+
+    downloadHistory = [];
+
+    uploadHistory = [];
+
+
+    currentDownload =
+    baseDownload;
+
+
+    currentUpload =
+    baseUpload;
+
+
+    createNewTarget();
+
+
+    for(
+        let i=0;
+        i<MAX_POINTS;
+        i++
+    ){
+
+        /*
+         * Initial graph-ও একই base-এর
+         * আশেপাশে থাকবে।
+         */
+
+        const d =
+        baseDownload +
+        (
+            Math.random() * 2 - 1
+        ) *
+        Math.max(
+            baseDownload * .12,
+            .25
+        );
+
+
+        const u =
+        baseUpload +
+        (
+            Math.random() * 2 - 1
+        ) *
+        Math.max(
+            baseUpload * .15,
+            .10
+        );
+
+
+        downloadHistory.push(
+            Math.max(
+                .1,
+                d
+            )
+        );
+
+
+        uploadHistory.push(
+            Math.max(
+                .1,
+                u
+            )
+        );
+
+    }
+
+
+    resizeCanvas();
+
+}
+
+
+/* =====================================================
+   CANVAS RESIZE
+===================================================== */
+
+const canvas =
+document.getElementById(
+    "canvas"
 );
 
+const ctx =
+canvas.getContext(
+    "2d"
+);
 
-/* =========================================================
-   CANVAS RESIZE
-========================================================= */
 
 function resizeCanvas(){
 
     const rect =
-        canvas.parentElement
-        .getBoundingClientRect();
+    canvas.parentElement
+    .getBoundingClientRect();
 
 
     const ratio =
-        window.devicePixelRatio || 1;
+    window.devicePixelRatio ||
+    1;
 
 
     canvas.width =
-        rect.width * ratio;
+    rect.width * ratio;
 
 
     canvas.height =
-        rect.height * ratio;
+    rect.height * ratio;
 
 
     canvas.style.width =
-        rect.width + "px";
+    rect.width + "px";
 
 
     canvas.style.height =
-        rect.height + "px";
+    rect.height + "px";
 
 
     ctx.setTransform(
@@ -2902,24 +2062,23 @@ window.addEventListener(
 );
 
 
-/* =========================================================
+/* =====================================================
    DRAW GRAPH
-========================================================= */
+===================================================== */
 
 function drawGraph(){
 
     const width =
-        canvas.clientWidth;
+    canvas.clientWidth;
 
 
     const height =
-        canvas.clientHeight;
+    canvas.clientHeight;
 
 
     if(
         !width ||
-        !height ||
-        downloadHistory.length < 2
+        !height
     ){
 
         return;
@@ -2936,9 +2095,30 @@ function drawGraph(){
 
 
     const dark =
-        document.body.classList.contains(
-            "dark"
-        );
+    document.body.classList.contains(
+        "dark"
+    );
+
+
+    /*
+     * Dynamic graph scale
+     */
+
+    const highest =
+    Math.max(
+        baseDownload,
+        baseUpload,
+        ...downloadHistory,
+        ...uploadHistory,
+        1
+    );
+
+
+    const maxValue =
+    Math.max(
+        highest * 1.25,
+        5
+    );
 
 
     /* GRID */
@@ -2946,9 +2126,9 @@ function drawGraph(){
     ctx.lineWidth = 1;
 
     ctx.strokeStyle =
-        dark
-            ? "rgba(255,255,255,.06)"
-            : "rgba(0,0,0,.06)";
+    dark
+    ? "rgba(255,255,255,.055)"
+    : "rgba(0,0,0,.055)";
 
 
     for(
@@ -2958,7 +2138,9 @@ function drawGraph(){
     ){
 
         const y =
-            height/6*i;
+        (
+            height / 6
+        ) * i;
 
 
         ctx.beginPath();
@@ -2978,44 +2160,36 @@ function drawGraph(){
     }
 
 
-    const max =
-        Math.max(
-            downloadValue,
-            uploadValue,
-            1
-        ) * 1.25;
-
-
-    drawLine(
+    drawSmoothLine(
         downloadHistory,
         "#e00000",
         width,
         height,
-        max
+        maxValue
     );
 
 
-    drawLine(
+    drawSmoothLine(
         uploadHistory,
         "#0b9b54",
         width,
         height,
-        max
+        maxValue
     );
 
 }
 
 
-/* =========================================================
-   DRAW LINE
-========================================================= */
+/* =====================================================
+   SMOOTH LINE
+===================================================== */
 
-function drawLine(
+function drawSmoothLine(
     data,
     color,
     width,
     height,
-    max
+    maxValue
 ){
 
     if(
@@ -3027,34 +2201,44 @@ function drawLine(
     }
 
 
-    const points=[];
+    const points = [];
 
 
     data.forEach(
-        (value,index)=>{
+        function(value,index){
 
             const x =
+            (
                 index /
                 (
-                    data.length-1
-                ) *
-                width;
+                    data.length - 1
+                )
+            ) *
+            width;
+
+
+            const safeValue =
+            Math.max(
+                0,
+                value
+            );
 
 
             const y =
-                height -
-                (
-                    value/max
-                ) *
-                (
-                    height-22
-                ) -
-                11;
+            height -
+            (
+                safeValue /
+                maxValue
+            ) *
+            (
+                height - 20
+            ) -
+            10;
 
 
             points.push({
-                x,
-                y
+                x:x,
+                y:y
             });
 
         }
@@ -3082,35 +2266,41 @@ function drawLine(
         i++
     ){
 
-        const p =
-            points[i-1];
+        const previous =
+        points[i-1];
 
-        const c =
-            points[i];
+        const current =
+        points[i];
 
 
         const midX =
-            (
-                p.x+c.x
-            )/2;
+        (
+            previous.x +
+            current.x
+        ) / 2;
+
+
+        const midY =
+        (
+            previous.y +
+            current.y
+        ) / 2;
 
 
         ctx.quadraticCurveTo(
-            p.x,
-            p.y,
+            previous.x,
+            previous.y,
             midX,
-            (
-                p.y+c.y
-            )/2
+            midY
         );
 
     }
 
 
     const last =
-        points[
-            points.length-1
-        ];
+    points[
+        points.length - 1
+    ];
 
 
     ctx.lineTo(
@@ -3118,21 +2308,23 @@ function drawLine(
         last.y
     );
 
+
     ctx.lineTo(
         last.x,
         height
     );
 
+
     ctx.closePath();
 
 
     const gradient =
-        ctx.createLinearGradient(
-            0,
-            0,
-            0,
-            height
-        );
+    ctx.createLinearGradient(
+        0,
+        0,
+        0,
+        height
+    );
 
 
     if(
@@ -3166,7 +2358,7 @@ function drawLine(
 
 
     ctx.fillStyle =
-        gradient;
+    gradient;
 
     ctx.fill();
 
@@ -3187,26 +2379,32 @@ function drawLine(
         i++
     ){
 
-        const p =
-            points[i-1];
+        const previous =
+        points[i-1];
 
-        const c =
-            points[i];
+        const current =
+        points[i];
 
 
         const midX =
-            (
-                p.x+c.x
-            )/2;
+        (
+            previous.x +
+            current.x
+        ) / 2;
+
+
+        const midY =
+        (
+            previous.y +
+            current.y
+        ) / 2;
 
 
         ctx.quadraticCurveTo(
-            p.x,
-            p.y,
+            previous.x,
+            previous.y,
             midX,
-            (
-                p.y+c.y
-            )/2
+            midY
         );
 
     }
@@ -3219,218 +2417,84 @@ function drawLine(
 
 
     ctx.strokeStyle =
-        color;
+    color;
 
-    ctx.lineWidth = 3;
-
-    ctx.lineJoin =
-        "round";
+    ctx.lineWidth =
+    2.7;
 
     ctx.lineCap =
-        "round";
+    "round";
 
-    ctx.shadowBlur = 7;
+    ctx.lineJoin =
+    "round";
+
+    ctx.shadowBlur =
+    7;
 
     ctx.shadowColor =
-        color;
+    color;
 
     ctx.stroke();
 
     ctx.shadowBlur = 0;
 
 
-    /* POINT */
+    /* CURRENT POINT */
 
     ctx.beginPath();
 
     ctx.arc(
         last.x,
         last.y,
-        5,
+        8,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     ctx.fillStyle =
-        color;
+    color === "#e00000"
+    ? "rgba(224,0,0,.12)"
+    : "rgba(11,155,84,.12)";
+
+    ctx.fill();
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        last.x,
+        last.y,
+        3.5,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fillStyle =
+    color;
 
     ctx.fill();
 
 }
 
 
-/* =========================================================
-   NOTIFICATIONS
-========================================================= */
+/* =====================================================
+   START
+===================================================== */
 
-function createNotifications(data){
-
-    const list =
-        document.getElementById(
-            "notificationList"
-        );
+loadCustomer();
 
 
-    list.innerHTML = "";
-
-
-    let count = 0;
-
-
-    if(
-        data.dueDate
-    ){
-
-        const item =
-            document.createElement(
-                "div"
-            );
-
-
-        item.className =
-            "notification-item";
-
-
-        item.innerHTML =
-            "📅 Billing date: " +
-            safeValue(
-                data.billingDate
-            ) +
-            "<span class='notification-time'>" +
-            "Due: " +
-            safeValue(
-                data.dueDate
-            ) +
-            "</span>";
-
-
-        list.appendChild(
-            item
-        );
-
-
-        count++;
-
-    }
-
-
-    if(
-        data.billStatus &&
-        String(
-            data.billStatus
-        ).toLowerCase()
-        !== "paid"
-    ){
-
-        const item =
-            document.createElement(
-                "div"
-            );
-
-
-        item.className =
-            "notification-item";
-
-
-        item.innerHTML =
-            "💰 Your current bill is " +
-            safeValue(
-                data.bill
-            ) +
-            " Tk.";
-
-
-        list.appendChild(
-            item
-        );
-
-
-        count++;
-
-    }
-
-
-    if(
-        count === 0
-    ){
-
-        list.innerHTML =
-            "<div class='notification-item'>" +
-            "✓ No new notifications." +
-            "</div>";
-
-    }
-
-
-    document.getElementById(
-        "notificationDot"
-    ).style.display =
-        count > 0
-            ? "block"
-            : "none";
-
-}
-
-
-/* =========================================================
-   NOTIFICATION TOGGLE
-========================================================= */
-
-function toggleNotifications(){
-
-    document.getElementById(
-        "notificationPanel"
-    ).classList.toggle(
-        "show"
-    );
-
-}
-
-
-/* =========================================================
-   SUPPORT
-========================================================= */
-
-function openSupport(){
-
-    /*
-       পরে চাইলে এখানে support.html
-       অথবা Google Sheet support form
-       connect করা যাবে।
-    */
-
-    alert(
-        "Support system will be connected here."
-    );
-
-}
-
-
-/* =========================================================
-   AUTO REFRESH
-========================================================= */
+/*
+ * প্রতি 250ms graph update হবে।
+ * Speed ধীরে ধীরে target-এর দিকে যাবে।
+ */
 
 setInterval(
-    loadCustomer,
-    60000
+    smoothSpeed,
+    250
 );
-
-
-/* =========================================================
-   INITIAL LOAD
-========================================================= */
-
-if(
-    loggedIn &&
-    currentUsername
-){
-
-    loadCustomer();
-
-}
 
 </script>
 
 </body>
-
 </html>
