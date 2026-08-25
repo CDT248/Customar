@@ -5,12 +5,10 @@
 
 <meta charset="UTF-8">
 
-<meta
-name="viewport"
+<meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
 <title>Customer Portal</title>
-
 
 <style>
 
@@ -21,40 +19,27 @@ content="width=device-width, initial-scale=1.0">
     font-family:Arial,Helvetica,sans-serif;
 }
 
-
 :root{
 
     --bg:#f4f6f8;
-
     --card:#ffffff;
-
-    --text:#222;
-
+    --text:#202020;
     --muted:#777;
-
     --border:#dddddd;
-
-    --green:#0b5d3b;
+    --green:#08783d;
 
 }
-
 
 body.dark{
 
-    --bg:#000000;
-
+    --bg:#050505;
     --card:#111111;
-
     --text:#ffffff;
-
     --muted:#aaaaaa;
-
     --border:#292929;
-
     --green:#19a866;
 
 }
-
 
 body{
 
@@ -70,20 +55,20 @@ body{
 
 
 /* =====================================================
-   THEME BUTTON
+   THEME
 ===================================================== */
 
 .theme-button{
 
     position:fixed;
 
-    top:5px;
+    top:7px;
 
-    right:5px;
+    right:7px;
 
-    width:25px;
+    width:28px;
 
-    height:25px;
+    height:28px;
 
     border:1px solid var(--border);
 
@@ -92,14 +77,6 @@ body{
     background:var(--card);
 
     color:var(--text);
-
-    font-size:12px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
 
     cursor:pointer;
 
@@ -118,6 +95,8 @@ body{
 
     background:var(--card);
 
+    border-bottom:1px solid var(--border);
+
     display:flex;
 
     align-items:center;
@@ -125,8 +104,6 @@ body{
     justify-content:space-between;
 
     padding:0 18px;
-
-    border-bottom:1px solid var(--border);
 
     position:sticky;
 
@@ -136,17 +113,15 @@ body{
 
 }
 
-
 .title{
+
+    color:var(--green);
 
     font-size:20px;
 
     font-weight:bold;
 
-    color:var(--green);
-
 }
-
 
 .logout{
 
@@ -160,8 +135,6 @@ body{
 
     border-radius:8px;
 
-    font-size:14px;
-
     font-weight:bold;
 
     cursor:pointer;
@@ -170,7 +143,7 @@ body{
 
 
 /* =====================================================
-   MAIN
+   CONTAINER
 ===================================================== */
 
 .container{
@@ -182,6 +155,76 @@ body{
     margin:auto;
 
     padding:22px 16px 40px;
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading{
+
+    text-align:center;
+
+    padding:50px 20px;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+}
+
+.loader{
+
+    width:35px;
+
+    height:35px;
+
+    border:4px solid var(--border);
+
+    border-top-color:var(--green);
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+
+    margin:0 auto 15px;
+
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.error-box{
+
+    display:none;
+
+    background:#fff0f0;
+
+    color:#d00000;
+
+    border:1px solid #ffcccc;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    font-size:13px;
+
+    text-align:center;
 
 }
 
@@ -202,7 +245,6 @@ body{
 
 }
 
-
 .box{
 
     background:var(--card);
@@ -215,27 +257,27 @@ body{
 
 }
 
-
 .label{
 
-    font-size:12px;
+    color:var(--muted);
+
+    font-size:11px;
 
     font-weight:bold;
-
-    color:var(--muted);
 
     margin-bottom:7px;
 
 }
 
-
 .value{
+
+    color:var(--text);
 
     font-size:16px;
 
     font-weight:bold;
 
-    color:var(--text);
+    word-break:break-word;
 
 }
 
@@ -258,12 +300,11 @@ body{
 
 }
 
-
 .mac-title{
 
-    font-size:12px;
-
     color:var(--muted);
+
+    font-size:11px;
 
     font-weight:bold;
 
@@ -271,14 +312,13 @@ body{
 
 }
 
-
 .mac-value{
 
-    font-size:17px;
+    color:var(--text);
+
+    font-size:16px;
 
     font-weight:bold;
-
-    color:var(--text);
 
     word-break:break-all;
 
@@ -291,8 +331,6 @@ body{
 
 .photo-box{
 
-    width:100%;
-
     display:flex;
 
     justify-content:center;
@@ -301,12 +339,11 @@ body{
 
 }
 
-
 .photo{
 
-    width:220px;
+    width:190px;
 
-    height:220px;
+    height:190px;
 
     border-radius:50%;
 
@@ -321,7 +358,6 @@ body{
 
 }
 
-
 .photo svg{
 
     width:100%;
@@ -334,7 +370,7 @@ body{
 
 
 /* =====================================================
-   SPEED BOX
+   SPEED
 ===================================================== */
 
 .speed-box{
@@ -359,7 +395,6 @@ body{
 
 }
 
-
 .speed-header{
 
     display:flex;
@@ -370,44 +405,38 @@ body{
 
     cursor:pointer;
 
-    user-select:none;
-
     margin-bottom:15px;
 
 }
 
-
 .speed-title{
 
-    display:flex;
-
-    align-items:center;
-
-    gap:7px;
+    color:var(--muted);
 
     font-size:14px;
 
     font-weight:bold;
 
-    color:var(--muted);
-
 }
-
 
 .speed-arrow{
 
+    display:inline-block;
+
+    margin-right:5px;
+
     font-size:10px;
 
-    transition:transform .3s;
-
-    color:var(--muted);
+    transition:.3s;
 
 }
 
+.speed-box.minimized
+.speed-arrow{
 
-/* =====================================================
-   LIVE
-===================================================== */
+    transform:rotate(-90deg);
+
+}
 
 .speed-live{
 
@@ -431,45 +460,28 @@ body{
 
 }
 
-
 .live-dot{
 
     width:6px;
 
     height:6px;
 
-    background:#0aa854;
-
     border-radius:50%;
 
-    animation:livePulse 1s infinite;
+    background:#0aa854;
+
+    animation:pulse 1s infinite;
 
 }
 
-
-@keyframes livePulse{
-
-    0%{
-        opacity:.4;
-        transform:scale(.8);
-    }
+@keyframes pulse{
 
     50%{
-        opacity:1;
-        transform:scale(1.2);
-    }
-
-    100%{
-        opacity:.4;
-        transform:scale(.8);
+        opacity:.3;
+        transform:scale(.7);
     }
 
 }
-
-
-/* =====================================================
-   SPEED CONTENT
-===================================================== */
 
 .speed-content{
 
@@ -479,41 +491,16 @@ body{
 
     opacity:1;
 
-    transition:
-        max-height .4s ease,
-        opacity .25s ease;
+    transition:.4s;
 
 }
 
-
-.speed-box.minimized{
-
-    padding-bottom:15px;
-
-}
-
-
-.speed-box.minimized .speed-header{
-
-    margin-bottom:0;
-
-}
-
-
-.speed-box.minimized .speed-content{
+.speed-box.minimized
+.speed-content{
 
     max-height:0;
 
     opacity:0;
-
-    pointer-events:none;
-
-}
-
-
-.speed-box.minimized .speed-arrow{
-
-    transform:rotate(-90deg);
 
 }
 
@@ -534,7 +521,6 @@ body{
 
 }
 
-
 .speed-value-box{
 
     border:1px solid var(--border);
@@ -545,47 +531,7 @@ body{
 
     background:var(--bg);
 
-    position:relative;
-
-    overflow:hidden;
-
 }
-
-
-.speed-value-box::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:60px;
-
-    height:60px;
-
-    border-radius:50%;
-
-    right:-25px;
-
-    bottom:-25px;
-
-    opacity:.08;
-
-}
-
-
-.download-card::after{
-
-    background:#e00000;
-
-}
-
-
-.upload-card::after{
-
-    background:#0b9b54;
-
-}
-
 
 .speed-value-title{
 
@@ -595,10 +541,7 @@ body{
 
     margin-bottom:5px;
 
-    letter-spacing:.5px;
-
 }
-
 
 .download-title{
 
@@ -606,13 +549,11 @@ body{
 
 }
 
-
 .upload-title{
 
     color:#0b9b54;
 
 }
-
 
 .speed-number-row{
 
@@ -624,23 +565,19 @@ body{
 
 }
 
-
 .speed-value{
 
     font-size:25px;
 
     font-weight:bold;
 
-    color:var(--text);
-
 }
-
 
 .speed-unit{
 
-    font-size:10px;
-
     color:var(--muted);
+
+    font-size:10px;
 
     font-weight:bold;
 
@@ -657,14 +594,11 @@ body{
 
     justify-content:center;
 
-    align-items:center;
-
     gap:28px;
 
     margin-bottom:9px;
 
 }
-
 
 .legend{
 
@@ -678,10 +612,7 @@ body{
 
     font-weight:bold;
 
-    color:var(--text);
-
 }
-
 
 .legend-line{
 
@@ -693,23 +624,15 @@ body{
 
 }
 
-
 .download-line{
 
     background:#e00000;
 
-    box-shadow:
-        0 0 7px rgba(224,0,0,.4);
-
 }
-
 
 .upload-line{
 
     background:#0b9b54;
-
-    box-shadow:
-        0 0 7px rgba(11,155,84,.4);
 
 }
 
@@ -724,23 +647,13 @@ body{
 
     height:200px;
 
-    position:relative;
+    border:1px solid var(--border);
 
     border-radius:13px;
 
     overflow:hidden;
 
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(128,128,128,.02),
-            rgba(128,128,128,.08)
-        );
-
-    border:1px solid var(--border);
-
 }
-
 
 #speedCanvas{
 
@@ -752,14 +665,13 @@ body{
 
 }
 
-
 .speed-note{
 
     text-align:center;
 
-    font-size:10px;
-
     color:var(--muted);
+
+    font-size:10px;
 
     margin-top:8px;
 
@@ -767,7 +679,7 @@ body{
 
 
 /* =====================================================
-   INFO
+   INFORMATION
 ===================================================== */
 
 .info,
@@ -788,12 +700,11 @@ body{
 
 }
 
-
 .info-title{
 
-    font-size:12px;
-
     color:var(--muted);
+
+    font-size:11px;
 
     font-weight:bold;
 
@@ -801,33 +712,33 @@ body{
 
 }
 
-
 .info-value{
+
+    color:var(--text);
 
     font-size:17px;
 
     font-weight:bold;
 
-    line-height:1.4;
+    line-height:1.5;
 
-    color:var(--text);
+    word-break:break-word;
 
 }
 
-
 .bill-value{
 
-    font-size:22px;
+    color:var(--green);
+
+    font-size:23px;
 
     font-weight:bold;
-
-    color:var(--green);
 
 }
 
 
 /* =====================================================
-   ONLINE
+   STATUS
 ===================================================== */
 
 .online{
@@ -838,11 +749,11 @@ body{
 
     gap:7px;
 
-    padding:7px 11px;
-
     background:#e8f7ef;
 
     color:#08783d;
+
+    padding:7px 11px;
 
     border-radius:7px;
 
@@ -851,7 +762,6 @@ body{
     font-weight:bold;
 
 }
-
 
 .online-dot{
 
@@ -863,23 +773,7 @@ body{
 
     background:#0aa854;
 
-    box-shadow:
-        0 0 7px #0aa854;
-
-    animation:onlinePulse 1.3s infinite;
-
-}
-
-
-@keyframes onlinePulse{
-
-    0%,100%{
-        opacity:.6;
-    }
-
-    50%{
-        opacity:1;
-    }
+    box-shadow:0 0 7px #0aa854;
 
 }
 
@@ -898,20 +792,11 @@ body{
 
     }
 
-
     .title{
 
         font-size:18px;
 
     }
-
-
-    .logout{
-
-        padding:9px 13px;
-
-    }
-
 
     .container{
 
@@ -919,43 +804,19 @@ body{
 
     }
 
-
     .photo{
 
-        width:200px;
+        width:180px;
 
-        height:200px;
-
-    }
-
-
-    .value{
-
-        font-size:14px;
+        height:180px;
 
     }
-
-
-    .mac-value{
-
-        font-size:15px;
-
-    }
-
-
-    .info-value{
-
-        font-size:15px;
-
-    }
-
 
     .speed-value{
 
         font-size:21px;
 
     }
-
 
     .graph-container{
 
@@ -983,7 +844,7 @@ onclick="toggleTheme()">
 </button>
 
 
-<div class="header">
+<header class="header">
 
     <div class="title">
         Customer Portal
@@ -997,15 +858,41 @@ onclick="toggleTheme()">
 
     </button>
 
-</div>
+</header>
 
 
 <div class="container">
 
 
-<!-- USERNAME + PASSWORD -->
+<div
+id="loading"
+class="loading">
+
+    <div class="loader"></div>
+
+    Loading customer information...
+
+</div>
+
+
+<div
+id="errorBox"
+class="error-box">
+
+</div>
+
+
+<div
+id="dashboard"
+style="display:none;">
+
+
+<!-- =====================================================
+     USERNAME + PASSWORD
+===================================================== -->
 
 <div class="top">
+
 
     <div class="box">
 
@@ -1016,9 +903,7 @@ onclick="toggleTheme()">
         <div
         id="username"
         class="value">
-
-            Loading...
-
+            -
         </div>
 
     </div>
@@ -1030,16 +915,21 @@ onclick="toggleTheme()">
             PASSWORD
         </div>
 
-        <div class="value">
-            ••••••••
+        <div
+        id="password"
+        class="value">
+            -
         </div>
 
     </div>
 
+
 </div>
 
 
-<!-- MAC -->
+<!-- =====================================================
+     MAC
+===================================================== -->
 
 <div class="mac-box">
 
@@ -1047,14 +937,20 @@ onclick="toggleTheme()">
         MAC
     </div>
 
-    <div class="mac-value">
-        22:91:fb:b1:a5:41
+    <div
+    id="mac"
+    class="mac-value">
+
+        -
+
     </div>
 
 </div>
 
 
-<!-- PHOTO -->
+<!-- =====================================================
+     PHOTO
+===================================================== -->
 
 <div class="photo-box">
 
@@ -1129,7 +1025,9 @@ stroke-width="6"/>
 </div>
 
 
-<!-- SPEED -->
+<!-- =====================================================
+     SPEED
+===================================================== -->
 
 <div
 id="speedBox"
@@ -1140,9 +1038,11 @@ class="speed-box">
 class="speed-header"
 onclick="toggleSpeed()">
 
+
     <div class="speed-title">
 
         <span
+        id="speedArrow"
         class="speed-arrow">
 
             ▼
@@ -1162,75 +1062,71 @@ onclick="toggleSpeed()">
 
     </div>
 
+
 </div>
 
 
 <div
-id="speedContent"
 class="speed-content">
 
 
 <div class="speed-values">
 
 
-<div
-class="speed-value-box download-card">
+    <div class="speed-value-box">
 
-    <div
-    class="speed-value-title download-title">
+        <div
+        class="speed-value-title download-title">
 
-        DOWNLOAD
+            DOWNLOAD
 
-    </div>
+        </div>
 
+        <div class="speed-number-row">
 
-    <div class="speed-number-row">
+            <span
+            id="downloadSpeed"
+            class="speed-value">
 
-        <span
-        id="downloadSpeed"
-        class="speed-value">
+                0
 
-            7.2
+            </span>
 
-        </span>
+            <span class="speed-unit">
+                MBPS
+            </span>
 
-        <span class="speed-unit">
-            MBPS
-        </span>
-
-    </div>
-
-</div>
-
-
-<div
-class="speed-value-box upload-card">
-
-    <div
-    class="speed-value-title upload-title">
-
-        UPLOAD
+        </div>
 
     </div>
 
 
-    <div class="speed-number-row">
+    <div class="speed-value-box">
 
-        <span
-        id="uploadSpeed"
-        class="speed-value">
+        <div
+        class="speed-value-title upload-title">
 
-            1.5
+            UPLOAD
 
-        </span>
+        </div>
 
-        <span class="speed-unit">
-            MBPS
-        </span>
+        <div class="speed-number-row">
+
+            <span
+            id="uploadSpeed"
+            class="speed-value">
+
+                0
+
+            </span>
+
+            <span class="speed-unit">
+                MBPS
+            </span>
+
+        </div>
 
     </div>
-
-</div>
 
 
 </div>
@@ -1281,7 +1177,9 @@ class="speed-value-box upload-card">
 </div>
 
 
-<!-- NAME -->
+<!-- =====================================================
+     NAME
+===================================================== -->
 
 <div class="info">
 
@@ -1289,14 +1187,20 @@ class="speed-value-box upload-card">
         NAME
     </div>
 
-    <div class="info-value">
-        Shemanto Islam
+    <div
+    id="name"
+    class="info-value">
+
+        -
+
     </div>
 
 </div>
 
 
-<!-- BILLING DATE -->
+<!-- =====================================================
+     BILLING DATE
+===================================================== -->
 
 <div class="billing">
 
@@ -1304,14 +1208,20 @@ class="speed-value-box upload-card">
         BILLING DATE
     </div>
 
-    <div class="info-value">
-        01-01-2027
+    <div
+    id="billingDate"
+    class="info-value">
+
+        -
+
     </div>
 
 </div>
 
 
-<!-- BILL -->
+<!-- =====================================================
+     BILL
+===================================================== -->
 
 <div class="bill">
 
@@ -1319,14 +1229,20 @@ class="speed-value-box upload-card">
         BILL
     </div>
 
-    <div class="bill-value">
-        500 tk
+    <div
+    id="bill"
+    class="bill-value">
+
+        -
+
     </div>
 
 </div>
 
 
-<!-- ADDRESS -->
+<!-- =====================================================
+     ADDRESS
+===================================================== -->
 
 <div class="address">
 
@@ -1334,14 +1250,20 @@ class="speed-value-box upload-card">
         ADDRESS
     </div>
 
-    <div class="info-value">
-        sagorika road pahartali Chittagong
+    <div
+    id="address"
+    class="info-value">
+
+        -
+
     </div>
 
 </div>
 
 
-<!-- STATUS -->
+<!-- =====================================================
+     STATUS
+===================================================== -->
 
 <div class="connection">
 
@@ -1362,154 +1284,318 @@ class="speed-value-box upload-card">
 
 </div>
 
+</div>
+
 
 <script>
 
 /* =====================================================
-   SESSION FIX
+   GOOGLE APPS SCRIPT URL
 ===================================================== */
 
-/*
-   index.html দুটো storage-এই login save করে।
-
-   ds.html যেকোনো একটাতে login পেলেই
-   সেটা valid ধরে নেবে।
-
-   এরপর দুটো storage-তেই আবার sync করে দেবে।
-*/
-
-(function(){
-
-    let loggedIn =
-        localStorage.getItem("loggedIn");
+const API_URL =
+"https://script.google.com/macros/s/AKfycbwEda0meR5ZzPbUZqH_5dpbIQWt1Z7fArv6adM5yRMGMDYwOkkZn-O1bZ0v4xHFTuGmwA/exec";
 
 
-    let sessionLoggedIn =
-        sessionStorage.getItem("loggedIn");
+/* =====================================================
+   LOGIN CHECK
+===================================================== */
+
+const loggedIn =
+    localStorage.getItem("loggedIn") === "true" ||
+    sessionStorage.getItem("loggedIn") === "true";
 
 
-    let username =
-        localStorage.getItem("username");
+if(!loggedIn){
+
+    window.location.replace(
+        "index.html"
+    );
+
+}
 
 
-    let sessionUsername =
-        sessionStorage.getItem("username");
+/* =====================================================
+   GET USERNAME
+===================================================== */
+
+const username =
+    localStorage.getItem("username") ||
+    sessionStorage.getItem("username");
 
 
-    /*
-    ==========================================
-    LOCAL STORAGE LOGIN থাকলে
-    ==========================================
-    */
+if(!username){
 
-    if(loggedIn === "true"){
+    localStorage.clear();
 
-        /*
-        sessionStorage sync
-        */
+    sessionStorage.clear();
 
-        sessionStorage.setItem(
-            "loggedIn",
-            "true"
-        );
+    window.location.replace(
+        "index.html"
+    );
+
+}
 
 
-        if(username){
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
-            sessionStorage.setItem(
-                "username",
+const loading =
+    document.getElementById(
+        "loading"
+    );
+
+const dashboard =
+    document.getElementById(
+        "dashboard"
+    );
+
+const errorBox =
+    document.getElementById(
+        "errorBox"
+    );
+
+
+/* =====================================================
+   LOAD CUSTOMER
+===================================================== */
+
+async function loadCustomer(){
+
+    try{
+
+        const url =
+            API_URL +
+            "?action=customer" +
+            "&username=" +
+            encodeURIComponent(
                 username
             );
 
-        }
 
-    }
-
-
-    /*
-    ==========================================
-    SESSION STORAGE LOGIN থাকলে
-    ==========================================
-    */
-
-    else if(
-        sessionLoggedIn === "true"
-    ){
-
-        /*
-        localStorage sync
-        */
-
-        localStorage.setItem(
-            "loggedIn",
-            "true"
-        );
-
-
-        if(sessionUsername){
-
-            localStorage.setItem(
-                "username",
-                sessionUsername
+        const response =
+            await fetch(
+                url,
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
             );
 
-            username =
-                sessionUsername;
+
+        if(!response.ok){
+
+            throw new Error(
+                "Server error: " +
+                response.status
+            );
 
         }
 
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "CUSTOMER DATA:",
+            data
+        );
+
+
+        if(
+            data.success !== true
+        ){
+
+            throw new Error(
+                data.message ||
+                "Customer data not found."
+            );
+
+        }
+
+
+        showCustomer(
+            data
+        );
+
     }
+
+    catch(error){
+
+        console.error(
+            error
+        );
+
+
+        loading.style.display =
+            "none";
+
+
+        errorBox.style.display =
+            "block";
+
+
+        errorBox.textContent =
+            error.message ||
+            "Unable to load customer data.";
+
+    }
+
+}
+
+
+/* =====================================================
+   SHOW CUSTOMER
+===================================================== */
+
+function showCustomer(
+    data
+){
+
+    loading.style.display =
+        "none";
+
+
+    dashboard.style.display =
+        "block";
 
 
     /*
-    ==========================================
-    কোন login নেই
-    ==========================================
+    -----------------------------------------------------
+    USERNAME
+    -----------------------------------------------------
     */
 
-    else{
-
-        window.location.replace(
-            "index.html"
-        );
-
-        return;
-
-    }
+    document.getElementById(
+        "username"
+    ).textContent =
+        data.username || "-";
 
 
     /*
-    ==========================================
-    USERNAME SHOW
-    ==========================================
+    -----------------------------------------------------
+    PASSWORD
+    -----------------------------------------------------
     */
 
-    const usernameElement =
-        document.getElementById(
-            "username"
-        );
+    document.getElementById(
+        "password"
+    ).textContent =
+        data.password || "-";
 
 
-    const finalUsername =
-        localStorage.getItem(
-            "username"
-        ) ||
-        sessionStorage.getItem(
-            "username"
-        );
+    /*
+    -----------------------------------------------------
+    MAC
+    -----------------------------------------------------
+    */
+
+    document.getElementById(
+        "mac"
+    ).textContent =
+        data.mac || "-";
 
 
-    if(
-        usernameElement &&
-        finalUsername
-    ){
+    /*
+    -----------------------------------------------------
+    NAME
+    -----------------------------------------------------
+    */
 
-        usernameElement.textContent =
-            finalUsername;
+    document.getElementById(
+        "name"
+    ).textContent =
+        data.name || "-";
 
-    }
 
-})();
+    /*
+    -----------------------------------------------------
+    DOWNLOAD
+    -----------------------------------------------------
+    */
+
+    const download =
+        parseFloat(
+            data.download
+        ) || 0;
+
+
+    /*
+    -----------------------------------------------------
+    UPLOAD
+    -----------------------------------------------------
+    */
+
+    const upload =
+        parseFloat(
+            data.upload
+        ) || 0;
+
+
+    document.getElementById(
+        "downloadSpeed"
+    ).textContent =
+        download;
+
+
+    document.getElementById(
+        "uploadSpeed"
+    ).textContent =
+        upload;
+
+
+    /*
+    -----------------------------------------------------
+    BILLING DATE
+    -----------------------------------------------------
+    */
+
+    document.getElementById(
+        "billingDate"
+    ).textContent =
+        data.billingDate || "-";
+
+
+    /*
+    -----------------------------------------------------
+    BILL
+    -----------------------------------------------------
+    */
+
+    document.getElementById(
+        "bill"
+    ).textContent =
+        data.bill
+            ? data.bill + " tk"
+            : "-";
+
+
+    /*
+    -----------------------------------------------------
+    ADDRESS
+    -----------------------------------------------------
+    */
+
+    document.getElementById(
+        "address"
+    ).textContent =
+        data.address || "-";
+
+
+    /*
+    -----------------------------------------------------
+    START GRAPH
+    -----------------------------------------------------
+    */
+
+    startGraph(
+        download,
+        upload
+    );
+
+}
 
 
 /* =====================================================
@@ -1518,10 +1604,6 @@ class="speed-value-box upload-card">
 
 function logout(){
 
-    /*
-    দুই storage থেকেই remove
-    */
-
     localStorage.removeItem(
         "loggedIn"
     );
@@ -1539,10 +1621,6 @@ function logout(){
         "username"
     );
 
-
-    /*
-    index.html
-    */
 
     window.location.replace(
         "index.html"
@@ -1556,9 +1634,9 @@ function logout(){
 ===================================================== */
 
 const themeButton =
-document.getElementById(
-    "themeButton"
-);
+    document.getElementById(
+        "themeButton"
+    );
 
 
 function loadTheme(){
@@ -1619,28 +1697,13 @@ loadTheme();
 
 
 /* =====================================================
-   SPEED
+   SPEED BOX
 ===================================================== */
 
 const speedBox =
-document.getElementById(
-    "speedBox"
-);
-
-
-const savedSpeedState =
-localStorage.getItem(
-    "speedBoxMinimized"
-);
-
-
-if(savedSpeedState === "true"){
-
-    speedBox.classList.add(
-        "minimized"
+    document.getElementById(
+        "speedBox"
     );
-
-}
 
 
 function toggleSpeed(){
@@ -1649,53 +1712,16 @@ function toggleSpeed(){
         "minimized"
     );
 
-
-    const minimized =
-        speedBox.classList.contains(
-            "minimized"
-        );
-
-
-    localStorage.setItem(
-        "speedBoxMinimized",
-        minimized
-            ? "true"
-            : "false"
-    );
-
 }
 
 
 /* =====================================================
-   GRAPH
+   GRAPH VARIABLES
 ===================================================== */
 
-const canvas =
-document.getElementById(
-    "speedCanvas"
-);
+let downloadValue = 0;
 
-const ctx =
-canvas.getContext(
-    "2d"
-);
-
-
-const downloadElement =
-document.getElementById(
-    "downloadSpeed"
-);
-
-
-const uploadElement =
-document.getElementById(
-    "uploadSpeed"
-);
-
-
-let download = 7.2;
-
-let upload = 1.5;
+let uploadValue = 0;
 
 let downloadHistory = [];
 
@@ -1703,51 +1729,173 @@ let uploadHistory = [];
 
 const MAX_POINTS = 80;
 
+let graphTimer = null;
+
 
 /* =====================================================
-   SPEED CHANGE
+   START GRAPH
 ===================================================== */
 
-function changeSpeed(
-    current,
-    min,
-    max,
-    step
+function startGraph(
+    download,
+    upload
 ){
 
-    let next =
-        current +
-        (
-            Math.random() * 2 - 1
-        ) * step;
+    downloadValue =
+        download;
 
 
-    if(next < min){
+    uploadValue =
+        upload;
 
-        next =
-            min +
-            Math.random() * step;
+
+    downloadHistory = [];
+
+    uploadHistory = [];
+
+
+    /*
+    Initial graph
+    */
+
+    for(
+        let i = 0;
+        i < 25;
+        i++
+    ){
+
+        downloadHistory.push(
+            download *
+            (
+                .75 +
+                Math.random() * .25
+            )
+        );
+
+
+        uploadHistory.push(
+            upload *
+            (
+                .75 +
+                Math.random() * .25
+            )
+        );
 
     }
 
 
-    if(next > max){
+    resizeCanvas();
 
-        next =
-            max -
-            Math.random() * step;
+
+    if(graphTimer){
+
+        clearInterval(
+            graphTimer
+        );
 
     }
 
 
-    return next;
+    graphTimer =
+        setInterval(
+            updateGraph,
+            300
+        );
 
 }
 
 
 /* =====================================================
-   RESIZE
+   GRAPH UPDATE
 ===================================================== */
+
+function updateGraph(){
+
+    /*
+    Slight fake live movement around
+    the Sheet value.
+
+    Sheet-এর মূল speed value পরিবর্তন হয় না।
+    */
+
+    const downloadVariation =
+        Math.max(
+            0,
+            downloadValue *
+            (
+                1 +
+                (
+                    Math.random() * .08 -
+                    .04
+                )
+            )
+        );
+
+
+    const uploadVariation =
+        Math.max(
+            0,
+            uploadValue *
+            (
+                1 +
+                (
+                    Math.random() * .08 -
+                    .04
+                )
+            )
+        );
+
+
+    downloadHistory.push(
+        downloadVariation
+    );
+
+
+    uploadHistory.push(
+        uploadVariation
+    );
+
+
+    if(
+        downloadHistory.length >
+        MAX_POINTS
+    ){
+
+        downloadHistory.shift();
+
+    }
+
+
+    if(
+        uploadHistory.length >
+        MAX_POINTS
+    ){
+
+        uploadHistory.shift();
+
+    }
+
+
+    drawGraph();
+
+}
+
+
+/* =====================================================
+   CANVAS
+===================================================== */
+
+const canvas =
+    document.getElementById(
+        "speedCanvas"
+    );
+
+
+const ctx =
+    canvas.getContext(
+        "2d"
+    );
+
 
 function resizeCanvas(){
 
@@ -1811,7 +1959,10 @@ function drawGraph(){
         canvas.clientHeight;
 
 
-    if(!width || !height){
+    if(
+        !width ||
+        !height
+    ){
 
         return;
 
@@ -1841,8 +1992,11 @@ function drawGraph(){
         );
 
 
-    ctx.lineWidth = 1;
+    /*
+    GRID
+    */
 
+    ctx.lineWidth = 1;
 
     ctx.strokeStyle =
         dark
@@ -1879,10 +2033,19 @@ function drawGraph(){
     }
 
 
-    const max = 12;
+    /*
+    Dynamic max
+    */
+
+    const max =
+        Math.max(
+            downloadValue,
+            uploadValue,
+            1
+        ) * 1.25;
 
 
-    drawSmoothLine(
+    drawLine(
         downloadHistory,
         "#e00000",
         width,
@@ -1891,7 +2054,7 @@ function drawGraph(){
     );
 
 
-    drawSmoothLine(
+    drawLine(
         uploadHistory,
         "#0b9b54",
         width,
@@ -1903,10 +2066,10 @@ function drawGraph(){
 
 
 /* =====================================================
-   SMOOTH LINE
+   DRAW LINE
 ===================================================== */
 
-function drawSmoothLine(
+function drawLine(
     data,
     color,
     width,
@@ -1914,7 +2077,9 @@ function drawSmoothLine(
     max
 ){
 
-    if(data.length < 2){
+    if(
+        data.length < 2
+    ){
 
         return;
 
@@ -1925,13 +2090,19 @@ function drawSmoothLine(
 
 
     data.forEach(
-        function(value,index){
+        function(
+            value,
+            index
+        ){
 
             const x =
                 (
                     index /
-                    (data.length - 1)
-                ) * width;
+                    (
+                        data.length - 1
+                    )
+                ) *
+                width;
 
 
             const y =
@@ -1953,6 +2124,10 @@ function drawSmoothLine(
         }
     );
 
+
+    /*
+    AREA
+    */
 
     ctx.beginPath();
 
@@ -2046,7 +2221,6 @@ function drawSmoothLine(
         );
 
     }
-
     else{
 
         gradient.addColorStop(
@@ -2068,7 +2242,9 @@ function drawSmoothLine(
     ctx.fill();
 
 
-    /* LINE */
+    /*
+    LINE
+    */
 
     ctx.beginPath();
 
@@ -2122,17 +2298,13 @@ function drawSmoothLine(
     ctx.strokeStyle =
         color;
 
-
     ctx.lineWidth = 3;
-
 
     ctx.lineJoin =
         "round";
 
-
     ctx.lineCap =
         "round";
-
 
     ctx.shadowBlur = 7;
 
@@ -2144,18 +2316,16 @@ function drawSmoothLine(
     ctx.shadowBlur = 0;
 
 
-    /* POINT */
-
-    const pointIndex =
-        Math.max(
-            0,
-            data.length - 3
-        );
-
+    /*
+    CURRENT POINT
+    */
 
     const point =
         points[
-            pointIndex
+            Math.max(
+                0,
+                points.length - 3
+            )
         ];
 
 
@@ -2165,7 +2335,7 @@ function drawSmoothLine(
     ctx.arc(
         point.x,
         point.y,
-        10,
+        9,
         0,
         Math.PI * 2
     );
@@ -2186,26 +2356,7 @@ function drawSmoothLine(
     ctx.arc(
         point.x,
         point.y,
-        5,
-        0,
-        Math.PI * 2
-    );
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.fill();
-
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-        point.x,
-        point.y,
-        3.5,
+        4,
         0,
         Math.PI * 2
     );
@@ -2221,105 +2372,36 @@ function drawSmoothLine(
 
 
 /* =====================================================
-   UPDATE
+   AUTO REFRESH CUSTOMER DATA
 ===================================================== */
 
-function updateSpeed(){
+/*
+   প্রতি 60 সেকেন্ডে Sheet থেকে আবার
+   customer data নিয়ে আসবে।
 
-    download =
-        changeSpeed(
-            download,
-            4.5,
-            9.5,
-            .18
-        );
+   তাই admin Sheet-এ Download/Bill/
+   Address ইত্যাদি পরিবর্তন করলে
+   dashboard refresh ছাড়াই update হবে।
+*/
 
-
-    upload =
-        changeSpeed(
-            upload,
-            .6,
-            2.2,
-            .07
-        );
-
-
-    downloadElement.textContent =
-        download.toFixed(1);
-
-
-    uploadElement.textContent =
-        upload.toFixed(1);
-
-
-    downloadHistory.push(
-        download
-    );
-
-
-    uploadHistory.push(
-        upload
-    );
-
-
-    if(
-        downloadHistory.length >
-        MAX_POINTS
-    ){
-
-        downloadHistory.shift();
-
-    }
-
-
-    if(
-        uploadHistory.length >
-        MAX_POINTS
-    ){
-
-        uploadHistory.shift();
-
-    }
-
-
-    drawGraph();
-
-}
+setInterval(
+    loadCustomer,
+    60000
+);
 
 
 /* =====================================================
-   START GRAPH
+   INITIAL LOAD
 ===================================================== */
 
-for(
-    let i = 0;
-    i < 25;
-    i++
-){
+if(loggedIn && username){
 
-    downloadHistory.push(
-        5 +
-        Math.random() * 3
-    );
-
-
-    uploadHistory.push(
-        .7 +
-        Math.random() * .9
-    );
+    loadCustomer();
 
 }
 
-
-resizeCanvas();
-
-
-setInterval(
-    updateSpeed,
-    200
-);
-
 </script>
+
 
 </body>
 
